@@ -23,6 +23,11 @@ h1 {
 	color: #f2663a;
 }
 
+p{
+
+	color: #2f2f2f;
+}
+
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
 	color: #f2663a;
 }
@@ -52,3 +57,19 @@ h1 {
   padding-left: 15px;
 }
 
+.hexagon{
+	margin-top: 45px;
+	position: relative;
+}
+
+.hexagon span{
+	position: absolute;
+	top: -28px;
+	left: -48px;
+	width: 120px;
+	height: 130px;
+	display: block;
+	background: transparent url(images/hexagons.png) 0px 0px no-repeat;
+	background-size: contain;
+	opacity: 0.2;
+}
