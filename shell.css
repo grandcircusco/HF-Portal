@@ -1,0 +1,75 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+	font-family: 'Fira Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-top: 50px;
+	margin-bottom: 60px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Dosis', sans-serif;
+	font-weight: 600;
+}
+
+h1 {
+	text-transform: uppercase;
+	font-weight: 800;
+	color: #f2663a;
+}
+
+p{
+
+	color: #2f2f2f;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+	color: #f2663a;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+	color: #dededf;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.hexagon{
+	margin-top: 45px;
+	position: relative;
+}
+
+.hexagon span{
+	position: absolute;
+	top: -28px;
+	left: -48px;
+	width: 120px;
+	height: 130px;
+	display: block;
+	background: transparent url(images/hexagons.png) 0px 0px no-repeat;
+	background-size: contain;
+	opacity: 0.2;
+}
