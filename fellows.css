@@ -52,10 +52,7 @@ figcaption {
 
 #quote {
 	margin: 10px;
-	/*height: 100px;
+	height: 100px;
 	overflow: hidden;
-	text-overflow-multiline: ellipsis;*/
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
+	text-overflow-multiline: ellipsis;
 }
