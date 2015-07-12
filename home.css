@@ -33,14 +33,8 @@ footer {
 }
 
 .odd-section, .even-section {
-	padding-bottom: 100px;
-	padding-top: 100px;
+	padding: 100px;
 }
-
-.even-section:last-child, .odd-section:last-child{
-	padding-bottom: 50px;
-}
-
 
 .odd-section {
 	background: #d4d4d4;
@@ -50,7 +44,14 @@ footer {
 	background: #dededf
 }
 
-.head {
-	padding-bottom: 100px;
-	padding-top: 50px;
+.top {
+	padding: 50px 50px 100px 50px;
+}
+
+.slide {
+	padding: 50px 150px;
+}
+
+.carousel-control{
+	border-radius: 20px;
 }
