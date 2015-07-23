@@ -18,6 +18,7 @@
   function Companies($http) {
     var Companies = {
       all: all,
+      get: get,
       create: create,
       update: update,
       destroy: destroy
@@ -33,6 +34,14 @@
      */
     function all() {
       return $http.get('/companies/');
+    }
+
+    /**
+     * @name get
+     * @desc get just one company
+     */
+    function get(id) {
+      return $http.get('/companies/' + i);
     }
 
     /**

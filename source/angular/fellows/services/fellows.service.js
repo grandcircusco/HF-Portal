@@ -18,6 +18,7 @@
   function Fellows($http) {
     var Fellows = {
       all: all,
+      get: get,
       create: create,
       update: update,
       destroy: destroy
@@ -35,6 +36,13 @@
       return $http.get('/fellows/');
     }
 
+    /**
+     * @name get
+     * @desc get one fellow
+     */
+    function get() {
+      return $http.get('/fellows/' + id);
+    }
     /**
      * @name create
      * @desc creeate a new fellow record

@@ -7,8 +7,10 @@
 
   angular
   .module('app', [
+      'app.routes',
       'app.fellows',
       'app.companies'
+
   ]);
 
 })();
