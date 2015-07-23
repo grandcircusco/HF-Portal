@@ -22,7 +22,7 @@ figure > img {
 	display: block;
 	margin: 5px auto;
 	max-width: 150px;
-	max-height: 250px;
+	max-height: 150px;
 	height: auto;
 	width: auto;
 	border-radius: 10px;
@@ -35,14 +35,14 @@ figcaption {
 	padding-top: 10px;
 }
 
-.tag {
+.tag_c {
 	text-align: center;
 	color: #7E7B7A;
 	height: 20px;
 	margin: 5px 0px;
 }
 
-.tag > p {
+.tag_c > p {
 	background-color: rgba(248, 170, 127, 0.5);
 	line-height: auto;
 	border-radius: 5px;
