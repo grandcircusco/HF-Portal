@@ -91,3 +91,9 @@
 	font-family: 'Dosis', sans-serif;
 	font-size: 14pt;
 }
+.company-modal .main-content {
+	padding: 20px;
+}
+.company-modal .user-photo{
+	margin: 10px;
+}

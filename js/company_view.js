@@ -19,7 +19,12 @@ app.controller('viewController', function($scope, $modal){
 
 			templateUrl: 'partials/company_detail_modal_template.html',
 			controller: 'ModalInstanceCtrl',
-			size: 'lg'
+			size: 'lg',
+			resolve: {
+				company: function(){
+					return company;
+				}
+			}
 
 		});
 
@@ -34,15 +39,13 @@ app.controller('viewController', function($scope, $modal){
 
 });
 
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, company) {
 
-	//$scope.companies = companies;
-	//$scope.selected = {
-	//	item: $scope.companies[0]
-	//};
+	
+	$scope.company = company;
 
 	$scope.ok = function () {
-		$modalInstance.close($scope.selected.item);
+		$modalInstance.close($scope.company);
 	};
 
 	$scope.cancel = function () {
