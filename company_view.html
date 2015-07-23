@@ -8,16 +8,20 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-		<link href="fellows.css" rel="stylesheet" type="text/css">
+		<link href="company_view.css" rel="stylesheet" type="text/css">
 
 		<!-- Adding Dosis font family -->
 		<link href='http://fonts.googleapis.com/css?family=Dosis:400,500' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
+
+
+
 		<!-- <title> Fellow View </title> -->
-		<div class="container">
+		<div class="company">
 				<figure>
 					<img id="james" src="http://www.itinthed.com/wp-content/uploads/306367_10150380076032138_1742107767_n.jpg">
 					<figcaption> James York </figcaption>
@@ -35,7 +39,39 @@
 			</div>
 			<div class="row">
 				<p id="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut interdum nunc. In hac habitasse platea dictumst. Duis eget dolor ut justo cursus convallis sed eget nibh. Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed dictum sem ut tellus blandit mattis. Aliquam nec erat mi. Nulla non dui nec augue facilisis consequat. Nulla mollis nunc sed eros eleifend, in volutpat ante hendrerit. Praesent eu vulputate ex, ac rhoncus nisi.</p>
+
+				<!-- Button trigger modal -->
+				<p class="company-details-button">
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#company1">
+						View Details
+					</button>
+				</p>
+
 			</div>
 		</div>
+
+		<div class="modal fade" id="company1" tabindex="-1" role="dialog" aria-labelledby="Company Name">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Company Name</h4>
+					</div>
+					<div class="modal-body">
+
+
+
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
 	</body>
 </html>
