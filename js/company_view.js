@@ -22,7 +22,9 @@ app.controller('viewController', function($scope, $modal){
 			controller: 'ModalInstanceCtrl',
 			size: 'lg',
 			resolve: {
-				company: function () {
+
+				company: function(){
+
 					return company;
 				}
 			}
