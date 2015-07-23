@@ -13,12 +13,12 @@
 	box-shadow: 5px 5px 2px #888888;
 }
 
-figure {
+.company figure {
 	width: 100%;
 	padding-top: 10px;
 }
 
-figure > img {
+.company figure > img {
 	display: block;
 	margin: 5px auto;
 	max-width: 150px;
@@ -28,14 +28,14 @@ figure > img {
 	border-radius: 10px;
 }
 
-figcaption {
+.company figcaption {
 	text-align: center;
 	font-weight: medium;
 	font-size: 20px;
 	padding-top: 10px;
 }
 
-.tag {
+.company .tag {
 	text-align: center;
 	color: #7E7B7A;
 	/*padding: auto;*/
@@ -43,13 +43,13 @@ figcaption {
 	margin: 5px 0px;
 }
 
-.tag > p {
+.company .tag > p {
 	background-color: rgba(248, 170, 127, 0.5);
 	line-height: auto;
 	border-radius: 5px;
 }
 
-.row {
+.company .row {
 	padding-top: 10px;
 }
 
@@ -67,7 +67,7 @@ figcaption {
 	/*height: 30px;*/
 }
 
-.company-details-button{
+.company .company-details-button{
 
 	text-align: center;
 }
@@ -75,19 +75,19 @@ figcaption {
 
 /** Company Detail Modal **/
 
-.social-icons {
+.company .social-icons {
 	font-family: 'Font Awsome', sans-serif;
 }
 
-.main-content {
+.company .main-content {
 	padding: 10pt;
 }
 
-.user-photo {
+.company .user-photo {
 	padding-bottom: 5pt;
 }
 
-.user-facts {
+.company .user-facts {
 	font-family: 'Dosis', sans-serif;
 	font-size: 14pt;
 }

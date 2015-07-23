@@ -1,85 +1,28 @@
 <div class="company">
-				<figure>
-					<img id="james" src="http://www.itinthed.com/wp-content/uploads/306367_10150380076032138_1742107767_n.jpg">
-					<figcaption> James York </figcaption>
-				</figure>
-			<div class="row">
-				<div class="col-md-4 tag">
-					<p>C++</p>
-				</div>
-				<div class="col-md-4 tag">
-					<p>Java</p>
-				</div>
-				<div class="col-md-4 tag">
-					<p>PHP</p>
-				</div>
-			</div>
-			<div class="row">
-				<p id="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut interdum nunc. In hac habitasse platea dictumst. Duis eget dolor ut justo cursus convallis sed eget nibh. Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed dictum sem ut tellus blandit mattis. Aliquam nec erat mi. Nulla non dui nec augue facilisis consequat. Nulla mollis nunc sed eros eleifend, in volutpat ante hendrerit. Praesent eu vulputate ex, ac rhoncus nisi.</p>
-
-				<!-- Button trigger modal -->
-				<p class="company-details-button">
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#company1">
-						View Details
-					</button>
-				</p>
-
-			</div>
+		<figure>
+			<img id="james" src="http://www.itinthed.com/wp-content/uploads/306367_10150380076032138_1742107767_n.jpg">
+			<figcaption> {{ company.name }} </figcaption>
+		</figure>
+	<div class="row">
+		<div class="col-md-4 tag">
+			<p>C++</p>
 		</div>
+		<div class="col-md-4 tag">
+			<p>Java</p>
+		</div>
+		<div class="col-md-4 tag">
+			<p>PHP</p>
+		</div>
+	</div>
+	<div class="row">
+		<p id="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut interdum nunc. In hac habitasse platea dictumst. Duis eget dolor ut justo cursus convallis sed eget nibh. Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed dictum sem ut tellus blandit mattis. Aliquam nec erat mi. Nulla non dui nec augue facilisis consequat. Nulla mollis nunc sed eros eleifend, in volutpat ante hendrerit. Praesent eu vulputate ex, ac rhoncus nisi.</p>
 
-		<div class="modal fade" id="company1" tabindex="-1" role="dialog" aria-labelledby="Company Name">
-			<div class="modal-dialog  modal-lg">
+		<!-- Button trigger modal -->
+		<p class="company-details-button">
+			<button type="button" class="btn btn-primary btn-lg" ng-click="openModal(company)">
+				View Details
+			</button>
+		</p>
 
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Company Name</h4>
-					</div>
-					<div class="modal-body">
-
-						<div class="row">
-							<div class="col-md-3">
-								<img class="user-photo" src="images/placeholder-hi.png" width="200" height="200">
-								<br>
-								<span class="label label-default">HTML</span>
-								<span class="label label-default">CSS</span>
-								<span class="label label-default">JavaScript</span>
-
-								<i class="fa fa-github"></i>
-								<i class="fa fa-envelope"></i>
-							</div>
-
-							<div class="col-md-9">
-								<h1>Grand Circus</h1>
-								<div class="user-facts">
-									Since 2010 <br>
-									Detroit <br>
-									grandcircus.co <br>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="main-content">
-								<h3>Biography</h3>
-								<p>Lorem ipsum dolor sit amet, elit paulo tacimates id vis, duo habeo ancillae ut. Ea aliquip hendrerit appellantur eum, eos ex doming nusquam deleniti. Mei decore mentitum id, sed id discere invenire scribentur, id pri gloriatur definiebas scripserit. Nec putant aliquid reformidans ei, ignota everti invidunt ex vim.</p>
-								<h3>Interests</h3>
-								<p>Sumo adhuc sadipscing in pro. Esse modus copiosae sit ei, mea eu vide quaeque oporteat. Pro an ferri aperiri graecis, pro nibh melius probatus id. Vim id ipsum apeirian, quo ut eius atomorum pertinacia, euismod quaerendum ut mea.</p>
-							</div>
-						</div>
-
-						<div class="row">
-							<center><button type="button" class="btn btn-default btn-lg">
-								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Vote
-							</button></center>
-						</div>
-
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+	</div>
+</div>
