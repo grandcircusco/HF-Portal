@@ -27,7 +27,8 @@ var fellows = [{
 
 var companies = [{
 	name: "Tome",
-	description: "IoT for office",
+	description: "IoT for office, yo",
+	summary: "IoT for office",
 	size: sizes.s,
 	desired_skills: ["Android", "iOS", "Embedded"],
 	location: "Royal Oak",
@@ -36,6 +37,7 @@ var companies = [{
 {
 	name: "Wayne Enterprises",
 	description: "Suspiciously high R&D budget",
+	summary: "Gears Batman",
 	size: sizes.xl,
 	desired_skills: ["Crimefighting", "Keeping secrets"],
 	location: "Gotham",
@@ -61,6 +63,7 @@ var fellow = {
 var company = {
 	name: "",
 	description: "",
+	summary: "",
 	size: sizes.,
 	desired_skills: [""],
 	location: "",
