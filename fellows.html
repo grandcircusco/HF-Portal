@@ -29,26 +29,7 @@
 	<body ng-app="fellow_app">
 		<div class="row" ng-controller="fellow_controller">
 			<div ng-repeat="fellow in fellows">
-				<div class="container">
-						<figure>
-							<img src="http://www.itinthed.com/wp-content/uploads/306367_10150380076032138_1742107767_n.jpg">
-							<figcaption> James York </figcaption>
-						</figure>
-					<div class="row">
-						<div class="col-md-4 tag">
-							<p>C++</p>
-						</div>
-						<div class="col-md-4 tag">
-							<p>Java</p>
-						</div>
-						<div class="col-md-4 tag">
-							<p>PHP</p>
-						</div>
-					</div>
-					<div class="row">
-						<p id="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut interdum nunc. In hac habitasse platea dictumst. Duis eget dolor ut justo cursus convallis sed eget nibh. Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed dictum sem ut tellus blandit mattis. Aliquam nec erat mi. Nulla non dui nec augue facilisis consequat. Nulla mollis nunc sed eros eleifend, in volutpat ante hendrerit. Praesent eu vulputate ex, ac rhoncus nisi.</p>
-					</div>
-				</div>
+				<fellow-card></fellow-card>
 			</div>
 		</div>
 	</body>
