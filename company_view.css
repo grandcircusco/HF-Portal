@@ -71,3 +71,23 @@ figcaption {
 
 	text-align: center;
 }
+
+
+/** Company Detail Modal **/
+
+.social-icons {
+	font-family: 'Font Awsome', sans-serif;
+}
+
+.main-content {
+	padding: 10pt;
+}
+
+.user-photo {
+	padding-bottom: 5pt;
+}
+
+.user-facts {
+	font-family: 'Dosis', sans-serif;
+	font-size: 14pt;
+}
