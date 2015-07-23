@@ -1,0 +1,57 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #a7a9ab;
+}
+h1 {
+	font-weight: semi-bold;
+	letter-spacing: 0.075em;
+	font-kerning: auto;
+	font-family: 'Dosis', sans-serif;
+	text-align: center;
+	padding-bottom: 50px;
+	margin: 0px;
+}
+
+p {
+	font-weight: light;
+	letter-spacing: 0.010em;
+	font-kerning: optical;
+	line-height: 16pt;
+	font-family: 'Fira Sans', sans-serif;
+	margin: 0; 
+}
+
+img {
+	text-align: center; 
+}
+
+footer {
+	font-size: .5em;
+	text-align: center;
+	background: #a7a9ab;
+}
+
+.odd-section, .even-section {
+	padding: 100px;
+}
+
+.odd-section {
+	background: #d4d4d4;
+}
+
+.even-section {
+	background: #dededf
+}
+
+.top {
+	padding: 50px 50px 100px 50px;
+}
+
+.slide {
+	padding: 50px 150px;
+}
+
+.carousel-control{
+	border-radius: 20px;
+}
