@@ -1,6 +1,5 @@
 
-.container {
-	/*padding: 20px;*/
+.fellow_container {
 	width: 300px;
 	height: 450px;
 	background: #DEDEDD;
@@ -10,7 +9,7 @@
 	float: left;
 }
 
-.container:hover {
+.fellow_container:hover {
 	box-shadow: 5px 5px 2px #888888;
 }
 
@@ -23,7 +22,7 @@ figure > img {
 	display: block;
 	margin: 5px auto;
 	max-width: 150px;
-	max-height: 250px;
+	max-height: 150px;
 	height: auto;
 	width: auto;
 	border-radius: 10px;
@@ -36,23 +35,21 @@ figcaption {
 	padding-top: 10px;
 }
 
-.tag {
+.fellow_tag_c {
 	text-align: center;
 	color: #7E7B7A;
-	/*padding: auto;*/
 	height: 20px;
 	margin: 5px 0px;
 }
 
-.tag > p {
+.fellow_tag_c > p {
 	background-color: rgba(248, 170, 127, 0.5);
 	line-height: auto;
 	border-radius: 5px;
 }
 
-.row {
+.fellow_row {
 	padding-top: 10px;
-	/*height: 30px;*/
 }
 
 #quote {
@@ -60,4 +57,35 @@ figcaption {
 	height: 140px;
 	overflow: hidden;
 	text-overflow-multiline: ellipsis;
+}
+
+.fellow_detail_body {
+	font-family: 'Fira Sans', sans-serif;
+	color: #999999;
+}
+
+.fd_hdr {
+	font-family: 'Dosis', sans-serif;
+	color: #FF6633;
+}
+
+.fd_subhdr {
+	font-family: 'Dosis', sans-serif;
+}
+
+.social-icons {
+	font-family: 'Font Awsome', sans-serif;
+}
+
+.main-content {
+	padding: 10pt;
+}
+
+.user-photo {
+	padding-bottom: 5pt;
+}
+
+.user-facts {
+	font-family: 'Dosis', sans-serif;
+	font-size: 14pt;
 }
