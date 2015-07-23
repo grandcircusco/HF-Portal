@@ -1,6 +1,5 @@
 
 .container {
-	/*padding: 20px;*/
 	width: 300px;
 	height: 450px;
 	background: #DEDEDD;
@@ -39,7 +38,6 @@ figcaption {
 .tag {
 	text-align: center;
 	color: #7E7B7A;
-	/*padding: auto;*/
 	height: 20px;
 	margin: 5px 0px;
 }
@@ -52,7 +50,6 @@ figcaption {
 
 .row {
 	padding-top: 10px;
-	/*height: 30px;*/
 }
 
 #quote {
