@@ -15,34 +15,32 @@ app.controller('viewController', function($scope, $modal){
 
 	$scope.openModal = function (company) {
 
+
 		var modalInstance = $modal.open({
 
 			templateUrl: 'partials/company_detail_modal_template.html',
 			controller: 'ModalInstanceCtrl',
-			size: 'lg'
+			size: 'lg',
+			resolve: {
+				company: function () {
+					return company;
+				}
+			}
 
 		});
 
-		//modalInstance.result.then(function (selectedItem) {
-		//	$scope.selected = selectedItem;
-		//}, function () {
-		//	$log.info('Modal dismissed at: ' + new Date());
-		//});
 	};
 
 
 
 });
 
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, company) {
 
-	//$scope.companies = companies;
-	//$scope.selected = {
-	//	item: $scope.companies[0]
-	//};
+	$scope.company = company;
 
 	$scope.ok = function () {
-		$modalInstance.close($scope.selected.item);
+		$modalInstance.close($scope.company);
 	};
 
 	$scope.cancel = function () {
