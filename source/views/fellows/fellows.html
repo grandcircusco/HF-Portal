@@ -1,40 +1,40 @@
 <!doctype html>
 <html>
-	<head>
-		<!-- Adding JQuery -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-		
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <head>
+    <!-- Adding JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-		<!-- <link href="fellows.css" rel="stylesheet" type="text/css"> -->
-		<link rel="stylesheet" href="../../../public/assets/stylesheets/style.css" type="text/css"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-		<!-- Adding Dosis font family -->
-		<link href='http://fonts.googleapis.com/css?family=Dosis:400,500' rel='stylesheet' type='text/css'>
+    <!-- <link href="fellows.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="../../../public/assets/stylesheets/style.css" type="text/css"/>
 
-		<!-- Adding Angular -->
-		 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <!-- Adding Dosis font family -->
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,500' rel='stylesheet' type='text/css'>
 
-		<!-- Custom Javascript -->
-		<!-- // <script src="../../javascript/app.js"></script> -->
-		<!-- // <script src="../../../public/assets/javascript/app.min.js"></script> -->
-		<script src="../../../public/assets/javascript/bundle.js"></script>
-		<link rel="stylesheet" href="../../../public/assets/stylesheets/style.css" type="text/css"/>
+    <!-- Adding Angular -->
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 
-		<title> Fellow View </title>
-	</head>
-	<body ng-app="fellow_app">
-		<div class="row" ng-controller="fellow_controller">
-			<div ng-repeat="fellow in fellows">
-				<fellow-card></fellow-card>
-			</div>
-		</div>
-	</body>
+    <!-- Custom Javascript -->
+    <!-- // <script src="../../javascript/app.js"></script> -->
+    <!-- // <script src="../../../public/assets/javascript/app.min.js"></script> -->
+    <script src="../../../public/assets/javascript/bundle.js"></script>
+    <link rel="stylesheet" href="../../../public/assets/stylesheets/style.css" type="text/css"/>
+
+    <title> Fellow View </title>
+  </head>
+  <body ng-app="fellow_app">
+    <div class="row" ng-controller="fellow_controller">
+      <div ng-repeat="fellow in fellows">
+        <fellow-card></fellow-card>
+      </div>
+    </div>
+  </body>
 </html>
