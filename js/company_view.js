@@ -13,12 +13,11 @@ app.controller('viewController', function($scope, $modal){
 
 	];
 
-
 	$scope.openModal = function (company) {
 
 		var modalInstance = $modal.open({
 
-			templateUrl: 'company_detail_modal_template.html',
+			templateUrl: 'partials/company_detail_modal_template.html',
 			controller: 'ModalInstanceCtrl',
 			size: 'lg'
 
@@ -56,7 +55,7 @@ app.directive('companyView', function() {
 	return {
 		restrict: 'AE',
 		replace: 'true',
-		templateUrl:'company_detail_view_template.html'
+		templateUrl:'partials/company_detail_view_template.html'
 	};
 
 });
