@@ -4,7 +4,7 @@ var sizes = {
 	m: "11-15",
 	l: "16-20",
 	xl: "21+"
-}
+};
 
 var fellows = [{
 	name: "Nick Dedenbach",
@@ -42,10 +42,10 @@ var companies = [{
 	link: "www.wayneent.com"
 }];
 
-module.exports = {
-	companies: companies,
-	fellows: fellows
-}
+// module.exports = {
+// 	companies: companies,
+// 	fellows: fellows
+// };
 
 /*
 var fellow = {
