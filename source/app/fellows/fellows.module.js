@@ -18,4 +18,9 @@
   //declare the services module
   angular
     .module('app.fellows.services', []);
+
+  //declare the directives module
+  angular
+    .module('app.fellows.directives', []);
+
 })();
