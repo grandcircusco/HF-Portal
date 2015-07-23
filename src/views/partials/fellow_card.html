@@ -1,14 +1,14 @@
-<div class="container">
+<div class="fellow_container">
 		<figure>
 			<img src={{fellow.src}}>
 			<figcaption> {{fellow.name}} </figcaption>
 		</figure>
 	<div class="row">
-		<div class="col-md-4 tag_c" ng-repeat='tag in fellow.tags'>
+		<div class="col-md-4 fellow_tag_c" ng-repeat='tag in fellow.tags'>
 			<p> {{tag}} </p>
 		</div>
 	</div>
-	<div class="row">
+	<div class="fellow_row">
 		<p id="quote">{{fellow.desc}}</p>
 	</div>
 </div>
