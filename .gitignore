@@ -47,10 +47,33 @@ bower_components/
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
-Thumbs.dba
 .Trash-*
 .directory
+
+##
+# Windows
+#
+#
+# Windows image file caches
+Thumbs.db
+Thumbs.dba
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
 
 ##
 # Sass
@@ -74,20 +97,16 @@ Session.vim
 # Sublime Text 2/3
 #
 ##
-#   cache files
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache
-
-#   workspace files are user-specific
 *.sublime-workspace
+sftp-config.json
 
 #   project files should be checked into the repository, unless a significant
 # proportion of contributors will probably not be using SublimeText
 # *.sublime-project
 
-#   sftp configuration file
-sftp-config.json
 
 
 ##
