@@ -16,27 +16,16 @@
 		<!-- Adding Dosis font family -->
 		<link href='http://fonts.googleapis.com/css?family=Dosis:400,500' rel='stylesheet' type='text/css'>
 	</head>
-	<body>
-		<!-- <title> Fellow View </title> -->
-		<div class="container">
-				<figure>
-					<img id="james" src="http://www.itinthed.com/wp-content/uploads/306367_10150380076032138_1742107767_n.jpg">
-					<figcaption> James York </figcaption>
-				</figure>
-			<div class="row">
-				<div class="col-md-4 tag">
-					<p>C++</p>
-				</div>
-				<div class="col-md-4 tag">
-					<p>Java</p>
-				</div>
-				<div class="col-md-4 tag">
-					<p>PHP</p>
-				</div>
-			</div>
-			<div class="row">
-				<p id="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut interdum nunc. In hac habitasse platea dictumst. Duis eget dolor ut justo cursus convallis sed eget nibh. Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed dictum sem ut tellus blandit mattis. Aliquam nec erat mi. Nulla non dui nec augue facilisis consequat. Nulla mollis nunc sed eros eleifend, in volutpat ante hendrerit. Praesent eu vulputate ex, ac rhoncus nisi.</p>
-			</div>
+	<body ng-app="directivesModule">
+
+		<div ng-controller="viewController">
+
+			<company-view ng-repeat="company in companies" />
+
 		</div>
+
+		<script data-require="angular.js@*" data-semver="1.3.16" src="https://code.angularjs.org/1.3.16/angular.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap-tpls-0.13.1.min.js"></script>
+		<script type="text/javascript" src="js/company_view.js"></script>
 	</body>
 </html>

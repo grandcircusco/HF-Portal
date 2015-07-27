@@ -1,70 +1,104 @@
-.container {
-	/*padding: 20px;*/
-	width: 300px;
-	height: 450px;
-	background: #DEDEDD;
-	border-radius: 20px;
-	font-family: 'Dosis', sans-serif;
-}
+.company {
+  /*padding: 20px;*/
+  width: 300px;
+  background: #DEDEDD;
+  border-radius: 20px;
+  font-family: 'Dosis', sans-serif;
+  margin:20px;
+  float: left;
 
-.container:hover {
+  &:hover {
 	box-shadow: 5px 5px 2px #888888;
-}
+  }
 
-figure {
-	/*Image and caption*/
-	/*margin-top:50px;*/
+  figure {
 	width: 100%;
-	/*height: 350px;*/
 	padding-top: 10px;
 
-}
+	& > img {
+	  display: block;
+	  margin: 5px auto;
+	  max-width: 150px;
+	  max-height: 250px;
+	  height: auto;
+	  width: auto;
+	  border-radius: 10px;
+	}
+  }
 
-figure > img {
-	display: block;
-	margin: 0px auto;
-	max-width: 150px;
-	max-height: 250px;
-	height: auto;
-	width: auto;
-	border-radius: 10px;
-}
 
-figcaption {
+  figcaption {
 	text-align: center;
-	font-weight: medium;
+	font-weight: 500;
 	font-size: 20px;
 	padding-top: 10px;
-}
+  }
 
-.tag {
+  .tag {
 	text-align: center;
 	color: #7E7B7A;
 	/*padding: auto;*/
 	height: 20px;
-	margin: 5px 0px;
-}
+	margin: 5px 0;
 
-.tag > p {
-	background-color: rgba(248, 170, 127, 0.5);
-	line-height: auto;
-	border-radius: 5px;
-}
+	& > p {
+	  background-color: rgba(248, 170, 127, 0.5);
+	  line-height: 1.1;
+	  border-radius: 5px;
+	}
+  }
 
-.row {
+  .row {
 	padding-top: 10px;
-	/*height: 30px;*/
-}
+	margin: 0;
+  }
 
-#hf{
-	background-color: black;
-	padding: 15px;
-	
-}
-
-#quote {
-	margin: 0px 20px;
-	height: 140px;
+  #quote {
+	height: 100px;
+	margin: 0 20px 15px;
+	padding: 10px;
 	overflow: hidden;
 	text-overflow-multiline: ellipsis;
+  }
+
+
+  .company-details-button{
+
+	text-align: center;
+  }
+
+  .social-icons {
+	font-family: 'Font Awsome', sans-serif;
+  }
+
+  .main-content {
+	padding: 10pt;
+  }
+
+  .user-photo {
+	padding-bottom: 5pt;
+  }
+
+  .user-facts {
+	font-family: 'Dosis', sans-serif;
+	font-size: 14pt;
+  }
+
+
 }
+
+
+.company-modal{
+
+  .main-content {
+	padding: 20px;
+  }
+
+  .user-photo{
+	margin: 10px;
+  }
+}
+
+
+
+
