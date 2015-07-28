@@ -1,8 +1,8 @@
 var app = angular.module('fellow_app', []);
 
-app.controller('fellow_controller', function($scope) {
-	$scope.fellows = ['James York', 'Alex Suriano', 'Cam Herringshaw', 'Major Sapp'];
-});
+// app.controller('fellow_controller', function($scope) {
+// 	$scope.fellows = ['James York', 'Alex Suriano', 'Cam Herringshaw', 'Major Sapp'];
+// });
 var sizes = {
 	xs: "1-5",
 	s: "6-10",

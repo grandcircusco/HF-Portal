@@ -8,7 +8,8 @@
   angular
     .module('app.fellows', [
         'app.fellows.controllers',
-        'app.fellows.services'
+        'app.fellows.services',
+        'app.fellows.directives'
         ]);
 
   //declare the controllers module
