@@ -9,7 +9,7 @@
     .module('app.companies.services')
     .service('Companies', Companies);
 
-  //Companies.$inject = ['$http'];
+  Companies.$inject = ['$http'];
 
   /**
   * @namespace Companies
@@ -33,7 +33,19 @@
      * @desc get all the companies
      */
     function all() {
-      return $http.get('/companies/');
+
+      return [
+
+        { "name": "Company 1" },
+        { "name": "Company 2" },
+        { "name": "Company 3" },
+        { "name": "Company 4" },
+        { "name": "Company 5" },
+        { "name": "Company 6" }
+
+      ];
+
+      //return $http.get('/companies/');
     }
 
     /**

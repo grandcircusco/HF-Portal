@@ -8,24 +8,49 @@
   angular
     .module('app.companies.controllers')
     .controller('CompaniesController', CompaniesController)
-    .controller('CompaniesModalInstanceController', CompaniesModalInstanceController)
-    .directive('companyView', CompanyView);
+    .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
 
-  //CompaniesController.$inject = ['$scope', 'Companies'];
-  //CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company'];
-  //CompaniesController.$inject = ['$scope', '$modalInstance', 'company'];
+  CompaniesController.$inject = ['$scope', '$modal', 'Companies'];
+  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company'];
 
   /**
   * @namespace CompaniesController
   */
-  function CompaniesController($scope, Companies) {
+  function CompaniesController($scope, $modal, Companies) {
+
     var vm = this;
+
+    // Use vm for this?
+    $scope.companies = Companies.all();
+
+    $scope.openModal = function (company) {
+
+      var modalInstance = $modal.open({
+
+        templateUrl: 'source/app/companies/partials/company_detail_modal_template.html',
+        controller: 'CompaniesModalInstanceController',
+        size: 'lg',
+        resolve: {
+          company: function(){
+            return company;
+          }
+        }
+
+      });
+
+      //modalInstance.result.then(function (selectedItem) {
+      //	$scope.selected = selectedItem;
+      //}, function () {
+      //	$log.info('Modal dismissed at: ' + new Date());
+      //});
+    };
 
     activate();
 
     function activate() {
+
       console.log('activated companies controller!')
-      //Companies.all();
+
     }
 
   }
@@ -40,15 +65,6 @@
 
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
-    };
-  }
-
-  function CompanyView(){
-
-    return {
-      restrict: 'AE',
-      replace: 'true',
-      templateUrl:'src/views/partials/company_detail_view_template.html'
     };
   }
 

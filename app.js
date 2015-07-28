@@ -4,7 +4,7 @@
  * @desc    contains the routes for the app
  */
 
-var app = angular.module('app',['ngRoute', 'ui.bootstrap']);
+var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies']);
 
 /**
  *   * @name config
@@ -22,7 +22,7 @@ app.config(function($routeProvider){
             templateUrl: 'source/app/fellows/fellows.html'
         })
         .when('/companies', {
-            controller: 'routingController',
+            controller: 'CompaniesController',
             templateUrl: 'source/app/companies/company_view.html'
         })
         .when('/register', {

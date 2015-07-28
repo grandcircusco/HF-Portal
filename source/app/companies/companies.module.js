@@ -8,7 +8,8 @@
   angular
     .module('app.companies', [
         'app.companies.controllers',
-        'app.companies.services'
+        'app.companies.services',
+        'app.companies.directives'
         ]);
 
   //declare the controllers module
@@ -18,4 +19,9 @@
   //declare the services module
   angular
     .module('app.companies.services', []);
+
+  // declare the directives module
+  angular
+    .module('app.companies.directives', []);
+
 })();
