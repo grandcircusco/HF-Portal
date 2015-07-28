@@ -17,7 +17,7 @@ p {
 	font-weight: light;
 	letter-spacing: 0.010em;
 	font-kerning: optical;
-	line-height: 16pt;
+	line-height: 15px;
 	font-family: 'Fira Sans', sans-serif;
 	margin: 0; 
 }
@@ -27,9 +27,15 @@ img {
 }
 
 footer {
-	font-size: .5em;
+
+  	padding: 1em 0;
 	text-align: center;
 	background: #a7a9ab;
+
+  	p{
+
+	  margin: 0;
+	}
 }
 
 .odd-section, .even-section {
@@ -45,7 +51,7 @@ footer {
 }
 
 .top {
-	padding: 50px 50px 100px 50px;
+	padding: 1em 0;
 }
 
 .slide {

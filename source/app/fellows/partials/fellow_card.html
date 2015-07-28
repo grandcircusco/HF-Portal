@@ -1,0 +1,26 @@
+<div class="grid-box fellow">
+
+	<figure>
+		<img src={{fellow.src}}>
+		<figcaption> {{fellow.name}} </figcaption>
+	</figure>
+
+	<div class="row">
+		<div class="col-md-4 tag fellow_tag" ng-repeat='tag in fellow.tags'>
+			<p> {{tag}} </p>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<p id="quote">{{fellow.desc}}</p>
+
+		<!-- Button trigger modal -->
+		<p class="details-button">
+			<button type="button" class="btn btn-primary btn-lg" ng-click="openModal(fellow)">
+				View Details
+			</button>
+		</p>
+
+	</div>
+</div>

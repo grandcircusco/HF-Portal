@@ -23,20 +23,20 @@ app.config(function($routeProvider){
         })
         .when('/companies', {
             controller: 'CompaniesController',
-            templateUrl: 'source/app/companies/company_view.html'
+            templateUrl: 'source/app/companies/companies.html'
         })
         .when('/register', {
             controller: 'routingController',
             templateUrl: 'register.html'
         })
-        .when('/fellows/:id', {
-            controller: 'routingController',
-            templateUrl: 'source/app/fellows/fellow_detail_view.html'
-        })
-        .when('/companies/:id', {
-            controller: 'routingController',
-            templateUrl: 'source/app/companies/company_detail_view.html'
-        })
+        //.when('/fellows/:id', {
+        //    controller: 'routingController',
+        //    templateUrl: 'source/app/fellows/fellow_detail_view.html'
+        //})
+        //.when('/companies/:id', {
+        //    controller: 'routingController',
+        //    templateUrl: 'source/app/companies/company_detail_view.html'
+        //})
         .otherwise({ redirectTo: '/' });
 
 });

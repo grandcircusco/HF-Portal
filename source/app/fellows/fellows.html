@@ -1,7 +1,4 @@
-<div>
-	<div class="row" ng-controller="FellowsController">
-		<div ng-repeat="fellow in fellows">
-			<fellow-card></fellow-card>
-		</div>
-	</div>
+<div class="grid-container fellow-container" ng-controller="FellowsController">
+	<fellow-card ng-repeat="fellow in fellows" />
 </div>
+

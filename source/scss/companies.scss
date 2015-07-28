@@ -1,106 +1,13 @@
-.company_container {
+.company-container {
 
   .company{
 
-	/*padding: 20px;*/
-	width: 300px;
-	background: #DEDEDD;
-	border-radius: 20px;
-	font-family: 'Dosis', sans-serif;
-	margin:20px;
-	float: left;
-
-	&:hover {
-	  box-shadow: 5px 5px 2px #888888;
-	}
-
-	figure {
-	  width: 100%;
-	  padding-top: 10px;
-
-	  & > img {
-		display: block;
-		margin: 5px auto;
-		max-width: 150px;
-		max-height: 250px;
-		height: auto;
-		width: auto;
-		border-radius: 10px;
-	  }
-	}
-
-
-	figcaption {
-	  text-align: center;
-	  font-weight: 500;
-	  font-size: 20px;
-	  padding-top: 10px;
-	}
-
-	.tag {
-	  text-align: center;
-	  color: #7E7B7A;
-	  /*padding: auto;*/
-	  height: 20px;
-	  margin: 5px 0;
-
-	  & > p {
-		background-color: rgba(248, 170, 127, 0.5);
-		line-height: 1.1;
-		border-radius: 5px;
-	  }
-	}
-
-	.row {
-	  padding-top: 10px;
-	  margin: 0;
-	}
-
-	#quote {
-	  height: 100px;
-	  margin: 0 20px 15px;
-	  padding: 10px;
-	  overflow: hidden;
-	  text-overflow-multiline: ellipsis;
-	}
-
-
-	.company-details-button{
-
-	  text-align: center;
-	}
-
-	.social-icons {
-	  font-family: 'Font Awsome', sans-serif;
-	}
-
-	.main-content {
-	  padding: 10pt;
-	}
-
-	.user-photo {
-	  padding-bottom: 5pt;
-	}
-
-	.user-facts {
-	  font-family: 'Dosis', sans-serif;
-	  font-size: 14pt;
-	}
 
   }
 }
 
 
-.company-modal{
 
-  .main-content {
-	padding: 20px;
-  }
-
-  .user-photo{
-	margin: 10px;
-  }
-}
 
 
 

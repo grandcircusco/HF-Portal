@@ -36,12 +36,71 @@
 
       return [
 
-        { "name": "Company 1" },
-        { "name": "Company 2" },
-        { "name": "Company 3" },
-        { "name": "Company 4" },
-        { "name": "Company 5" },
-        { "name": "Company 6" }
+        {
+          name:	'Company 1',
+          tags:	['C++', 'Java', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+        {
+          name:	'Company 2',
+          tags:	['C++', 'Java', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+        {
+          name:	'Company 3',
+          tags:	['C++', 'Java', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+        {
+          name:	'Company 4',
+          tags:	['C++', 'Java', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+        {
+          name:	'Company 5',
+          tags:	['C++', 'Java', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        }
 
       ];
 

@@ -11,7 +11,7 @@
             restrict: 'AE',
             replace: true,
             scope: true,
-            templateUrl: '/source/app/companies/partials/company_card_template.html'/*,
+            templateUrl: '/source/app/companies/partials/company_card.html'/*,
             link: function(scope, elem, attrs) {
                 elem.bind('click', function() {
                 });

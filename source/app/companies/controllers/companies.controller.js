@@ -27,7 +27,7 @@
 
       var modalInstance = $modal.open({
 
-        templateUrl: 'source/app/companies/partials/company_detail_modal_template.html',
+        templateUrl: 'source/app/companies/partials/company_detail_view.html',
         controller: 'CompaniesModalInstanceController',
         size: 'lg',
         resolve: {

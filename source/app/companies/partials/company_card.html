@@ -1,0 +1,25 @@
+<div class="grid-box company">
+
+	<figure>
+		<img src="{{ company.src }}">
+		<figcaption> {{ company.name }} </figcaption>
+	</figure>
+
+	<div class="row">
+		<div class="col-md-4 tag company_tag" ng-repeat='tag in company.tags'>
+			<p> {{tag}} </p>
+		</div>
+	</div>
+
+	<div class="row">
+		<p id="quote">{{ company.desc }}</p>
+
+		<!-- Button trigger modal -->
+		<p class="details-button">
+			<button type="button" class="btn btn-primary btn-lg" ng-click="openModal(company)">
+				View Details
+			</button>
+		</p>
+
+	</div>
+</div>
