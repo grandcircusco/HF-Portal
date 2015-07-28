@@ -10,12 +10,12 @@
     return {
       replace: true,
       scope: true,
-      templateUrl: '/src/views/partials/fellow_card.html',
+      templateUrl: '/source/app/fellows/fellow_card.html',
       link: function(scope, elem, attrs) {
         elem.bind('click', function() {
         });
       }
     };
-  });
+  };
 })();
 

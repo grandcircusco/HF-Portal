@@ -4,7 +4,7 @@
  * @desc    contains the routes for the app
  */
 
-var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies']);
+var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies', 'app.fellows']);
 
 /**
  *   * @name config
