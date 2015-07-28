@@ -1,6 +1,6 @@
-var app = angular.module('app', ['ui.bootstrap']);
+var app = angular.module('app');
 
-app.controller('CompaniesController', function($scope, $modal){
+app.controller('CompaniesController', ['$scope', '$modal',  function($scope, $modal){
 
     $scope.companies = [
 
@@ -37,7 +37,7 @@ app.controller('CompaniesController', function($scope, $modal){
 
 
 
-});
+}]);
 
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, company) {
 
