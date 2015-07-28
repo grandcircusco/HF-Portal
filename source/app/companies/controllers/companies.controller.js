@@ -11,8 +11,8 @@
     .controller('CompaniesModalInstanceController', CompaniesModalInstanceController)
     .directive('companyView', CompanyView);
 
-  CompaniesController.$inject = ['$scope', 'Companies'];
-  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company'];
+  //CompaniesController.$inject = ['$scope', 'Companies'];
+  //CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company'];
   //CompaniesController.$inject = ['$scope', '$modalInstance', 'company'];
 
   /**

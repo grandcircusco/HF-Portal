@@ -4,13 +4,14 @@
  * @desc    contains the routes for the app
  */
 
-var app = angular.module('app',['ngRoute', 'app.companies']);
+var app = angular.module('app',['ngRoute']);
 
 /**
  *   * @name config
  *     * @desc Define valid application routes
  *       */
 app.config(function($routeProvider){
+
     $routeProvider
         .when('/', {
             templateUrl : 'source/app/home/home.html',
@@ -21,7 +22,7 @@ app.config(function($routeProvider){
             templateUrl: 'source/app/fellows/fellows.html'
         })
         .when('/companies', {
-            controller: 'CompaniesController',
+            controller: 'routingController',
             templateUrl: 'source/app/companies/company_view.html'
         })
         .when('/register', {
@@ -29,11 +30,11 @@ app.config(function($routeProvider){
             templateUrl: 'register.html'
         })
         .when('/fellows/:id', {
-            controller: 'FellowsController',
+            controller: 'routingController',
             templateUrl: 'source/app/fellows/fellow_detail_view.html'
         })
         .when('/companies/:id', {
-            controller: 'CompaniesController',
+            controller: 'routingController',
             templateUrl: 'source/app/companies/company_detail_view.html'
         })
         .otherwise({ redirectTo: '/' });
