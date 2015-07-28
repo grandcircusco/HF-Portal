@@ -9,7 +9,7 @@
     .module('app.companies.services')
     .service('Companies', Companies);
 
-  Companies.$inject = ['$http'];
+  //Companies.$inject = ['$http'];
 
   /**
   * @namespace Companies
