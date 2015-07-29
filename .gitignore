@@ -1,14 +1,3 @@
-.DS_Store
-node_modules/
-bower_components/
-
-##
-# Server/ Backend Stuff #
-#
-##
-node_modules/
-bower_components/
-
 ##
 # Compiled source #
 #
@@ -93,7 +82,6 @@ Session.vim
 #   sftp configuration file
 sftp-config.json
 
-
 ##
 # Node.js
 #
@@ -126,3 +114,6 @@ build/Release
 #   Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+
+bower_components/
