@@ -1,25 +1,23 @@
 @import 'variables';
+@import 'mixins';
 body {
 	margin: 0;
 	padding: 0;
 	background: #a7a9ab;
 }
 h1 {
-	font-weight: semi-bold;
+	@include text($family: $head-font, $weight: semi-bold);
 	letter-spacing: 0.075em;
 	font-kerning: auto;
-	font-family: $head-font;
 	text-align: center;
 	padding-bottom: 50px;
 	margin: 0px;
 }
 
 p {
-	font-weight: light;
+	@include text($family: $main-font, $l-height: 15px, $weight: light);
 	letter-spacing: 0.010em;
 	font-kerning: optical;
-	line-height: 15px;
-	font-family: $main-font;
 	margin: 0; 
 }
 
