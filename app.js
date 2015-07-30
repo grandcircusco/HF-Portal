@@ -6,6 +6,7 @@
 
 var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile']);
 
+
 /**
  *   * @name config
  *     * @desc Define valid application routes
@@ -31,14 +32,6 @@ app.config(function($routeProvider){
             templateUrl: 'source/app/profile/profile.html'
 
         })
-        //.when('/fellows/:id', {
-        //    controller: 'routingController',
-        //    templateUrl: 'source/app/fellows/fellow_detail_view.html'
-        //})
-        //.when('/companies/:id', {
-        //    controller: 'routingController',
-        //    templateUrl: 'source/app/companies/company_detail_view.html'
-        //})
         .otherwise({ redirectTo: '/' });
 
 });

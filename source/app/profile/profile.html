@@ -1,7 +1,5 @@
 <div ng-controller="ProfileController">
-  <select ng-model="template" ng-options="t.name for t in templates">
-    <option value=""></option>
-  </select>
+  <select ng-model="template" ng-options="t.name for t in templates"></select>
   <hr/>
-    <div ng-include="template.url"></div>
+  <div ng-include="template.url"></div>
 </div>

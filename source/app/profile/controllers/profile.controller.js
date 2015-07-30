@@ -8,13 +8,8 @@
   angular
     .module('app.profile.controllers')
     .controller('ProfileController', ProfileController);
-    // .controller('ProfileController', ['$scope', function($scope) {
-    //   
-    //   $scope.template = $scope.templates[0];
-    // }]);
 
   ProfileController.$inject = ['$scope'];
-
   /**
   * @namespace ProfileController
   */
@@ -28,11 +23,24 @@
 
     $scope.template = $scope.templates[0];
     
+    
+    $scope.fellow= {
+      bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
+      img:"public/assets/images/placeholder-hi.png"
+    };
+  
     activate();
 
     function activate() {
       console.log('activated profile controller!')
       //Profile.all();
     }
+
+    $scope.update= function() {
+      console.log($scope.fellow);
+
+    };
   }
+
+
 })();
