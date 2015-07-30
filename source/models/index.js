@@ -30,8 +30,6 @@ db.Sequelize = Sequelize;
 
 module.exports = db;
 
-
-
  db.companies.belongsToMany(db.tags, {through: 'companies_tags'});
  db.tags.belongsToMany(db.companies, {through: 'companies_tags'});
 

@@ -11,8 +11,6 @@ var Companies = models.companies;
 var Fellows = models.fellows;
 var Tags = models.tags;
 
-console.log(models);
-
 var app = express();
 
 /**
@@ -121,7 +119,20 @@ app.put('/api/v1/fellows/:id', function putFellow(req, res) {
 
 // DELETE /api/fellows/:id - deletes an existing fellow record
 app.delete('/api/v1/fellows/:id', function deleteFellow(req, res) {
-  res.send('DELETE request - delete a fellow record');
+
+    Fellows.findOne({
+
+        where: {
+            id: req.params.id
+        }
+
+    }).then(function(fellow) {
+
+        fellow.destroy();
+
+        res.send("Fellow Deleted");
+    });
+
 });
 
 
@@ -223,10 +234,76 @@ app.put('/api/v1/companies/:id', function putCompany(req, res) {
 });
 
 // DELETE /api/companies/:id - deletes an existing company record
-app.delete('/api/companies/:id', function deleteCompany(req, res) {
-    res.send('DELETE request - delete a company record');
+app.delete('/api/v1/companies/:id', function deleteCompany(req, res) {
+
+    Companies.findOne({
+
+        where: {
+            id: req.params.id
+        }
+
+    }).then(function(company) {
+
+        company.destroy();
+
+        res.send("Company Deleted");
+    });
+
 });
 
+
+/** Tags **/
+
+// GET /api/tags - get all companies
+app.get('/api/v1/tags', function getTags(req, res) {
+
+    /*Tags.create({
+        name: "Javascript"
+    });
+
+    Tags.create({
+        name: "HTML"
+    });
+
+    Tags.create({
+        name: "CSS"
+    });
+
+    Tags.create({
+        name: "C++"
+    });
+
+    Tags.create({
+        name: "Java"
+    });
+
+    Tags.create({
+        name: "PHP"
+    });
+
+    Tags.create({
+        name: "Node"
+    });
+
+    Tags.create({
+        name: "Angular"
+    });
+
+    Tags.create({
+        name: "MySQL"
+    });
+
+    Tags.create({
+        name: "PostgreSQL"
+    });*/
+
+
+    Tags.all().then(function(tags) {
+
+        res.send(tags);
+    });
+
+});
 
 
 /** Server Startup **/

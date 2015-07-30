@@ -20,7 +20,8 @@ module.exports = function(sequelize, DataTypes) {
 
     },{
 
-        timestamps: true
+        timestamps: true, // add updated_at and created_at
+        paranoid: true // add deleted_at
 
     });
 
