@@ -25,9 +25,11 @@ app.config(function($routeProvider){
             controller: 'CompaniesController',
             templateUrl: 'source/app/companies/companies.html'
         })
-        .when('/register', {
+
+        .when('/profile', {
             controller: 'RoutingController',
-            templateUrl: 'register.html'
+            templateUrl: 'source/app/profile/profile.html'
+
         })
         //.when('/fellows/:id', {
         //    controller: 'routingController',
