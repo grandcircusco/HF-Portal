@@ -6,17 +6,14 @@
   'use strict';
 
   angular
-    .module('app.home', [
-        'app.home.controllers',
-        'app.home.services'
+    .module('app.profile', [
+        'app.profile.controllers'
+        // 'app..services'
         ]);
 
   //declare the controllers module
   angular
-    .module('app.home.controllers', []);
+    .module('app.profile.controllers', []);
 
-  //declare the directives module
-  angular
-    .module('app.home.directives', []);
-
+  
 })();

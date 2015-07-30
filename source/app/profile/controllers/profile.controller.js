@@ -6,22 +6,33 @@
   'use strict';
 
   angular
-    .module('app.home.controllers')
-    .controller('HomeController', HomeController);
+    .module('app.profile.controllers')
+    .controller('ProfileController', ProfileController);
 
-  HomeController.$inject = ['$scope'];
-
+  ProfileController.$inject = ['$scope'];
   /**
   * @namespace HomeController
   */
-  function HomeController($scope) {
+  function ProfileController($scope) {
     var vm = this;
-
+    
+    $scope.fellow= {
+      bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
+      img:"public/assets/images/placeholder-hi.png"
+    };
+  
     activate();
 
     function activate() {
       console.log('activated home controller!')
       //Home.all();
     }
+
+    $scope.update= function() {
+      console.log($scope.fellow);
+
+    };
   }
+
+
 })();
