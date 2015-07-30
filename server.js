@@ -3,8 +3,15 @@ var bodyParser = require('body-parser');
 var pg = require('pg');
 var Sequelize = require('sequelize');
 
-// var fellow = require('./fellow');
-// var company = require('./company');
+/**
+ * Sequelize and Model Definitions
+ */
+var models = require('./source/models');
+var Companies = models.companies;
+var Fellows = models.fellows;
+var Tags = models.tags;
+
+console.log(models);
 
 var app = express();
 
@@ -19,81 +26,15 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-/**
- * Sequelize and Model Definitions
- */
-var sequelize = new Sequelize("postgres://localhost:5432/hfportal");
-
-var Tag = sequelize.define("tags", {
-
-    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    name: Sequelize.STRING
-});
-
-var Company = sequelize.define("companies", {
-
-    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    user_id: { type: Sequelize.INTEGER },
-    name: Sequelize.STRING,
-    email: Sequelize.STRING,
-    primary_contact: Sequelize.STRING,
-    company_size: Sequelize.INTEGER,
-    industry: Sequelize.STRING,
-    description: Sequelize.TEXT,
-    founding_year: Sequelize.INTEGER,
-    founders: Sequelize.STRING,
-    image_url: Sequelize.STRING
-
-},{
-
-  timestamps: true
-
-});
-
-var Fellow = sequelize.define("fellows", {
-
-    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    user_id: { type: Sequelize.INTEGER },
-    first_name: Sequelize.STRING,
-    last_name: Sequelize.STRING,
-    email: Sequelize.STRING,
-    university: Sequelize.STRING,
-    major: Sequelize.STRING,
-    bio: Sequelize.TEXT,
-    image_url: Sequelize.STRING
-
-},{
-
-    timestamps: true
-
-});
-
-Company.belongsToMany(Tag, {through: 'companies_tags'});
-Tag.belongsToMany(Company, {through: 'companies_tags'});
-
-Fellow.belongsToMany(Tag, {through: 'fellows_tags'});
-Tag.belongsToMany(Fellow, {through: 'fellows_tags'});
-
-sequelize.sync().then(function() {
-
-});
-
-
-//app.get('/', function (req, res) {
-//
-//
-//  res.send('source/app/home/home.html');
-//});
-
 /** Routes **/
 
 // GET /fellows - get all fellows
 app.get('/api/v1/fellows', function getFellows(req, res) {
 
-    Fellow.all({
+    Fellows.all({
 
         include: [{
-            model: Tag
+            model: Tags
         }]
 
     }).then(function(fellows) {
@@ -106,7 +47,7 @@ app.get('/api/v1/fellows', function getFellows(req, res) {
 // POST /api/fellows - create a new fellow record
 app.post('/api/v1/fellows', function postFellow(req, res) {
 
-    Fellow.create({
+    Fellows.create({
 
         user_id: req.body.user_id,
         first_name: req.body.first_name,
@@ -115,9 +56,11 @@ app.post('/api/v1/fellows', function postFellow(req, res) {
         university: req.body.university,
         major: req.body.major,
         bio: req.body.bio,
+        interests: req.body.interests,
+        resume_file_path: req.body.resume_file_path,
         image_url: req.body.image_url
 
-    }).success(function(err, fellow) {
+    }).then(function(err, fellow) {
 
         res.send(fellow);
     });
@@ -127,13 +70,13 @@ app.post('/api/v1/fellows', function postFellow(req, res) {
 app.get('/api/v1/fellows/:id', function getFellow(req, res){
 
     //res.send('GET request - get a company record');
-    Fellow.findOne({
+    Fellows.findOne({
 
         where: {
             id: req.params.id
         },
         include: [{
-            model: Tag
+            model: Tags
             //where: { state: Sequelize.col('project.state') }
         }]
 
@@ -146,13 +89,13 @@ app.get('/api/v1/fellows/:id', function getFellow(req, res){
 // PUT /api/fellows/:id - updates an existing fellow record
 app.put('/api/v1/fellows/:id', function putFellow(req, res) {
 
-    Fellow.findOne({
+    Fellows.findOne({
 
         where: {
             id: req.params.id
         },
         include: [{
-            model: Tag
+            model: Tags
             //where: { state: Sequelize.col('project.state') }
         }]
 
@@ -165,6 +108,8 @@ app.put('/api/v1/fellows/:id', function putFellow(req, res) {
         fellow.university = req.body.university;
         fellow.major = req.body.major;
         fellow.bio = req.body.bio;
+        fellow.interests = req.body.interests;
+        fellow.resume_file_path = req.body.resume_file_path;
         fellow.image_url = req.body.image_url;
 
         fellow.save();
@@ -183,10 +128,10 @@ app.delete('/api/v1/fellows/:id', function deleteFellow(req, res) {
 // GET /api/companies - get all companies
 app.get('/api/v1/companies', function getCompanies(req, res) {
 
-    Company.all({
+    Companies.all({
 
         include: [{
-            model: Tag
+            model: Tags
         }]
 
     }).then(function(companies) {
@@ -201,7 +146,7 @@ app.post('/api/v1/companies', function postCompany(req, res) {
     //res.send('POST request - create a new company record');
 
     // Take POST data and build a Company Object (sequelize)
-    Company.create({
+    Companies.create({
 
         user_id: req.body.user_id,
         name: req.body.name,
@@ -212,9 +157,11 @@ app.post('/api/v1/companies', function postCompany(req, res) {
         description: req.body.description,
         founding_year: req.body.founding_year,
         founders: req.body.founders,
+        website_url: req.body.website_url,
+        linked_in_url: req.body.linked_in_url,
         image_url: req.body.image_url
 
-    }).success(function(err, company) {
+    }).then(function(err, company) {
 
         res.send(company);
      });
@@ -223,13 +170,13 @@ app.post('/api/v1/companies', function postCompany(req, res) {
 
 app.get('/api/v1/companies/:id', function getCompany(req, res) {
     //res.send('GET request - get a company record');
-    Company.findOne({
+    Companies.findOne({
 
         where: {
             id: req.params.id
         },
         include: [{
-            model: Tag
+            model: Tags
             //where: { state: Sequelize.col('project.state') }
         }]
 
@@ -243,13 +190,13 @@ app.get('/api/v1/companies/:id', function getCompany(req, res) {
 // PUT /api/companies/:id - updates an existing company record
 app.put('/api/v1/companies/:id', function putCompany(req, res) {
 
-    Company.findOne({
+    Companies.findOne({
 
         where: {
             id: req.params.id
         },
         include: [{
-            model: Tag
+            model: Tags
             //where: { state: Sequelize.col('project.state') }
         }]
 
@@ -264,6 +211,8 @@ app.put('/api/v1/companies/:id', function putCompany(req, res) {
         company.description = req.body.description;
         company.founding_year = req.body.founding_year;
         company.founders = req.body.founders;
+        company.website_url = req.body.website_url;
+        company.linked_in_url = req.body.linked_in_url;
         company.image_url = req.body.image_url;
 
         company.save();
@@ -282,11 +231,16 @@ app.delete('/api/companies/:id', function deleteCompany(req, res) {
 
 /** Server Startup **/
 
-var server = app.listen(3000, function createServer() {
-    var host = server.address().address;
-    var port = server.address().port;
 
-    console.log("HFPortal app listening at http://%s:%s", host, port);
+models.sequelize.sync().then(function () {
+
+    var server = app.listen(3000, function createServer() {
+        var host = server.address().address;
+        var port = server.address().port;
+
+        console.log("HFPortal app listening at http://%s:%s", host, port);
+    });
 });
+
 
 
