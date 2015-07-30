@@ -53,10 +53,9 @@ app.controller('RoutingController', RoutingController)
 
       $scope.openModal = function() {
         var modalInstance = $modal.open({
-
             templateUrl: 'source/app/profile/partials/login_detail_view.html',
             controller: 'LoginModalInstanceController',
-            size: 'lg',
+            size: 'sm',
             resolve: {
                 function(){
 
