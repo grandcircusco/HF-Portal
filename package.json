@@ -20,5 +20,8 @@
     "gulp-util": "^3.0.6",
     "jshint-stylish": "^2.0.1",
     "karma": "^0.12.37"
+  },
+  "dependencies": {
+    "express": "^4.13.1"
   }
 }
