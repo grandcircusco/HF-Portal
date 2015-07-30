@@ -4,7 +4,7 @@
  * @desc    contains the routes for the app
  */
 
-var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies', 'app.fellows']);
+var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile']);
 
 /**
  *   * @name config
@@ -27,7 +27,7 @@ app.config(function($routeProvider){
         })
 
         .when('/profile', {
-            controller: 'AdminProfileController',
+            controller: 'ProfileController',
             templateUrl: 'source/app/profile/profile.html'
 
         })

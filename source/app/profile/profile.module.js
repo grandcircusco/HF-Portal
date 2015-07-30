@@ -7,16 +7,12 @@
 
   angular
     .module('app.profile', [
-        'app.profile.controllers',
-        'app.profile.services'
+        'app.profile.controllers'
         ]);
 
   //declare the controllers module
   angular
     .module('app.profile.controllers', []);
-
-  //declare the directives module
-  angular
-    .module('app.profile.directives', []);
+    // .module('app.profile.controllers', ['ngAnimate']);
 
 })();
