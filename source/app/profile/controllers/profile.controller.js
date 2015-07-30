@@ -1,27 +1,34 @@
 /**
-* HomeController
+* ProfileController
 * @namespace app.home.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('app.home.controllers')
-    .controller('HomeController', HomeController);
+    .module('app.profile.controllers, ['ngAnimate']')
+    .controller('ProfileController', ProfileController);
+    // .controller('ProfileController', ['$scope', function($scope) {
+    //   $scope.templates = [ 
+    //     { name: 'Admin', url: 'source/app/profile/partials/admin-profile.html'},
+    //     { name: 'Fellow', url: 'source/app/profile/partials/fellow-profile.html'},
+    //     { name: 'Company', url: 'source/app/profile/partials/company-profile.html'}];
+    //   $scope.template = $scope.templates[0];
+    // }]);
 
-  HomeController.$inject = ['$scope'];
+  ProfileController.$inject = ['$scope'];
 
   /**
-  * @namespace HomeController
+  * @namespace ProfileController
   */
-  function HomeController($scope) {
+  function ProfileController($scope) {
     var vm = this;
 
     activate();
 
     function activate() {
-      console.log('activated home controller!')
-      //Home.all();
+      console.log('activated profile controller!')
+      //Profile.all();
     }
   }
 })();
