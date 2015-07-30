@@ -1,4 +1,8 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var Sequelize = require('sequelize');
+
+
 // var fellow = require('./fellow');
 // var company = require('./company');
 

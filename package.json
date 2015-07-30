@@ -22,6 +22,9 @@
     "karma": "^0.12.37"
   },
   "dependencies": {
-    "express": "^4.13.1"
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "gulp": "^3.9.0",
+    "sequelize": "^3.5.1"
   }
 }
