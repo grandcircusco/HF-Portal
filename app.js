@@ -28,7 +28,7 @@ app.config(function($routeProvider){
 
         .when('/profile', {
             controller: 'RoutingController',
-            templateUrl: 'source/app/profile/profile.html'
+            templateUrl: 'source/app/profile/admin.html'
 
         })
         //.when('/fellows/:id', {
