@@ -27,7 +27,7 @@ app.config(function($routeProvider){
         })
 
         .when('/profile', {
-            controller: 'RoutingController',
+            controller: 'AdminProfileController',
             templateUrl: 'source/app/profile/admin.html'
 
         })
