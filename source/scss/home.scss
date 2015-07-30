@@ -26,11 +26,15 @@ p {
 img {
 	text-align: center; 
 }
-
+.main-content {
+	width: 100%;
+}
 .odd-section, .even-section {
 	padding: 100px;
 	width: 100%;
 }
+
+
 
 .odd-section {
 	background: $odd-section;
@@ -41,13 +45,10 @@ img {
 }
 
 .top {
-	padding: 1em 0;
+	padding: 0;
 }
 
 .slide {
-	padding: 50px 150px;
+	padding: 0px 150px;
 }
 
-.carousel-control{
-	border-radius: 20px;
-}
