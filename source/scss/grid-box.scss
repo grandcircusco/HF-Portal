@@ -1,3 +1,4 @@
+@import 'variables';
 .grid-container {
 
   .grid-box {
@@ -6,7 +7,7 @@
     height: 470px;
     background: #DEDEDD;
     border-radius: 20px;
-    font-family: 'Dosis', sans-serif;
+    font-family: $head-font;
     margin: 20px;
     float: left;
 
@@ -68,17 +69,17 @@
     }
 
     .detail_body {
-      font-family: 'Fira Sans', sans-serif;
+      font-family: $main-font;
       color: #999999;
     }
 
     .fd_hdr {
-      font-family: 'Dosis', sans-serif;
+      font-family: $head-font;
       color: #FF6633;
     }
 
     .fd_subhdr {
-      font-family: 'Dosis', sans-serif;
+      font-family: $head-font;
     }
 
     .social-icons {
@@ -94,7 +95,7 @@
     }
 
     .user-facts {
-      font-family: 'Dosis', sans-serif;
+      font-family: $head-font;
       font-size: 14px;
     }
 

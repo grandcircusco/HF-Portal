@@ -1,3 +1,4 @@
+@import 'variables';
 body {
 	margin: 0;
 	padding: 0;
@@ -7,18 +8,18 @@ h1 {
 	font-weight: semi-bold;
 	letter-spacing: 0.075em;
 	font-kerning: auto;
-	font-family: 'Dosis', sans-serif;
+	font-family: $head-font;
 	text-align: center;
 	padding-bottom: 50px;
 	margin: 0px;
 }
-//sassy
+
 p {
 	font-weight: light;
 	letter-spacing: 0.010em;
 	font-kerning: optical;
 	line-height: 15px;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: $main-font;
 	margin: 0; 
 }
 
@@ -26,28 +27,17 @@ img {
 	text-align: center; 
 }
 
-footer {
-
-  	padding: 1em 0;
-	text-align: center;
-	background: #a7a9ab;
-
-  	p{
-
-	  margin: 0;
-	}
-}
-
 .odd-section, .even-section {
 	padding: 100px;
+	width: 100%;
 }
 
 .odd-section {
-	background: #d4d4d4;
+	background: $odd-section;
 }
 
 .even-section {
-	background: #dededf
+	background: $even-section;
 }
 
 .top {
