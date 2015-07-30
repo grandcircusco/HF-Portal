@@ -37,7 +37,18 @@
       return [
 
         {
+          id: 1,
           name:	'Company 1',
+          user_id: '1',
+          email: "",
+          primary_contact: "",
+          company_size: "",
+          industry: "",
+          description: "",
+          founding_year: 2013,
+          founders: "",
+          verified: 1,
+          image_url: "",
           tags:	['C++', 'Java', 'PHP'],
           desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
           ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
@@ -112,7 +123,7 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/api/v1/companies/' + i);
+      return $http.get('/api/v1/companies/' + parseInt(id) );
     }
 
     /**
