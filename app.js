@@ -15,17 +15,19 @@ app.config(function($routeProvider){
     $routeProvider
         .when('/', {
             templateUrl : 'source/app/home/home.html',
-            controller  : 'routingController'
+            controller  : 'RoutingController'
         })
         .when('/fellows', {
-            controller: 'routingController',
+            controller: 'RoutingController',
             templateUrl: 'source/app/fellows/fellows.html'
         })
         .when('/companies', {
             controller: 'CompaniesController',
             templateUrl: 'source/app/companies/companies.html'
         })
+
         .when('/profile', {
+            
             controller: 'ProfileController',
             templateUrl: 'source/app/profile/profile.html'
         })
@@ -41,8 +43,34 @@ app.config(function($routeProvider){
 
 });
 
+app.controller('RoutingController', RoutingController)
+  .controller('LoginModalInstanceController', LoginModalInstanceController)
 
-app.controller('routingController', function() {
+    RoutingController.$inject = ['$scope', '$modal'];
+    LoginModalInstanceController.$inject = ['$scope', '$modalInstance'];
 
-});
+    function RoutingController($scope, $modal) {
 
+      $scope.openModal = function() {
+        var modalInstance = $modal.open({
+            templateUrl: 'source/app/profile/partials/login_detail_view.html',
+            controller: 'LoginModalInstanceController',
+            size: 'sm',
+            resolve: {
+                function(){
+
+                }
+            }
+        });
+      }
+   }
+
+    function LoginModalInstanceController ($scope, $modalInstance) {
+        $scope.ok = function () {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    }

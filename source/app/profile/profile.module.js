@@ -1,5 +1,5 @@
 /**
- * home module
+ * profile module
  */
 
 (function () {
@@ -8,7 +8,6 @@
   angular
     .module('app.profile', [
         'app.profile.controllers'
-        // 'app..services'
         ]);
 
   //declare the controllers module
