@@ -1,6 +1,6 @@
 /**
 * FellowsController
-* @namespace app.fellows.controllers
+* @namespace app.profile.controllers
 */
 (function () {
 'use strict';
@@ -10,34 +10,24 @@ angular
 	.controller('FellowsProfileController', FellowsProfileController)
 	.controller('FellowsProfileModalInstanceController', FellowsProfileModalInstanceController);
 
-    FellowsProfileController.$inject = ['$scope', '$modal', 'Fellows'];
-    FellowsProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow'];
+    FellowsProfileController.$inject = ['$scope', '$modal'];
+    FellowsProfileModalInstanceController.$inject = ['$scope', '$modalInstance'];
 
     /**
-     * @namespace FellowsController
+     * @namespace FellowsProfileController
      */
-    function FellowsProfileController($scope, $modal, Fellows) {
-        var vm = this;
-
-        activate();
-
-        function activate() {
-            console.log('activated fellows controller!')
-            //Fellows.all();
-        }
-
-        $scope.fellows = Fellows.all();
+    function FellowsProfileController($scope, $modal) {
 
         $scope.openModal = function(fellow) {
 
             var modalInstance = $modal.open({
 
-                templateUrl: 'source/app/fellows/partials/fellow_detail_view.html',
+                templateUrl: 'source/app/profile/partials/user_detail_view.html',
                 controller: 'FellowsModalInstanceController',
                 size: 'lg',
                 resolve: {
-                    fellow: function(){
-                        return fellow;
+                    function(){
+
                     }
                 }
 
@@ -53,7 +43,7 @@ angular
         $scope.fellow = fellow;
 
         $scope.ok = function () {
-            $modalInstance.close($scope.fellow);
+            $modalInstance.close(;
         };
 
         $scope.cancel = function () {

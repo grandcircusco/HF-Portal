@@ -1,12 +1,16 @@
 /**
 * ProfileController
-* @namespace app.home.controllers
+* @namespace app.profile.controllers
 */
 (function () {
   'use strict';
 
   angular
+<<<<<<< HEAD
     .module('app.profile.controllers')
+=======
+    .module('app.profile.controllers', ['ngAnimate'])
+>>>>>>> e377d8ebbf1f4cb88eb65bbc4dbd268fbccbe856
     .controller('ProfileController', ProfileController);
     // .controller('ProfileController', ['$scope', function($scope) {
     //   $scope.templates = [ 

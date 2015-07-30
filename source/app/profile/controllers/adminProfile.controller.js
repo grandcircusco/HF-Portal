@@ -1,6 +1,6 @@
 /**
 * FellowsController
-* @namespace app.fellows.controllers
+* @namespace app.profile.controllers
 */
 (function () {
 'use strict';
@@ -14,46 +14,31 @@ angular
     AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance'];
 
     /**
-     * @namespace FellowsController
+     * @namespace AdminProfileController
      */
     function AdminProfileController($scope, $modal) {
-        var vm = this;
 
-        activate();
-
-        function activate() {
-            console.log('activated fellows controller!')
-            //Fellows.all();
-        }
-
-        $scope.fellows = Fellows.all();
-
-        $scope.openModal = function(fellow) {
+        $scope.openModal = function() {
 
             var modalInstance = $modal.open({
 
-                templateUrl: 'source/app/fellows/partials/fellow_detail_view.html',
+                templateUrl: 'source/app/profile/partials/admin_detail_view.html',
                 controller: 'AdminProfileModalInstanceController',
                 size: 'lg',
                 resolve: {
-                    fellow: function(){
-                        return fellow;
+                    function(){
+
                     }
                 }
 
             });
         };
-
-
     }
 
-    function AdminProfileModalInstanceController ($scope, $modalInstance, fellow) {
-
-
-        $scope.fellow = fellow;
+    function AdminProfileModalInstanceController ($scope, $modalInstance) {
 
         $scope.ok = function () {
-            $modalInstance.close($scope.fellow);
+            $modalInstance.close();
         };
 
         $scope.cancel = function () {

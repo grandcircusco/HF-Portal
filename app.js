@@ -30,6 +30,7 @@ app.config(function($routeProvider){
             
             controller: 'ProfileController',
             templateUrl: 'source/app/profile/profile.html'
+
         })
         //.when('/fellows/:id', {
         //    controller: 'routingController',
