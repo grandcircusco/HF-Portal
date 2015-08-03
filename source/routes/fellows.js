@@ -3,9 +3,10 @@ var app = express();
 
 var models = require('../models');
 var Fellows = models.fellows;
+var Tags = models.tags;
 
 // GET /fellows - get all fellows
-app.get('/api/v1/fellows', function getFellows(req, res) {
+app.get('/', function getFellows(req, res) {
 
     Fellows.all({
 
@@ -21,7 +22,7 @@ app.get('/api/v1/fellows', function getFellows(req, res) {
 });
 
 // GET /fellows/:id - get one fellow
-app.get('/api/v1/fellows/:id', function getFellow(req, res){
+app.get('/:id', function getFellow(req, res){
 
     //res.send('GET request - get a company record');
     Fellows.findOne({
@@ -40,8 +41,8 @@ app.get('/api/v1/fellows/:id', function getFellow(req, res){
     });
 });
 
-// POST /api/fellows - create a new fellow record
-app.post('/api/v1/fellows', function postFellow(req, res) {
+// POST /fellows - create a new fellow record
+app.post('/', function postFellow(req, res) {
 
     Fellows.create({
 
@@ -64,8 +65,8 @@ app.post('/api/v1/fellows', function postFellow(req, res) {
 });
 
 
-// PUT /api/fellows/:id - updates an existing fellow record
-app.put('/api/v1/fellows/:id', function putFellow(req, res) {
+// PUT /fellows/:id - updates an existing fellow record
+app.put('/:id', function putFellow(req, res) {
 
     Fellows.findOne({
 
@@ -97,8 +98,8 @@ app.put('/api/v1/fellows/:id', function putFellow(req, res) {
 
 });
 
-// DELETE /api/fellows/:id - deletes an existing fellow record
-app.delete('/api/v1/fellows/:id', function deleteFellow(req, res) {
+// DELETE /fellows/:id - deletes an existing fellow record
+app.delete('/:id', function deleteFellow(req, res) {
 
     Fellows.findOne({
 

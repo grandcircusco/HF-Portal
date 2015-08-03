@@ -3,9 +3,10 @@ var app = express();
 
 var models = require('../models');
 var Companies = models.companies;
+var Tags = models.tags;
 
-// GET /api/companies - get all companies
-app.get('/api/v1/companies', function getCompanies(req, res) {
+// GET /companies - get all companies
+app.get('/', function getCompanies(req, res) {
 
     Companies.all({
 
@@ -20,8 +21,8 @@ app.get('/api/v1/companies', function getCompanies(req, res) {
 
 });
 
-// POST /api/companies - create a new company record
-app.post('/api/v1/companies', function postCompany(req, res) {
+// POST /companies - create a new company record
+app.post('/', function postCompany(req, res) {
     //res.send('POST request - create a new company record');
 
     // Take POST data and build a Company Object (sequelize)
@@ -44,10 +45,11 @@ app.post('/api/v1/companies', function postCompany(req, res) {
 
         res.send(company);
      });
-
 });
 
-app.get('/api/v1/companies/:id', function getCompany(req, res) {
+
+// GET /companies/:id - get one company
+app.get('/:id', function getCompany(req, res) {
     //res.send('GET request - get a company record');
     Companies.findOne({
 
@@ -66,8 +68,8 @@ app.get('/api/v1/companies/:id', function getCompany(req, res) {
 
 });
 
-// PUT /api/companies/:id - updates an existing company record
-app.put('/api/v1/companies/:id', function putCompany(req, res) {
+// PUT /companies/:id - updates an existing company record
+app.put('/:id', function putCompany(req, res) {
 
     Companies.findOne({
 
@@ -101,8 +103,8 @@ app.put('/api/v1/companies/:id', function putCompany(req, res) {
 
 });
 
-// DELETE /api/companies/:id - deletes an existing company record
-app.delete('/api/v1/companies/:id', function deleteCompany(req, res) {
+// DELETE /companies/:id - deletes an existing company record
+app.delete('/:id', function deleteCompany(req, res) {
 
     Companies.findOne({
 

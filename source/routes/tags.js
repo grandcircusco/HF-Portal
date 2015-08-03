@@ -57,4 +57,4 @@ app.get('/api/v1/tags', function getTags(req, res) {
 
 });
 
-
+module.exports = app;
