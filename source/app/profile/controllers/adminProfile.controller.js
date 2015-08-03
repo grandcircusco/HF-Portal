@@ -22,7 +22,7 @@
 
             var modalInstance = $modal.open({
 
-                templateUrl: 'source/app/profile/partials/admin_detail_view.html',
+                templateUrl: 'source/app/profile/partials/admin-create-user.html',
                 controller: 'AdminProfileModalInstanceController',
                 size: 'lg',
                 resolve: {
