@@ -13,6 +13,8 @@ var Tags = models.tags;
 
 var app = express();
 
+var API_ROOT = '/api/v1';
+
 /**
  *
  * This makes getting Posted Data from req.body work
@@ -27,7 +29,7 @@ app.use(bodyParser.json());
 /** Routes **/
 
 // GET /fellows - get all fellows
-app.get('/api/v1/fellows', function getFellows(req, res) {
+app.get(API_ROOT + '/fellows', function getFellows(req, res) {
 
     Fellows.all({
 
@@ -43,7 +45,7 @@ app.get('/api/v1/fellows', function getFellows(req, res) {
 });
 
 // POST /api/fellows - create a new fellow record
-app.post('/api/v1/fellows', function postFellow(req, res) {
+app.post(API_ROOT + '/fellows', function postFellow(req, res) {
 
     Fellows.create({
 
@@ -65,7 +67,7 @@ app.post('/api/v1/fellows', function postFellow(req, res) {
 
 });
 
-app.get('/api/v1/fellows/:id', function getFellow(req, res){
+app.get(API_ROOT + '/fellows/:id', function getFellow(req, res){
 
     //res.send('GET request - get a company record');
     Fellows.findOne({
@@ -85,7 +87,7 @@ app.get('/api/v1/fellows/:id', function getFellow(req, res){
 });
 
 // PUT /api/fellows/:id - updates an existing fellow record
-app.put('/api/v1/fellows/:id', function putFellow(req, res) {
+app.put(API_ROOT + '/fellows/:id', function putFellow(req, res) {
 
     Fellows.findOne({
 
@@ -118,7 +120,7 @@ app.put('/api/v1/fellows/:id', function putFellow(req, res) {
 });
 
 // DELETE /api/fellows/:id - deletes an existing fellow record
-app.delete('/api/v1/fellows/:id', function deleteFellow(req, res) {
+app.delete(API_ROOT + '/fellows/:id', function deleteFellow(req, res) {
 
     Fellows.findOne({
 
@@ -137,7 +139,7 @@ app.delete('/api/v1/fellows/:id', function deleteFellow(req, res) {
 
 
 // GET /api/companies - get all companies
-app.get('/api/v1/companies', function getCompanies(req, res) {
+app.get(API_ROOT + '/companies', function getCompanies(req, res) {
 
     Companies.all({
 
@@ -153,7 +155,7 @@ app.get('/api/v1/companies', function getCompanies(req, res) {
 });
 
 // POST /api/companies - create a new company record
-app.post('/api/v1/companies', function postCompany(req, res) {
+app.post(API_ROOT + '/companies', function postCompany(req, res) {
     //res.send('POST request - create a new company record');
 
     // Take POST data and build a Company Object (sequelize)
@@ -179,7 +181,7 @@ app.post('/api/v1/companies', function postCompany(req, res) {
 
 });
 
-app.get('/api/v1/companies/:id', function getCompany(req, res) {
+app.get(API_ROOT + '/companies/:id', function getCompany(req, res) {
     //res.send('GET request - get a company record');
     Companies.findOne({
 
@@ -199,7 +201,7 @@ app.get('/api/v1/companies/:id', function getCompany(req, res) {
 });
 
 // PUT /api/companies/:id - updates an existing company record
-app.put('/api/v1/companies/:id', function putCompany(req, res) {
+app.put(API_ROOT + '/companies/:id', function putCompany(req, res) {
 
     Companies.findOne({
 
@@ -234,7 +236,7 @@ app.put('/api/v1/companies/:id', function putCompany(req, res) {
 });
 
 // DELETE /api/companies/:id - deletes an existing company record
-app.delete('/api/v1/companies/:id', function deleteCompany(req, res) {
+app.delete(API_ROOT + '/companies/:id', function deleteCompany(req, res) {
 
     Companies.findOne({
 
@@ -251,11 +253,39 @@ app.delete('/api/v1/companies/:id', function deleteCompany(req, res) {
 
 });
 
+// POST /api/vote - Creates a new vote
+app.post(API_ROOT + '/vote', function putVote(req, res) {
+
+    var company = Companies.findOne({
+
+        where: {
+            id: req.body.company_id
+        }
+
+    });
+
+    var fellow = Fellows.findOne({
+
+        where: {
+            id: req.body.fellow_id
+        }
+
+    });
+
+    if (req.body.type = "company") {
+        company.addVotee(fellow);
+    }
+    else if (req.body.type = "fellow") {
+        fellow.addVotee(company);
+    }
+
+});
+
 
 /** Tags **/
 
-// GET /api/tags - get all companies
-app.get('/api/v1/tags', function getTags(req, res) {
+// GET /api/tags - get all tags
+app.get(API_ROOT + '/tags', function getTags(req, res) {
 
     /*Tags.create({
         name: "Javascript"

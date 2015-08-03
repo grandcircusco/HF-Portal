@@ -36,4 +36,10 @@ module.exports = db;
  db.fellows.belongsToMany(db.tags, {through: 'fellows_tags'});
  db.tags.belongsToMany(db.fellows, {through: 'fellows_tags'});
 
+ db.fellows.belongsToMany(db.companies, {as: 'Voters', through: 'company_votes'});
+ db.companies.belongsToMany(db.fellows, {as: 'Votees', through: 'company_votes'});
+
+ db.fellows.belongsToMany(db.companies, {as: 'Votees', through: 'fellow_votes'});
+ db.companies.belongsToMany(db.fellows, {as: 'Voters', through: 'fellow_votes'});
+
 
