@@ -69,11 +69,11 @@
     }
 
     .detail_body {
-      @include text($family: $main-font, $color: #999999);
+      @include text($family: $main-font, $color: $body-text-color);
     }
 
     .fd_hdr {
-      @include text($family: $head-font, $color: #FF6633);
+      @include text($family: $head-font, $color: $heading-text-color);
     }
 
     .fd_subhdr {
