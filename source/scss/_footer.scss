@@ -5,12 +5,15 @@
   bottom: 0;
   width: 100%;
   
+  overflow-y: hidden;
   /* Set the fixed height of the footer here */
   height: 40px;
   background-color: #f5f5f5;
+  padding-top: .5%;
   text-align: center;
+
   > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+    padding-top: .5%;
+    padding-botton: 20px;
   }
 }
