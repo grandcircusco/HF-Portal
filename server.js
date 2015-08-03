@@ -24,25 +24,10 @@ app.use('/api/v1/fellows', fellows);
 app.use('/api/v1/companies', companies);
 app.use('/api/v1/tags', tags);
 
-
-// // Error message
-// app.use(function(req, res, next) {
-//     var err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
-//
-// // error handler
-// // no stacktraces leaked to user unless in development environment
-// app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//         message: err.message,
-//         error: (app.get('env') === 'development') ? err : {}
-//     });
-// });
-
-module.exports = app;
+/** Main Server Route **/
+app.get('*', function(req, res) {
+    res.sendFile('index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
 
 
 /** Server Startup **/
