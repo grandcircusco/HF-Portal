@@ -14,18 +14,19 @@ h1 {
 	margin: 0px;
 }
 
-p {
-	@include text($family: $main-font, $l-height: 15px, $weight: light);
-	letter-spacing: 0.010em;
-	font-kerning: optical;
-	margin: 0; 
-}
 
 img {
 	text-align: center; 
 }
 .main-content {
 	width: 100%;
+	p {
+		@include text($family: $main-font, $l-height: 15px, $weight: light);
+		@include multi-column-layout();
+		letter-spacing: 0.010em;
+		font-kerning: optical;
+		margin: 0; 
+	}
 }
 .odd-section, .even-section {
 	padding: 100px;
