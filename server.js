@@ -7,6 +7,7 @@ var models = require('./source/models');
 var fellows = require('./source/routes/fellows');
 var companies = require('./source/routes/companies');
 var tags = require('./source/routes/tags');
+var votes = require('./source/routes/votes');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.use('/api/v1/fellows', fellows);
 app.use('/api/v1/companies', companies);
 app.use('/api/v1/tags', tags);
+app.use('/api/v1/votes', votes);
 
 
 // // Error message
