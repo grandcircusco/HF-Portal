@@ -1,54 +1,45 @@
 /**
-* FellowsController
+* FellowsProfileController
 * @namespace app.profile.controllers
 */
 (function () {
-'use strict';
+    'use strict';
 
-angular
-	.module('app.profile.controllers')
-	.controller('FellowsProfileController', FellowsProfileController)
-	.controller('FellowsProfileModalInstanceController', FellowsProfileModalInstanceController);
+    angular
+    .module('app.profile.controllers')
+    .controller('FellowsProfileController', FellowsProfileController)
 
-    FellowsProfileController.$inject = ['$scope', '$modal'];
-    FellowsProfileModalInstanceController.$inject = ['$scope', '$modalInstance'];
+    FellowsProfileController.$inject = ['$scope'];
 
     /**
-     * @namespace FellowsProfileController
-     */
-    function FellowsProfileController($scope, $modal) {
+    * @namespace FellowsProfileController
+    */
+    function FellowsProfileController($scope) {
+        var vm = this;
 
-        $scope.openModal = function(fellow) {
+        $scope.fellow = {
+            bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
+            img:"public/assets/images/placeholder-hi.png"
+        }
 
-            var modalInstance = $modal.open({
-
-                templateUrl: 'source/app/profile/partials/user_detail_view.html',
-                controller: 'FellowsModalInstanceController',
-                size: 'lg',
-                resolve: {
-                    function(){
-
-                    }
-                }
-
-            });
+        $scope.fellow= {
+            bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
+            img:"public/assets/images/placeholder-hi.png"
         };
 
+        activate();
+
+        function activate() {
+            console.log('activated profile controller!')
+            //Profile.all();
+        }
+
+        $scope.update= function() {
+            console.log($scope.fellow);
+        };
 
     }
 
-    function FellowsProfileModalInstanceController ($scope, $modalInstance, fellow) {
 
-
-        $scope.fellow = fellow;
-
-        $scope.ok = function () {
-            $modalInstance.close(;
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-    }
 
 })();

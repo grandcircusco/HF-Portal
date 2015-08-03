@@ -1,14 +1,14 @@
 /**
-* FellowsController
+* AdminProfileController
 * @namespace app.profile.controllers
 */
 (function () {
-'use strict';
+    'use strict';
 
-angular
-	.module('app.profile.controllers')
-	.controller('AdminProfileController', AdminProfileController)
-	.controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
+    angular
+    .module('app.profile.controllers')
+    .controller('AdminProfileController', AdminProfileController)
+    .controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
     AdminProfileController.$inject = ['$scope', '$modal'];
     AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance'];
@@ -16,7 +16,7 @@ angular
     /**
      * @namespace AdminProfileController
      */
-    function AdminProfileController($scope, $modal) {
+     function AdminProfileController($scope, $modal) {
 
         $scope.openModal = function() {
 
