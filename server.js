@@ -1,4 +1,5 @@
 var express = require('express');
+var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var Sequelize = require('sequelize');
@@ -24,6 +25,18 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+
+/**
+ * Set up Stormpath - used for managing user signup/authentication,
+ *  as well as forgotten passwords, etc.
+ */
+app.use(stormpath.init(app, {
+    apiKeyFile: '/Users/camherringshaw/.stormpath/apiKey.properties',
+    secretKey:  'GuMS4HZVaP3rlcUwfwanwRdasz3OoiYOCbJMaBXUNQIl5cZW1t3Yzcpi5396', //Arbitrary random string
+    application: 'https://api.stormpath.com/v1/applications/3zenLEfJmn6ce4dCuePlzi',
+    enableForgotPassword: true
+}));
+
 
 
 /** Routes **/
@@ -227,12 +240,16 @@ app.delete('/api/companies/:id', function deleteCompany(req, res) {
     res.send('DELETE request - delete a company record');
 });
 
+// Set up paths for Stormpath
+app.get('/secret', stormpath.loginRequired, function(req, res) {
+    res.send('secret page!');
+});
 
 
 /** Server Startup **/
 
 
-models.sequelize.sync().then(function () {
+// models.sequelize.sync().then(function () {
 
     var server = app.listen(3000, function createServer() {
         var host = server.address().address;
@@ -240,7 +257,7 @@ models.sequelize.sync().then(function () {
 
         console.log("HFPortal app listening at http://%s:%s", host, port);
     });
-});
+// });
 
 
 
