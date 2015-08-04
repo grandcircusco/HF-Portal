@@ -50,4 +50,109 @@ img {
 .slide {
 	padding: 0px 150px;
 }
+/*-- date info styled for some responsiveness--*/
+@media only screen and (min-width: 680px){
+	.dateList{
+		display:block; 
+		border-top:.5em solid $body-text-color;
+		width:80%;
+		margin: 0 10% 5% 10%;}
+
+	.dateListItem{
+		display:block;
+		padding:0 0 0 0;
+		height:8em;
+		width:100%;
+		margin: 0 0 0 0;}
+
+	.dateItem{
+		float: left;
+		
+		text-align: right;
+		height:100%;
+		width:20%;
+		margin: 0 5% 0 15%;
+		padding: 4em 0 0 0;}  
+
+	.dateInfo{
+		float: right;
+		border-left:.5em solid $body-text-color;
+		height:100%;
+		width:45%;
+		margin:0 15% 0 0;
+		position:relative;
+		padding: 2em 0 2em 2em;}
+
+	.dateInfoText{
+		position:relative;
+		top: 2em;}
+
+	.dateMarker{
+		position:absolute;
+		width:1.5em;
+		height:1.5em;
+		left:-1.0em;
+		border-radius:50px;
+		border: 5px solid $body-text-color;
+		top:4em;
+		background-color:$odd-section;}
+
+	.dateIcon{
+		background-image: url("/public/assets/images/heximage.svg");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		background-position: top left;
+		min-height:4em;
+		min-width: 4em;
+		max-height: 6em;
+		max-width: 6em; 
+		margin-right:1em;
+		float:left;}}
+
+@media only screen and (max-width: 679px){
+	.dateList{
+		display:block; 
+		width:100%;
+		margin: 0 0% 5% 0%;}
+
+	.dateListItem{
+		display:block;
+		padding:0 0 0 0;
+		height:30%;
+		width:100%;
+		margin: 0 0 0 0;}
+
+	.dateItem{
+		float: left;
+		text-align: right;
+		height:100%;
+		width:25%;
+		margin: 0 5% 0 0;
+		padding: 4em 0 0 0;}  
+
+	.dateInfo{
+		float: right;
+		height:100%;
+		width:60%;
+		margin:0 5% 0 0;
+		padding: 2em 0 2em 0;}
+
+	.dateInfoText{
+		position:relative;
+		top: 2em;}
+
+	.dateMarker{
+		display:none;
+				visibility:hidden;}
+
+	.dateIcon{
+		background-image: url("/public/assets/images/heximage.svg");
+		background-size: 4em 4em;
+		background-repeat: no-repeat;
+		background-position: top left;
+		height:4em;
+		width: 4em; 
+		margin-right:1em;
+		float:left;}
+		 }
 
