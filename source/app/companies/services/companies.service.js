@@ -34,7 +34,9 @@
      */
     function all() {
 
-      return $http.get('/api/v1/companies/');
+      return [];
+
+      //return $http.get('/api/v1/companies/');
     }
 
     /**
