@@ -80,3 +80,17 @@ p{
 .carousel-inner {
   padding: 0 15%;
 }
+
+
+/* Form Styles */
+
+input.error,
+.btn-group.error{
+
+  border: 2px solid #FF6969;
+}
+
+#userType .btn-info.selected {
+
+  background-color: #237A94;
+}
