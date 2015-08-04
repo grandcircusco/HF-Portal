@@ -37,7 +37,18 @@
       return [
 
         {
+          id: 1,
           name:	'Company 1',
+          user_id: '1',
+          email: "",
+          primary_contact: "",
+          company_size: "",
+          industry: "",
+          description: "",
+          founding_year: 2013,
+          founders: "",
+          verified: 1,
+          image_url: "",
           tags:	['C++', 'Java', 'PHP'],
           desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
           ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
@@ -104,7 +115,7 @@
 
       ];
 
-      //return $http.get('/companies/');
+      //return $http.get('/api/v1/companies/');
     }
 
     /**
@@ -112,7 +123,7 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/companies/' + i);
+      return $http.get('/api/v1/companies/' + parseInt(id) );
     }
 
     /**
@@ -120,7 +131,7 @@
      * @desc creeate a new fellow record
      */
     function create(content, id) {
-      return $http.post('/companies/' + id, {
+      return $http.post('/api/v1/companies/' + id, {
         content: content
       });
     }
@@ -130,7 +141,7 @@
      * @desc updates a fellow record
      */
     function update(content, id) {
-      return $http.update('/companies/' + id, {
+      return $http.update('/api/v1companies/' + id, {
         content: content
       });
     }
@@ -140,7 +151,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/companies/' + id);
+      return $http.delete('/api/v1companies/' + id);
     }
   }
 })();
