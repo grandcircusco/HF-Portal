@@ -37,12 +37,12 @@
         templateUrl: 'source/app/profile/partials/admin-profile.html'
     })
 
-    .when('/profile/fellows', {
+    .when('/profile/fellow', {
         controller: 'FellowsProfileController',
         templateUrl: 'source/app/profile/partials/fellow-profile.html'
     })
 
-    .when('/profile/companies', {
+    .when('/profile/company', {
         controller: 'CompanyProfileController',
         templateUrl: 'source/app/profile/partials/company-profile.html'
     })
@@ -60,7 +60,7 @@ function RoutingController($scope, $modal) {
 
   $scope.openModal = function() {
     var modalInstance = $modal.open({
-        templateUrl: 'source/app/profile/partials/login_detail_view.html',
+        templateUrl: 'source/app/profile/partials/login-page.html',
         controller: 'LoginModalInstanceController',
         size: 'sm',
         resolve: {
