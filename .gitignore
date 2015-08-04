@@ -45,6 +45,32 @@ Thumbs.dba
 .Trash-*
 .directory
 
+
+##
+# Windows
+#
+#
+# Windows image file caches
+Thumbs.db
+Thumbs.dba
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+
 ##
 # Windows
 #
@@ -76,6 +102,10 @@ $RECYCLE.BIN/
 .sass-cache
 *.css.map
 
+#   Remove bundled files from version control
+public/assets/javascript/bundle.js
+public/assets/stylesheets/style.css
+
 ##
 # vim
 #
@@ -88,26 +118,32 @@ Session.vim
 *~
 
 ##
+# JetBrains
+#
+#
+.idea
+*.iml
+
+
+##
 # Sublime Text 2/3
 #
 ##
-#   cache files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
 
-# JetBrains
-.idea
+  #   cache files
+  *.tmlanguage.cache
+  *.tmPreferences.cache
+  *.stTheme.cache
 
-#   workspace files are user-specific
-*.sublime-workspace
+  #   workspace files are user-specific
+  *.sublime-workspace
 
-#   project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
-# *.sublime-project
+  #   project files should be checked into the repository, unless a significant
+  # proportion of contributors will probably not be using SublimeText
+  # *.sublime-project
 
-#   sftp configuration file
-sftp-config.json
+  #   sftp configuration file
+  sftp-config.json
 
 ##
 # Node.js
@@ -138,9 +174,8 @@ coverage
 #   Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-#   Dependency directory
+#   Dependency directories
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
-
-
+node_modules/
 bower_components/
+
