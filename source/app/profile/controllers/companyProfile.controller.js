@@ -27,9 +27,7 @@
           tags: true,
           tokenSeparators: [',', ' ']
           
-        });
-
-        
+        });        
 
         activate();
 
@@ -41,6 +39,7 @@
         $scope.update= function() {
             $scope.company.skills = $(".js-example-tokenizer").val();
             console.log($scope.company);
+            console.log("dummy");
             
         };
 
