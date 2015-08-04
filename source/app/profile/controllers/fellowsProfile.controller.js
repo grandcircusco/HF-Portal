@@ -7,7 +7,7 @@
 
     angular
     .module('app.profile.controllers')
-    .controller('FellowsProfileController', FellowsProfileController)
+    .controller('FellowsProfileController', FellowsProfileController);
 
     FellowsProfileController.$inject = ['$scope'];
 
@@ -20,7 +20,7 @@
         $scope.fellow = {
             bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
             img:"public/assets/images/placeholder-hi.png"
-        }
+        };
 
         $scope.fellow= {
             bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
@@ -30,9 +30,9 @@
         activate();
 
         function activate() {
-            console.log('activated profile controller!')
+            console.log('activated profile controller!');
             //Profile.all();
-        }
+        };
 
         $scope.update= function() {
             console.log($scope.fellow);

@@ -36,7 +36,7 @@ gulp.task('build-css', function () {
 });
 
 gulp.task('build-js', function () {
-	return gulp.src(['source/**/*.js', 'app.js'])
+	return gulp.src(['app.js','source/app/**/*.js'])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
 		.pipe(gutil.env.type === 'production' ? uglify(options) : gutil.noop())
