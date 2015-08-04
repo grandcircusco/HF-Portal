@@ -63,11 +63,11 @@ function RoutingController($scope, $modal) {
         templateUrl: 'source/app/profile/partials/login-page.html',
         controller: 'LoginModalInstanceController',
         size: 'sm',
-        resolve: {
-            function(){
-
-            }
-        }
+        //resolve: {
+        //    function(){
+        //
+        //    }
+        //}
     });
 }
 }

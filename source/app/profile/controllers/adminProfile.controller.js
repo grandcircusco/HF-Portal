@@ -12,7 +12,7 @@
     .controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
     AdminProfileController.$inject = ['$scope', '$modal'];
-    AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance'];
+    AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'Profile'];
 
     /**
      * @namespace AdminProfileController
@@ -37,7 +37,7 @@
     }
 
 
-    function AdminProfileModalInstanceController ($scope, $modalInstance) {
+    function AdminProfileModalInstanceController ($scope, $modalInstance, User) {
 
         function unHighlightField(){
 
@@ -100,7 +100,11 @@
             }
 
             if( !errors ){
-                console.log(user);
+                //console.log(user);
+
+                // send user to API via Service
+                Profile.create(user);
+
                 $modalInstance.close();
             }
 
