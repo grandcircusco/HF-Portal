@@ -21,7 +21,9 @@ img {
 .main-content {
 	width: 100%;
 	p {
+
 		@include text($family: $main-font, $l-height: 20px, $weight: light);
+
 		@include multi-column-layout($column-count: 2);
 		letter-spacing: 0.010em;
 		font-kerning: optical;
@@ -155,4 +157,14 @@ img {
 		margin-right:1em;
 		float:left;}
 		 }
+
+#rectangle {
+	width: 10px;
+	height: 50px;
+	background:#333333;
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	
+}
 
