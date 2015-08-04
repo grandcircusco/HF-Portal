@@ -22,6 +22,19 @@
             img:"public/assets/images/placeholder-hi.png"
         };
 
+        // $(document).ready(function() {
+        //       $(".js-example-basic-multiple").select2({
+        //             maximumSelectionLength: 3
+        //         });
+        // });
+
+        $(".js-example-tokenizer").select2({
+          tags: true,
+          tokenSeparators: [',', ' ']
+          
+        });
+
+        
 
         activate();
 
@@ -29,10 +42,13 @@
             console.log('activated profile controller!');
             //Profile.all();
         };
-
+        
         $scope.update= function() {
+            $scope.fellow.skills = $(".js-example-tokenizer").val();
             console.log($scope.fellow);
+            
         };
+
 
     }
 
