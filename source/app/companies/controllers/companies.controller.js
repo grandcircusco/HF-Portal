@@ -20,8 +20,15 @@
 
     var vm = this;
 
-    // Use vm for this?
     $scope.companies = Companies.all();
+    // Use vm for this?
+    //Companies.all().success(function(companies){
+    //
+    //  $scope.companies = companies;
+    //
+    //});
+
+    console.log($scope.companies);
 
     $scope.openModal = function (company) {
 

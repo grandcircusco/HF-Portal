@@ -22,10 +22,6 @@
             img:"public/assets/images/placeholder-hi.png"
         };
 
-        $scope.fellow= {
-            bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
-            img:"public/assets/images/placeholder-hi.png"
-        };
 
         activate();
 
