@@ -21,11 +21,9 @@ img {
 .main-content {
 	width: 100%;
 	p {
-<<<<<<< HEAD
-		@include text($family: $main-font, $l-height: 15px, $weight: light);
-=======
+
 		@include text($family: $main-font, $l-height: 20px, $weight: light);
->>>>>>> c915e2ccabf2f8600eb2ff712050b3e83d81bc9e
+
 		@include multi-column-layout($column-count: 2);
 		letter-spacing: 0.010em;
 		font-kerning: optical;
