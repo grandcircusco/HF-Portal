@@ -2,16 +2,35 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="usr">User's Email:</label>
-            <input type="text" class="form-control" id="usr">
+            <input type="email" class="form-control" id="usr" ng-model="user.email">
         </div>
         <div class="form-group">
             <label for="pwd">User's Password:</label>
-            <input type="password" class="form-control" id="pwd">
+            <input type="password" class="form-control" id="pwd" ng-model="user.password">
         </div>
-    </div>
 
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">Submit</button>
-        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-    </div>
+
+
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-info">
+                <input type="radio" name="options" id="optionFellow" ng-model="user.userType" value="Fellow" ng-click="switchType(user)" autocomplete="off" checked > Fellow
+            </label>
+            <label class="btn btn-info">
+                <input type="radio" name="options" id="optionCompany" ng-model="user.userType" value="Company" ng-click="switchType(user)" autocomplete="off" > Company
+            </label>
+        </div>
+
+
+   <!--      <div class="btn-group">
+            <input class="btn btn-primary" ng-model="radioModel" name="options" id="optionFellow"  ng-model="user.userType" value="Fellow" ng-click= "switchType(user)" btn-radio="'Left'">Fellow</input>
+            <label class="btn btn-primary" ng-model="radioModel" name="options" id="optionCompany" ng-model="user.userType" value="Company" btn-radio="'Middle'">Company</label>
+        </div>
+ -->
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok(user)">Submit</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
 </div>
