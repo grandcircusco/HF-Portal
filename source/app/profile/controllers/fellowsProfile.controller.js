@@ -9,29 +9,34 @@
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope'];
+    FellowsProfileController.$inject = ['$scope', 'Fellows'];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope) {
+    function FellowsProfileController($scope , Fellows) {
         var vm = this;
 
-        $scope.fellow = {
-            bio:"I am a person. I went to school. I have a degree. Please pay me moneys",
-            img:"public/assets/images/placeholder-hi.png"
-        };
+        var tempID = 2; //TODO change to not hard coded
 
+        Fellows.get(tempID).success(function(fellow){
+            $scope.fellow = fellow;
+        });
 
         activate();
 
         function activate() {
             console.log('activated profile controller!');
             //Profile.all();
+
         };
 
         $scope.update= function() {
-            console.log($scope.fellow);
+
+            // console.log($scope.fellow);
+
+            // send fellows info to API via Service
+            Fellows.update($scope.fellow, tempID);
         };
 
     }

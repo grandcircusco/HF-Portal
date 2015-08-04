@@ -90,7 +90,7 @@
         }
       ];
 
-      //return $http.get('http://localhost:3000/api/v1/fellows');
+      //return $http.get('http://10.251.1.61:3000/api/v1/fellows');
     }
 
     /**
@@ -98,14 +98,14 @@
      * @desc get one fellow
      */
     function get(id) {
-      return $http.get('http://localhost:3000/api/v1/fellows/' + id);
+      return $http.get('http://10.251.1.61:3000/api/v1/fellows/' + id);
     }
     /**
      * @name create
      * @desc creeate a new fellow record
      */
     function create(fellow) {
-      return $http.post('http://localhost:3000/api/v1/fellows', fellow);
+      return $http.post('http://10.251.1.61:3000/api/v1/fellows', fellow);
     }
 
     /**
@@ -113,7 +113,7 @@
      * @desc updates a fellow record
      */
     function update(fellow, id) {
-      return $http.update('http://localhost:3000/api/v1/fellows/' + id, fellow);
+      return $http.put('http://10.251.1.61:3000/api/v1/fellows/' + id, fellow);
     }
 
     /**
@@ -121,7 +121,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('http://localhost:3000/api/v1/fellows/' + id);
+      return $http.delete('http://10.251.1.61:3000/api/v1/fellows/' + id);
     }
   }
 

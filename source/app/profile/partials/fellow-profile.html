@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<img class="user-photo" git
-			src={{fellow.img}} width="200" height="200">
+			src={{fellow.image_url}} width="200" height="200">
 			<input type="file" name="picUpload"/>
 			<br>
 
@@ -14,20 +14,24 @@
 		<div class="col-md-9">
 			<h1 class="fd_hdr">Your Profile</h1>
 			<p>Name:
-				<input type="text" value="{{fellow.name}}" ng-model="fellow.name"/> 
+				<input type="text" value="{{fellow.first_name}}" ng-model="fellow.first_name"/> 
+				<input type="text" value="{{fellow.last_name}}" ng-model="fellow.last_name"/> 
 			</p>
 			<p>Email:
 				<input type="text" value="{{fellow.email}}" ng-model="fellow.email"/> 
 			</p>
 			<p>School:
-				<input type="text" value="{{fellow.school}}" ng-model="fellow.school"/>
+				<input type="text" value="{{fellow.university}}" ng-model="fellow.university"/>
+			</p>
+			<p>Major:
+				<input type="text" value="{{fellow.major}}" ng-model="fellow.major"/>
 			</p>
 			<p>Resume: <input type="file" ng-
-				model="fellow.resume"/>
+				model="fellow.resume_file_path"/>
 			</p>
-			<p>Website URL:
+<!-- 			<p>Website URL:
 				<input type="text" value="{{fellow.url}}" ng-model="fellow.url"/>
-			</p>
+			</p> -->
 			<p>Tag 1:
 				<input type="text" value="{{fellow.tag1}}" ng-model="fellow.tag1"/>
 				Tag 2:
