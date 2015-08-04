@@ -75,6 +75,7 @@ $RECYCLE.BIN/
 #
 .sass-cache
 *.css.map
+public/assets/stylesheets/*.css
 
 ##
 # vim
@@ -88,26 +89,32 @@ Session.vim
 *~
 
 ##
+# JetBrains
+#
+#
+.idea
+*.iml
+
+
+##
 # Sublime Text 2/3
 #
 ##
-#   cache files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
 
-# JetBrains
-.idea
-
-#   workspace files are user-specific
-*.sublime-workspace
-
-#   project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
-# *.sublime-project
-
-#   sftp configuration file
-sftp-config.json
+  #   cache files
+  *.tmlanguage.cache
+  *.tmPreferences.cache
+  *.stTheme.cache
+  
+  #   workspace files are user-specific
+  *.sublime-workspace
+  
+  #   project files should be checked into the repository, unless a significant
+  # proportion of contributors will probably not be using SublimeText
+  # *.sublime-project
+  
+  #   sftp configuration file
+  sftp-config.json
 
 ##
 # Node.js
