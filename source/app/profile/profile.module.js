@@ -7,7 +7,10 @@
 
       angular
           .module('app.profile', [
-            'app.profile.controllers'
+              'app.profile.controllers',
+              'app.profile.services',
+              'app.fellows.services',
+              'app.companies.services'
             ]);
 
       //declare the controllers module

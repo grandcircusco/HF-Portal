@@ -36,7 +36,7 @@
 
       return [];
 
-      //return $http.get('/api/v1/companies/');
+      //return $http.get('http://localhost:3000/api/v1/companies/');
     }
 
     /**

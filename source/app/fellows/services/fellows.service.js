@@ -90,7 +90,7 @@
         }
       ];
 
-      //return $http.get('/fellows/');
+      //return $http.get('http://localhost:3000/api/v1/fellows');
     }
 
     /**
@@ -98,26 +98,22 @@
      * @desc get one fellow
      */
     function get(id) {
-      return $http.get('/fellows/' + i);
+      return $http.get('http://localhost:3000/api/v1/fellows/' + id);
     }
     /**
      * @name create
      * @desc creeate a new fellow record
      */
-    function create(content, id) {
-      return $http.post('/fellows/' + id, {
-        content: content
-      });
+    function create(fellow) {
+      return $http.post('http://localhost:3000/api/v1/fellows', fellow);
     }
 
     /**
      * @name update
      * @desc updates a fellow record
      */
-    function update(content, id) {
-      return $http.update('/fellows/' + id, {
-        content: content
-      });
+    function update(fellow, id) {
+      return $http.update('http://localhost:3000/api/v1/fellows/' + id, fellow);
     }
 
     /**
@@ -125,7 +121,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/fellows/' + id);
+      return $http.delete('http://localhost:3000/api/v1/fellows/' + id);
     }
   }
 

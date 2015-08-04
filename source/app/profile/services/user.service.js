@@ -52,23 +52,42 @@
 
         /**
          * @name create
-         * @desc creeate a new fellow record
+         * @desc create a new fellow record
          */
-        function create(content) {
-            return $http.post('/api/v1/users/create', {
-                content: content
-            });
+        function create(user) {
+            return $http.post('http://localhost:3000/api/v1/users/create', user);
         }
 
         /**
          * @name login
          * @desc login a new fellow record
          */
-        function login(content) {
+        function login(user) {
 
-            return $http.post('/api/v1/users/login', {
-                content: content
-            });
+            return $http.post('http://localhost:3000/api/v1/users/login', user);
+        }
+
+        function SetCredentials(email, userType, password) {
+
+            var authdata = Base64.encode(email + ':' + password + ':' +  userType);
+
+            $rootScope.globals = {
+                currentUser: {
+                    email: email,
+                    userType: userType,
+                    authdata: authdata
+                }
+            };
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+            $cookieStore.put('globals', $rootScope.globals);
+        }
+
+        function ClearCredentials() {
+
+            $rootScope.globals = {};
+            $cookieStore.remove('globals');
+            $http.defaults.headers.common.Authorization = 'Basic ';
         }
 
 
