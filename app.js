@@ -5,7 +5,7 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile']);
-
+ var string = "dummy"
 
 /**
  *   * @name config
