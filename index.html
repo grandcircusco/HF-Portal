@@ -5,6 +5,7 @@
     <title>Hacker Fellows Portal</title>
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <!-- Body Copy Font -->
     <link href='http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700,300italic' rel='stylesheet' type='text/css'>
@@ -21,25 +22,25 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuitem" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!--<a class="navbar-brand" href="#">Hacker Fellows</a>-->
+          </div>
+                 <div id="menuitem" class= "collapse navbar-collapse ">
+
+          <ul class="nav navbar-nav navbar-left">
+            <li class="active listitem"><a href="/#/">Home</a></li>
+            <li class="listitem"><a href="/#/fellows">Fellows</a></li>
+            <li class="listitem"><a href="/#/companies">Companies</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" class="navbar-collapse collapse">
+            <li class="listitem"><a href="#">Login</a></li>
+            <li lass="listitem"><a href="#">Register</a></li>
+          </ul>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/#/">Home</a></li>
-            <li><a href="/#/fellows">Fellows</a></li>
-            <li><a href="/#/companies">Companies</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </nav>
 
@@ -56,6 +57,8 @@
       </div>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
     <script type="text/javascript" src="public/assets/javascript/vendor/ui-bootstrap-tpls-0.13.1.min.js"></script>
