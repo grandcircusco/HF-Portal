@@ -7,8 +7,8 @@ var Fellows = models.fellows;
 
 /** Votes **/
 
-// POST /api/vote - Creates a new vote
-app.post('/api/v1/votes', function putVote(req, res) {
+// POST /api/v1/votes/ - Creates a new vote
+app.post('/', function putVote(req, res) {
 
     var company = Companies.findOne({
 
