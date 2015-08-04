@@ -96,6 +96,9 @@ Session.vim
 *.tmPreferences.cache
 *.stTheme.cache
 
+# JetBrains
+.idea
+
 #   workspace files are user-specific
 *.sublime-workspace
 
