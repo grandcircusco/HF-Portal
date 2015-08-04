@@ -2,6 +2,7 @@
 @import 'mixins';
 .grid-container {
   margin: 0 0 6em 0;
+  overflow: hidden;
   .grid-box {
 
     width: 300px;

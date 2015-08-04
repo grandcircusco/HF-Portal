@@ -1,15 +1,15 @@
 @import 'variables';
 @import 'mixins';
 html {
-  position: relative;
   min-height: 100%;
+  position: relative;
 }
 
 body {
 	@include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
 	margin-top: 50px;
-
-}
+	padding-bottom: 20px;
+	}
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $head-font;
@@ -23,6 +23,11 @@ h1 {
 
 p {
 	@include text($color: $body-text-color);
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
 }
 
 @import 'navbar';

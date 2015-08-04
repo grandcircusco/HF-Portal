@@ -22,7 +22,7 @@ img {
 	width: 100%;
 	p {
 		@include text($family: $main-font, $l-height: 15px, $weight: light);
-		@include multi-column-layout();
+		@include multi-column-layout($column-count: 2);
 		letter-spacing: 0.010em;
 		font-kerning: optical;
 		margin: 0; 
