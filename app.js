@@ -62,18 +62,21 @@ function RoutingController($scope, $modal) {
     var modalInstance = $modal.open({
         templateUrl: 'source/app/profile/partials/login-page.html',
         controller: 'LoginModalInstanceController',
-        size: 'sm',
-        //resolve: {
-        //    function(){
-        //
-        //    }
-        //}
+        size: 'sm'
     });
 }
 }
 
 function LoginModalInstanceController ($scope, $modalInstance) {
-    $scope.ok = function () {
+
+    $scope.loginform = {
+
+        email: "test",
+        password: ""
+    };
+
+    $scope.login = function () {
+
         $modalInstance.close();
     };
 

@@ -17,6 +17,10 @@
      */
     function User($http) {
 
+        // This is terrible security, but easy...
+        var isLoggedIn = false;
+        var userType = '';
+
         var User = {
 
             //all: all,
@@ -65,29 +69,6 @@
         function login(user) {
 
             return $http.post('http://localhost:3000/api/v1/users/login', user);
-        }
-
-        function SetCredentials(email, userType, password) {
-
-            var authdata = Base64.encode(email + ':' + password + ':' +  userType);
-
-            $rootScope.globals = {
-                currentUser: {
-                    email: email,
-                    userType: userType,
-                    authdata: authdata
-                }
-            };
-
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $cookieStore.put('globals', $rootScope.globals);
-        }
-
-        function ClearCredentials() {
-
-            $rootScope.globals = {};
-            $cookieStore.remove('globals');
-            $http.defaults.headers.common.Authorization = 'Basic ';
         }
 
 

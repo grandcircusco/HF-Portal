@@ -1,16 +1,16 @@
 <div class="login-modal">
     <div class="modal-body">
         <div class="form-group">
-            <label for="usr">Email:</label>
-            <input type="text" class="form-control" id="usr">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" value="{{loginform.email}}" ng-model="loginform.email">
         </div>
         <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" ng-model="loginform.password">
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">Login</button>
+        <button class="btn btn-primary" ng-click="login(loginForm)">Login</button>
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
     </div>
 </div>

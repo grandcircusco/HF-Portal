@@ -22,6 +22,12 @@
             img:"public/assets/images/placeholder-hi.png"
         };
 
+        Fellows.get(17).success(function(fellow){
+
+            $scope.fellow = fellow;
+
+        });
+
 
         activate();
 
