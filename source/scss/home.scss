@@ -14,6 +14,59 @@ h1 {
 	margin: 0px;
 }
 
+.background-img{
+	background-image: url("/public/assets/images/grandcircus-sm.png");
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size:cover;
+	height:100vh;
+	width:100%;
+	}
+
+.frame{background-color:rgba($odd-section, 0.4);
+	height:100%;
+	width:100%;
+	padding:4%;
+	}
+
+.frameGradient{
+  	background: linear-gradient(rgba(black,0.1), rgba(white,0.6) 60%);
+	background-size:100%;
+	background-position: top left;
+	background-repeat: repeat;
+	opacity:0.9;
+	height:100%;
+	width:100%;
+}
+
+
+.borderFrame{
+	// background-image: url("/public/assets/images/grit-img.png");
+	// background-size:300px;
+	// background-position: center center;
+	// background-repeat: repeat;
+	opacity:0.9;
+	height:100%;
+	width:100%;
+	border: .25em solid rgba(white, 0.7);
+	border-radius:.5em;
+	padding:7%;
+
+}	
+.logo{width:100%;
+	margin:0 0 0 0;
+	text-align:center;}
+
+.logo-img{
+	height:auto;
+	width:70%;
+	opacity:1;
+}
+
+.sublogo{width:100%;
+	clear:both;
+
+}
 
 img {
 	text-align: center; 
