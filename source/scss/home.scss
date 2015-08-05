@@ -19,7 +19,7 @@ h1 {
 	background-position: top left;
 	background-repeat: no-repeat;
 	background-size:cover;
-	height:100vh;
+	height:$logo-height;
 	width:100%;
 	}
 
@@ -53,20 +53,18 @@ h1 {
 	padding:7%;
 
 }	
-.logo{width:100%;
+.logo{
+	height: $logo-height;
+	width:100%;
 	margin:0 0 0 0;
 	text-align:center;}
 
 .logo-img{
-	height:auto;
+	height:$logo-height;
 	width:70%;
 	opacity:1;
 }
 
-.sublogo{width:100%;
-	clear:both;
-
-}
 
 img {
 	text-align: center; 
