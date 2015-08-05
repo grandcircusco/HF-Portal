@@ -6,14 +6,6 @@ var models = require('../models');
 var Companies = models.companies;
 var Fellows = models.fellows;
 
-/** Votes **/
-
-
-// GET /api/v1/votes/fellow/:id
-app.get('/', function getAll(req, res) {
-
-
-});
 
 // GET /api/v1/votes/fellow/:id
 app.get('/fellow/:id', function getFellowVotes(req, res) {
@@ -32,6 +24,26 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
   });
 
 });
+
+
+// GET /api/v1/votes/company/:id
+app.get('/company/:id', function getCompanyVotes(req, res) {
+  var company = Companies.findOne({
+    where: {
+      id: req.params.id
+    }
+  });
+
+  company.then( function(company) {
+    return company.getVotees();
+  })
+  .then(function(fellows){
+    console.log("hello\n\n\n"+fellows);
+    res.send(fellows);
+  });
+
+});
+
 
 // POST /api/v1/votes/ - Creates a new vote
 app.post('/', function putVote(req, res) {
@@ -52,10 +64,10 @@ app.post('/', function putVote(req, res) {
 
   });
 
-  if (req.body.type = "company") {
+  if (req.body.type === "company") {
     resolvePromises(company, fellow);
   }
-  else if (req.body.type = "fellow") {
+  else if (req.body.type === "fellow") {
     resolvePromises(fellow, company);
   }
 
