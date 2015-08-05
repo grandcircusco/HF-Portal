@@ -17,9 +17,10 @@
   */
   function Votes($http) {
     var Votes = {
-      getByvote: getByvote,
+      getByFellow: getByFellow,
       getByCompany: getByCompany,
-      create: create,
+      fellowVote: fellowVote,
+      companyVote: companyVote,
       destroy: destroy
     };
 
@@ -29,15 +30,15 @@
 
 
     /**
-     * @name get
-     * @desc get the companies one vote voted on)
+     * @name get by company
+     * @desc get the companies one fellow voted on)
      */
-    function getByvote(id) {
+    function getByFellow(id) {
       return $http.get('/votes/vote/' + i);
     }
 
     /**
-     * @name get
+     * @name get by fellow
      * @desc get the votes one company voted on
      */
     function getByCompany(id) {
@@ -45,13 +46,22 @@
     }
 
 
+    /**
+     * @name create
+     * @desc fellow votes on a company
+     */
+    function fellowVote(content) {
+      return $http.post('/votes/fellow/', {
+        content: content
+      });
+    }
 
     /**
      * @name create
-     * @desc create a new vote record
+     * @desc company votes on a fellow
      */
-    function create(content) {
-      return $http.post('/votes/', {
+    function companyVote(content) {
+      return $http.post('/votes/company/', {
         content: content
       });
     }

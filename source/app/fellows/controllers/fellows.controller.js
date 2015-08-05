@@ -63,7 +63,7 @@ angular
         $scope.vote = function vote(fellow) {
           var company = Users.getCurrentUser();
           if(company.type == "Company") {
-            return Votes.create(fellow, company);
+            return Voters.fellowCreate(fellow, company);
           }
         }
 
