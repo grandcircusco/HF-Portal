@@ -1,11 +1,3 @@
-$main-font: 'Fira Sans', sans-serif;
-$head-font: 'Dosis', sans-serif;
-$odd-section: #d4d4d4; /*d4d4d4*/
-$even-section: #dededf; /*dededf*/
-$heading-text-color: #2f2f2f;
-$body-text-color: #999999;
-$nav-bar-color-main: #f2663a;
-$nav-bar-color-secondary: #dededf;
 $GREY001:#333333;
 $GREY002:#7e7b7a;
 $GREY003:#979494;
@@ -18,3 +10,16 @@ $ORANGE003:#fed483;
 $RED001:#ff6633;
 $RED002:#f8aa7f;
 $RED003:#fabe9b;
+
+$main-font: 'Fira Sans', sans-serif;
+$head-font: 'Dosis', sans-serif;
+$odd-section: #d4d4d4; /*d4d4d4*/
+$even-section: #dededf; /*dededf*/
+$heading-text-color: #2f2f2f;
+$body-text-color: $GREY004;
+$nav-bar-color-main: #f2663a;
+$nav-bar-color-secondary: #dededf;
+$logo-height: 100%;
+
+$phone: "only screen and (max-width: 679px)";
+$tablet: "only screen and (min-width: 680px)";
