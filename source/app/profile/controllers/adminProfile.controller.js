@@ -11,18 +11,16 @@
     .controller('AdminProfileController', AdminProfileController)
     .controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
-    AdminProfileController.$inject = ['$scope', '$rootScope', '$modal', 'User'];
+    AdminProfileController.$inject = ['$scope', '$modal', 'User'];
     AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies'];
 
     /**
      * @namespace AdminProfileController
      */
-     function AdminProfileController($scope, $rootScope,  $modal, User) {
+     function AdminProfileController($scope,  $modal, User) {
 
-        // for testing
-        console.log("Profile Controller");
-        console.log($rootScope.currentUser);
-        $scope.currentUser = $rootScope.currentUser;
+        $scope.currentUser = User.getCurrentUser();
+        console.log($scope.currentUser);
 
         $scope.openModal = function() {
 

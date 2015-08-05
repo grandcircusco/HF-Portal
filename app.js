@@ -96,13 +96,14 @@ function LoginModalInstanceController ($scope, $modalInstance, User) {
 }
 
 
-run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
-function run($rootScope, $location, $cookieStore, $http) {
+run.$inject = ['$cookieStore', 'User'];
+function run($cookieStore, User) {
 
     // keep user logged in after page refresh
-    $rootScope.globals = $cookieStore.get('globals') || {};
+    var currentUser = $cookieStore.get('globals') || {};
+    User.setCurrentUser(currentUser);
 
-    console.log($rootScope.globals);
+    console.log(currentUser);
     //if ($rootScope.globals.currentUser) {
     //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
     //}

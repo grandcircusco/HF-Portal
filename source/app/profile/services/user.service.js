@@ -17,11 +17,19 @@
      */
     function User($rootScope, $cookieStore, $http) {
 
-        // This is terrible security, but easy...
-        var currentUser = {
+        // Will hold info for the currently logged in user
+        var currentUser = {};
 
-            email: "NO LOGIN"
-        };
+        function getCurrentUser(){
+
+            return currentUser;
+        }
+
+        function setCurrentUser(user){
+
+            currentUser = user
+        }
+
 
         return {
 
@@ -33,7 +41,9 @@
             //destroy: destroy
             currentUser: currentUser,
             SetCredentials: SetCredentials,
-            ClearCredentials: ClearCredentials
+            ClearCredentials: ClearCredentials,
+            getCurrentUser: getCurrentUser,
+            setCurrentUser: setCurrentUser
 
         };
 
@@ -78,23 +88,25 @@
 
 
         function SetCredentials(username, password, userType) {
-            var authdata = Base64.encode(username + ':' + password);
 
-            $rootScope.globals = {
-                currentUser: {
-                    username: username,
-                    authdata: authdata
-                }
+            var authdata = Base64.encode(username + ':' + password + ':' + userType);
+
+            currentUser = {
+                username: username,
+                userType: userType,
+                authdata: authdata
             };
 
             //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $cookieStore.put('globals', $rootScope.globals);
+            $cookieStore.put('globals', currentUser);
         }
 
         function ClearCredentials() {
+
             $rootScope.globals = {};
             $cookieStore.remove('globals');
-            $http.defaults.headers.common.Authorization = 'Basic ';
+
+            //$http.defaults.headers.common.Authorization = 'Basic ';
         }
 
         /**
