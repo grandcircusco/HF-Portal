@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var Sequelize = require("sequelize");
 
 var models = require('../models');
 var Companies = models.companies;
@@ -16,18 +17,17 @@ app.get('/', function getAll(req, res) {
 
 // GET /api/v1/votes/fellow/:id
 app.get('/fellow/:id', function getFellowVotes(req, res) {
-
   var fellow = Fellows.findOne({
     where: {
       id: req.params.id
-    },
-    include: [{}]
+    }
   });
 
   fellow.then(function(fellow) {
     return fellow.getVotees();
   })
   .then(function(companies){
+    console.log("hello\n\n\n"+companies);
     res.send(companies);
   });
 
