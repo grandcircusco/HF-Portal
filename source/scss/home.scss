@@ -86,6 +86,9 @@ img {
 .odd-section, .even-section {
 	padding: 100px;
 	width: 100%;
+	@media #{$phone} {
+		padding: 10px;
+	}
 }
 
 
@@ -107,13 +110,13 @@ img {
 }
 /*-- date info styled for some responsiveness--*/
 .dateList{
-	@media #{$phone} {
+	@media #{$tablet} {
 		display:block; 
 		border-top:.5em solid $body-text-color;
 		width:80%;
 		margin: 0 10% 5% 10%;
 	}
-	@media #{$tablet} {
+	@media #{$phone} {
 		display:block; 
 		width:100%;
 		margin: 0 0% 5% 0%;
@@ -138,7 +141,7 @@ img {
 }
 
 .dateItem{
-	@media #{$phone} {
+	@media #{$tablet} {
 		float: left;
 		text-align: right;
 		height:100%;
@@ -146,7 +149,7 @@ img {
 		margin: 0 5% 0 15%;
 		padding: 4em 0 0 0;
 	}
-	@media #{$tablet} {
+	@media #{$phone} {
 		float: left;
 		text-align: right;
 		height:100%;
@@ -157,7 +160,7 @@ img {
 }  
 
 .dateInfo{
-	@media #{$phone}{
+	@media #{$tablet} {
 		float: right;
 		border-left:.5em solid $body-text-color;
 		height:100%;
@@ -166,7 +169,7 @@ img {
 		position:relative;
 		padding: 2em 0 2em 2em;
 	}
-	@media #{$tablet} {
+	@media #{$phone} {
 		float: right;
 		height:100%;
 		width:60%;
@@ -176,18 +179,18 @@ img {
 }
 
 .dateInfoText{
-	@media #{$phone}{
+	@media #{$phone} {
 		position:relative;
 		top: 2em;
 	}
-	@media #{$tablet}{
+	@media #{$tablet} {
 		position:relative;
 		top: 2em;
 	}
 }
 
 .dateMarker{
-	@media #{$phone}{
+	@media #{$tablet} {
 		position:absolute;
 		width:1.5em;
 		height:1.5em;
@@ -197,14 +200,14 @@ img {
 		top:4em;
 		background-color:$odd-section;
 	}
-	@media #{$tablet} {
+	@media #{$phone} {
 		display:none;
 		visibility:hidden;
 	}
 }
 
 .dateIcon{
-	@media #{$phone} {
+	@media #{$tablet} {
 		background-image: url("/public/assets/images/heximage.svg");
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
@@ -217,7 +220,7 @@ img {
 		float:left;
 	}
 
-	@media #{$tablet} {
+	@media #{$phone} {
 		background-image: url("/public/assets/images/heximage.svg");
 		background-size: 4em 4em;
 		background-repeat: no-repeat;
@@ -237,5 +240,8 @@ img {
 	width: .6em;
 	height: 10em;
 	background:#333333;
+	@media #{$phone} {
+		display: none;
+	}
 }
 
