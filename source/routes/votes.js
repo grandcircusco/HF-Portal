@@ -62,20 +62,18 @@ app.post('/', function putVote(req, res) {
   function resolvePromises(voter, votee) {
     voter.then(function(voter){
       votee.then(function(votee){
-        return voter.getVotees();
+        voter.getVotees().then( function(data) {
+          if(data.length >= 5) {
+            res.status(500).send('Something broke!');
+          }
+          else {
+            voter.addVotee(votee);  //fellow.addVotee(company)  -> INSERT INTO company_votes
+            res.send('Vote added');
+          }
+        })
       })
-      .then( function(data) {
-        if(data.length >= 5) {
-          res.status(500).send('Something broke!');
-        }
-        else {
-          voter.addVotee(votee);
-        }
-      })
-    })
+    });
   }
-
-  res.send('Vote added');
 });
 
 module.exports = app;
