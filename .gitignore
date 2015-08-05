@@ -75,7 +75,7 @@ $RECYCLE.BIN/
 #
 .sass-cache
 *.css.map
-
+public/assets/stylesheets/style.css
 ##
 # vim
 #
