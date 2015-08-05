@@ -33,7 +33,7 @@
      */
     function all() {
 
-      return $http.get('http://localhost:3000/api/v1/companies/');
+      return $http.get('http://10.251.1.61:3000/api/v1/companies/');
     }
 
     /**
@@ -41,7 +41,7 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/api/v1/companies/' + parseInt(id) );
+      return $http.get('http://10.251.1.61:3000/api/v1/companies/' + parseInt(id) );
     }
 
     /**
@@ -49,7 +49,7 @@
      * @desc creeate a new fellow record
      */
     function create(content, id) {
-      return $http.post('/api/v1/companies/' + id, {
+      return $http.post('http://10.251.1.61:3000/api/v1/companies/' + id, {
         content: content
       });
     }
@@ -59,7 +59,7 @@
      * @desc updates a fellow record
      */
     function update(content, id) {
-      return $http.update('/api/v1/companies/' + id, {
+      return $http.update('http://10.251.1.61:3000/api/v1/companies/' + id, {
         content: content
       });
     }
@@ -69,7 +69,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/api/v1companies/' + id);
+      return $http.delete('http://10.251.1.61:3000/api/v1companies/' + id);
     }
   }
 })();
