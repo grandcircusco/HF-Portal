@@ -61,7 +61,7 @@
           'Praesent eu vulputate ex, ac rhoncus nisi.',
           src:	'/public/assets/images/placeholder-hi.png'
         },
-        
+
         {
           name:	'Name 3',
           tags:	['C++', 'Java', 'C'],
@@ -90,7 +90,7 @@
         }
       ];
 
-      //return $http.get('/fellows/');
+      //return $http.get('/api/v1/fellows/');
     }
 
     /**
@@ -98,14 +98,14 @@
      * @desc get one fellow
      */
     function get(id) {
-      return $http.get('/fellows/' + i);
+      return $http.get('/api/v1/fellows/' + i);
     }
     /**
      * @name create
      * @desc creeate a new fellow record
      */
     function create(content, id) {
-      return $http.post('/fellows/' + id, {
+      return $http.post('/api/v1/fellows/' + id, {
         content: content
       });
     }
@@ -115,7 +115,7 @@
      * @desc updates a fellow record
      */
     function update(content, id) {
-      return $http.update('/fellows/' + id, {
+      return $http.update('/api/v1/fellows/' + id, {
         content: content
       });
     }
@@ -125,7 +125,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/fellows/' + id);
+      return $http.delete('/api/v1/fellows/' + id);
     }
   }
 

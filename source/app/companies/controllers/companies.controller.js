@@ -11,7 +11,7 @@
     .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
 
   CompaniesController.$inject = ['$scope', '$modal', 'Companies'];
-  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company'];
+  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company', 'CompanyVotes'];
 
   /**
   * @namespace CompaniesController
@@ -62,7 +62,7 @@
 
   }
 
-  function CompaniesModalInstanceController($scope, $modalInstance, company){
+  function CompaniesModalInstanceController($scope, $modalInstance, company, CompanyVotes){
 
     $scope.company = company;
 
@@ -73,6 +73,13 @@
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
     };
+
+    $scope.vote = function vote(company) {
+      var fellow = Users.getCurrentUser();
+      if(fellow.type == "Fellow") {
+        return CompanyVotes.create(company.id, fellow.id);
+      }
+    }
   }
 
 })();

@@ -10,13 +10,13 @@ angular
 	.controller('FellowsController', FellowsController)
 	.controller('FellowsModalInstanceController', FellowsModalInstanceController);
 
-    FellowsController.$inject = ['$scope', '$modal', 'Fellows', 'Users', 'Votes'];
-    FellowsModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow'];
+    FellowsController.$inject = ['$scope', '$modal', 'Fellows', 'Users'];
+    FellowsModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow', 'FellowVotes'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowsController($scope, $modal, Fellows, Users, Votes) {
+    function FellowsController($scope, $modal, Fellows, Users) {
         var vm = this;
 
         activate();
@@ -47,7 +47,7 @@ angular
 
     }
 
-    function FellowsModalInstanceController ($scope, $modalInstance, fellow) {
+    function FellowsModalInstanceController ($scope, $modalInstance, fellow, FellowVotes) {
 
 
         $scope.fellow = fellow;
@@ -63,7 +63,7 @@ angular
         $scope.vote = function vote(fellow) {
           var company = Users.getCurrentUser();
           if(company.type == "Company") {
-            return Voters.fellowCreate(fellow, company);
+            return FellowVotes.create(fellow.id, company.id);
           }
         }
 

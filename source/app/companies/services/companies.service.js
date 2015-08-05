@@ -62,7 +62,7 @@
      * @desc updates a fellow record
      */
     function update(content, id) {
-      return $http.update('/api/v1companies/' + id, {
+      return $http.update('/api/v1/companies/' + id, {
         content: content
       });
     }
@@ -72,7 +72,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/api/v1companies/' + id);
+      return $http.delete('/api/v1/companies/' + id);
     }
   }
 })();
