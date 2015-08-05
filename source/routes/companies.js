@@ -25,8 +25,6 @@ app.get('/', function getCompanies(req, res) {
 app.post('/', function postCompany(req, res) {
     //res.send('POST request - create a new company record');
 
-
-
     // Take POST data and build a Company Object (sequelize)
     Companies.create({
 
@@ -45,6 +43,9 @@ app.post('/', function postCompany(req, res) {
 
     }).then(function(err, company) {
 
+        console.log(company);
+        console.log(err);
+
         res.send(company);
      });
 });
@@ -60,7 +61,6 @@ app.get('/:id', function getCompany(req, res) {
         },
         include: [{
             model: Tags
-            //where: { state: Sequelize.col('project.state') }
         }]
 
     }).then(function(company) {

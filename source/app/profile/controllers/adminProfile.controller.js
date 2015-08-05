@@ -107,7 +107,7 @@
                 // send user to API via Service
                 User.create(user).then(function(response) {
 
-                    //console.log(response);
+                    console.log(response);
 
                     var user_id = response.data.id;
 
@@ -127,9 +127,7 @@
                         };
                         Companies.create(company_post);
                     }
-
-
-                    console.log(user);
+                    //console.log(user);
                 });
 
                 $modalInstance.close();

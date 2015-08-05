@@ -74,7 +74,7 @@
          * @desc create a new fellow record
          */
         function create(user) {
-            return $http.post('http://localhost:3000/api/v1/users/create', user);
+            return $http.post('http://10.251.1.61:3000/api/v1/users/create', user);
         }
 
         /**
@@ -83,7 +83,7 @@
          */
         function login(user) {
 
-            return $http.post('http://localhost:3000/api/v1/users/login', user);
+            return $http.post('http://10.251.1.61:3000/api/v1/users/login', user);
         }
 
 
