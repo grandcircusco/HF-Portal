@@ -7,8 +7,9 @@ html {
 
 body {
 	@include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
-	margin-top: 50px;
-	padding-bottom: 20px;
+	margin: 50px 0 0 0;
+	padding: 0 0 20px 0;
+
 	}
 
 h1, h2, h3, h4, h5, h6 {
