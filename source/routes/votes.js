@@ -28,15 +28,14 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
 function resolvePromises(voter, votee) {
   voter.then(function(voter){
     votee.then(function(votee){
-      return voter.getVotees();
-    })
-    .then( function(data) {
-      if(data.length >= 5) {
-        res.status(500).send('Something broke!');
-      }
-      else {
-        voter.addVotee(votee);
-      }
+      voter.getVotees().then( function(data) {
+        if(data.length >= 5) {
+          res.status(500).send('Something broke!');
+        }
+        else {
+          voter.addVotee(votee);
+        }
+      })
     })
   })
 }
@@ -107,48 +106,6 @@ app.get('/company/:id', function getCompanyVotes(req, res) {
 });
 
 
-// POST /api/v1/votes/ - Creates a new vote
-app.post('/fellow/', function putVote(req, res) {
-
-  var company = Companies.findOne({
-
-    where: {
-      id: req.body.company_id
-    }
-
-  });
-
-  var fellow = Fellows.findOne({
-
-    where: {
-      id: req.body.fellow_id
-    }
-
-  });
-
-  if (req.body.type === "company") {
-    resolvePromises(company, fellow);
-  }
-  else if (req.body.type === "fellow") {
-    resolvePromises(fellow, company);
-  }
-
-  function resolvePromises(voter, votee) {
-    voter.then(function(voter){
-      votee.then(function(votee){
-        voter.getVotees().then( function(data) {
-          if(data.length >= 5) {
-            res.status(500).send('Something broke!');
-          }
-          else {
-            voter.addVotee(votee);
-            res.send("Vote added!");
-          }
-        })
-      })
-    });
-  }
-});
 
 // DELETE / - Deletes a vote
 app.delete('/', function(req, res) {
@@ -188,10 +145,6 @@ app.delete('/', function(req, res) {
   }
 
 });
-
-  res.send('Vote added');
-});
-
 
 
 module.exports = app;
