@@ -44,6 +44,8 @@
       return $http.get('/votes/company/' + i);
     }
 
+
+
     /**
      * @name create
      * @desc create a new vote record
