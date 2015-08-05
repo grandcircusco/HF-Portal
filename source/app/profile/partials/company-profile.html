@@ -14,40 +14,33 @@
 		<div class="col-md-9">
 			<h1 class="fd_hdr">Company Profile</h1>
 			<p>Comapny Name:
-				<input type="text" value="{{company.cname}}" ng-model="company.cname"/> 
+				<input type="text" value="{{company.name}}" ng-model="company.name"/> 
 			</p>
 			<p>Primary Contact Name:
-				<input type="text" value="{{company.pname}}" ng-model="company.pname"/> 
+				<input type="text" value="{{company.primary_contact}}" ng-model="company.primary_contact"/> 
 			</p>			
 			<p>Email:
-				<input type="email" value="{{company.email}}" ng-model="company.email"/> 
+				<input type="text" value="{{company.email}}" ng-model="company.email"/> 
 			</p>
 			<p>Company Size:
-				<input type="int" value="{{company.school}}" ng-model="company.school"/>
+				<input type="int" value="{{company.company_size}}" ng-model="company.company_size"/>
 			</p>
 			<p>Industry:
 				<input type="text" value="{{company.industry}}" ng-model="company.industry"/> 
 			</p>
 			<p>Founding Year:
-				<input type="text" value="{{company.fYear}}" ng-model="company.fYear"/> 
+				<input type="text" value="{{company.founding_year}}" ng-model="company.founding_year"/> 
 			</p>
 			<p>Founders:
 				<input type="text" value="{{company.founders}}" ng-model="company.founders"/> 
 			</p>
 			<p>Website URL:
-				<input type="text" value="{{company.url}}" ng-model="company.url"/>
+				<input type="text" value="{{company.website_url}}" ng-model="company.website_url"/>
 			</p>
 			<p>LinkedIn URL:
-				<input type="text" value="{{company.linkedin}}" ng-model="company.linkedin"/>
+				<input type="text" value="{{company.linked_in_url}}" ng-model="company.linked_in_url"/>
 			</p>
-			<!-- <p>Tag 1:
-				<input type="text" value="{{company.tag1}}" ng-model="company.tag1"/>
-				Tag 2:
-				<input type="text" value="{{company.tag2}}" ng-model="company.tag2"/>
-				Tag 3:
-				<input type="text" value="{{company.tag3}}" ng-model="company.tag3"/>
-			</p>
- -->
+
 
  			<span>Top Tech/ Languages used:</span>
 			<select class="js-example-tokenizer" multiple="multiple">
