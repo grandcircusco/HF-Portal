@@ -29,7 +29,7 @@
             console.log('activated profile controller!');
             //Profile.all();
 
-        };
+        }
 
         $scope.update= function() {
 

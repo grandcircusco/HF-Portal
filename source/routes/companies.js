@@ -73,9 +73,6 @@ app.get('/:id', function getCompany(req, res) {
 // PUT /companies/:id - updates an existing company record
 app.put('/:id', function putCompany(req, res) {
 
-
-    req.body.image_file
-
     // Handle image upload here -- create image_url for below
     var image_url = "";
 

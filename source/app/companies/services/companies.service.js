@@ -16,15 +16,14 @@
   * @returns {Service}
   */
   function Companies($http) {
-    var Companies = {
+
+    return {
       all: all,
       get: get,
       create: create,
       update: update,
       destroy: destroy
     };
-
-    return Companies;
 
     ////////////////////
 
@@ -34,9 +33,7 @@
      */
     function all() {
 
-      return [];
-
-      //return $http.get('http://localhost:3000/api/v1/companies/');
+      return $http.get('http://localhost:3000/api/v1/companies/');
     }
 
     /**

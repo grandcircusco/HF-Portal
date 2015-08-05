@@ -11,13 +11,18 @@
     .controller('AdminProfileController', AdminProfileController)
     .controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
-    AdminProfileController.$inject = ['$scope', '$modal'];
+    AdminProfileController.$inject = ['$scope', '$rootScope', '$modal', 'User'];
     AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies'];
 
     /**
      * @namespace AdminProfileController
      */
-     function AdminProfileController($scope, $modal) {
+     function AdminProfileController($scope, $rootScope,  $modal, User) {
+
+        // for testing
+        console.log("Profile Controller");
+        console.log($rootScope.currentUser);
+        $scope.currentUser = $rootScope.currentUser;
 
         $scope.openModal = function() {
 
@@ -113,7 +118,7 @@
                         var fellow_post = {
 
                             user_id: user_id
-                        }
+                        };
                         Fellows.create(fellow_post);
                     }
                     else if( user.userType === "Company" ){
@@ -121,7 +126,7 @@
                         var company_post = {
 
                             user_id: user_id
-                        }
+                        };
                         Companies.create(company_post);
                     }
 

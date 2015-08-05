@@ -22,11 +22,14 @@ angular
         activate();
 
         function activate() {
-            console.log('activated fellows controller!')
+            console.log('activated fellows controller!');
             //Fellows.all();
         }
 
-        $scope.fellows = Fellows.all();
+        Fellows.all().success(function(fellows){
+
+             $scope.fellows = fellows;
+        });
 
         $scope.openModal = function(fellow) {
 

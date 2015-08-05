@@ -56,7 +56,7 @@
 
     function activate() {
 
-      console.log('activated companies controller!')
+      console.log('activated companies controller!');
 
     }
 
