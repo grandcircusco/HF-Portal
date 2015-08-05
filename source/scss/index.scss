@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	@include text($weight: 800, $color: $heading-text-color);
+	@include text($weight: 800);
 	text-transform: uppercase;
 }
 

@@ -12,6 +12,7 @@ h1 {
 	text-align: center;
 	padding-bottom: 50px;
 	margin: 0px;
+	/*color: #dededd;*/
 }
 
 .background-img{
@@ -92,6 +93,7 @@ img {
 
 .odd-section {
 	background: $odd-section;
+	color: #dededd;
 }
 
 .even-section {
@@ -228,6 +230,6 @@ img {
 .rectangle{
 	width: .6em;
 	height: 10em;
-	background:#333333;
+	background:#dededd;
 }
 
