@@ -19,9 +19,24 @@
 
         var tempID = 2; //TODO change to not hard coded
 
+
         Fellows.get(tempID).success(function(fellow){
             $scope.fellow = fellow;
         });
+
+        // $(document).ready(function() {
+        //       $(".js-example-basic-multiple").select2({
+        //             maximumSelectionLength: 3
+        //         });
+        // });
+
+        $(".js-example-tokenizer").select2({
+          tags: true,
+          tokenSeparators: [',', ' ']
+          
+        });
+
+
 
         activate();
 
@@ -34,10 +49,14 @@
         $scope.update= function() {
 
             // console.log($scope.fellow);
+            $scope.fellow.skills = $(".js-example-tokenizer").val();
 
             // send fellows info to API via Service
             Fellows.update($scope.fellow, tempID);
+
         };
+        
+
 
     }
 
