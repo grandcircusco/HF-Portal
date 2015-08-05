@@ -7,7 +7,7 @@ var Companies = models.companies;
 var Fellows = models.fellows;
 
 
-// GET /api/v1/votes/fellow/:id
+// GET /fellow/:id - Gets all companies voted on by one fellow
 app.get('/fellow/:id', function getFellowVotes(req, res) {
   var fellow = Fellows.findOne({
     where: {
@@ -18,15 +18,14 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
   fellow.then(function(fellow) {
     return fellow.getVotees();
   })
-  .then(function(companies){
-    console.log("hello\n\n\n"+companies);
+  .then( function(companies) {
     res.send(companies);
   });
 
 });
 
 
-// GET /api/v1/votes/company/:id
+// GET /company/:id - Gets all fellows voted on by one company
 app.get('/company/:id', function getCompanyVotes(req, res) {
   var company = Companies.findOne({
     where: {
@@ -37,15 +36,14 @@ app.get('/company/:id', function getCompanyVotes(req, res) {
   company.then( function(company) {
     return company.getVotees();
   })
-  .then(function(fellows){
-    console.log("hello\n\n\n"+fellows);
+  .then( function(fellows) {
     res.send(fellows);
   });
 
 });
 
 
-// POST /api/v1/votes/ - Creates a new vote
+// POST / - Creates a new vote
 app.post('/', function putVote(req, res) {
 
   var company = Companies.findOne({
@@ -79,13 +77,52 @@ app.post('/', function putVote(req, res) {
             res.status(500).send('Something broke!');
           }
           else {
-            voter.addVotee(votee);  //fellow.addVotee(company)  -> INSERT INTO company_votes
-            res.send('Vote added');
+            voter.addVotee(votee);
+            res.send("Vote added!");
           }
         })
       })
     });
   }
+});
+
+// DELETE / - Deletes a vote
+app.delete('/', function(req, res) {
+
+  var company = Companies.findOne({
+
+    where: {
+      id: req.body.company_id
+    }
+
+  });
+
+  var fellow = Fellows.findOne({
+
+    where: {
+      id: req.body.fellow_id
+    }
+
+  });
+
+  if (req.body.type === "company") {
+    resolvePromises(company, fellow);
+  }
+  else if (req.body.type === "fellow") {
+    resolvePromises(fellow, company);
+  }
+
+  function resolvePromises(voter, votee) {
+    voter.then(function(voter){
+      votee.then(function(votee){
+        voter.getVotees().then( function(data) {
+          voter.removeVotee(votee);
+          res.send("Vote deleted!");
+        })
+      })
+    });
+  }
+
 });
 
 module.exports = app;
