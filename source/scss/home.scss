@@ -108,17 +108,28 @@ img {
 /*-- date info styled for some responsiveness--*/
 @media only screen and (min-width: 680px){
 	.dateList{
-		display:block; 
-		border-top:.5em solid $body-text-color;
-		width:80%;
-		margin: 0 10% 5% 10%;}
+		@media #{$phone} {
+			display:block; 
+			border-top:.5em solid $body-text-color;
+			width:80%;
+			margin: 0 10% 5% 10%;
+		}
+		@media #{$tablet} {
+			display:block; 
+			width:100%;
+			margin: 0 0% 5% 0%;
+		}
+	}
 
 	.dateListItem{
+		@media #{phone} {
 		display:block;
 		padding:0 0 0 0;
 		height:8em;
 		width:100%;
-		margin: 0 0 0 0;}
+		margin: 0 0 0 0;
+		}
+	}
 
 	.dateItem{
 		float: left;
