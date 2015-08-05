@@ -48,7 +48,8 @@
      * @desc creeate a new fellow record
      */
     function create(fellow) {
-      return $http.post('http://10.251.1.61:3000/api/v1/fellows', fellow);
+
+      return $http.post('http://10.251.1.61:3000/api/v1/fellows/', fellow);
     }
 
     /**

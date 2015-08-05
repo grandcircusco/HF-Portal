@@ -48,8 +48,8 @@
      * @name create
      * @desc creeate a new fellow record
      */
-    function create(company, id) {
-      return $http.post('http://10.251.1.61:3000/api/v1/companies/' + id, company);
+    function create(company) {
+      return $http.post('http://10.251.1.61:3000/api/v1/companies/', company);
     }
 
     /**
