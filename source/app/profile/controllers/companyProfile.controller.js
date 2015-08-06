@@ -5,6 +5,9 @@
 (function () {
     'use strict';
 
+    var models = require('../models');
+    var Tags = model.tags;
+
     angular
     .module('app.profile.controllers')
     .controller('CompanyProfileController', CompanyProfileController);
@@ -57,7 +60,8 @@
                     }
                 });
 
-                
+                console.log(currTag.id);
+
             }
 
             // Push any new tags to the database
