@@ -41,6 +41,7 @@
 	/**
 	 * @name get
 	 * @desc get one fellow
+	 * @desc get one fellow
 	 */
 	function get(id) {
 		return $http.get(rootUrl + '/api/v1/fellows/' + id);
