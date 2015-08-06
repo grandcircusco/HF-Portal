@@ -63,6 +63,12 @@
             jQuery("userType").addClass('error');
         }
 
+        $scope.user = {
+            email: "",
+            password: "",
+            userType: ""
+        };
+
         $scope.ok = function (user) {
 
             // remove previous highlights in case data is now correct
@@ -142,7 +148,7 @@
             $modalInstance.dismiss('cancel');
         };
 
-        $scope.switchType = function(user){
+        $scope.switchType = function(user, $event){
 
             console.log(user);
 
