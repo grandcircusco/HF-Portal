@@ -11,6 +11,9 @@
 
   FellowVotes.$inject = ['$http'];
 
+  //var rootUrl = "http://10.251.1.61:3000";
+  var rootUrl = "localhost:3000";
+
   /**
   * @namespace FellowVotes
   * @returns {Service}
@@ -32,7 +35,7 @@
      * @desc get the companies one fellow voted on)
      */
     function get(id) {
-      return $http.get('/votes/fellow/' + id);
+      return $http.get(rootUrl + '/votes/fellow/' + id);
     }
 
     /**
@@ -40,7 +43,7 @@
      * @desc fellow votes on a company
      */
     function create(content) {
-      return $http.post('/votes/fellow/', {
+      return $http.post(rootUrl + '/votes/fellow/', {
         content: content
       });
     }
@@ -50,7 +53,7 @@
      * @desc destroy a vote record
      */
     function destroy(id) {
-      return $http.delete('/votes/fellow' + id);
+      return $http.delete(rootUrl + '/votes/fellow' + id);
     }
   }
 
