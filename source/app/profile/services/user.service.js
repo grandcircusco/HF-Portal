@@ -29,7 +29,8 @@
         return {
           username: "seelio",
           userType: "Company",
-          authdata: currentUser.authdata
+          authdata: currentUser.authdata,
+          id: 4
         }
       }
 

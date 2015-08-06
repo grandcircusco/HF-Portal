@@ -11,8 +11,8 @@
 
   CompanyVotes.$inject = ['$http'];
 
-  //var rootUrl = "http://10.251.1.61:3000";
-  var rootUrl = "localhost:3000";
+  var rootUrl = "http://10.251.1.61:3000";
+  //var rootUrl = "localhost:3000";
 
   /**
   * @namespace CompanyVotes
@@ -35,7 +35,7 @@
      * @desc get the companies one company voted on)
      */
     function get(id) {
-      return $http.get(rootUrl + '/votes/company/' + id);
+      return $http.get(rootUrl + '/api/v1/votes/company/' + id);
     }
 
     /**
@@ -43,7 +43,7 @@
      * @desc company votes on a company
      */
     function create(content) {
-      return $http.post(rootUrl + '/votes/company/', {
+      return $http.post(rootUrl + '/api/v1/votes/company/', {
         content: content
       });
     }
@@ -53,7 +53,7 @@
      * @desc destroy a vote record
      */
     function destroy(id) {
-      return $http.delete(rootUrl + '/votes/company' + id);
+      return $http.delete(rootUrl + '/api/v1/votes/company' + id);
     }
   }
 

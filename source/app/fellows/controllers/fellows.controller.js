@@ -78,7 +78,11 @@
       console.log(current);
       console.log(current.userType);
       if(current.userType == "Company") {
-        return FellowVotes.create(fellow.id, current.id);
+        FellowVotes.create(fellow.id, current.id).then( function(vote) {
+          console.log('voted created');
+          console.log(vote);
+          return vote;
+        });
       }
     }
 
