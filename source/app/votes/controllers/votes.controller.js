@@ -7,9 +7,9 @@
 
 angular
 	.module('app.votes.controllers')
-	.controller('VotesController', VotesController)
+	.controller('VotesController', VotesController);
 
-    VotesController.$inject = ['$scope', '$modal', 'votes'];
+    VotesController.$inject = ['$scope', '$modal', 'Votes'];
 
     /**
      * @namespace votesController
@@ -20,7 +20,7 @@ angular
         activate();
 
         function activate() {
-            console.log('activated votes controller!')
+            console.log('activated votes controller!');
             //votes.all();
         }
 

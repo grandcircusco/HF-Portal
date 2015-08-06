@@ -1,63 +1,247 @@
+@import 'variables';
+@import 'mixins';
 body {
 	margin: 0;
 	padding: 0;
 	background: #a7a9ab;
 }
 h1 {
-	font-weight: semi-bold;
+	@include text($family: $head-font, $weight: semi-bold);
 	letter-spacing: 0.075em;
 	font-kerning: auto;
-	font-family: 'Dosis', sans-serif;
 	text-align: center;
 	padding-bottom: 50px;
 	margin: 0px;
+	/*color: #dededd;*/
 }
 
-p {
-	font-weight: light;
-	letter-spacing: 0.010em;
-	font-kerning: optical;
-	line-height: 15px;
-	font-family: 'Fira Sans', sans-serif;
-	margin: 0; 
+.background-img{
+	background-image: url("/public/assets/images/grandcircus-sm.png");
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size:cover;
+	height:$logo-height;
+	width:100%;
+	}
+
+.frame{background-color:rgba($odd-section, 0.4);
+	height:100%;
+	width:100%;
+	padding:4%;
+	}
+
+.frameGradient{
+  	background: linear-gradient(rgba(black,0.1), rgba(white,0.6) 60%);
+	background-size:100%;
+	background-position: top left;
+	background-repeat: repeat;
+	opacity:0.9;
+	height:100%;
+	width:100%;
 }
+
+
+.borderFrame{
+	// background-image: url("/public/assets/images/grit-img.png");
+	// background-size:300px;
+	// background-position: center center;
+	// background-repeat: repeat;
+	opacity:0.9;
+	height:100%;
+	width:100%;
+	border: .25em solid rgba(white, 0.7);
+	border-radius:.5em;
+	padding:7%;
+
+}	
+.logo{
+	height: $logo-height;
+	width:100%;
+	margin:0 0 0 0;
+	text-align:center;}
+
+.logo-img{
+	height:$logo-height;
+	width:70%;
+	opacity:1;
+}
+
 
 img {
 	text-align: center; 
 }
+.main-content {
+	width: 100%;
+	p {
 
-footer {
+		@include text($family: $main-font, $l-height: 20px, $weight: light);
 
-  	padding: 1em 0;
-	text-align: center;
-	background: #a7a9ab;
-
-  	p{
-
-	  margin: 0;
+		@include multi-column-layout($column-count: 2);
+		letter-spacing: 0.010em;
+		font-kerning: optical;
+		margin: 0; 
+	}
+}
+.odd-section, .even-section {
+	padding: 100px;
+	width: 100%;
+	@media #{$phone} {
+		padding: 10px;
 	}
 }
 
-.odd-section, .even-section {
-	padding: 100px;
-}
+
 
 .odd-section {
-	background: #d4d4d4;
+	background: $odd-section;
+	color: #dededd;
 }
 
 .even-section {
-	background: #dededf
+	background: $even-section;
 }
 
 .top {
-	padding: 1em 0;
+	padding: 0;
 }
 
 .slide {
-	padding: 50px 150px;
+	padding: 0px 150px;
+}
+/*-- date info styled for some responsiveness--*/
+.dateList{
+	
+		display:block; 
+		border-top:.5em solid $body-text-color;
+		width:80%;
+		margin: 0 10% 5% 10%;
+	
+	@media #{$phone} {
+		display:block; 
+		width:100%;
+		margin: 0 0% 5% 0%;
+	}
 }
 
-.carousel-control{
-	border-radius: 20px;
+.dateListItem{
+	display:block;
+	padding:0 0 0 0;
+	height:30%;
+	width:100%;
+	margin: 0 0 0 0;
+
+	@media #{$phone} {
+	display:block;
+	padding:0 0 0 0;
+	height:8em;
+	width:100%;
+	margin: 0 0 0 0;
+	}
 }
+
+.dateItem{
+
+		float: left;
+		text-align: right;
+		height:100%;
+		width:20%;
+		margin: 0 5% 0 15%;
+		padding: 4em 0 0 0;
+	
+	@media #{$phone} {
+		float: left;
+		text-align: right;
+		height:100%;
+		width:25%;
+		margin: 0 5% 0 0;
+		padding: 4em 0 0 0;
+	}
+}  
+
+.dateInfo{
+
+		float: right;
+		border-left:.5em solid $body-text-color;
+		height:100%;
+		width:45%;
+		margin:0 15% 0 0;
+		position:relative;
+		padding: 2em 0 2em 2em;
+	
+	@media #{$phone} {
+		float: right;
+		height:100%;
+		width:60%;
+		margin:0 5% 0 0;
+		padding: 2em 0 2em 0;
+	}
+}
+
+.dateInfoText{
+	position:relative;
+	top: 2em;
+
+	@media #{$phone} {
+	position:relative;
+	top: 2em;
+	}
+}
+
+.dateMarker{
+
+		position:absolute;
+		width:1.5em;
+		height:1.5em;
+		left:-1.0em;
+		border-radius:50px;
+		border: 5px solid $body-text-color;
+		top:4em;
+		background-color:$odd-section;
+	
+	@media #{$phone} {
+		display:none;
+		visibility:hidden;
+	}
+}
+
+.dateIcon{
+
+		background-image: url("/public/assets/images/heximage.svg");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		background-position: top left;
+		min-height:4em;
+		min-width: 4em;
+		max-height: 6em;
+		max-width: 6em; 
+		margin-right:1em;
+		float:left;
+	
+
+	@media #{$phone} {
+		background-image: url("/public/assets/images/heximage.svg");
+		background-size: 4em 4em;
+		background-repeat: no-repeat;
+		background-position: top left;
+		height:4em;
+		width: 4em; 
+		margin-right:1em;
+		float:left;
+	}
+}
+
+
+// .textBox{100%;}
+// .contain{}
+
+.rectangle{
+	width: .6em;
+	height: 10em;
+
+	background:$bar-color;
+	@media #{$tablet} {
+		display: none;
+	}
+	}
+
+

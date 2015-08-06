@@ -1,22 +1,53 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Hacker Fellows Portal</title>
-    <!-- Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-    <!-- Body Copy Font -->
-    <link href='http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700,300italic' rel='stylesheet' type='text/css'>
-    <!-- Header Font -->
-    <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,700' rel='stylesheet' type='text/css'>
-    <!--&lt;!&ndash; <link rel="stylesheet" href="shell.css" type="text/css"/> &ndash;&gt;-->
+<head>
+  <title>Hacker Fellows Portal</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  <!-- Body Copy Font -->
+  <link href='http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700,300italic' rel='stylesheet' type='text/css'>
+  <!-- Header Font -->
+  <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,700' rel='stylesheet' type='text/css'>
+  <!--&lt;!&ndash; <link rel="stylesheet" href="shell.css" type="text/css"/> &ndash;&gt;-->
 
-    <link rel="stylesheet" href="public/assets/stylesheets/style.css" type="text/css"/>
+  <link rel="stylesheet" href="public/assets/stylesheets/style.css" type="text/css"/>
 
-  </head>
+</head>
 
-  <body ng-app="app">
+<body ng-app="app">
+
+  <div ng-controller="RoutingController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuitem" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+        <div id="menuitem" class= "collapse navbar-collapse ">
+
+          <ul class="nav navbar-nav navbar-left">
+            <li class="listitem"><a href="/#/">Home</a></li>
+            <li class="listitem"><a href="/#/fellows">Fellows</a></li>
+            <li class="listitem"><a href="/#/companies">Companies</a></li>
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right" class="navbar-collapse collapse">
+            <li><a href="" ng-click="openModal()">Login</a></li>
+            <li><a href="/#/profile">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+<!--=======
     <div ng-controller="RoutingController">
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -27,7 +58,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <!--<a class="navbar-brand" href="#">Hacker Fellows</a>-->
+            &lt;!&ndash;<a class="navbar-brand" href="#">Hacker Fellows</a>&ndash;&gt;
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -39,18 +70,19 @@
               <li><a href="" ng-click="openModal()">Login</a></li>
               <li><a href="/#/profile">Profile</a></li>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
         </div>
       </nav>
     </div>
 
+    >>>>>>> master-->
 
-    <div class="container">
-      <div ng-view="">
+    
+    <div ng-view="">
 
 
-      </div>
     </div>
+
 
     <footer class="footer">
       <div class="container">
@@ -58,8 +90,11 @@
       </div>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular-cookies.min.js"></script>
     <script type="text/javascript" src="public/assets/javascript/vendor/ui-bootstrap-tpls-0.13.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
@@ -70,4 +105,4 @@
     
     
   </body>
-</html>
+  </html>

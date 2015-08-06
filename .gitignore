@@ -106,6 +106,7 @@ $RECYCLE.BIN/
 .sass-cache
 *.css.map
 
+public/assets/stylesheets/style.css
 
 ##
 # vim
@@ -175,8 +176,9 @@ coverage
 #   Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-#   Dependency directories
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
+
+  #   Dependency directories
+  # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules/
 bower_components/
 
