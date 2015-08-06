@@ -17,9 +17,9 @@ function resolvePromisesAndPost(voter, votee) {
         else {
           voter.addVotee(votee);
         }
-      })
-    })
-  })
+      });
+    });
+  });
 }
 
 function resolvePromisesAndDelete(voter, votee) {
@@ -28,8 +28,8 @@ function resolvePromisesAndDelete(voter, votee) {
       voter.getVotees().then( function(data) {
         voter.removeVotee(votee);
         res.send("Vote deleted!");
-      })
-    })
+      });
+    });
   });
 }
 
