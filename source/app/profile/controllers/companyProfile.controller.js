@@ -40,7 +40,7 @@
         function activate() {
             console.log('activated profile controller!');
             //Profile.all();
-        };
+        }
         
         $scope.update= function() {
             $scope.company.skills = $(".js-example-tokenizer").val();
