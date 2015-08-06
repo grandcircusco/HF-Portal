@@ -1,4 +1,3 @@
-console.log('hello world');
 var express = require('express');
 var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
