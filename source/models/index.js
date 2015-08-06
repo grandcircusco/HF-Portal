@@ -30,8 +30,8 @@ Object.keys(db).forEach(function(modelName) {
     }
 });
 
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 db.companies.belongsToMany(db.tags, {through: 'companies_tags'});
 db.tags.belongsToMany(db.companies, {through: 'companies_tags'});
