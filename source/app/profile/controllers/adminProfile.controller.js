@@ -11,13 +11,16 @@
     .controller('AdminProfileController', AdminProfileController)
     .controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
-    AdminProfileController.$inject = ['$scope', '$modal'];
-    AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance'];
+    AdminProfileController.$inject = ['$scope', '$modal', 'User'];
+    AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies'];
 
     /**
      * @namespace AdminProfileController
      */
-     function AdminProfileController($scope, $modal) {
+     function AdminProfileController($scope,  $modal, User) {
+
+        $scope.currentUser = User.getCurrentUser();
+        console.log($scope.currentUser);
 
         $scope.openModal = function() {
 
@@ -37,7 +40,7 @@
     }
 
 
-    function AdminProfileModalInstanceController ($scope, $modalInstance) {
+    function AdminProfileModalInstanceController ($scope, $modalInstance, User, Fellows, Companies) {
 
         function unHighlightField(){
 
@@ -100,7 +103,33 @@
             }
 
             if( !errors ){
-                console.log(user);
+
+                // send user to API via Service
+                User.create(user).then(function(response) {
+
+                    console.log(response);
+
+                    var user_id = response.data.id;
+
+                    if( user.userType === "Fellow" ){
+
+                        var fellow_post = {
+
+                            user_id: user_id
+                        };
+                        Fellows.create(fellow_post);
+                    }
+                    else if( user.userType === "Company" ){
+
+                        var company_post = {
+
+                            user_id: user_id
+                        };
+                        Companies.create(company_post);
+                    }
+                    //console.log(user);
+                });
+
                 $modalInstance.close();
             }
 

@@ -4,8 +4,8 @@
  * @desc    contains the routes for the app
  */
 
- var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile']);
- var string = "dummy"
+ var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+    .run(run);
 
 /**
  *   * @name config
@@ -51,10 +51,10 @@
 });
 
 app.controller('RoutingController', RoutingController)
-.controller('LoginModalInstanceController', LoginModalInstanceController)
+.controller('LoginModalInstanceController', LoginModalInstanceController);
 
 RoutingController.$inject = ['$scope', '$modal'];
-LoginModalInstanceController.$inject = ['$scope', '$modalInstance'];
+LoginModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
 
 function RoutingController($scope, $modal) {
 
@@ -62,22 +62,58 @@ function RoutingController($scope, $modal) {
     var modalInstance = $modal.open({
         templateUrl: 'source/app/profile/partials/login-page.html',
         controller: 'LoginModalInstanceController',
-        size: 'sm',
-        resolve: {
-            function(){
-
-            }
-        }
+        size: 'sm'
     });
 }
 }
 
-function LoginModalInstanceController ($scope, $modalInstance) {
-    $scope.ok = function () {
+function LoginModalInstanceController ($scope, $modalInstance, User) {
+
+    // save this through a refesh
+    $scope.loginForm = {
+
+        email: "",
+        password: ""
+    };
+
+    $scope.login = function(loginForm) {
+
+        console.log(loginForm);
+        User.login(loginForm).success(function(user){
+
+            //console.log(user);
+            //User.currentUser = user
+
+            User.SetCredentials(user.email, user.password, "Fellow");
+        });
+
         $modalInstance.close();
     };
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
+}
+
+
+run.$inject = ['$cookieStore', 'User'];
+function run($cookieStore, User) {
+
+    // keep user logged in after page refresh
+    var currentUser = $cookieStore.get('globals') || {};
+    User.setCurrentUser(currentUser);
+
+    console.log(currentUser);
+    //if ($rootScope.globals.currentUser) {
+    //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+    //}
+
+    //$rootScope.$on('$locationChangeStart', function (event, next, current) {
+    //    // redirect to login page if not logged in and trying to access a restricted page
+    //    var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+    //    var loggedIn = $rootScope.globals.currentUser;
+    //    if (restrictedPage && !loggedIn) {
+    //        $location.path('/login');
+    //    }
+    //});
 }

@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         primary_contact: DataTypes.STRING,
         company_size: DataTypes.INTEGER,
         industry: DataTypes.STRING,
-        description: DataTypes.TEXT,
+        bio: DataTypes.TEXT,
         founding_year: DataTypes.INTEGER,
         founders: DataTypes.STRING,
         website_url: DataTypes.STRING,
