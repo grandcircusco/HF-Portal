@@ -6,7 +6,7 @@ var Sequelize = require("sequelize");
 // var sequelize = new Sequelize("postgres://localhost:5432/hfportal");
 console.log("Here's the DB url: ");
 console.log(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
-var sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
+// var sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
 var env       = process.env.NODE_ENV || "development";
 //var config    = require(__dirname + '/../config/config.json')[env];
 //var sequelize = new Sequelize(config.database, config.username, config.password, config);
@@ -28,8 +28,8 @@ Object.keys(db).forEach(function(modelName) {
     }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
 
 db.companies.belongsToMany(db.tags, {through: 'companies_tags'});
 db.tags.belongsToMany(db.companies, {through: 'companies_tags'});
