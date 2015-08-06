@@ -12,7 +12,6 @@
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
     var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-    //var rootUrl = "http://10.251.1.61:3000";
 
   /**
    * @namespace User
@@ -53,7 +52,8 @@
           SetCredentials: SetCredentials,
           ClearCredentials: ClearCredentials,
           getCurrentUser: getCurrentUser,
-          setCurrentUser: setCurrentUser
+          setCurrentUser: setCurrentUser,
+          isUserLoggedIn: isUserLoggedIn
       };
 
 
@@ -92,6 +92,18 @@
       //    return $http.delete(rootUrl + '/api/v1/users/' + id);
       //}
 
+      function isUserLoggedIn(){
+
+          //console.log(currentUser);
+          if( Object.keys(currentUser).length > 0 ){
+
+              return true;
+          }
+          else{
+
+              return false;
+          }
+      }
 
       function SetCredentials(username, password, userType) {
 
@@ -110,7 +122,6 @@
 
           $rootScope.globals = {};
           $cookieStore.remove('globals');
-
       }
 
   }

@@ -64,18 +64,8 @@ function RoutingController($scope, $modal, User) {
 
      function updateLoginStatus(){
 
-        var currentUser = User.getCurrentUser();
-         console.log(currentUser);
-        if( Object.keys(currentUser).length > 0 ){
-
-            $scope.isUserLoggedIn = true;
-        }
-        else{
-
-            $scope.isUserLoggedIn = false;
-        }
-
-     };
+         $scope.isUserLoggedIn = User.isUserLoggedIn();
+     }
 
     $scope.openModal = function() {
         var modalInstance = $modal.open({
