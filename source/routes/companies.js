@@ -124,7 +124,7 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
         company.image_url = image_url;
-        company.location = location;
+        company.location = req.body.location;
 
         company.save();
 

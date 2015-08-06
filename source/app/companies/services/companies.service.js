@@ -58,6 +58,7 @@
      * @desc updates a company record
      */
     function update(company, id) {
+
       return $http.put('/api/v1/companies/' + id, company);
     }
 
