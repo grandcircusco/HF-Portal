@@ -19,9 +19,9 @@
         <div class="col-md-9">
             <h1>{{ company.name }}</h1>
             <div class="user-facts">
-                Since 2010 <br>
+                Since {{ company.founding_year }} <br>
                 Detroit <br>
-                grandcircus.co <br>
+                {{ company.website_url }} <br>
             </div>
         </div>
     </div>
@@ -30,8 +30,6 @@
         <div class="main-content">
             <h3>Biography</h3>
             <p>{{ company.bio }}</p>
-            <h3>Interests</h3>
-            <p>Sumo adhuc sadipscing in pro. Esse modus copiosae sit ei, mea eu vide quaeque oporteat. Pro an ferri aperiri graecis, pro nibh melius probatus id. Vim id ipsum apeirian, quo ut eius atomorum pertinacia, euismod quaerendum ut mea.</p>
         </div>
     </div>
 
