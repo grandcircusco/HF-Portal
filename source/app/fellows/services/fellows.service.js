@@ -11,7 +11,8 @@
 
   Fellows.$inject = ['$http'];
 
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  var rootUrl = "http://10.251.1.61:3000";
 
   /**
   * @namespace Fellows
@@ -34,7 +35,8 @@
 	 * @desc get all the fellows
 	 */
 	function all() {
-		return $http.get(rootUrl + '/api/v1/fellows');
+		//return $http.get(rootUrl + '/api/v1/fellows');
+                return fellows;
 	}
 
 	/**
@@ -74,6 +76,7 @@
 		{
 		  name:	'Name 1',
 		  tags:	['C++', 'Java', 'PHP'],
+                  id: 1,
 		  desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
 		  ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
 		  ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +

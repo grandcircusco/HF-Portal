@@ -65,6 +65,8 @@
 
     $scope.fellow = fellow;
 
+    console.log(fellow);
+
     $scope.ok = function ok() {
       $modalInstance.close($scope.fellow);
     };
