@@ -1,5 +1,4 @@
 var express = require('express');
-//var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var Sequelize = require('sequelize');
