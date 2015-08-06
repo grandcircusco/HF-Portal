@@ -7,7 +7,7 @@ var Companies = models.companies;
 var Fellows = models.fellows;
 
 
-function resolvePromisesAndPost(voter, votee) {
+function resolvePromisesAndPost(voter, votee, res) {
   voter.then(function(voter){
     votee.then(function(votee){
       voter.getVotees().then( function(data) {
@@ -23,7 +23,7 @@ function resolvePromisesAndPost(voter, votee) {
   });
 }
 
-function resolvePromisesAndDelete(voter, votee) {
+function resolvePromisesAndDelete(voter, votee, res) {
   voter.then(function(voter){
     votee.then(function(votee){
       voter.getVotees().then( function(data) {
@@ -72,7 +72,7 @@ app.post('/fellow/', function postFellowVote(req, res) {
 
   });
 
-  resolvePromisesAndPost(fellow, company);
+  resolvePromisesAndPost(fellow, company, res);
 
 });
 
@@ -94,7 +94,7 @@ app.post('/company/', function postCompanyVote(req, res) {
 
   });
 
-  resolvePromisesAndPost(company, fellow);
+  resolvePromisesAndPost(company, fellow, res);
 
 });
 
@@ -133,7 +133,7 @@ app.delete('/fellow/', function(req, res) {
     }
   });
 
-  resolvePromisesAndDelete(fellow, company);
+  resolvePromisesAndDelete(fellow, company, res);
 
 });
 
@@ -154,7 +154,7 @@ app.delete('/company/', function(req, res) {
 
   });
 
-  resolvePromisesAndDelete(company, fellow);
+  resolvePromisesAndDelete(company, fellow, res);
 
 });
 

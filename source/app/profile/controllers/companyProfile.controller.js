@@ -5,9 +5,6 @@
 (function () {
     'use strict';
 
-    var models = require('../models');
-    var Tags = model.tags;
-
     angular
     .module('app.profile.controllers')
     .controller('CompanyProfileController', CompanyProfileController);
@@ -67,7 +64,7 @@
             }
 
             // Push any new tags to the database
-             
+
             // send fellows info to API via Service
             Companies.update($scope.company, tempID);
         };
