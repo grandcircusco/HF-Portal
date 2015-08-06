@@ -19,9 +19,8 @@
    */
   function User($rootScope, $cookieStore, $http) {
 
-    var = this;
     // Will hold info for the currently logged in user
-    currentUser = {
+    var currentUser = {
       username : "Seelio",
       userType: "Company",
       authdata: ""
@@ -37,6 +36,7 @@
       //destroy: destroy
       SetCredentials: SetCredentials,
       ClearCredentials: ClearCredentials,
+      currentUser: currentUser,
       getCurrentUser: getCurrentUser,
       setCurrentUser: setCurrentUser
     };
