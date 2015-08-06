@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-md-3">
-            <img class="user-photo" src="public/assets/images/placeholder-hi.png" width="200" height="200">
+            <img class="user-photo" src="{{ company.image_url }}" width="200" height="200">
             <br>
             <span class="label label-default">HTML</span>
             <span class="label label-default">CSS</span>
@@ -20,7 +20,7 @@
             <h1>{{ company.name }}</h1>
             <div class="user-facts">
                 Since {{ company.founding_year }} <br>
-                Detroit <br>
+                {{ company.location }} <br>
                 {{ company.website_url }} <br>
             </div>
         </div>
