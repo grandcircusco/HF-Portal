@@ -13,7 +13,9 @@ var users = require('./source/routes/users');
 
 var app = express();
 
+console.log("Setting port: ");
 app.set('port', (process.env.PORT || 5000));
+console.log('Port set: ' + app.get('port'));
 
 /**
  *
