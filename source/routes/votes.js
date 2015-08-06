@@ -57,6 +57,7 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
 // POST /fellow/ - Fellow votes for a company
 app.post('/fellow/', function postFellowVote(req, res) {
 
+	console.log('\n\n\n\npost getting called in express');
   var company = Companies.findOne({
     where: {
       id: req.body.company_id
