@@ -40,9 +40,7 @@
      * @desc fellow votes on a company
      */
     function create(content) {
-      return $http.post('/votes/fellow/', {
-        content: content
-      });
+      return $http.post('/votes/fellow/', content);
     }
 
     /**
