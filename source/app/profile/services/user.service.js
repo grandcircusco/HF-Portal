@@ -106,6 +106,8 @@
             $rootScope.globals = {};
             $cookieStore.remove('globals');
 
+            currentUser = {};
+
             //$http.defaults.headers.common.Authorization = 'Basic ';
         }
 
