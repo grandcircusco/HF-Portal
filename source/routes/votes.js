@@ -7,6 +7,7 @@ var Companies = models.companies;
 var Fellows = models.fellows;
 
 
+
 function resolvePromisesAndPost(voter, votee,res) {
   voter.then(function(voter){
     votee.then(function(votee){

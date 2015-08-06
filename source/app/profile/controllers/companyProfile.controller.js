@@ -82,9 +82,7 @@
 
             company.tags = $("#tags").val();
 
-            // Push any new tags to the database
-            console.log("PRE");
-             console.log(company);
+
             // send fellows info to API via Service
             Companies.update(company, currentUser.id).success(function(data){
                 console.log("POST");
