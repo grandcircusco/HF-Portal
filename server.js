@@ -36,6 +36,7 @@ app.use('/api/v1/votes', votes);
 app.use('/api/v1/users', users);
 
 /** Server Startup **/
+try{
 models.sequelize.sync().then(function () {
 
     var server = app.listen(app.get('port'), function createServer() {
@@ -45,3 +46,6 @@ models.sequelize.sync().then(function () {
         console.log("HFPortal app listening at http://%s:%s", host, port);
     });
 });
+}catch(err) {
+	console.log(err);
+}
