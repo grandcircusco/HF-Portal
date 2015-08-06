@@ -7,9 +7,10 @@ var Tags = models.tags;
 /** Tags **/
 
 // GET /api/tags - get all companies
-app.get('/api/v1/tags', function getTags(req, res) {
+app.get('/', function getTags(req, res) {
+/*
 
-    /*Tags.create({
+    Tags.create({
         name: "Javascript"
     });
 
@@ -47,7 +48,8 @@ app.get('/api/v1/tags', function getTags(req, res) {
 
     Tags.create({
         name: "PostgreSQL"
-    });*/
+    });
+*/
 
 
     Tags.all().then(function(tags) {
