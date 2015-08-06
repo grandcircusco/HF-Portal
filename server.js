@@ -26,7 +26,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-app.use(gzippo.staticGzip("" + __dirname + "/public"));
+app.use(gzippo.staticGzip(__dirname + '/public'));
+app.use(gzippo.compress());
 
 
 app.use('/api/v1/fellows', fellows);
