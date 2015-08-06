@@ -1,6 +1,6 @@
 (function() {
     "use strict";
-    
+
     module.exports = function(sequelize, DataTypes) {
 
         var Company = sequelize.define("companies", {
@@ -29,4 +29,3 @@
         return Company;
     };
 }());
-

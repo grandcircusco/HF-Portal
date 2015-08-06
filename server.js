@@ -1,5 +1,4 @@
 var express = require('express');
-//var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var Sequelize = require('sequelize');
@@ -38,15 +37,17 @@ app.use('/api/v1/users', users);
 
 /** Server Startup **/
 try{
-models.sequelize.sync().then(function () {
+    models.sequelize.sync().then(function () {
 
-    var server = app.listen(app.get('port'), function createServer() {
-        var host = server.address().address;
-        var port = server.address().port;
+        var server = app.listen(app.get('port'), function createServer() {
+            var host = server.address().address;
+            var port = server.address().port;
 
-        console.log("HFPortal app listening at http://%s:%s", host, port);
+            console.log("HFPortal app listening at http://%s:%s", host, port);
+        });
     });
-});
+
 }catch(err) {
 	console.log("goodbye world, I'm crashing");
 } 
+
