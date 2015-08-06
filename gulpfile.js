@@ -12,7 +12,7 @@ var options = {
 	mangle:true
 }
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['jshint','build-js','build-css','spec','watch']);
 
 
 gulp.task('watch', function(){

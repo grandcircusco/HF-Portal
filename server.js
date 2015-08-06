@@ -13,6 +13,10 @@ var users = require('./source/routes/users');
 
 var app = express();
 
+console.log("Setting port: ");
+app.set('port', (process.env.PORT || 5000));
+console.log('Port set: ' + app.get('port'));
+
 /**
  *
  * This makes getting Posted Data from req.body work
@@ -37,13 +41,16 @@ app.get('*', function(req, res) {
 
 
 /** Server Startup **/
-
+try{
 models.sequelize.sync().then(function () {
 
-  var server = app.listen(3000, function createServer() {
-    var host = server.address().address;
-    var port = server.address().port;
+    var server = app.listen(app.get('port'), function createServer() {
+        var host = server.address().address;
+        var port = server.address().port;
 
-    console.log("HFPortal app listening at http://%s:%s", host, port);
-  });
+        console.log("HFPortal app listening at http://%s:%s", host, port);
+    });
 });
+}catch(err) {
+	console.log("goodbye world, I'm crashing");
+}

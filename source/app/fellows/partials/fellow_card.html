@@ -1,26 +1,33 @@
 <div class="grid-box fellow">
 
-	<figure>
-		<img ng-src={{fellow.image_url}}>
-		<figcaption> {{fellow.first_name +" "+ fellow.last_name}} </figcaption>
+	<figure> <!-- image section -->
+		<div class="imgCrop">
+			<img ng-src={{fellow.src}}>
+		</div>
 	</figure>
 
-	<div class="row">
-		<div class="col-md-4 tag fellow_tag" ng-repeat='tag in fellow.tags'>
+	<div class="fellowInfo"><!-- div containing information -->
+	
+		<div class="fellowName "> <!-- fellow name section -->
+			<figcaption> {{fellow.first_name +" "+ fellow.last_name}} </figcaption>
+		</div>
+
+		<div class="quote">{{fellow.bio}}
+
+		</div>
+
+	
+		<div class="tag fellow_tag " ng-repeat='tag in fellow.tags'><!-- fellow tags section -->
 			<p> {{tag}} </p>
 		</div>
+
 	</div>
-
-	<div class="row">
-
-		<p id="quote">{{fellow.bio}}</p>
-
+	<div class="details-button">
 		<!-- Button trigger modal -->
-		<p class="details-button">
-			<button type="button" class="btn btn-primary btn-lg" ng-click="openModal(fellow)">
-				View Details
-			</button>
-		</p>
+		<button type="button" class="detButton" ng-click="openModal(fellow)">
+			<!-- View Details -->
+			<i class="fa fa-th-list fa-lg"></i>
 
+		</button>
 	</div>
 </div>

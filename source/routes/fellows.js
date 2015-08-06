@@ -10,9 +10,6 @@ app.get('/', function getFellows(req, res) {
 
     Fellows.all({
 
-        where: {
-            name: req.params.id
-        },
         include: [{
             model: Tags
         }]

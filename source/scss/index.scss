@@ -1,85 +1,41 @@
+@import 'variables';
+@import 'mixins';
 html {
-  position: relative;
   min-height: 100%;
+  position: relative;
 }
 
 body {
-	font-family: 'Fira Sans', sans-serif;
-	font-size: 16px;
-	font-weight: 300;
-	line-height: 1.5;
-	margin-top: 50px;
-	margin-bottom: 60px;
-}
+	@include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
+	margin: 50px 0 0 0;
+	padding: 0 0 20px 0;
+
+	}
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Dosis', sans-serif;
-	font-weight: 600;
+	font-family: $head-font;
+	@include text($family: $head-font, $weight: 600);
 }
 
 h1 {
+	@include text($weight: 800);
 	text-transform: uppercase;
-	font-weight: 800;
-	color: #f2663a;
 }
 
-p{
-
-	color: #2f2f2f;
+p {
+	@include text($color: $body-text-color);
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-	color: #f2663a;
+.row {
+	margin-left: 0;
+	margin-right: 0;
 }
 
-.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
-	color: #dededf;
-}
+@import 'navbar';
 
-/* Sticky footer styles
--------------------------------------------------- */
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
+@import 'footer';
 
-
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.hexagon{
-	margin-top: 45px;
-	position: relative;
-}
-
-.hexagon span{
-	position: absolute;
-	top: -28px;
-	left: -48px;
-	width: 120px;
-	height: 130px;
-	display: block;
-	background: transparent url(images/hexagons.png) 0px 0px no-repeat;
-	background-size: contain;
-	opacity: 0.2;
-}
-
-
-/* Carousel Overrides */
-
-.carousel-inner {
-  padding: 0 15%;
-}
+@import 'hexagon';
 
 
 /* Form Styles */
@@ -94,3 +50,4 @@ input.error,
 
   background-color: #237A94;
 }
+
