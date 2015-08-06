@@ -11,8 +11,8 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-    var rootUrl = "http://10.251.1.61:3000";
+    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    //var rootUrl = "http://10.251.1.61:3000";
 
   /**
    * @namespace User
@@ -20,37 +20,17 @@
    */
   function User($rootScope, $cookieStore, $http) {
 
-      var vm = this;
       // Will hold info for the currently logged in user
-      vm.currentUser = {
-          username: "",
-          userType: "",
-          authdata: ""
-      };
-
-
-      var User = {
-          //all: all,
-          //get: get,
-          create: create,
-          login: login,
-          //update: update,
-          //destroy: destroy
-          SetCredentials: SetCredentials,
-          ClearCredentials: ClearCredentials,
-          getCurrentUser: getCurrentUser,
-          setCurrentUser: setCurrentUser
-      };
-
+      var currentUser = {};
 
       function getCurrentUser() {
-          console.log(vm.currentUser.userType);
-          return vm.currentUser;
+          console.log(currentUser.userType);
+          return currentUser;
       }
 
       function setCurrentUser(user) {
 
-          vm.currentUser = user
+          currentUser = user
       }
 
 
@@ -117,14 +97,13 @@
 
           var authdata = Base64.encode(username + ':' + password + ':' + userType);
 
-          vm.currentUser = {
+          currentUser = {
               username: username,
               userType: userType,
               authdata: authdata
           };
 
-          //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-          $cookieStore.put('globals', vm.currentUser);
+          $cookieStore.put('globals', currentUser);
       }
 
       function ClearCredentials() {
@@ -132,7 +111,6 @@
           $rootScope.globals = {};
           $cookieStore.remove('globals');
 
-          //$http.defaults.headers.common.Authorization = 'Basic ';
       }
 
   }
