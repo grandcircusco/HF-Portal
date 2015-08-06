@@ -23,8 +23,13 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          console.log(currentUser.userType);
-          return currentUser;
+          //return currentUser;
+        return {
+          username: "Seelio",
+          userType: "Company",
+          authdata: currentUser.authdata,
+          id: 1
+        }
       }
 
       function setCurrentUser(user) {
