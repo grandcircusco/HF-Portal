@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(gzippo.staticGzip(__dirname));
-appluse(gzippo.compress());
+app.use(gzippo.compress());
 
 
 app.use('/api/v1/fellows', fellows);
