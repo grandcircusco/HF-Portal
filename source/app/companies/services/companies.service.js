@@ -16,15 +16,14 @@
   * @returns {Service}
   */
   function Companies($http) {
-    var Companies = {
+
+    return {
       all: all,
       get: get,
       create: create,
       update: update,
       destroy: destroy
     };
-
-    return Companies;
 
     ////////////////////
 
@@ -33,10 +32,8 @@
      * @desc get all the companies
      */
     function all() {
-
-      // return [];
-
-      return $http.get('/api/v1/companies/');
+      //return $http.get('/api/v1/companies/');
+      return $http.get('http://10.251.1.61:3000/api/v1/companies/');
     }
 
     /**
@@ -44,35 +41,35 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/api/v1/companies/' + parseInt(id) );
+      //return $http.get('/api/v1/companies/' + parseInt(id) );
+      return $http.get('http://10.251.1.61:3000/api/v1/companies/' + parseInt(id) );
     }
 
     /**
      * @name create
-     * @desc creeate a new fellow record
+     * @desc creeate a new company record
      */
-    function create(content, id) {
-      return $http.post('/api/v1/companies/' + id, {
-        content: content
-      });
+    function create(company) {
+      //return $http.post('/api/v1/companies/', company);
+      return $http.post('http://10.251.1.61:3000/api/v1/companies/', company);
     }
 
     /**
      * @name update
-     * @desc updates a fellow record
+     * @desc updates a company record
      */
     function update(content, id) {
-      return $http.update('/api/v1/companies/' + id, {
-        content: content
-      });
+      //return $http.put('/api/v1/companies/' + id, company);
+      return $http.put('http://10.251.1.61:3000/api/v1/companies/' + id, company);
     }
 
     /**
      * @name destroy
-     * @desc destroy a fellow record
+     * @desc destroy a company record
      */
     function destroy(id) {
-      return $http.delete('/api/v1/companies/' + id);
+      // return $http.delete('/api/v1/companies/' + id);
+      return $http.delete('http://10.251.1.61:3000/api/v1companies/' + id);
     }
   }
 })();

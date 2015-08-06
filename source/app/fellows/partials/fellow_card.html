@@ -1,8 +1,8 @@
 <div class="grid-box fellow">
 
 	<figure>
-		<img ng-src={{fellow.src}}>
-		<figcaption> {{fellow.name}} </figcaption>
+		<img ng-src={{fellow.image_url}}>
+		<figcaption> {{fellow.first_name +" "+ fellow.last_name}} </figcaption>
 	</figure>
 
 	<div class="row">
@@ -13,7 +13,7 @@
 
 	<div class="row">
 
-		<p id="quote">{{fellow.desc}}</p>
+		<p id="quote">{{fellow.bio}}</p>
 
 		<!-- Button trigger modal -->
 		<p class="details-button">

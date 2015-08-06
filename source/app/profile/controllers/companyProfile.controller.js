@@ -9,17 +9,23 @@
     .module('app.profile.controllers')
     .controller('CompanyProfileController', CompanyProfileController);
 
-    CompanyProfileController.$inject = ['$scope'];
+    CompanyProfileController.$inject = ['$scope', 'Companies'];
 
     /**
     * @namespace CompanyProfileController
     */
-    function CompanyProfileController($scope) {
+    function CompanyProfileController($scope, Companies) {
         var vm = this;
 
-        $scope.company= {
-            img:"public/assets/images/placeholder-hi.png"
-        };
+        var tempID = 4; //TODO change to not hard coded
+
+        Companies.get(tempID).success(function(company){
+            $scope.company = company;
+        });
+
+        // $scope.company= {
+        //     img:"public/assets/images/placeholder-hi.png"
+        // };
 
        
 
@@ -39,8 +45,9 @@
         $scope.update= function() {
             $scope.company.skills = $(".js-example-tokenizer").val();
             console.log($scope.company);
-            console.log("dummy");
-            
+             
+            // send fellows info to API via Service
+            Companies.update($scope.company, tempID);
         };
 
 

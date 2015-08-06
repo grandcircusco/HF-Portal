@@ -16,15 +16,14 @@
   * @returns {Service}
   */
   function Fellows($http) {
-    var Fellows = {
+
+    return {
       all: all,
       get: get,
       create: create,
       update: update,
       destroy: destroy
     };
-
-    return Fellows;
 
     ////////////////////
 
@@ -33,8 +32,47 @@
      * @desc get all the fellows
      */
     function all() {
+      //return fellows;
+      //return $http.get('/api/v1/fellows/');
+      return $http.get('http://10.251.1.61:3000/api/v1/fellows');
+    }
 
-      return [
+    /**
+     * @name get
+     * @desc get one fellow
+     */
+    function get(id) {
+      //return $http.get('/api/v1/fellows/' + i);
+      return $http.get('http://10.251.1.61:3000/api/v1/fellows/' + id);
+    }
+    /**
+     * @name create
+     * @desc creeate a new fellow record
+     */
+   function create(fellow) {
+      return $http.post('http://10.251.1.61:3000/api/v1/fellows/', fellow);
+    }
+
+    /**
+     * @name update
+     * @desc updates a fellow record
+     */
+    function update(fellow, id) {
+      return $http.put('http://10.251.1.61:3000/api/v1/fellows/' + id, fellow);
+     //return $http.put('/api/v1/fellows/' + id, {
+    }
+
+    /**
+     * @name destroy
+     * @desc destroy a fellow record
+     */
+    function destroy(id) {
+      //return $http.delete('/api/v1/fellows/' + id);
+      return $http.delete('http://10.251.1.61:3000/api/v1/fellows/' + id);
+    }
+  }
+
+  var fellows = [
         {
           name:	'Name 1',
           tags:	['C++', 'Java', 'PHP'],
@@ -89,44 +127,5 @@
           src:	'/public/assets/images/placeholder-hi.png'
         }
       ];
-
-      //return $http.get('/api/v1/fellows/');
-    }
-
-    /**
-     * @name get
-     * @desc get one fellow
-     */
-    function get(id) {
-      return $http.get('/api/v1/fellows/' + i);
-    }
-    /**
-     * @name create
-     * @desc creeate a new fellow record
-     */
-    function create(content, id) {
-      return $http.post('/api/v1/fellows/' + id, {
-        content: content
-      });
-    }
-
-    /**
-     * @name update
-     * @desc updates a fellow record
-     */
-    function update(content, id) {
-      return $http.update('/api/v1/fellows/' + id, {
-        content: content
-      });
-    }
-
-    /**
-     * @name destroy
-     * @desc destroy a fellow record
-     */
-    function destroy(id) {
-      return $http.delete('/api/v1/fellows/' + id);
-    }
-  }
 
 })();
