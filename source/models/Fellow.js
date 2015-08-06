@@ -1,6 +1,6 @@
 (function() {
     "use strict";
-    
+
     module.exports = function(sequelize, DataTypes) {
 
         var Fellow = sequelize.define("fellows", {
@@ -15,7 +15,8 @@
             bio: DataTypes.TEXT,
             interests: DataTypes.TEXT,
             resume_file_path: DataTypes.STRING,
-            image_url: DataTypes.STRING
+            image_url: DataTypes.STRING,
+            website_url: DataTypes.STRING
 
         },{
 
