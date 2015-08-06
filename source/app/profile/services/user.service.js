@@ -11,7 +11,8 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    var rootUrl = '';
+    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
    * @namespace User
