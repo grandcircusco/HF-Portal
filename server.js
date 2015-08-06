@@ -1,3 +1,5 @@
+console.log("hello world");
+
 var express = require('express');
 var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
@@ -34,7 +36,6 @@ app.use('/api/v1/votes', votes);
 app.use('/api/v1/users', users);
 
 /** Server Startup **/
-
 models.sequelize.sync().then(function () {
 
     var server = app.listen(app.get('port'), function createServer() {
