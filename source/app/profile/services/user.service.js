@@ -29,7 +29,7 @@
 
         function setCurrentUser(user){
 
-            currentUser = user
+            currentUser = user;
         }
 
 
