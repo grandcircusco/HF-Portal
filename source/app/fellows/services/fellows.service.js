@@ -35,8 +35,13 @@
      * @desc get all the fellows
      */
     function all() {
+<<<<<<< HEAD
       return fellows;
       //return $http.get(rootUrl + '/api/v1/fellows/');
+=======
+
+      return $http.get(rootUrl + '/api/v1/fellows');
+>>>>>>> origin/master
     }
 
     /**
@@ -44,13 +49,22 @@
      * @desc get one fellow
      */
     function get(id) {
+<<<<<<< HEAD
       return $http.get(rootUrl + '/api/v1/fellows/' + parseInt(id) );
+=======
+      return $http.get(rootUrl + '/api/v1/fellows/' + id);
+>>>>>>> origin/master
     }
     /**
      * @name create
      * @desc creeate a new fellow record
      */
+<<<<<<< HEAD
    function create(fellow) {
+=======
+    function create(fellow) {
+
+>>>>>>> origin/master
       return $http.post(rootUrl + '/api/v1/fellows/', fellow);
     }
 
@@ -59,7 +73,11 @@
      * @desc updates a fellow record
      */
     function update(fellow, id) {
+<<<<<<< HEAD
      return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
+=======
+      return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
+>>>>>>> origin/master
     }
 
     /**

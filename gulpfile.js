@@ -16,7 +16,7 @@ gulp.task('default', ['jshint','build-js','build-css','spec','watch']);
 
 
 gulp.task('watch', function(){
-	gulp.watch('source/**/*.js',['jshint', 'build-js', 'spec']);
+	gulp.watch(['*.js','spec/**/*.js','source/**/*.js'],['jshint', 'build-js', 'spec']);
 	gulp.watch('source/scss/**/*.scss', ['build-css', 'spec']);
 });
 
@@ -46,6 +46,7 @@ gulp.task('build-js', function () {
 
 
 gulp.task('spec', function () {
-  /*  return gulp.src('spec/*.js')
-        .pipe(jasmine());*/
+    // return gulp.src('spec/*.js')
+        // .pipe(jasmine());
+        return;
 });

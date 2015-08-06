@@ -1,15 +1,39 @@
 var express = require('express');
-var app = express();
+var multer  = require('multer');
 
+
+// Image Upload
+// var upload = multer({ dest: './public/assets/images/' });
+var app = express();
 var models = require('../models');
 var Fellows = models.fellows;
 var Tags = models.tags;
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/assets/images/')
+  },
+  filename: function (req, file, cb) {
+    console.log(file);
+    var ext = "." + file.mimetype.split('/')[1];
+    //console.log("********************"+ file.fieldname);
+    cb(null, file.fieldname + "_"+ Date.now() + ext);
+  }
+});
+
+var upload = multer({ storage: storage });
+
+
 
 // GET /fellows - get all fellows
 app.get('/', function getFellows(req, res) {
 
     Fellows.all({
 
+        where: {
+
+            first_name: {ne: null}
+        },
         include: [{
             model: Tags
         }]
@@ -64,9 +88,28 @@ app.post('/', function postFellow(req, res) {
 
 });
 
+// Post profile photo
+// app.post('/uploads/:id', upload.single('profile'), function (req, res, next) {
+//
+//   // Fellows.findOne({
+//   //     where: {
+//   //         id: req.params.id
+//   //     }
+//   // }).then(function(fellow) {
+//   //
+//   //     res.send(fellow);
+//   // });
+//
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+//   console.log(req.file.originalname);
+//   res.send('uploading file');
+//
+// });
 
 // PUT /fellows/:id - updates an existing fellow record
-app.put('/:id', function putFellow(req, res) {
+app.put('/:id', upload.single('fellow_profile'), function putFellow(req, res) {
+
 
     Fellows.findOne({
 
@@ -89,7 +132,9 @@ app.put('/:id', function putFellow(req, res) {
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
         fellow.resume_file_path = req.body.resume_file_path;
-        fellow.image_url = req.body.image_url;
+        //console.log("####################"+req.file.path);
+        fellow.image_url = req.file.path;
+
 
         fellow.save();
 

@@ -1,8 +1,8 @@
 var express = require('express');
-//var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var Sequelize = require('sequelize');
+var gzippo = require('gzippo');
 
 var models = require('./source/models');
 var fellows = require('./source/routes/fellows');
@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+app.use(gzippo.staticGzip("" + __dirname + "/public"));
+
 
 app.use('/api/v1/fellows', fellows);
 app.use('/api/v1/companies', companies);
@@ -42,15 +44,17 @@ app.use('/api/v1/users', users);
 
 /** Server Startup **/
 try{
-models.sequelize.sync().then(function () {
+    models.sequelize.sync().then(function () {
 
-    var server = app.listen(app.get('port'), function createServer() {
-        var host = server.address().address;
-        var port = server.address().port;
+        var server = app.listen(app.get('port'), function createServer() {
+            var host = server.address().address;
+            var port = server.address().port;
 
-        console.log("HFPortal app listening at http://%s:%s", host, port);
+            console.log("HFPortal app listening at http://%s:%s", host, port);
+        });
     });
-});
-}catch(err) {
+
+}
+catch(err) {
 	console.log("goodbye world, I'm crashing");
 }

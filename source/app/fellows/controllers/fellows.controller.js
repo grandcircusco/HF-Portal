@@ -63,7 +63,6 @@
 
   function FellowsModalInstanceController ($scope, $modalInstance, fellow, FellowVotes, User) {
 
-
     $scope.fellow = fellow;
 
     $scope.ok = function ok() {

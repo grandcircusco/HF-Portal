@@ -58,6 +58,8 @@
 
     ////////////////////
 
+    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+
     /**
      * @name all
      * @desc get all the users
@@ -93,8 +95,27 @@
       return $http.post(rootUrl + '/api/v1/users/login', user);
     }
 
+    /**
+     * @name update
+     * @desc updates a user record
+     */
+    //function update(content, id) {
+    //    return $http.update(rootUrl + '/api/v1/users/' + id, {
+    //        content: content
+    //    });
+    //}
+
+    /**
+     * @name destroy
+     * @desc destroy a user record
+     */
+    //function destroy(id) {
+    //    return $http.delete(rootUrl + '/api/v1/users/' + id);
+    //}
+  }
 
     function SetCredentials(username, password, userType) {
+
 
       var authdata = Base64.encode(username + ':' + password + ':' + userType);
 
@@ -116,24 +137,7 @@
       //$http.defaults.headers.common.Authorization = 'Basic ';
     }
 
-    /**
-     * @name update
-     * @desc updates a user record
-     */
-    //function update(content, id) {
-    //    return $http.update(rootUrl + '/api/v1/users/' + id, {
-    //        content: content
-    //    });
-    //}
 
-    /**
-     * @name destroy
-     * @desc destroy a user record
-     */
-    //function destroy(id) {
-    //    return $http.delete(rootUrl + '/api/v1/users/' + id);
-    //}
-  }
 
   // Base64 encoding service used by AuthenticationService
   var Base64 = {
