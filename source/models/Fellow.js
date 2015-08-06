@@ -1,6 +1,6 @@
 (function() {
     "use strict";
-    
+
     module.exports = function(sequelize, DataTypes) {
 
         var Fellow = sequelize.define("fellows", {
