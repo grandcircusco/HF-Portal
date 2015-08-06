@@ -1,3 +1,42 @@
+@import 'variables';
+
+.company-profile {
+	background-color: $odd-section;
+
+	.fa {
+		color: $heading-text-color;
+	}
+	input, textarea {
+		background-color: $profile-accent-color;
+		border: none;
+		color: $heading-text-color;
+	}
+
+	label {
+		color: $heading-text-color;
+		font-weight: 500;
+	}
+	.form-group {
+		padding: 5px 0 5px 0;
+	}
+
+	.dropdown {
+		width: 40%;
+		button {
+			width: 100%;
+			background-color: $profile-accent-color;
+			color: $heading-text-color;
+			border: none;
+			.dropdown-menu {
+				background-color: lighten($odd-section, 20%);
+			}
+		}
+	}
+
+	button {
+		@include standard-button-light();
+	}
+}
 
 .wrapper{padding:0;
 		width:100%}
@@ -10,7 +49,9 @@
 	height:250px;
 	overflow:hidden;
 	margin: 0 0 2em 0;
+}
 
-	
+.profile-form {
+	padding: 25px 0 0 0;
 
 }
