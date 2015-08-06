@@ -26,7 +26,6 @@ app.use('/api/v1/companies', companies);
 app.use('/api/v1/tags', tags);
 app.use('/api/v1/votes', votes);
 
-
 /** Server Startup **/
 
 models.sequelize.sync().then(function () {
@@ -38,6 +37,3 @@ models.sequelize.sync().then(function () {
         console.log("HFPortal app listening at http://%s:%s", host, port);
     });
 });
-
-
-

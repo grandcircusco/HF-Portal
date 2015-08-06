@@ -1,9 +1,33 @@
 var express = require('express');
+var multer  = require('multer');
 var app = express();
 
 var models = require('../models');
 var Companies = models.companies;
 var Tags = models.tags;
+
+// Image Upload
+// var upload = multer({ dest: './public/assets/images/' });
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/assets/images/')
+  },
+  filename: function (req, file, cb) {
+    console.log(file);
+    var ext = "." + file.mimetype.split('/')[1];
+    //console.log("********************"+ file.fieldname);
+    cb(null, file.fieldname + "_" + Date.now() + ext);
+  }
+});
+
+var upload = multer({ storage: storage });
+
+
+
+
+
+
 
 // GET /companies - get all companies
 app.get('/', function getCompanies(req, res) {
@@ -71,7 +95,7 @@ app.get('/:id', function getCompany(req, res) {
 });
 
 // PUT /companies/:id - updates an existing company record
-app.put('/:id', function putCompany(req, res) {
+app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
 
 
     req.body.image_file
@@ -130,4 +154,3 @@ app.delete('/:id', function deleteCompany(req, res) {
 });
 
 module.exports = app;
-
