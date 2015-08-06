@@ -46,7 +46,7 @@
 	function get(id) {
 
 		console.log("request from angular to node");
-		var res = $http.get(rootUrl + '/api/v1/fellows/' + id).success(function(data) {
+		var res = $http.get('/api/v1/fellows/' + id).success(function(data) {
 			console.log("fellows data");
 			console.log(data.first_name);
 			console.log(data.tags);

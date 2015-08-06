@@ -51,14 +51,6 @@
 
         });
 
-        // $scope.company= {
-        //     img:"public/assets/images/placeholder-hi.png"
-        // };
-
-
-
-
-
         activate();
 
         function activate() {
