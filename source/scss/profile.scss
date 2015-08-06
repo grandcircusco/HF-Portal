@@ -11,6 +11,7 @@
 	overflow:hidden;
 	margin: 0 0 2em 0;}
 
+
 	.headingOverlay{
 		background-color:rgba(white,.5);
 		width:100%;
@@ -40,3 +41,12 @@
 		height:auto;
 		margin: -0.5em -0.5em -0.25em -0.25em;
 	}
+
+}
+
+.alert{
+  height: 20%;
+  padding: 0px; 
+  border: 1px solid;
+  visibility: hidden;
+}
