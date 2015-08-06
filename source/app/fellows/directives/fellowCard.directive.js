@@ -5,10 +5,10 @@
     .module('app.fellows.directives')
     .directive('fellowCard', fellowCard);
 
-
+  //ng-fellow-card
  function fellowCard() {
     return {
-      restrice: 'AE',
+      restrict: 'E',
       replace: true,
       scope: true,
       templateUrl: '/source/app/fellows/partials/fellow_card.html'/*,

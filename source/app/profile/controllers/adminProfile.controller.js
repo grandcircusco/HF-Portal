@@ -44,29 +44,32 @@
 
         function unHighlightField(){
 
-            angular.element(document.getElementsByTagName("input")).removeClass("error");
-            angular.element(document.getElementById("userType")).removeClass('error');
+            jQuery("input").removeClass("error");
+            jQuery("#userType").removeClass('error');
         }
 
         function highlightPasswordField(){
 
-            angular.element(document.getElementById("password")).addClass('error');
+            jQuery("#password").addClass('error');
         }
 
         function highlightEmailField(){
 
-            angular.element(document.getElementById("email")).addClass('error');
+            jQuery("email").addClass('error');
         }
 
         function highlightUserTypeField(){
 
-            angular.element(document.getElementById("userType")).addClass('error');
+            jQuery("userType").addClass('error');
         }
 
         $scope.ok = function (user) {
 
             // remove previous highlights in case data is now correct
             unHighlightField();
+
+            console.log("User Output");
+            console.log(user);
 
             // if everything is good log data and close, else highlight error
             var errors = false;
@@ -96,7 +99,7 @@
 
                 if(typeof(user.userType) == "undefined"){
                     console.log("Bad type");
-                    //heighlight button
+                    //highlight button
                     highlightUserTypeField();
                     errors = true;
                 }
@@ -141,17 +144,19 @@
 
         $scope.switchType = function(user){
 
+            console.log(user);
+
             if( user.userType === "Company" ){
 
-                angular.element(document.getElementById("optionCompany")).addClass('selected');
-                angular.element(document.getElementById("optionFellow")).removeClass('selected');
+                jQuery("optionCompany").addClass('selected');
+                jQuery("optionFellow").removeClass('selected');
             }
             else if( user.userType === "Fellow" ){
 
                 console.log("Fellow selection");
 
-                angular.element(document.getElementById("optionCompany")).removeClass('selected');
-                angular.element(document.getElementById("optionFellow")).addClass('selected');
+                jQuery("optionCompany").removeClass('selected');
+                jQuery("optionFellow").addClass('selected');
             }
 
         };

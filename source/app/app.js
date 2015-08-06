@@ -4,7 +4,8 @@
  * @desc    contains the routes for the app
  */
 
- var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+ var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap',
+     'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
     .run(run);
 
 /**
@@ -63,18 +64,8 @@ function RoutingController($scope, $modal, User) {
 
      function updateLoginStatus(){
 
-        var currentUser = User.getCurrentUser();
-         console.log(currentUser);
-        if( Object.keys(currentUser).length > 0 ){
-
-            $scope.isUserLoggedIn = true;
-        }
-        else{
-
-            $scope.isUserLoggedIn = false;
-        }
-
-     };
+         $scope.isUserLoggedIn = User.isUserLoggedIn();
+     }
 
     $scope.openModal = function() {
         var modalInstance = $modal.open({
@@ -108,12 +99,12 @@ function LoginModalInstanceController ($scope, $modalInstance, User) {
 
     $scope.login = function(loginForm) {
 
-        console.log(loginForm);
+        //console.log(loginForm);
         User.login(loginForm).success(function(user){
 
-            //console.log(user);
+            console.log(user);
             //User.currentUser = user
-            User.SetCredentials(user.email, user.password, user.userType);
+            User.SetCredentials(user.id, user.email, user.userType);
             $modalInstance.close();
         });
 

@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	sass = require('gulp-sass'),
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),	
+	uglify = require('gulp-uglify'),
 	karma = require('gulp-karma'),
 	jasmine = require('gulp-jasmine'),
 	sourcemaps = require('gulp-sourcemaps');
@@ -12,7 +12,7 @@ var options = {
 	mangle:true
 }
 
-gulp.task('default', ['jshint','build-js','build-css','spec','watch']);
+gulp.task('default', ['jshint','build-js','build-css','spec']);
 
 
 gulp.task('watch', function(){
@@ -36,7 +36,7 @@ gulp.task('build-css', function () {
 });
 
 gulp.task('build-js', function () {
-	return gulp.src(['app.js', 'source/app/**/*.js'])
+	return gulp.src(['source/app/**/*.js'])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
 		.pipe(gutil.env.type === 'production' ? uglify(options) : gutil.noop())
