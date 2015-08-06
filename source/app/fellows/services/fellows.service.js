@@ -11,8 +11,8 @@
 
   Fellows.$inject = ['$http'];
 
-  var rootUrl = "http://10.251.1.61:3000";
-  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  // var rootUrl = "http://10.251.1.61:3000";
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace Fellows
