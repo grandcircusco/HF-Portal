@@ -238,7 +238,7 @@ img {
 	width: .6em;
 	height: 10em;
 
-	background:#333333;
+	background:$bar-color;
 	@media #{$tablet} {
 		display: none;
 	}
