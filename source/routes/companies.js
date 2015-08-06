@@ -10,6 +10,10 @@ app.get('/', function getCompanies(req, res) {
 
     Companies.all({
 
+        where: {
+
+            name: {ne: null}
+        },
         include: [{
             model: Tags
         }]
