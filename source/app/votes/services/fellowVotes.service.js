@@ -11,8 +11,9 @@
 
   FellowVotes.$inject = ['$http'];
 
-  var rootUrl = "http://10.251.1.61:3000";
+  //var rootUrl = "http://10.251.1.61:3000";
   //var rootUrl = "localhost:3000";
+	var rootUrl = "";
 
   /**
   * @namespace FellowVotes
