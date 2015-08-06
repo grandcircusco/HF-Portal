@@ -20,7 +20,7 @@
     activate();
 
     function activate() {
-      console.log('activated home controller!')
+      console.log('activated home controller!');
       //Home.all();
     }
   }

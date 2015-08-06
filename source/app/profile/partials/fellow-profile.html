@@ -1,8 +1,9 @@
 <div class="fellow-profile">
 	<div class="row">
+
 		<div class="col-md-3">
 			<img class="user-photo" git
-			src={{fellow.img}} width="200" height="200">
+			src={{fellow.image_url}} width="200" height="200">
 			<input type="file" name="picUpload"/>
 			<br>
 
@@ -12,31 +13,38 @@
 		</div>
 
 		<div class="col-md-9">
-			<h1 class="fd_hdr">Your Profile</h1>
+			<h1 class="fd_hdr">Fellow Profile</h1>
 			<p>Name:
-				<input type="text" value="{{fellow.name}}" ng-model="fellow.name"/> 
+				<input type="text" value="{{fellow.first_name}}" ng-model="fellow.first_name"/> 
+				<input type="text" value="{{fellow.last_name}}" ng-model="fellow.last_name"/> 
 			</p>
 			<p>Email:
 				<input type="text" value="{{fellow.email}}" ng-model="fellow.email"/> 
 			</p>
 			<p>School:
-				<input type="text" value="{{fellow.school}}" ng-model="fellow.school"/>
+				<input type="text" value="{{fellow.university}}" ng-model="fellow.university"/>
 			</p>
-			<p>Resume: <input type="file" ng-
+			<p>Major:
+				<input type="text" value="{{fellow.major}}" ng-model="fellow.major"/>
+			</p>
+
+			<span>Resume: <input type="file" ng-
 				model="fellow.resume"/>
-			</p>
+			</span>
 			<p>Website URL:
 				<input type="text" value="{{fellow.url}}" ng-model="fellow.url"/>
 			</p>
-			<p>Tag 1:
-				<input type="text" value="{{fellow.tag1}}" ng-model="fellow.tag1"/>
-				Tag 2:
-				<input type="text" value="{{fellow.tag2}}" ng-model="fellow.tag2"/>
-				Tag 3:
-				<input type="text" value="{{fellow.tag3}}" ng-model="fellow.tag3"/>
-			</p>
 
-
+ 			<span>Top Skills:</span>
+			<select class="js-example-tokenizer" multiple="multiple">
+			  <option value="C">C</option>
+			  <option value="CPP">C++</option>
+			  <option value="JAVA">Java</option>
+			  <option value="Javascript">Javascript</option>
+			  <option value="AL">Alabama</option>
+			  <option value="WY">Wyoming</option>
+			</select>
+			
 		</div>
 	</div>
 
@@ -47,7 +55,7 @@
 
 
 			<h3 class="fd_subhdr">Interests</h3>
-			<input type="text" value="{{fellow.interests}}"  ng-model="fellow.interest" />
+			<input type="text" value="{{fellow.interests}}"  ng-model="fellow.interests" />
 
 		</div>
 		<button ng-click="update(fellow)">Update</button>

@@ -1,6 +1,69 @@
 <div class="company-profile">
 	<div class="row">
-		I am a company
-		<!-- Copy and modify from fellow's page -->
+		<div class="col-md-3">
+			<img class="user-photo" git
+			src={{company.img}} width="200" height="200">
+			<input type="file" name="picUpload"/>
+			<br>
+
+
+			<i class="fa fa-github"></i>
+			<i class="fa fa-envelope"></i>
+		</div>
+
+		<div class="col-md-9">
+			<h1 class="fd_hdr">Company Profile</h1>
+			<p>Comapny Name:
+				<input type="text" value="{{company.name}}" ng-model="company.name"/> 
+			</p>
+			<p>Primary Contact Name:
+				<input type="text" value="{{company.primary_contact}}" ng-model="company.primary_contact"/> 
+			</p>			
+			<p>Email:
+				<input type="text" value="{{company.email}}" ng-model="company.email"/> 
+			</p>
+			<p>Company Size:
+				<input type="int" value="{{company.company_size}}" ng-model="company.company_size"/>
+			</p>
+			<p>Industry:
+				<input type="text" value="{{company.industry}}" ng-model="company.industry"/> 
+			</p>
+			<p>Founding Year:
+				<input type="text" value="{{company.founding_year}}" ng-model="company.founding_year"/> 
+			</p>
+			<p>Founders:
+				<input type="text" value="{{company.founders}}" ng-model="company.founders"/> 
+			</p>
+			<p>Website URL:
+				<input type="text" value="{{company.website_url}}" ng-model="company.website_url"/>
+			</p>
+			<p>LinkedIn URL:
+				<input type="text" value="{{company.linked_in_url}}" ng-model="company.linked_in_url"/>
+			</p>
+
+
+ 			<span>Top Tech/ Languages used:</span>
+			<select class="js-example-tokenizer" multiple="multiple">
+			  <option value="C">C</option>
+			  <option value="CPP">C++</option>
+			  <option value="JAVA">Java</option>
+			  <option value="Javascript">Javascript</option>
+			  <option value="AL">Alabama</option>
+			  <option value="WY">Wyoming</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="main-content" ng-model="company">
+			<h3 class="fd_subhdr">Biography</h3>
+			<input type="text" value="{{company.bio}}" ng-model="company.bio"/>
+
+
+			<h3 class="fd_subhdr">Interests</h3>
+			<input type="text" value="{{company.interests}}"  ng-model="company.interest" />
+
+		</div>
+		<button ng-click="update(company)">Update</button>
 	</div>
 </div>

@@ -1,0 +1,16 @@
+@mixin text($family: null, $size: null, $l-height: null, $weight: null, $color: null) {
+	font-family: $family;
+	font-size: $size;
+	line-height: $l-height;
+	font-weight: $weight;
+	color: $color;
+}
+
+@mixin multi-column-layout($column-count: 3, $column-gap: 1%) {
+	-webkit-column-count: $column-count;
+  	-webkit-column-gap: $column-gap; /* Saf3, Chrome*/
+  	-moz-column-count: $column-count;   
+  	-moz-column-gap: $column-gap; /* FF3.5+ */
+  	column-count: $column-count;        
+  	column-gap: $column-gap; /* Opera 11+*/
+}

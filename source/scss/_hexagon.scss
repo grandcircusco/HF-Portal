@@ -1,0 +1,16 @@
+.hexagon {
+	margin-top: 45px;
+	position: relative;
+
+	span {
+		position: absolute;
+		top: -28px;
+		left: -48px;
+		width: 120px;
+		height: 130px;
+		display: block;
+		background: transparent url(images/hexagons.png) 0px 0px no-repeat;
+		background-size: contain;
+		opacity: 0.2;
+	}
+}

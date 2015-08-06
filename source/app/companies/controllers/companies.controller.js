@@ -20,6 +20,7 @@
 
     var vm = this;
 
+    //$scope.companies = Companies.all();
     // Use vm for this?
     Companies.all().success(function(companies){
 
@@ -55,7 +56,7 @@
 
     function activate() {
 
-      console.log('activated companies controller!')
+      console.log('activated companies controller!');
 
     }
 

@@ -11,20 +11,21 @@
 
   Companies.$inject = ['$http'];
 
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+
   /**
   * @namespace Companies
   * @returns {Service}
   */
   function Companies($http) {
-    var Companies = {
+
+    return {
       all: all,
       get: get,
       create: create,
       update: update,
       destroy: destroy
     };
-
-    return Companies;
 
     ////////////////////
 
@@ -34,7 +35,7 @@
      */
     function all() {
 
-      return $http.get('/api/v1/companies/');
+      return $http.get(rootUrl + '/api/v1/companies/');
     }
 
     /**
@@ -42,27 +43,23 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/api/v1/companies/' + parseInt(id) );
+      return $http.get(rootUrl + '/api/v1/companies/' + parseInt(id) );
     }
 
     /**
      * @name create
      * @desc creeate a new fellow record
      */
-    function create(content, id) {
-      return $http.post('/api/v1/companies/' + id, {
-        content: content
-      });
+    function create(company) {
+      return $http.post(rootUrl + '/api/v1/companies/', company);
     }
 
     /**
      * @name update
      * @desc updates a fellow record
      */
-    function update(content, id) {
-      return $http.update('/api/v1companies/' + id, {
-        content: content
-      });
+    function update(company, id) {
+      return $http.put(rootUrl + '/api/v1/companies/' + id, company);
     }
 
     /**
@@ -70,7 +67,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/api/v1companies/' + id);
+      return $http.delete(rootUrl + '/api/v1companies/' + id);
     }
   }
 })();
