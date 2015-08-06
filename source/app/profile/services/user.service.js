@@ -11,8 +11,8 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-    //var rootUrl = "http://10.251.1.61:3000";
+    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    var rootUrl = "http://10.251.1.61:3000";
 
   /**
    * @namespace User
@@ -24,8 +24,14 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          console.log(currentUser.userType);
-          return currentUser;
+          //console.log(currentUser.userType);
+          //return currentUser;
+        return {
+          username: "seelio",
+          userType: "Company",
+          authdata: currentUser.authdata,
+          id: 4
+        }
       }
 
       function setCurrentUser(user) {

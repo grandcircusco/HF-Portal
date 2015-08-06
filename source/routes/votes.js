@@ -16,6 +16,7 @@ function resolvePromisesAndPost(voter, votee) {
         }
         else {
           voter.addVotee(votee);
+          res.send("Vote created");
         }
       });
     });
