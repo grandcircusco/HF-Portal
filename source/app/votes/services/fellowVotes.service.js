@@ -43,6 +43,7 @@
      * @desc fellow votes on a company
      */
     function create(fellow_id, company_id) {
+      console.log(fellow_id + ' ' + company_id);
       return $http.post(rootUrl + '/api/v1/votes/fellow/', {
         fellow_id: fellow_id,
         company_id: company_id
