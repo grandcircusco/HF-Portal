@@ -99,7 +99,7 @@ function LoginModalInstanceController ($scope, $modalInstance, User) {
 
     $scope.login = function(loginForm) {
 
-        //console.log(loginForm);
+        console.log(loginForm);
         User.login(loginForm).success(function(user){
 
             console.log(user);
