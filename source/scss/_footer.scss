@@ -1,0 +1,16 @@
+@import 'variables';
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: $GREY005;
+  text-align: center;
+  margin-bottom: -20px;
+    p {
+      line-height: 46px;
+    }
+}

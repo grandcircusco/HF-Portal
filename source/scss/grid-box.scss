@@ -1,51 +1,114 @@
+@import 'variables';
+@import 'mixins';
 .grid-container {
+  width:100%;
+  margin: 0 0 0 0;
+  overflow: hidden;
+  // colors for debugging purposes
+  //   @media #{$tablet} {
+  // background-color: blue;
+  // }
+  // @media #{$phone} {
+  // background-color: red;
+  // }
+
 
   .grid-box {
 
-    width: 300px;
-    height: 470px;
-    background: #DEDEDD;
-    border-radius: 20px;
-    font-family: 'Dosis', sans-serif;
-    margin: 20px;
+    width: 45%;
+    height: 250px;
+    background: $GREY005;
+    // border: .2em solid #DEDEDD;
+    border-radius: 1.5em;
+    font-family: $head-font;
+    margin: 2%;
     float: left;
-
-    &:hover {
-      box-shadow: 5px 5px 2px #888888;
+    padding: 0 0 0 0;
+    @media #{$phone} {
+      width: 96%;
+      height: 180px;
     }
 
     figure {
-      width: 100%;
-      padding-top: 10px;
+      height:100%;
+      width: 35%;
+      padding: 2em 0 0 1em;
+      float:left;
 
-      & > img {
+      & > .imgCrop{ 
+        border-style:none;
+        max-width: 150px;
+        max-height: 150px;
         display: block;
         margin: 5px auto;
+        border-radius: 100px;
+        overflow:hidden;
+
+        & > img {
+        position:relative;
+        top:0;
+        left:0;
         max-width: 150px;
         max-height: 150px;
         height: auto;
         width: auto;
-        border-radius: 10px;
+        @media #{$phone} {
+          width: 90px;
+          height: 90px;
+        }
       }
+
+
+
+        }
+      }
+
+    .fellowInfo, .companyInfo{  
+      height:100%;
+      float:left;
+      margin:0 0 0 0;
+      width:55%;
     }
 
+    .fellowName, .companyName{
+      float:left;
+      padding: 1em 0 0 0;
+      width:100%
+    }
+
+
+
+
+
     figcaption {
-      text-align: center;
-      font-weight: 500;
-      font-size: 20px;
-      padding-top: 10px;
+      @include text($size: 2.5em, $weight: 500);
+      // text-align: center;
+      // padding-top: 10px;
     }
 
     .tag {
+      display:block;
+      float:left;
+      width:5em;
+      height:2em;
       text-align: center;
-      color: #7E7B7A;
-      height: 20px;
-      margin: 5px 0px;
-
+      vertical-align: center;
+      color: $GREY004;
+      padding:.5em;
+      margin: 0 1em 0 0;
+      // background-color: rgba(248, 170, 127, 0.5);
+      border: .1em solid $GREY004; 
+      border-radius: 5px;
+      @media #{$tablet} {
+        width: 3.3em;
+        font-size: 1em;
+      }
+      @media #{$phone} {
+        width: 3em;
+        font-size: .9em;
+      }
       & > p {
-        background-color: rgba(248, 170, 127, 0.5);
         line-height: 1.1;
-        border-radius: 5px;
       }
     }
 
@@ -54,35 +117,66 @@
       margin: 0;
     }
 
-    #quote {
-      height: 140px;
-      margin: 0px 20px 15px;
-      padding: 10px;
+    .quote {
+      // clear:both;
+      height: 5em;
+      width:100%;
+      margin: 0 0 1.5em 0;
+      padding: .25em;
+      // display:none;
       overflow: hidden;
-      text-overflow-multiline: ellipsis;
+      // line-height:1.5em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;  
+      // white-space: inherit;
+      // text-overflow: ellipsis;
+       @media #{$phone} {
+        display: none;
+      }
     }
 
-    .details-button{
 
-      text-align: center;
+    .details-button{
+      float:left;
+      // text-align: center;
+      margin: 0 0 0 0;
+      height:100%;
+      width:10%;
+
+
+    }
+
+    .detButton{
+      color:$GREY006;
+      background-color:$button-color;
+      height:100%;
+      width:100%;
+      border-style:none;
+      outline:0;
+      border-top-right-radius: 1.5em;
+      border-bottom-right-radius: 1.5em;
+    }
+
+    .detButton:hover{
+      background-color:$GREY003;
+      color:$button-color;
     }
 
     .detail_body {
-      font-family: 'Fira Sans', sans-serif;
-      color: #999999;
+      @include text($family: $main-font, $color: $body-text-color);
     }
 
     .fd_hdr {
-      font-family: 'Dosis', sans-serif;
-      color: #FF6633;
+      @include text($family: $head-font, $color: $heading-text-color);
     }
 
     .fd_subhdr {
-      font-family: 'Dosis', sans-serif;
+      font-family: $head-font;
     }
 
     .social-icons {
-      font-family: 'Font Awsome', sans-serif;
+      font-family: 'Font Awesome', sans-serif;
     }
 
     .main-content {
@@ -94,8 +188,7 @@
     }
 
     .user-facts {
-      font-family: 'Dosis', sans-serif;
-      font-size: 14px;
+      @include text($family: $head-font, $size: 14px);
     }
 
   }

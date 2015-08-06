@@ -10,13 +10,13 @@ angular
 	.controller('FellowsController', FellowsController)
 	.controller('FellowsModalInstanceController', FellowsModalInstanceController);
 
-    FellowsController.$inject = ['$scope', '$modal', 'Fellows', 'Users', 'Votes'];
+    FellowsController.$inject = ['$scope', '$modal', 'Fellows', 'User', 'Votes'];
     FellowsModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowsController($scope, $modal, Fellows, Users, Votes) {
+    function FellowsController($scope, $modal, Fellows, User, Votes) {
         var vm = this;
 
         activate();
