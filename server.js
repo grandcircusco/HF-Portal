@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-app.use(gzippo.staticGzip(__dirname + '/public'));
+app.use(gzippo.staticGzip(__dirname));// + '/public'));
 app.use(gzippo.compress());
 
 
@@ -38,7 +38,7 @@ app.use('/api/v1/users', users);
 
 
 //application -------------------------------------------------------------
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendfile('./index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
