@@ -1,4 +1,4 @@
-console.log("hello world");
+console.log("hi world");
 
 // var express = require('express');
 // var stormpath = require('express-stormpath');
