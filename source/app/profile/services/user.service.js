@@ -11,10 +11,7 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    // var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-    // var rootUrl = "http://10.251.1.61:3000";
-  var rootUrl = "http://localhost:5000";
-
+    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
    * @namespace User
@@ -26,8 +23,13 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          console.log(currentUser.userType);
-          return currentUser;
+          //return currentUser;
+        return {
+          username: "Seelio",
+          userType: "Company",
+          authdata: currentUser.authdata,
+          id: 1
+        }
       }
 
       function setCurrentUser(user) {
@@ -41,7 +43,7 @@
        * @desc login a new user record
        */
       function login(user) {
-          return $http.post(rootUrl + '/api/v1/users/login', user);
+          return $http.post('/api/v1/users/login', user);
       }
 
       return {
@@ -55,7 +57,8 @@
           SetCredentials: SetCredentials,
           ClearCredentials: ClearCredentials,
           getCurrentUser: getCurrentUser,
-          setCurrentUser: setCurrentUser
+          setCurrentUser: setCurrentUser,
+          isUserLoggedIn: isUserLoggedIn
       };
 
 
@@ -83,7 +86,7 @@
        * @desc create a new fellow record
        */
       function create(user) {
-          return $http.post(rootUrl + '/api/v1/users/create', user);
+          return $http.post('/api/v1/users/create', user);
       }
 
       /**
@@ -94,6 +97,18 @@
       //    return $http.delete(rootUrl + '/api/v1/users/' + id);
       //}
 
+      function isUserLoggedIn(){
+
+          //console.log(currentUser);
+          if( Object.keys(currentUser).length > 0 ){
+
+              return true;
+          }
+          else{
+
+              return false;
+          }
+      }
 
       function SetCredentials(username, password, userType) {
 
@@ -112,7 +127,6 @@
 
           $rootScope.globals = {};
           $cookieStore.remove('globals');
-
       }
 
   }

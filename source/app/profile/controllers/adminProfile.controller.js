@@ -63,6 +63,12 @@
             jQuery("userType").addClass('error');
         }
 
+        $scope.user = {
+            email: "",
+            password: "",
+            userType: ""
+        };
+
         $scope.ok = function (user) {
 
             /**********DEBUG START*********/
@@ -145,7 +151,7 @@
             $modalInstance.dismiss('cancel');
         };
 
-        $scope.switchType = function(user){
+        $scope.switchType = function(user, $event){
 
             console.log(user);
 

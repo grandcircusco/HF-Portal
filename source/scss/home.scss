@@ -16,7 +16,7 @@ h1 {
 }
 
 .background-img{
-	background-image: url("/public/assets/images/grandcircus-sm.png");
+	background-image: url("/public/assets/images/grandcircus2-sm.png");
 	background-position: top left;
 	background-repeat: no-repeat;
 	background-size:cover;
@@ -94,7 +94,7 @@ img {
 
 .odd-section {
 	background: $odd-section;
-	color: #dededd;
+	color: $heading-text-color;
 }
 
 .even-section {

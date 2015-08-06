@@ -11,8 +11,6 @@
 
   Fellows.$inject = ['$http'];
 
-  // var rootUrl = "http://10.251.1.61:3000";
-  var rootUrl = "http://localhost:5000";
   //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
@@ -36,7 +34,8 @@
 	 * @desc get all the fellows
 	 */
 	function all() {
-		return $http.get(rootUrl + '/api/v1/fellows');
+
+		return $http.get('/api/v1/fellows');
 	}
 
 	/**
@@ -45,6 +44,7 @@
 	 * @desc get one fellow
 	 */
 	function get(id) {
+
 		console.log("request from angular to node");
 		var res = $http.get(rootUrl + '/api/v1/fellows/' + id).success(function(data) {
 			console.log("fellows data");
@@ -53,13 +53,16 @@
 		});
 
 		return res;
+
+		//return $http.get('/api/v1/fellows/' + id);
+
 	}
 	/**
 	 * @name create
 	 * @desc creeate a new fellow record
 	 */
 	function create(fellow) {
-		return $http.post(rootUrl + '/api/v1/fellows/', fellow);
+		return $http.post('/api/v1/fellows/', fellow);
 	}
 
 	/**
@@ -67,7 +70,7 @@
 	 * @desc updates a fellow record
 	 */
 	function update(fellow, id) {
-		return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
+		return $http.put('/api/v1/fellows/' + id, fellow);
 	}
 
 	/**
@@ -75,14 +78,16 @@
 	 * @desc destroy a fellow record
 	 */
 	function destroy(id) {
-	  return $http.delete(rootUrl + '/api/v1/fellows/' + id);
+	  return $http.delete('/api/v1/fellows/' + id);
 	}
   }
+
 
   var fellows = [
 		{
 		  name:	'Name 1',
 		  tags:	['C++', 'Java', 'PHP'],
+                  id: 1,
 		  desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
 		  ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
 		  ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +

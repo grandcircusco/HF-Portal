@@ -67,6 +67,8 @@
 
     $scope.fellow = fellow;
 
+    console.log(fellow);
+
     $scope.ok = function ok() {
       $modalInstance.close($scope.fellow);
     };
@@ -77,10 +79,13 @@
 
     $scope.vote = function vote(fellow) {
       var current = User.getCurrentUser();
-      console.log(current);
-      console.log(current.userType);
-      if(current.userType == "Company") {
-        return FellowVotes.create(fellow.id, company.id);
+      if(current.userType === "Company") {
+        console.log("company success~");
+        FellowVotes.create(fellow.id, current.id).then( function(vote) {
+          console.log('voted created');
+          console.log(vote);
+          return vote;
+        });
       }
     }
 
