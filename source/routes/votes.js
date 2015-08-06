@@ -7,6 +7,33 @@ var Companies = models.companies;
 var Fellows = models.fellows;
 
 
+function resolvePromisesAndPost(voter, votee) {
+  voter.then(function(voter){
+    votee.then(function(votee){
+      voter.getVotees().then( function(data) {
+        if(data.length >= 5) {
+          res.status(500).send('Something broke!');
+        }
+        else {
+          voter.addVotee(votee);
+        }
+      })
+    })
+  })
+}
+
+function resolvePromisesAndDelete(voter, votee) {
+  voter.then(function(voter){
+    votee.then(function(votee){
+      voter.getVotees().then( function(data) {
+        voter.removeVotee(votee);
+        res.send("Vote deleted!");
+      })
+    })
+  });
+}
+
+
 // GET /fellow/:id - Gets all companies voted on by one fellow
 app.get('/fellow/:id', function getFellowVotes(req, res) {
   var fellow = Fellows.findOne({
@@ -25,26 +52,11 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
 });
 
 
-function resolvePromises(voter, votee) {
-  voter.then(function(voter){
-    votee.then(function(votee){
-      voter.getVotees().then( function(data) {
-        if(data.length >= 5) {
-          res.status(500).send('Something broke!');
-        }
-        else {
-          voter.addVotee(votee);
-        }
-      })
-    })
-  })
-}
 
 // POST /fellow/ - Fellow votes for a company
 app.post('/fellow/', function postFellowVote(req, res) {
 
   var company = Companies.findOne({
-
     where: {
       id: req.body.company_id
     }
@@ -52,14 +64,13 @@ app.post('/fellow/', function postFellowVote(req, res) {
   });
 
   var fellow = Fellows.findOne({
-
     where: {
       id: req.body.fellow_id
     }
 
   });
 
-  resolvePromises(fellow, company);
+  resolvePromisesAndPost(fellow, company);
 
 });
 
@@ -68,7 +79,6 @@ app.post('/fellow/', function postFellowVote(req, res) {
 app.post('/company/', function postCompanyVote(req, res) {
 
   var company = Companies.findOne({
-
     where: {
       id: req.body.company_id
     }
@@ -76,14 +86,13 @@ app.post('/company/', function postCompanyVote(req, res) {
   });
 
   var fellow = Fellows.findOne({
-
     where: {
       id: req.body.fellow_id
     }
 
   });
 
-  resolvePromises(company, fellow);
+  resolvePromisesAndPost(company, fellow);
 
 });
 
@@ -107,11 +116,29 @@ app.get('/company/:id', function getCompanyVotes(req, res) {
 
 
 
-// DELETE / - Deletes a vote
-app.delete('/', function(req, res) {
+// DELETE / - Deletes a fellow's vote
+app.delete('/fellow/', function(req, res) {
 
   var company = Companies.findOne({
+    where: {
+      id: req.body.company_id
+    }
+  });
 
+  var fellow = Fellows.findOne({
+    where: {
+      id: req.body.fellow_id
+    }
+  });
+
+  resolvePromisesAndDelete(fellow, company);
+
+});
+
+// DELETE / - Deletes a company's vote
+app.delete('/company/', function(req, res) {
+
+  var company = Companies.findOne({
     where: {
       id: req.body.company_id
     }
@@ -119,30 +146,13 @@ app.delete('/', function(req, res) {
   });
 
   var fellow = Fellows.findOne({
-
     where: {
       id: req.body.fellow_id
     }
 
   });
 
-  if (req.body.type === "company") {
-    resolvePromises(company, fellow);
-  }
-  else if (req.body.type === "fellow") {
-    resolvePromises(fellow, company);
-  }
-
-  function resolvePromises(voter, votee) {
-    voter.then(function(voter){
-      votee.then(function(votee){
-        voter.getVotees().then( function(data) {
-          voter.removeVotee(votee);
-          res.send("Vote deleted!");
-        })
-      })
-    });
-  }
+  resolvePromisesAndDelete(company, fellow);
 
 });
 
