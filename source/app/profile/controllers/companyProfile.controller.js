@@ -5,6 +5,9 @@
 (function () {
     'use strict';
 
+    var models = require('../models');
+    var Tags = model.tags;
+
     angular
     .module('app.profile.controllers')
     .controller('CompanyProfileController', CompanyProfileController);
@@ -43,11 +46,28 @@
         }
 
         $scope.update= function() {
+            // console.log($scope.company);
+            console.log($(".js-example-tokenizer").val());
 
             $scope.company.skills = $(".js-example-tokenizer").val();
             console.log($scope.company);
             console.log($(".js-example-tokenizer").val());
 
+            // Confirm which tags are already in the database for this company
+            for (var i = 0; i < tags.length; i++) {
+                console.log(tags[i]);
+                var currTag = Tags.findOne({
+                    where: {
+                        name: tags[i]
+                    }
+                });
+
+                console.log(currTag.id);
+
+            }
+
+            // Push any new tags to the database
+             
             // send fellows info to API via Service
             Companies.update($scope.company, tempID);
         };
