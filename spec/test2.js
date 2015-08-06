@@ -1,4 +1,4 @@
-var object = require('../source/javascript/spectest.js');
+var object = require('spectest.js');
 
 describe("divide", function () {
   it("should return 10", function () {

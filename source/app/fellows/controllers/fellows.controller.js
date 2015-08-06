@@ -68,8 +68,7 @@ angular
           if(company.type == "Company") {
             return Voters.fellowCreate(fellow, company);
           }
-        }
-
+        };
     }
 
 })();

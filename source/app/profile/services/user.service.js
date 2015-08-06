@@ -11,6 +11,8 @@
 
     User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
+    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+
     /**
      * @namespace User
      * @returns {Service}
@@ -27,7 +29,7 @@
 
         function setCurrentUser(user){
 
-            currentUser = user
+            currentUser = user;
         }
 
 
@@ -74,7 +76,7 @@
          * @desc create a new fellow record
          */
         function create(user) {
-            return $http.post('http://10.251.1.61:3000/api/v1/users/create', user);
+            return $http.post(rootUrl + '/api/v1/users/create', user);
         }
 
         /**
@@ -83,7 +85,7 @@
          */
         function login(user) {
 
-            return $http.post('http://10.251.1.61:3000/api/v1/users/login', user);
+            return $http.post(rootUrl + '/api/v1/users/login', user);
         }
 
 
