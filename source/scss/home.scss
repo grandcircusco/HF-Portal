@@ -110,12 +110,12 @@ img {
 }
 /*-- date info styled for some responsiveness--*/
 .dateList{
-	@media #{$tablet} {
+	
 		display:block; 
 		border-top:.5em solid $body-text-color;
 		width:80%;
 		margin: 0 10% 5% 10%;
-	}
+	
 	@media #{$phone} {
 		display:block; 
 		width:100%;
@@ -124,31 +124,30 @@ img {
 }
 
 .dateListItem{
+	display:block;
+	padding:0 0 0 0;
+	height:30%;
+	width:100%;
+	margin: 0 0 0 0;
+
 	@media #{$phone} {
-		display:block;
-		padding:0 0 0 0;
-		height:8em;
-		width:100%;
-		margin: 0 0 0 0;
-	}
-	@media #{$tablet} {
-		display:block;
-		padding:0 0 0 0;
-		height:30%;
-		width:100%;
-		margin: 0 0 0 0;
+	display:block;
+	padding:0 0 0 0;
+	height:8em;
+	width:100%;
+	margin: 0 0 0 0;
 	}
 }
 
 .dateItem{
-	@media #{$tablet} {
+
 		float: left;
 		text-align: right;
 		height:100%;
 		width:20%;
 		margin: 0 5% 0 15%;
 		padding: 4em 0 0 0;
-	}
+	
 	@media #{$phone} {
 		float: left;
 		text-align: right;
@@ -160,7 +159,7 @@ img {
 }  
 
 .dateInfo{
-	@media #{$tablet} {
+
 		float: right;
 		border-left:.5em solid $body-text-color;
 		height:100%;
@@ -168,7 +167,7 @@ img {
 		margin:0 15% 0 0;
 		position:relative;
 		padding: 2em 0 2em 2em;
-	}
+	
 	@media #{$phone} {
 		float: right;
 		height:100%;
@@ -179,18 +178,17 @@ img {
 }
 
 .dateInfoText{
+	position:relative;
+	top: 2em;
+
 	@media #{$phone} {
-		position:relative;
-		top: 2em;
-	}
-	@media #{$tablet} {
-		position:relative;
-		top: 2em;
+	position:relative;
+	top: 2em;
 	}
 }
 
 .dateMarker{
-	@media #{$tablet} {
+
 		position:absolute;
 		width:1.5em;
 		height:1.5em;
@@ -199,7 +197,7 @@ img {
 		border: 5px solid $body-text-color;
 		top:4em;
 		background-color:$odd-section;
-	}
+	
 	@media #{$phone} {
 		display:none;
 		visibility:hidden;
@@ -207,7 +205,7 @@ img {
 }
 
 .dateIcon{
-	@media #{$tablet} {
+
 		background-image: url("/public/assets/images/heximage.svg");
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
@@ -218,7 +216,7 @@ img {
 		max-width: 6em; 
 		margin-right:1em;
 		float:left;
-	}
+	
 
 	@media #{$phone} {
 		background-image: url("/public/assets/images/heximage.svg");
@@ -239,11 +237,11 @@ img {
 .rectangle{
 	width: .6em;
 	height: 10em;
-	background:#dededd;
-}
-	
-	@media #{$phone} {
+
+	background:#333333;
+	@media #{$tablet} {
 		display: none;
+	}
 	}
 
 
