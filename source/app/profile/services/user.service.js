@@ -19,9 +19,9 @@
    */
   function User($rootScope, $cookieStore, $http) {
 
-    var vm = this;
+    var = this;
     // Will hold info for the currently logged in user
-    vm.currentUser = {
+    currentUser = {
       username : "Seelio",
       userType: "Company",
       authdata: ""
@@ -44,13 +44,13 @@
     return User;
 
     function getCurrentUser(){
-      console.log(vm.currentUser.userType);
-      return vm.currentUser;
+      console.log(currentUser.userType);
+      return currentUser;
     }
 
     function setCurrentUser(user){
 
-      vm.currentUser = user
+      currentUser = user
     }
 
 
@@ -119,14 +119,14 @@
 
       var authdata = Base64.encode(username + ':' + password + ':' + userType);
 
-      vm.currentUser = {
+      currentUser = {
         username: username,
         userType: userType,
         authdata: authdata
       };
 
       //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-      $cookieStore.put('globals', vm.currentUser);
+      $cookieStore.put('globals', currentUser);
     }
 
     function ClearCredentials() {
