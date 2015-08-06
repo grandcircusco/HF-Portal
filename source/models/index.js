@@ -3,11 +3,6 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
-// var sequelize = new Sequelize("postgres://localhost:5432/hfportal");
-console.log("Here's the DB url: ");
-console.log(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
-console.log('done');
-console.log('process.env.DB_URL = NULL: '+(process.env.DATABASE_URL===undefined)+": "+(process.env.DATABASE_URL===null));
 var sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
 var env       = process.env.NODE_ENV || "development";
 //var config    = require(__dirname + '/../config/config.json')[env];
