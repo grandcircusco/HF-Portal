@@ -13,6 +13,8 @@ var users = require('./source/routes/users');
 
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 /**
  *
  * This makes getting Posted Data from req.body work
@@ -33,7 +35,7 @@ app.use('/api/v1/users', users);
 
 models.sequelize.sync().then(function () {
 
-    var server = app.listen(3000, function createServer() {
+    var server = app.listen(app.get('port'), function createServer() {
         var host = server.address().address;
         var port = server.address().port;
 
