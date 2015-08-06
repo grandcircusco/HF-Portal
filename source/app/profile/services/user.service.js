@@ -20,6 +20,7 @@
     function User($rootScope, $cookieStore, $http) {
 
         // Will hold info for the currently logged in user
+
         var currentUser = {};
 
         function getCurrentUser(){
@@ -29,8 +30,14 @@
 
         function setCurrentUser(user){
 
+            // do individual fields?
+            currentUser.id = user.id;
+            currentUser.email = user.email;
+            currentUser.userType = user.userType;
+
             currentUser = user;
         }
+
 
 
         return {
@@ -89,11 +96,12 @@
         }
 
 
-        function SetCredentials(username, password, userType) {
+        function SetCredentials(id, username, userType) {
 
-            var authdata = Base64.encode(username + ':' + password + ':' + userType);
+            var authdata = Base64.encode(id + ':' + username + ':' + userType);
 
             currentUser = {
+                id: id,
                 username: username,
                 userType: userType,
                 authdata: authdata

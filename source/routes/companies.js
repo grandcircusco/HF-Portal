@@ -24,11 +24,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-
-
-
-
-
 // GET /companies - get all companies
 app.get('/', function getCompanies(req, res) {
 
