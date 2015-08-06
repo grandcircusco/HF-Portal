@@ -34,77 +34,9 @@
      */
     function all() {
 
-      return [
+      // return [];
 
-        {
-          name:	'Company 1',
-          tags:	['C++', 'Java', 'PHP'],
-          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-          'Praesent eu vulputate ex, ac rhoncus nisi.',
-          src:	'/public/assets/images/placeholder-hi.png'
-        },
-        {
-          name:	'Company 2',
-          tags:	['C++', 'Java', 'PHP'],
-          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-          'Praesent eu vulputate ex, ac rhoncus nisi.',
-          src:	'/public/assets/images/placeholder-hi.png'
-        },
-        {
-          name:	'Company 3',
-          tags:	['C++', 'Java', 'PHP'],
-          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-          'Praesent eu vulputate ex, ac rhoncus nisi.',
-          src:	'/public/assets/images/placeholder-hi.png'
-        },
-        {
-          name:	'Company 4',
-          tags:	['C++', 'Java', 'PHP'],
-          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-          'Praesent eu vulputate ex, ac rhoncus nisi.',
-          src:	'/public/assets/images/placeholder-hi.png'
-        },
-        {
-          name:	'Company 5',
-          tags:	['C++', 'Java', 'PHP'],
-          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-          'Praesent eu vulputate ex, ac rhoncus nisi.',
-          src:	'/public/assets/images/placeholder-hi.png'
-        }
-
-      ];
-
-      //return $http.get('/companies/');
+      return $http.get('/api/v1/companies/');
     }
 
     /**
@@ -112,7 +44,7 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/companies/' + i);
+      return $http.get('/api/v1/companies/' + parseInt(id) );
     }
 
     /**
@@ -120,7 +52,7 @@
      * @desc creeate a new fellow record
      */
     function create(content, id) {
-      return $http.post('/companies/' + id, {
+      return $http.post('/api/v1/companies/' + id, {
         content: content
       });
     }
@@ -130,7 +62,7 @@
      * @desc updates a fellow record
      */
     function update(content, id) {
-      return $http.update('/companies/' + id, {
+      return $http.update('/api/v1companies/' + id, {
         content: content
       });
     }
@@ -140,7 +72,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('/companies/' + id);
+      return $http.delete('/api/v1companies/' + id);
     }
   }
 })();

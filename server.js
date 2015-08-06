@@ -1,60 +1,42 @@
 var express = require('express');
-// var fellow = require('./fellow');
-// var company = require('./company');
+var stormpath = require('express-stormpath');
+var bodyParser = require('body-parser');
+var pg = require('pg');
+var Sequelize = require('sequelize');
+
+var models = require('./source/models');
+var fellows = require('./source/routes/fellows');
+var companies = require('./source/routes/companies');
+var tags = require('./source/routes/tags');
+var votes = require('./source/routes/votes');
+var users = require('./source/routes/users');
 
 var app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+/**
+ *
+ * This makes getting Posted Data from req.body work
+ *
+ */
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
+app.use('/api/v1/fellows', fellows);
+app.use('/api/v1/companies', companies);
+app.use('/api/v1/tags', tags);
+app.use('/api/v1/votes', votes);
+app.use('/api/v1/users', users);
+
+/** Server Startup **/
+
+models.sequelize.sync().then(function () {
+
+    var server = app.listen(3000, function createServer() {
+        var host = server.address().address;
+        var port = server.address().port;
+
+        console.log("HFPortal app listening at http://%s:%s", host, port);
+    });
 });
-
-// GET /fellows - list fellows page
-app.get('/fellows', function getFellows(req, res) {
-  res.send('GET request to fellows page');
-  res.send()
-});
-
-// GET /companies - list all companies
-app.get('/companies', function getCompanies(req, res) {
-  res.send('GET request - list all companies');
-});
-
-// POST /register/fellow - create a new fellow record
-app.post('/register/fellow', function postFellow(req, res) {
-  res.send('POST request - create a new fellow record');
-});
-
-// POST /register/company - create a new company record
-app.post('/register/company', function postCompany(req, res) {
-  res.send('POST request - create a new company record');
-});
-
-app.route('/fellows/:id')
-
-// PUT /fellows/:id - updates an existing fellow record
-  .put(function putFellow(req, res) {
-    res.send('PUT request - update a fellow record');
-  })
-
-// DELETE /fellows/:id - deletes an existing fellow record
-  .delete(function deleteFellow(req, res) {
-    res.send('DELETE request - delete a fellow record');
-  });
-
-app.route('/companies/:id')
-// PUT /companies/:id - updates an existing company record
-  .put(function putCompany(req, res) {
-    res.send('PUT request - update a company record');
-  })
-
-// DELETE /companies/:id - deletes an existing company record
-  .delete(function deleteCompany(req, res) {
-    res.send('DELETE request - delete a company record');
-  });
-
-var server = app.listen(3000, function createServer() {
-  var host = server.address().address;
-  var port = server.address().port;
-});
-
-

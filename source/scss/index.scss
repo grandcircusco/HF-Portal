@@ -38,3 +38,16 @@ p {
 @import 'hexagon';
 
 
+/* Form Styles */
+
+input.error,
+.btn-group.error{
+
+  border: 2px solid #FF6969;
+}
+
+#userType .btn-info.selected {
+
+  background-color: #237A94;
+}
+

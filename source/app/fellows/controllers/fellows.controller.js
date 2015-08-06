@@ -10,13 +10,13 @@ angular
 	.controller('FellowsController', FellowsController)
 	.controller('FellowsModalInstanceController', FellowsModalInstanceController);
 
-    FellowsController.$inject = ['$scope', '$modal', 'Fellows'];
+    FellowsController.$inject = ['$scope', '$modal', 'Fellows', 'Users', 'Votes'];
     FellowsModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowsController($scope, $modal, Fellows) {
+    function FellowsController($scope, $modal, Fellows, Users, Votes) {
         var vm = this;
 
         activate();
@@ -29,7 +29,7 @@ angular
         $scope.fellows = Fellows.all();
 
         $scope.openModal = function(fellow) {
-
+            $scope.fellow = fellow;
             var modalInstance = $modal.open({
 
                 templateUrl: 'source/app/fellows/partials/fellow_detail_view.html',
@@ -52,13 +52,21 @@ angular
 
         $scope.fellow = fellow;
 
-        $scope.ok = function () {
+        $scope.ok = function ok() {
             $modalInstance.close($scope.fellow);
         };
 
-        $scope.cancel = function () {
+        $scope.cancel = function cancel() {
             $modalInstance.dismiss('cancel');
         };
+
+        $scope.vote = function vote(fellow) {
+          var company = Users.getCurrentUser();
+          if(company.type == "Company") {
+            return Voters.fellowCreate(fellow, company);
+          }
+        }
+
     }
 
 })();

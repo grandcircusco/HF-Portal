@@ -3,8 +3,7 @@ var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	sass = require('gulp-sass'),
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),
-	
+	uglify = require('gulp-uglify'),	
 	karma = require('gulp-karma'),
 	jasmine = require('gulp-jasmine'),
 	sourcemaps = require('gulp-sourcemaps');
@@ -17,12 +16,12 @@ gulp.task('default', ['watch']);
 
 
 gulp.task('watch', function(){
-	gulp.watch('source/javascript/**/*.js',['jshint', 'build-js', 'spec']);
+	gulp.watch('source/**/*.js',['jshint', 'build-js', 'spec']);
 	gulp.watch('source/scss/**/*.scss', ['build-css', 'spec']);
 });
 
 gulp.task('jshint', function(){
-	return gulp.src('source/javascript/**/*.js')
+	return gulp.src('source/**/*.js')
 	.pipe(jshint())
 	.pipe(jshint.reporter('jshint-stylish'));
 });
@@ -37,7 +36,7 @@ gulp.task('build-css', function () {
 });
 
 gulp.task('build-js', function () {
-	return gulp.src('source/javascript/**/*.js')
+	return gulp.src(['app.js','source/app/**/*.js'])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
 		.pipe(gutil.env.type === 'production' ? uglify(options) : gutil.noop())
