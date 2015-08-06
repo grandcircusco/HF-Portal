@@ -68,7 +68,7 @@
      * @desc destroy a company record
      */
     function destroy(id) {
-      return $http.delete(rootUrl + '/api/v1companies/' + id);
+      return $http.delete(rootUrl + '/api/v1/companies/' + id);
     }
   }
 })();
