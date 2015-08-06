@@ -1,20 +1,22 @@
-(function() {
-	"use strict";
-	
-	module.exports = function(sequelize, DataTypes) {
+(function(){
 
-	    var Tag = sequelize.define("tags", {
+  "use strict";
 
-	        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-	        name: DataTypes.STRING
+  module.exports = function(sequelize, DataTypes) {
 
-	    },{
+      var Tag = sequelize.define("tags", {
 
-	        timestamps: true, // add updated_at and created_at
-	        paranoid: true // add deleted_at
+          id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+          name: DataTypes.STRING
 
-	    });
+      },{
 
-	    return Tag;
-	};
-}());
+          timestamps: true, // add updated_at and created_at
+          paranoid: true // add deleted_at
+
+      });
+
+      return Tag;
+  };
+})();
+

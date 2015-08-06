@@ -25,7 +25,6 @@
             paranoid: true // add deleted_at
 
         });
-
         return Company;
     };
 }());

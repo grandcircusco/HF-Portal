@@ -1,7 +1,7 @@
 /**
-* CompaniesController
-* @namespace app.companies.controllers
-*/
+ * CompaniesController
+ * @namespace app.companies.controllers
+ */
 (function () {
   'use strict';
 
@@ -11,24 +11,19 @@
     .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
 
   CompaniesController.$inject = ['$scope', '$modal', 'Companies'];
-  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company'];
+  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance',
+    'company', 'CompanyVotes', 'User'];
 
   /**
-  * @namespace CompaniesController
-  */
+   * @namespace CompaniesController
+   */
   function CompaniesController($scope, $modal, Companies) {
 
     var vm = this;
 
+    activate();
     //$scope.companies = Companies.all();
     // Use vm for this?
-    Companies.all().success(function(companies){
-
-      $scope.companies = companies;
-
-    });
-
-    console.log($scope.companies);
 
     $scope.openModal = function (company) {
 
@@ -52,17 +47,18 @@
       //});
     };
 
-    activate();
-
     function activate() {
-
+      Companies.all()
+        .success( function(companies){
+          $scope.companies = companies;
+          console.log(companies);
+        });
       console.log('activated companies controller!');
-
     }
 
   }
 
-  function CompaniesModalInstanceController($scope, $modalInstance, company){
+  function CompaniesModalInstanceController($scope, $modalInstance, company, CompanyVotes, User) {
 
     $scope.company = company;
 
@@ -73,6 +69,15 @@
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
     };
+
+    $scope.vote = function vote(company) {
+      var current = User.getCurrentUser();
+      console.log(current);
+      console.log(current.userType);
+      if(current.userType === "Fellow") {
+        return CompanyVotes.create(company.id, fellow.id);
+      }
+    }
   }
 
 })();

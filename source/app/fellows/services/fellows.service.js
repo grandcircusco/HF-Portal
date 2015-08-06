@@ -11,7 +11,8 @@
 
   Fellows.$inject = ['$http'];
 
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  var rootUrl = "http://10.251.1.61:3000";
+  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace Fellows
@@ -34,8 +35,13 @@
      * @desc get all the fellows
      */
     function all() {
+<<<<<<< HEAD
+      return fellows;
+      //return $http.get(rootUrl + '/api/v1/fellows/');
+=======
 
       return $http.get(rootUrl + '/api/v1/fellows');
+>>>>>>> origin/master
     }
 
     /**
@@ -43,14 +49,22 @@
      * @desc get one fellow
      */
     function get(id) {
+<<<<<<< HEAD
+      return $http.get(rootUrl + '/api/v1/fellows/' + parseInt(id) );
+=======
       return $http.get(rootUrl + '/api/v1/fellows/' + id);
+>>>>>>> origin/master
     }
     /**
      * @name create
      * @desc creeate a new fellow record
      */
+<<<<<<< HEAD
+   function create(fellow) {
+=======
     function create(fellow) {
 
+>>>>>>> origin/master
       return $http.post(rootUrl + '/api/v1/fellows/', fellow);
     }
 
@@ -59,7 +73,11 @@
      * @desc updates a fellow record
      */
     function update(fellow, id) {
+<<<<<<< HEAD
+     return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
+=======
       return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
+>>>>>>> origin/master
     }
 
     /**
@@ -70,5 +88,61 @@
       return $http.delete(rootUrl + '/api/v1/fellows/' + id);
     }
   }
+
+  var fellows = [
+        {
+          name:	'Name 1',
+          tags:	['C++', 'Java', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+        {
+          name:	'Name 2',
+          tags:	['C++', 'Matlab', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+
+        {
+          name:	'Name 3',
+          tags:	['C++', 'Java', 'C'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        },
+        {
+          name:	'Name 4',
+          tags:	['C++', 'Android', 'PHP'],
+          desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+          ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
+          ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
+          'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
+          ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
+          ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
+          'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
+          'Praesent eu vulputate ex, ac rhoncus nisi.',
+          src:	'/public/assets/images/placeholder-hi.png'
+        }
+      ];
 
 })();
