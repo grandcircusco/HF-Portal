@@ -1,6 +1,6 @@
 @import 'variables';
 
-.company-profile {
+.profile {
 	background-color: $odd-section;
 
 	.fa {
@@ -43,8 +43,8 @@
 	width:100%
 }
 .heading-img{
-	background-image: url("/public/assets/images/heading-img.png");
-	background-position: 0% 45%;
+	background-image: url("/public/assets/images/heading-img2.png");
+	background-position: 0% 30%;
 	background-repeat:no-repeat;
 	background-size:100%;
 	width:100%;
@@ -86,8 +86,8 @@
 		opacity:.9;
 	}
 
-	.investDetroitO{
-		width:1.5em;
+	.logoClass{
+		width:1.3em;
 		height:auto;
 		margin: -0.5em -0.5em -0.25em -0.25em;
 	}
@@ -95,7 +95,7 @@
 
 .alert{
   height: 20%;
-  padding: 0px; 
+  padding: 0px;
   border: 1px solid;
   visibility: hidden;
 }

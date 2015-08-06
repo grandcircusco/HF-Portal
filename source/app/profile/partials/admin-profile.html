@@ -1,13 +1,58 @@
-<div class="admin-profile">
-	<div class="row">
+<div class="profile">
+	<div class="wrapper">
+		<div class="heading-img">
+			<div class="headingOverlay">
+				<div class="textWrapper">
+					<span class="headingText">
+						<img class="logoClass" src="public/assets/images/grandcirciuslogo.svg"> DMIN PAGE
+					</span>
+				</div>
+				</div>
+			</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal profile-form">
+			<!-- =======
+			<div class="alert alert-danger hid" id="errorAlert">
+			<a class="close">×</a>
+			Oops!!. You may have left some fields empty. Please fill them out.
+			</div> -->
 
-		<h2> Admin Page</h2>
-		<button type="button" ng-click="openModal()">Add User</button>
+			<div class="form-group">
+				<label for="accountType" class="control-label col-xs-2">Account Type</label>
+					<div class="col-xs-10">
+						<select class="js-example-tokenizer form-control" multiple="multiple">
+							<option value="FELLOW">Fellow</option>
+							<option value="COMPANY">Company</option>
+						</select>
+					</div>
+			</div>
 
-		<!-- List of companies and fellows -->
-		<!-- with ability to delete accounts -->
+			<div class="form-group">
+						<label for="accountEmail" class="control-label col-xs-2">Account Email</label>
+						<div class="col-xs-10">
+								<input type="text" class="form-control" id="accountEmail"/>
+						</div>
+				</div>
 
-		<p ng-model="currentUser">{{ currentUser.email }}</p>
+			<div class="form-group">
+						<label for="accountPassword" class="control-label col-xs-2">Account Password</label>
+						<div class="col-xs-10">
+								<input type="text" class="form-control" id="accountPassword"/>
+						</div>
+				</div>
 
+				<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+								<button type="submit" class="btn btn-primary">Create Account</button>
+						</div>
+				</div>
+			<!--<button type="button" ng-click="openModal()">Add User</button>-->
+			<!-- List of companies and fellows -->
+			<!-- with ability to delete accounts -->
+			<!--<p ng-model="currentUser">{{ currentUser.email }}</p>-->
+		</form>
+		</div>
 	</div>
 </div>
