@@ -43,8 +43,10 @@
         }
 
         $scope.update= function() {
+
             $scope.company.skills = $(".js-example-tokenizer").val();
             console.log($scope.company);
+            console.log($(".js-example-tokenizer").val());
 
             // send fellows info to API via Service
             Companies.update($scope.company, tempID);

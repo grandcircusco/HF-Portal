@@ -62,7 +62,8 @@ app.post('/', function postCompany(req, res) {
         founders: req.body.founders,
         website_url: req.body.website_url,
         linked_in_url: req.body.linked_in_url,
-        image_url: req.body.image_url
+        image_url: req.body.image_url,
+        location: req.body.location
 
     }).then(function(err, company) {
 
@@ -123,6 +124,7 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
         company.image_url = image_url;
+        company.location = location;
 
         company.save();
 
