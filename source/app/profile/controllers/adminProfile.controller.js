@@ -65,6 +65,9 @@
 
         $scope.ok = function (user) {
 
+            /**********DEBUG START*********/
+            user.userType = "Fellow"
+            /**********DEBUG END*********/
             // remove previous highlights in case data is now correct
             unHighlightField();
 

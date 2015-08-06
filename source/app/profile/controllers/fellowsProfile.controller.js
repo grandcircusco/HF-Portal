@@ -4,6 +4,7 @@
 */
 (function () {
     'use strict';
+    console.log("this is FellowsProfileController");
 
     angular
     .module('app.profile.controllers')
@@ -17,10 +18,11 @@
     function FellowsProfileController($scope , Fellows) {
         var vm = this;
 
-        var tempID = 2; //TODO change to not hard coded
-
+        var tempID = 1; //TODO change to not hard coded
 
         Fellows.get(tempID).success(function(fellow){
+            console.log("fellow first_name"+fellow.first_name);
+            console.log("fellow tags"+fellow.tags);
             $scope.fellow = fellow;
         });
 

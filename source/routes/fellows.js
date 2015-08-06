@@ -36,10 +36,14 @@ app.get('/', function getFellows(req, res) {
         },
         include: [{
             model: Tags
+            /**********DEBUG START*********/
+            // model: Tags.name = "C++, PHP, RUBY"
+            /**********DEBUG END*********/
         }]
 
     }).then(function(fellows) {
-
+        fellows.tags = ['PHP', 'Ruby','C'];
+        console.log("**************************** without id");
         res.send(fellows);
     });
 
@@ -56,11 +60,18 @@ app.get('/:id', function getFellow(req, res){
         },
         include: [{
             model: Tags
+            /**********DEBUG START*********/
+            // model: Tags.name = "C++, PHP, RUBY"
+            /**********DEBUG END*********/
             //where: { state: Sequelize.col('project.state') }
         }]
 
     }).then(function(fellow) {
-
+        console.log("**************************** alsdjflaskd");
+        fellow.tags = "test";
+        // fellow.tags = ['PHP', 'Ruby','C'];
+        fellow.first_name = "major";
+        console.log("fellows first_name:"+fellow.first_name);
         res.send(fellow);
     });
 });

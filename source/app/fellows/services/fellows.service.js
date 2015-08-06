@@ -11,7 +11,8 @@
 
   Fellows.$inject = ['$http'];
 
-  var rootUrl = "http://10.251.1.61:3000";
+  // var rootUrl = "http://10.251.1.61:3000";
+  var rootUrl = "http://localhost:5000";
   //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
@@ -44,7 +45,14 @@
 	 * @desc get one fellow
 	 */
 	function get(id) {
-		return $http.get(rootUrl + '/api/v1/fellows/' + id);
+		console.log("request from angular to node");
+		var res = $http.get(rootUrl + '/api/v1/fellows/' + id).success(function(data) {
+			console.log("fellows data");
+			console.log(data.first_name);
+			console.log(data.tags);
+		});
+
+		return res;
 	}
 	/**
 	 * @name create
