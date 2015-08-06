@@ -4,7 +4,8 @@
  * @desc    contains the routes for the app
  */
 
- var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'app.companies', 'app.fellows', 'app.profile'])
+ var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap',
+     'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
     .run(run);
 
 /**
