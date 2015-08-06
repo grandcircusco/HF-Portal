@@ -24,13 +24,12 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          //console.log(currentUser.userType);
           //return currentUser;
         return {
-          username: "seelio",
+          username: "Seelio",
           userType: "Company",
           authdata: currentUser.authdata,
-          id: 4
+          id: 1
         }
       }
 
