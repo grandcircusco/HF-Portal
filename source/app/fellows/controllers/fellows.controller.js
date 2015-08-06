@@ -1,75 +1,88 @@
 /**
-* FellowsController
-* @namespace app.fellows.controllers
-*/
+ * FellowsController
+ * @namespace app.fellows.controllers
+ */
 (function () {
-'use strict';
+  'use strict';
 
-angular
-	.module('app.fellows.controllers')
-	.controller('FellowsController', FellowsController)
-	.controller('FellowsModalInstanceController', FellowsModalInstanceController);
+  angular
+    .module('app.fellows.controllers')
+    .controller('FellowsController', FellowsController)
 
-    FellowsController.$inject = ['$scope', '$modal', 'Fellows', 'Users'];
-    FellowsModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow', 'FellowVotes'];
+  FellowsController.$inject = ['$scope', '$modal', 'Fellows'];
 
-    /**
-     * @namespace FellowsController
-     */
-    function FellowsController($scope, $modal, Fellows, Users) {
-        var vm = this;
+  /**
+   * @namespace FellowsController
+   */
+  function FellowsController($scope, $modal, Fellows) {
+    var vm = this;
 
-        activate();
+    activate();
 
-        function activate() {
-            console.log('activated fellows controller!');
-            //Fellows.all();
-        }
-
-        Fellows.all().success(function(fellows){
-
-             $scope.fellows = fellows;
-        });
-
-        $scope.openModal = function(fellow) {
-            $scope.fellow = fellow;
-            var modalInstance = $modal.open({
-
-                templateUrl: 'source/app/fellows/partials/fellow_detail_view.html',
-                controller: 'FellowsModalInstanceController',
-                size: 'lg',
-                resolve: {
-                    fellow: function(){
-                        return fellow;
-                    }
-                }
-
-            });
-        };
-
-
+    function activate() {
+      console.log('activated fellows controller!');
+      //Fellows.all();
     }
 
-    function FellowsModalInstanceController ($scope, $modalInstance, fellow, FellowVotes) {
+    /*Fellows.all().success(function(fellows){
 
+      $scope.fellows = fellows;
+      });*/
+    $scope.fellows = Fellows.all();
 
-        $scope.fellow = fellow;
+    $scope.openModal = function(fellow) {
+      $scope.fellow = fellow;
+      var modalInstance = $modal.open({
 
-        $scope.ok = function ok() {
-            $modalInstance.close($scope.fellow);
-        };
-
-        $scope.cancel = function cancel() {
-            $modalInstance.dismiss('cancel');
-        };
-
-        $scope.vote = function vote(fellow) {
-          var company = Users.getCurrentUser();
-          if(company.type == "Company") {
-            return FellowVotes.create(fellow.id, company.id);
+        templateUrl: 'source/app/fellows/partials/fellow_detail_view.html',
+        controller: 'FellowsModalInstanceController',
+        size: 'lg',
+        resolve: {
+          fellow: function(){
+            return fellow;
           }
         }
 
+      });
+    };
+
+
+  }
+
+/**
+ * Fellows Modal Instance Controller
+ * @namespace app.fellows.controllers
+ */
+
+  angular
+    .module('app.fellows.controllers')
+    .controller('FellowsModalInstanceController', FellowsModalInstanceController);
+
+  FellowsModalInstanceController.$inject = ['$scope', '$modalInstance',
+    'fellow', 'FellowVotes', 'User'];
+
+  function FellowsModalInstanceController ($scope, $modalInstance, fellow, FellowVotes, User) {
+
+
+    $scope.fellow = fellow;
+
+    $scope.ok = function ok() {
+      $modalInstance.close($scope.fellow);
+    };
+
+    $scope.cancel = function cancel() {
+      $modalInstance.dismiss('cancel');
+    };
+
+    $scope.vote = function vote(fellow) {
+      var current = User.getCurrentUser();
+      console.log(current);
+      console.log(current.userType);
+      if(current.userType == "Company") {
+        return FellowVotes.create(fellow.id, company.id);
+      }
     }
+
+  }
 
 })();
