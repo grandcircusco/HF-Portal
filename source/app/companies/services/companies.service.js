@@ -11,6 +11,8 @@
 
   Companies.$inject = ['$http'];
 
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+
   /**
   * @namespace Companies
   * @returns {Service}
@@ -33,7 +35,7 @@
      */
     function all() {
 
-      return $http.get('http://10.251.1.61:3000/api/v1/companies/');
+      return $http.get(rootUrl + '/api/v1/companies/');
     }
 
     /**
@@ -41,7 +43,7 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('http://10.251.1.61:3000/api/v1/companies/' + parseInt(id) );
+      return $http.get(rootUrl + '/api/v1/companies/' + parseInt(id) );
     }
 
     /**
@@ -49,7 +51,7 @@
      * @desc creeate a new fellow record
      */
     function create(company) {
-      return $http.post('http://10.251.1.61:3000/api/v1/companies/', company);
+      return $http.post(rootUrl + '/api/v1/companies/', company);
     }
 
     /**
@@ -57,7 +59,7 @@
      * @desc updates a fellow record
      */
     function update(company, id) {
-      return $http.put('http://10.251.1.61:3000/api/v1/companies/' + id, company);
+      return $http.put(rootUrl + '/api/v1/companies/' + id, company);
     }
 
     /**
@@ -65,7 +67,7 @@
      * @desc destroy a fellow record
      */
     function destroy(id) {
-      return $http.delete('http://10.251.1.61:3000/api/v1companies/' + id);
+      return $http.delete(rootUrl + '/api/v1companies/' + id);
     }
   }
 })();
