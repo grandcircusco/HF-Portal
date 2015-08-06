@@ -51,7 +51,13 @@
             // Confirm which tags are already in the database for this company
             for (var i = 0; i < tags.length; i++) {
                 console.log(tags[i]);
-                Tags.findOne
+                var currTag = Tags.findOne({
+                    where: {
+                        name: tags[i]
+                    }
+                });
+
+                
             }
 
             // Push any new tags to the database
