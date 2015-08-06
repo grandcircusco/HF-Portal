@@ -43,12 +43,21 @@
         }
         
         $scope.update= function() {
-            $scope.company.skills = $(".js-example-tokenizer").val();
-            console.log($scope.company);
+            // console.log($scope.company);
             console.log($(".js-example-tokenizer").val());
+
+            var tags = $(".js-example-tokenizer").val();
+
+            // Confirm which tags are already in the database for this company
+            for (var i = 0; i < tags.length; i++) {
+                console.log(tags[i]);
+                Tags.findOne
+            }
+
+            // Push any new tags to the database
              
             // send fellows info to API via Service
-            Companies.update($scope.company, tempID);
+            // Companies.update($scope.company, tempID);
         };
 
 
