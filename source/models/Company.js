@@ -17,7 +17,8 @@
             founders: DataTypes.STRING,
             website_url: DataTypes.STRING,
             linked_in_url: DataTypes.STRING,
-            image_url: DataTypes.STRING
+            image_url: DataTypes.STRING,
+            location: DataTypes.STRING
 
         },{
 
