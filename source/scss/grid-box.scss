@@ -4,6 +4,13 @@
   width:100%;
   margin: 0 0 0 0;
   overflow: hidden;
+  // colors for debugging purposes
+  //   @media #{$tablet} {
+  // background-color: blue;
+  // }
+  // @media #{$phone} {
+  // background-color: red;
+  // }
 
 
   .grid-box {
@@ -17,9 +24,9 @@
     margin: 2%;
     float: left;
     padding: 0 0 0 0;
-
-    &:hover {
-      // box-shadow: 5px 5px 2px #888888;
+    @media #{$phone} {
+      width: 96%;
+      height: 180px;
     }
 
     figure {
@@ -45,6 +52,10 @@
         max-height: 150px;
         height: auto;
         width: auto;
+        @media #{$phone} {
+          width: 90px;
+          height: 90px;
+        }
       }
 
 
@@ -52,14 +63,14 @@
         }
       }
 
-    .fellowInfo{  
+    .fellowInfo, .companyInfo{  
       height:100%;
       float:left;
       margin:0 0 0 0;
       width:55%;
     }
 
-    .fellowName{
+    .fellowName, .companyName{
       float:left;
       padding: 1em 0 0 0;
       width:100%
@@ -88,7 +99,14 @@
       // background-color: rgba(248, 170, 127, 0.5);
       border: .1em solid $GREY004; 
       border-radius: 5px;
-
+      @media #{$tablet} {
+        width: 3.3em;
+        font-size: 1em;
+      }
+      @media #{$phone} {
+        width: 3em;
+        font-size: .9em;
+      }
       & > p {
         line-height: 1.1;
       }
@@ -113,6 +131,9 @@
       -webkit-box-orient: vertical;  
       // white-space: inherit;
       // text-overflow: ellipsis;
+       @media #{$phone} {
+        display: none;
+      }
     }
 
 
