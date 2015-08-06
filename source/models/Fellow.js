@@ -1,9 +1,5 @@
 "use strict";
 
-var express = require('express');
-var app = express();
-var done = false;
-
 module.exports = function(sequelize, DataTypes) {
 
     var Fellow = sequelize.define("fellows", {

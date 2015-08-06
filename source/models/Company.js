@@ -1,15 +1,5 @@
 "use strict";
 
-var express = require('express');
-var multer  = require('multer');
-var upload = multer({ dest: '.../.../assets/images/' });
-
-var app = express();
-
-app.post('/company', upload.single('avatar'), function (req, res) {
-    console.dir(req.files);
-});
-
 module.exports = function(sequelize, DataTypes) {
 
     var Company = sequelize.define("companies", {
