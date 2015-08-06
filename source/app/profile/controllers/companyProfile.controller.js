@@ -27,13 +27,13 @@
         //     img:"public/assets/images/placeholder-hi.png"
         // };
 
-       
+
 
         $(".js-example-tokenizer").select2({
           tags: true,
           tokenSeparators: [',', ' ']
-          
-        });        
+
+        });
 
         activate();
 
@@ -41,11 +41,11 @@
             console.log('activated profile controller!');
             //Profile.all();
         };
-        
+
         $scope.update= function() {
             $scope.company.skills = $(".js-example-tokenizer").val();
             console.log($scope.company);
-             
+
             // send fellows info to API via Service
             Companies.update($scope.company, tempID);
         };

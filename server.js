@@ -29,14 +29,21 @@ app.use('/api/v1/tags', tags);
 app.use('/api/v1/votes', votes);
 app.use('/api/v1/users', users);
 
+
+//application -------------------------------------------------------------
+app.get('*', function(req, res) {
+  res.sendfile('./index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
+
+
 /** Server Startup **/
 
 models.sequelize.sync().then(function () {
 
-    var server = app.listen(3000, function createServer() {
-        var host = server.address().address;
-        var port = server.address().port;
+  var server = app.listen(3000, function createServer() {
+    var host = server.address().address;
+    var port = server.address().port;
 
-        console.log("HFPortal app listening at http://%s:%s", host, port);
-    });
+    console.log("HFPortal app listening at http://%s:%s", host, port);
+  });
 });

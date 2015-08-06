@@ -20,11 +20,9 @@ angular
         activate();
 
         function activate() {
-            console.log('activated votes controller!')
+            console.log('activated votes controller!');
             //votes.all();
         }
-
-
 
     }
 
