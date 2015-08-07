@@ -3,8 +3,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #a7a9ab;
+	background-color: $odd-section;
 }
+
 h1 {
 	@include text($family: $head-font, $weight: semi-bold);
 	letter-spacing: 0.075em;
@@ -120,6 +121,7 @@ img {
 		display:block; 
 		width:100%;
 		margin: 0 0% 5% 0%;
+		border-top: none;
 	}
 }
 
@@ -174,6 +176,7 @@ img {
 		width:60%;
 		margin:0 5% 0 0;
 		padding: 2em 0 2em 0;
+		border: none;
 	}
 }
 
@@ -227,6 +230,7 @@ img {
 		width: 4em; 
 		margin-right:1em;
 		float:left;
+		display: none;
 	}
 }
 
@@ -239,6 +243,9 @@ img {
 	height: 10em;
 
 	background:$bar-color;
+	@media #{$phone} {
+		display: none;
+	}
 	@media #{$tablet} {
 		display: none;
 	}
