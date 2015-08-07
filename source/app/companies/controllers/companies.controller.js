@@ -70,9 +70,28 @@
     };
 
     $scope.vote = function vote(company) {
+			console.log(company.id);
       var current = User.getCurrentUser();
+			console.log(current);
       if(current.userType === "Fellow") {
-        return CompanyVotes.create(company.id, current.id);
+				$scope.loading = true;
+				console.log(company.id);
+        return CompanyVotes.create(current.id, company.id)
+				.success( function(vote) {
+						console.log("success!");
+						return vote;
+					})
+				.catch(function (err) {
+					console.log(err);
+				})
+				.finally(function () {
+					console.log("finally");
+					$scope.loading = false;
+					$scope.done = true;
+					$timeout(function() {
+						$scope.done = false;
+					},3000);
+				});
       }
     };
   }
