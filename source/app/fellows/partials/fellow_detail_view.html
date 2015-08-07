@@ -18,7 +18,7 @@
           {{ fellow.university }} <br>
           {{ fellow.major }} <br>
           <!--<a href="{{ fellow.resume_file_path }}">Resume</a> <br>-->
-          <a href="{{ fellow.website_url }}">Website</a> <br>
+          <!--<a href="{{ fellow.website_url }}">Website</a> <br>-->
         </div>
       </div>
     </div>
@@ -33,9 +33,13 @@
     </div>
 
     <div class="row">
-        <center><button type="button" class="btn btn-default btn-lg" ng-click="vote(fellow)">
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Vote
-      </button></center>
+        <center>
+					<button type="button" class="btn btn-default btn-lg" ng-click="vote(fellow)">
+						<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Vote
+					</button>
+					<img id="spinner" width="25px" src="http://khan4019.github.io/HighPerfJS/images/spinner.gif" ng-show="loading"/>
+					<i class="fa fa-check fa-lg" ng-show="done"> </i>
+				</center>
     </div>
 
   </div>
@@ -43,3 +47,21 @@
       <button class="btn btn-primary" ng-click="ok()">OK</button>
       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
   </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
