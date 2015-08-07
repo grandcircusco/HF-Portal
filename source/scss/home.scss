@@ -202,7 +202,7 @@ img {
 		border-radius:50px;
 		border: 5px solid $body-text-color;
 		top:4em;
-		background-color:$odd-section;
+		background-color:$even-section;
 	
 	@media #{$phone} {
 		display:none;
