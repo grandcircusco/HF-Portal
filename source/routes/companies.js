@@ -33,6 +33,7 @@ app.get('/', function getCompanies(req, res) {
 
             name: {ne: null}
         },
+        order: '"name" ASC',
         include: [{
             model: Tags
         }]

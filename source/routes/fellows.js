@@ -32,6 +32,7 @@ app.get('/', function getFellows(req, res) {
 
             first_name: {ne: null}
         },
+        order: '"last_name" ASC',
         include: [{
             model: Tags
         }]
