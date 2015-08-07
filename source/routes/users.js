@@ -35,7 +35,7 @@ app.post('/create', function createUser(req, res) {
 		}
 	}).then(function(user) {
 
-		if( user == null ) {
+		if( user === null ) {
 
 			bcrypt.genSalt(10, function(err, salt) {
 				bcrypt.hash(req.body.password, salt, function(err, hash) {
@@ -50,7 +50,7 @@ app.post('/create', function createUser(req, res) {
 					});
 				});
 			});
-			
+
 		}else{
 
 
@@ -58,7 +58,7 @@ app.post('/create', function createUser(req, res) {
 		}
 	});
 
-	
+
 });
 
 module.exports = app;
