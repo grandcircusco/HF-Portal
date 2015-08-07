@@ -9,21 +9,37 @@
     .module('app.profile.controllers')
     .controller('CompanyProfileController', CompanyProfileController);
 
-    CompanyProfileController.$inject = ['$scope', 'Companies', 'User', 'Tags'];
+    CompanyProfileController.$inject = ['$scope', '$location', 'Companies', 'User', 'Tags'];
 
     /**
     * @namespace CompanyProfileController
     */
-    function CompanyProfileController($scope, Companies, User, Tags) {
+    function CompanyProfileController($scope, $location, Companies, User, Tags) {
         var vm = this;
 
+        // Probably can handle this in the routes or with middleware or some kind
+        if( !User.isUserLoggedIn() ) {
+
+            $location.path("/");
+            return;
+        }
+
+        // Make sure current user is a Company
         var currentUser = User.getCurrentUser();
+        if( currentUser.userType !== "Company" ){
+
+            $location.path("/profile");
+            return;
+        }
+
+        console.log(currentUser);
+
         Companies.get(currentUser.id).success(function(company){
 
             $scope.company = company;
 
             Tags.all().success(function(tags){
-                console.log(tags);
+                //console.log(tags);
 
                 var data = [];
                 tags.forEach(function(tag){
@@ -66,8 +82,10 @@
 
             // send fellows info to API via Service
             Companies.update(company, currentUser.id).success(function(data){
-                console.log("POST");
-              console.log(data);
+                //console.log("POST");
+                //console.log(data);
+
+                // ** Trigger Success message here
             });
         };
 

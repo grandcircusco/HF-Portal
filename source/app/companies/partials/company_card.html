@@ -10,15 +10,15 @@
 	<div class="companyInfo"><!-- div containing information -->
 
 
-		<div class="companyName "> <!-- fellow name section -->
+		<div class="companyName ">
 			<figcaption> {{ company.name }} </figcaption>
 		</div>
 
-		<div class="quote">{{ company.desc }}</div>
+		<div class="quote">{{ company.bio }}</div>
 
 
-		<div class="tag company_tag " ng-repeat='tag in company.tags'><!-- fellow tags section -->
-			<p> {{tag}} </p>
+		<div class="tag company_tag" ng-repeat="tag in company.tags">
+			<p>{{ tag.name }}</p>
 		</div>
 		
 	</div>

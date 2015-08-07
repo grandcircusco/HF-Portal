@@ -4,23 +4,35 @@
 */
 (function () {
     'use strict';
-    console.log("this is FellowsProfileController");
 
     angular
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope', 'Fellows', 'Tags'];
+    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User'];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope , Fellows, Tags) {
+    function FellowsProfileController($scope, $location, Fellows, Tags, User) {
         var vm = this;
 
-        var tempID = 1; //TODO change to not hard coded
+        // Probably can handle this in the routes or with middleware or some kind
+        if( !User.isUserLoggedIn() ) {
 
-        Fellows.get(tempID).success(function(fellow){
+            $location.path("/");
+            return;
+        }
+
+        // Make sure current user is a Fellow
+        var currentUser = User.getCurrentUser();
+        if( currentUser.userType !== "Fellow" ){
+
+            $location.path("/profile");
+            return;
+        }
+
+        Fellows.get(currentUser.id).success(function(fellow){
 
             $scope.fellow = fellow;
 
@@ -51,45 +63,26 @@
 
             });
 
-
         });
-
-        // $(document).ready(function() {
-        //       $(".js-example-basic-multiple").select2({
-        //             maximumSelectionLength: 3
-        //         });
-        // });
-
-        $(".js-example-tokenizer").select2({
-          tags: true,
-          tokenSeparators: [',', ' ']
-          
-        });
-
-
 
         activate();
 
         function activate() {
             console.log('activated profile controller!');
             //Profile.all();
-
         }
 
         $scope.update= function() {
 
             // console.log($scope.fellow);
-            $scope.fellow.tags = $(".js-example-tokenizer").val();
+            $scope.fellow.tags = $("#tags").val();
 
             // send fellows info to API via Service
-            Fellows.update($scope.fellow, tempID);
+            Fellows.update($scope.fellow, tempID).success(function(data){
 
+                // ** Trigger Success message here
+            });
         };
-        
-
-
     }
-
-
 
 })();

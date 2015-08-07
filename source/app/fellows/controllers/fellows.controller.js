@@ -7,7 +7,7 @@
 
   angular
     .module('app.fellows.controllers')
-    .controller('FellowsController', FellowsController)
+    .controller('FellowsController', FellowsController);
 
   FellowsController.$inject = ['$scope', '$modal', 'Fellows'];
 
@@ -15,20 +15,17 @@
    * @namespace FellowsController
    */
   function FellowsController($scope, $modal, Fellows) {
-    var vm = this;
 
     activate();
 
     function activate() {
       //console.log('activated fellows controller!');
-      //Fellows.all();
     }
 
-    /*Fellows.all().success(function(fellows){
+    Fellows.all().success(function(fellows){
 
-      $scope.fellows = fellows;
-      });*/
-    $scope.fellows = Fellows.all();
+        $scope.fellows = fellows;
+    });
 
     $scope.openModal = function(fellow) {
 
@@ -60,14 +57,13 @@
     .module('app.fellows.controllers')
     .controller('FellowsModalInstanceController', FellowsModalInstanceController);
 
-  FellowsModalInstanceController.$inject = ['$scope', '$modalInstance',
-    'fellow', 'FellowVotes', 'User'];
+  FellowsModalInstanceController.$inject = ['$scope', '$modalInstance',  'fellow', 'FellowVotes', 'User'];
 
   function FellowsModalInstanceController ($scope, $modalInstance, fellow, FellowVotes, User) {
 
     $scope.fellow = fellow;
 
-    console.log(fellow);
+    //console.log(fellow);
 
     $scope.ok = function ok() {
       $modalInstance.close($scope.fellow);
@@ -80,10 +76,10 @@
     $scope.vote = function vote(fellow) {
       var current = User.getCurrentUser();
       if(current.userType === "Company") {
-        console.log("company success~");
+        //console.log("company success~");
         FellowVotes.create(fellow.id, current.id).then( function(vote) {
-          console.log('voted created');
-          console.log(vote);
+          //console.log('voted created');
+          //console.log(vote);
           return vote;
         });
       }

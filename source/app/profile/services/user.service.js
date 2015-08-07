@@ -23,13 +23,8 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          //return currentUser;
-        return {
-          username: "Seelio",
-          userType: "Company",
-          authdata: currentUser.authdata,
-          id: 1
-        }
+
+          return currentUser;
       }
 
       function setCurrentUser(user) {
@@ -115,6 +110,7 @@
           var authdata = Base64.encode(username + ':' + password + ':' + userType);
 
           currentUser = {
+
               username: username,
               userType: userType,
               authdata: authdata

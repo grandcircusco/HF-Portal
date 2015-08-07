@@ -119,7 +119,7 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.primary_contact = req.body.primary_contact;
         company.company_size = req.body.company_size;
         company.industry = req.body.industry;
-        company.description = req.body.description;
+        company.bio = req.body.bio;
         company.founding_year = req.body.founding_year;
         company.founders = req.body.founders;
         company.website_url = req.body.website_url;

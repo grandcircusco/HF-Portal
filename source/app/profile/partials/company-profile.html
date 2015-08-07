@@ -4,11 +4,8 @@
 			<div class="headingOverlay">
 				<div class="textWrapper">
 					<span class="headingText">
-<<<<<<< HEAD
-						<span class="headWord">C<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"></img> MP<img class="logoClass" src="public/assets/images/grandcirciuslogo.svg"></img> NY</span> <span class="headWord">PR<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"></img> FILE</span>
-=======
-						C<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"/> MP<img class="logoClass" src="public/assets/images/grandcirciuslogo.svg"/> NY PR<img class="logoClass" src="public/assets/images/investdetroitlogo.svg" /> FILE
->>>>>>> staging
+						<span class="headWord">C<img class="logoClass" src="public/assets/images/investdetroitlogo.svg" /> MP<img class="logoClass" src="public/assets/images/grandcirciuslogo.svg" /> NY</span> <span class="headWord">PR<img class="logoClass" src="public/assets/images/investdetroitlogo.svg" /> FILE</span>
+
 					</span>
 				</div>
 				</div>
@@ -19,17 +16,17 @@
 	<div class="profile">
 		<div class="row">
 			<div class="col-md-3">
-				<center><img class="user-photo" git src={{company.img}} width="200" height="200"></center>
+				<center><img class="user-photo"  ng-src={{company.img}} width="200" height="200"></center>
 
 				<br>
 				<div class="input-group">
 		      <span class="input-group-btn">
-		        <button class="btn btn-default" type="button">Browse</button>
+		          <button class="btn btn-default" type="button">Browse</button>
+				  <input type="file" name="picUpload"/>
 		      </span>
 		      <!--<input type="text" class="form-control" placeholder="">-->
 		    </div><!-- /input-group -->
 
-				<!--<input type="file" name="picUpload"/>-->
 
 				<br>
 				<i class="fa fa-github"></i>
@@ -125,60 +122,14 @@
 			    </div>
 			    <div class="form-group">
 			        <div class="col-xs-offset-2 col-xs-10 update-btn">
-			            <button type="submit" class="btn btn-primary" ng-click="update(company)">Update</button>git s
+			            <button type="submit" class="btn btn-primary" ng-click="update(company)">Update</button>
 			        </div>
 			    </div>
 			</form>
 
-				<!--
-				<p>Comapny Name:
-					<input type="text" value="{{company.name}}" ng-model="company.name"/>
-				</p>
-				<p>Primary Contact Name:
-					<input type="text" value="{{company.primary_contact}}" ng-model="company.primary_contact"/>
-				</p>
-				<p>Email:
-					<input type="text" value="{{company.email}}" ng-model="company.email"/>
-				</p>
-				<p>Company Size:
-					<input type="int" value="{{company.company_size}}" ng-model="company.company_size"/>
-				</p>
-				<p>Industry:
-					<input type="text" value="{{company.industry}}" ng-model="company.industry"/>
-				</p>
-				<p>Founding Year:
-					<input type="text" value="{{company.founding_year}}" ng-model="company.founding_year"/>
-				</p>
-				<p>Founders:
-					<input type="text" value="{{company.founders}}" ng-model="company.founders"/>
-				</p>
-				<p>Website URL:
-					<input type="text" value="{{company.website_url}}" ng-model="company.website_url"/>
-				</p>
-				<p>LinkedIn URL:
-					<input type="text" value="{{company.linked_in_url}}" ng-model="company.linked_in_url"/>
-				</p>
-			-->
-
-
-
 			</div>
 		</div>
 
-		<!--
-		<div class="row">
-			<div class="main-content" ng-model="company">
-				<h3 class="fd_subhdr">Biography</h3>
-				<input type="text" value="{{company.bio}}" ng-model="company.bio"/>
-
-
-				<h3 class="fd_subhdr">Interests</h3>
-				<input type="text" value="{{company.interests}}"  ng-model="company.interest" />
-
-			</div>
-			<button ng-click="update(company)">Update</button>
-		</div>
-	-->
 	</div>
 </div>
 </div>
