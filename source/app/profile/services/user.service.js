@@ -11,7 +11,7 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
    * @namespace User
@@ -38,7 +38,7 @@
        * @desc login a new user record
        */
       function login(user) {
-          return $http.post('/api/v1/users/login', user);
+          return $http.post(rootUrl + '/api/v1/users/login', user);
       }
 
       return {
@@ -65,7 +65,7 @@
       //
       //    return [];
       //
-      //    //return $http.get('/api/v1/companies/');
+      //    //return $http.get(rootUrl + '/api/v1/companies/');
       //}
 
       /**
@@ -73,7 +73,7 @@
        * @desc get just one company
        */
       //function get(id) {
-      //    return $http.get('/api/v1/users/' + parseInt(id) );
+      //    return $http.get(rootUrl + '/api/v1/users/' + parseInt(id) );
       //}
 
       /**
@@ -81,7 +81,7 @@
        * @desc create a new fellow record
        */
       function create(user) {
-          return $http.post('/api/v1/users/create', user);
+          return $http.post(rootUrl + '/api/v1/users/create', user);
       }
 
       /**
@@ -89,7 +89,7 @@
        * @desc destroy a user record
        */
       //function destroy(id) {
-      //    return $http.delete(rootUrl + '/api/v1/users/' + id);
+      //    return $http.delete(rootUrl + rootUrl + '/api/v1/users/' + id);
       //}
 
       function isUserLoggedIn(){
