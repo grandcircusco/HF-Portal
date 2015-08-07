@@ -20,7 +20,7 @@
     activate();
 
     function activate() {
-      console.log('activated fellows controller!');
+      //console.log('activated fellows controller!');
       //Fellows.all();
     }
 
@@ -31,9 +31,9 @@
     $scope.fellows = Fellows.all();
 
     $scope.openModal = function(fellow) {
+
       $scope.fellow = fellow;
-      console.log("**************look for me here*************");
-      console.log(fellow);
+
       var modalInstance = $modal.open({
 
         templateUrl: 'source/app/fellows/partials/fellow_detail_view.html',

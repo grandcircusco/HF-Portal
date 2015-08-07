@@ -54,34 +54,15 @@
         activate();
 
         function activate() {
-            console.log('activated profile controller!');
+
+            //console.log('activated profile controller!');
             //Profile.all();
         }
 
         $scope.update= function(company) {
-            // console.log($scope.company);
-            //console.log($(".js-example-tokenizer").val());
-            //
-            //
-            //$scope.company.skills = $(".js-example-tokenizer").val();
-            //console.log($scope.company);
-            //console.log($(".js-example-tokenizer").val());
 
-            // Confirm which tags are already in the database for this company
-            //for (var i = 0; i < tags.length; i++) {
-            //    console.log(tags[i]);
-            //    var currTag = Tags.findOne({
-            //        where: {
-            //            name: tags[i]
-            //        }
-            //    });
-            //
-            //    console.log(currTag.id);
-            //
-            //}
-
+            // get the tags from the form
             company.tags = $("#tags").val();
-
 
             // send fellows info to API via Service
             Companies.update(company, currentUser.id).success(function(data){
