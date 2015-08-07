@@ -143,6 +143,11 @@
   visibility: hidden;
 }
 
+.select2-container {
+	width: 100%;
+}
+
 .select2-container--default .select2-selection--multiple {
 	background-color: $profile-accent-color;
+	border: none;
 }
