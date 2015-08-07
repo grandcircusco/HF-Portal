@@ -29,6 +29,14 @@
       height: 180px;
     }
 
+    @media #{$tablet} {
+      overflow: hidden;
+    }
+    //  @media #{$tablet} {
+    //   width: 96%;
+    //   height: 180px;
+    // }
+
     figure {
       height:100%;
       width: 35%;
@@ -55,6 +63,12 @@
         @media #{$phone} {
           width: 90px;
           height: 90px;
+          border-radius: 50%;
+        }
+        @media #{$tablet} {
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
         }
       }
 
@@ -100,12 +114,12 @@
       border: .1em solid $GREY004; 
       border-radius: 5px;
       @media #{$tablet} {
-        width: 3.3em;
-        font-size: 1em;
+        width: 5em;
+        overflow: hidden;   
       }
       @media #{$phone} {
-        width: 3em;
-        font-size: .9em;
+        width: 5em;
+        font-size: 1.3em;
       }
       & > p {
         line-height: 1.1;
