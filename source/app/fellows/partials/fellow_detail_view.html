@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-md-3">
-        <img class="user-photo" src="public/assets/images/placeholder-hi.png" width="200" height="200">
+        <img class="user-photo" ng-src="{{ fellow.image_url }}" width="200" height="200">
         <br>
         <span class="label label-default" ng-repeat='tag in fellow.tags'>{{ tag.name }}</span>
 

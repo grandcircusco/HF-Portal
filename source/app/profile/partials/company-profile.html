@@ -16,12 +16,12 @@
 	<div class="profile">
 		<div class="row">
 			<div class="col-md-3">
-				<center><img class="user-photo"  ng-src={{company.img}} width="200" height="200"></center>
+				<center><img class="user-photo"  ng-src="{{ company.image_url }}" width="200" height="200" /></center>
 
 				<br>
 				<div class="input-group">
 				  <span class="input-group-btn">
-					  <input type="file" name="picUpload"/>
+					  <!--<input type="file" name="picUpload"/>-->
 					  <!--<button class="btn btn-default" type="button">Browse</button>-->
 				  </span>
 				  <!--<input type="text" class="form-control" placeholder="">-->
@@ -92,13 +92,20 @@
 			            <input type="text" class="form-control" id="companyURL" ng-model="company.website_url" value="{{company.website_url}}"/>
 			        </div>
 			    </div>
-
+<!--
 				<div class="form-group">
 			        <label for="companyName" class="control-label col-xs-2">LinkedIn URL</label>
 			        <div class="col-xs-10">
 			            <input type="text" class="form-control" id="companyLinkedInURL" ng-model="company.linked_in_url" value="{{company.linked_in_url}}"/>
 			        </div>
-			    </div>
+			    </div>-->
+
+				<div class="form-group">
+					<label for="image_url" class="control-label col-xs-2">Profile Image</label>
+					<div class="col-xs-10">
+						<input type="text" class="form-control" id="image_url" ng-model="company.image_url" value="{{company.image_url}}"/>
+					</div>
+				</div>
 
 			    <div class="form-group">
 			    	<label for="tags" class="control-label col-xs-2"> Desired Skills</label>
