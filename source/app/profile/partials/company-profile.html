@@ -1,20 +1,18 @@
-<div class="company-profile">
-<div class="wrapper">
-	<div class="heading-img">
-		<div class="headingOverlay">
-			<div class="textWrapper">
-				<span class="headingText">
-					C<img class="investDetroitO" src="public/assets/images/investdetroitlogo.svg"></img> MPANY PR<img class="investDetroitO" src="public/assets/images/investdetroitlogo.svg"></img> FILE
-				</span>
+<div class="profile">
+	<div class="wrapper">
+		<div class="heading-img">
+			<div class="headingOverlay">
+				<div class="textWrapper">
+					<span class="headingText">
+						<span class="headWord">C<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"></img> MP<img class="logoClass" src="public/assets/images/grandcirciuslogo.svg"></img> NY</span> <span class="headWord">PR<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"></img> FILE</span>
+					</span>
+				</div>
+				</div>
 			</div>
-			</div>
-
 		</div>
 
-	</div>
-
 <div class="container">
-	<div class="company-profile">
+	<div class="profile">
 		<div class="row">
 			<div class="col-md-3">
 				<center><img class="user-photo" git src={{company.img}} width="200" height="200"></center>
@@ -53,61 +51,61 @@
 				<div class="form-group">
 			        <label for="contactName" class="control-label col-xs-2">Primary Contact Name</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="contactName" value="{{company.primary_contact}}"/>
 			        </div>
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Email</label>
+			        <label for="companyEmail" class="control-label col-xs-2">Email</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companyEmail" value="{{company.email}}"/>
 			        </div>
 			    </div>
 
 					<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Company Size</label>
+			        <label for="companySize" class="control-label col-xs-2">Company Size</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companySize" value="{{company.company_size}}"/>
 			        </div>
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Industry</label>
+			        <label for="companyIndustry" class="control-label col-xs-2">Industry</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companyIndustry" value="{{company.industry}}"/>
 			        </div>
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Fouding Year</label>
+			        <label for="companyFoundingYear" class="control-label col-xs-2">Fouding Year</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companyFoundingYear" value="{{company.founding_year}}"/>
 			        </div>
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Founders</label>
+			        <label for="companyFounders" class="control-label col-xs-2">Founders</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companyName" value="{{company.founders}}"/>
 			        </div>
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Website URL</label>
+			        <label for="companyURL" class="control-label col-xs-2">Website URL</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companyURL" value="{{company.website_url}}"/>
 			        </div>
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">LinkedId URL</label>
+			        <label for="companyName" class="control-label col-xs-2">LinkedIn URL</label>
 			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyName" value="{{company.name}}"/>
+			            <input type="text" class="form-control" id="companyLinkedInURL" value="{{company.linked_in_url}}"/>
 			        </div>
 			    </div>
 
 			    <div class="form-group">
-			    	<label for="companyName" class="control-label col-xs-2">Skills</label>
+			    	<label for="companyDesiredSkills" class="control-label col-xs-2"> Desired Skills</label>
 			        <div class="col-xs-10">
 			        	<select class="js-example-tokenizer form-control" multiple="multiple">
 							<option value="C">C</option>
@@ -121,13 +119,13 @@
 			    </div>
 
 				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">Biography</label>
+			        <label for="companyBio" class="control-label col-xs-2">Biography</label>
 			        <div class="col-xs-10">
 			            <textarea class="form-control" rows="7" id="companyBio" value="{{company.bio}}"></textarea>
 			        </div>
 			    </div>
 			    <div class="form-group">
-			        <div class="col-xs-offset-2 col-xs-10">
+			        <div class="col-xs-offset-2 col-xs-10 update-btn">
 			            <button type="submit" class="btn btn-primary">Update</button>
 			        </div>
 			    </div>
