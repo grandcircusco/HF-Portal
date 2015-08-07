@@ -13,7 +13,8 @@
 
   //var rootUrl = "http://10.251.1.61:3000";
   //var rootUrl = "localhost:3000";
-	var rootUrl = "https://boiling-springs-7523.herokuapp.com";
+	// var rootUrl = "https://boiling-springs-7523.herokuapp.com";
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace CompanyVotes
