@@ -57,7 +57,8 @@
     .module('app.fellows.controllers')
     .controller('FellowsModalInstanceController', FellowsModalInstanceController);
 
-  FellowsModalInstanceController.$inject = ['$scope', '$modalInstance',  'fellow', 'FellowVotes', 'User'];
+  FellowsModalInstanceController.$inject = ['$scope', '$modalInstance',  'fellow',
+	'FellowVotes', 'User', '$timeout'];
 
   function FellowsModalInstanceController ($scope, $modalInstance, fellow, FellowVotes, User) {
 
@@ -74,16 +75,28 @@
     };
 
     $scope.vote = function vote(fellow) {
+			console.log("vote");
       var current = User.getCurrentUser();
       if(current.userType === "Company") {
-        //console.log("company success~");
-        FellowVotes.create(fellow.id, current.id).then( function(vote) {
-          //console.log('voted created');
-          //console.log(vote);
-          return vote;
-        });
-      }
-    };
+				$scope.loading = true;
+        FellowVotes.create(fellow.id, current.id)
+					.success( function(vote) {
+						console.log("success!");
+						//return vote;
+					})
+				.catch(function (err) {
+					console.log(err);
+				})
+				.finally(function () {
+					console.log("finally");
+						$scope.loading = false;
+						$scope.done = true;
+					$timeout(function() {
+						$scope.done = false;
+					},3000);
+				});
+			}
+		};
 
   }
 

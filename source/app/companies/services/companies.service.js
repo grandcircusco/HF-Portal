@@ -11,7 +11,8 @@
 
   Companies.$inject = ['$http'];
 
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+	var rootUrl = "https://boiling-springs-7523.herokuapp.com";
 
   /**
   * @namespace Companies

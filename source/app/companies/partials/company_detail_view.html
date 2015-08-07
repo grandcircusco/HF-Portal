@@ -33,9 +33,14 @@
     </div>
 
     <div class="row">
-        <center><button type="button" class="btn btn-default btn-lg" ng-click="vote(company)">
+        <center>
+					<button type="button" class="btn btn-default btn-lg" ng-click="vote(company)">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Vote
-        </button></center>
+					</button>
+					<img id="spinner" width="25px" ng-show="loading"
+						src="http://khan4019.github.io/HighPerfJS/images/spinner.gif" />
+					<i class="fa fa-check fa-lg" ng-show="done"> </i>
+				</center>
     </div>
 
 </div>
