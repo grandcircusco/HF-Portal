@@ -74,12 +74,10 @@
 
         $scope.update= function(company) {
 
-            console.log(company.tags);
-
             // get the tags from the form
             company.tags = $("#tags").val();
 
-            console.log(company.tags);
+            console.log(company);
 
             // send fellows info to API via Service
             Companies.update(company, company.id).success(function(data){

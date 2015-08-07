@@ -1,156 +1,154 @@
 <div class="profile">
-	<div class="wrapper">
-		<div class="heading-img">
-			<div class="headingOverlay">
-				<div class="textWrapper">
+    <div class="wrapper">
+        <div class="heading-img">
+            <div class="headingOverlay">
+                <div class="textWrapper">
 					<span class="headingText">
 						<span class="headWord">C<img class="logoClass" src="public/assets/images/investdetroitlogo.svg" /> MP<img class="logoClass" src="public/assets/images/grandcirciuslogo.svg" /> NY</span> <span class="headWord">PR<img class="logoClass" src="public/assets/images/investdetroitlogo.svg" /> FILE</span>
 
 					</span>
-				</div>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="container">
-	<div class="profile">
-		<div class="row">
-			<div class="col-md-3">
-				<center><img class="user-photo"  ng-src="{{ company.image_url }}" width="200" height="200" /></center>
+    <div class="container">
+        <div class="profile">
+            <div class="row">
+                <div class="col-md-3">
+                    <center><img class="user-photo"  ng-src="{{ company.image_url }}" width="200" height="200" /></center>
 
-				<br>
-				<div class="input-group">
+                    <br>
+                    <div class="input-group">
 				  <span class="input-group-btn">
-					  <!--<input type="file" name="picUpload"/>-->
+					  <input type="file" name="picUpload"/>
 					  <!--<button class="btn btn-default" type="button">Browse</button>-->
 				  </span>
-				  <!--<input type="text" class="form-control" placeholder="">-->
-		    	</div><!-- /input-group -->
-			</div>
+                        <!--<input type="text" class="form-control" placeholder="">-->
+                    </div><!-- /input-group -->
+                </div>
 
-			<div class="col-md-9">
-				<form class="form-horizontal profile-form">
-				<!--
-				<div class="alert alert-danger hid" id="errorAlert">
-				<a class="close">×</a>
-				Oops!!. You may have left some fields empty. Please fill them out.
-				</div> -->
+                <div class="col-md-9">
+                    <form class="form-horizontal profile-form">
+                        <!--
+                        <div class="alert alert-danger hid" id="errorAlert">
+                        <a class="close">×</a>
+                        Oops!!. You may have left some fields empty. Please fill them out.
+                        </div> -->
 
-			    <div class="form-group">
+                        <div class="form-group">
 
-			        <label for="companyName" class="control-label col-xs-2">Company Name</label>
-			       <div class="col-xs-10">
-			            	<input type="text" class="form-control" id="companyName" ng-model="company.name" value="{{company.name}}"/>
-			        </div>
-			    </div>
+                            <label for="companyName" class="control-label col-xs-2">Company Name</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companyName" ng-model="company.name" value="{{company.name}}"/>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="contactName" class="control-label col-xs-2">Primary Contact Name</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="contactName" ng-model="company.primary_contact" value="{{company.primary_contact}}"/>
-			        </div>
-			    </div>
+                        <div class="form-group">
+                            <label for="contactName" class="control-label col-xs-2">Primary Contact Name</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="contactName" ng-model="company.primary_contact" value="{{company.primary_contact}}"/>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="companyEmail" class="control-label col-xs-2">Email</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyEmail" ng-model="company.email" value="{{company.email}}"/>
-			        </div>
-			    </div>
+                        <div class="form-group">
+                            <label for="companyEmail" class="control-label col-xs-2">Email</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companyEmail" ng-model="company.email" value="{{company.email}}"/>
+                            </div>
+                        </div>
 
-					<div class="form-group">
-			        <label for="companySize" class="control-label col-xs-2">Company Size</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companySize" ng-model="company.company_size" value="{{company.company_size}}"/>
-			        </div>
-			    </div>
+                        <div class="form-group">
+                            <label for="companySize" class="control-label col-xs-2">Company Size</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companySize" ng-model="company.company_size" value="{{company.company_size}}"/>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="companyIndustry" class="control-label col-xs-2">Industry</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyIndustry" ng-model="company.industry" value="{{company.industry}}"/>
-			        </div>
-			    </div>
+                        <div class="form-group">
+                            <label for="companyIndustry" class="control-label col-xs-2">Industry</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companyIndustry" ng-model="company.industry" value="{{company.industry}}"/>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="companyFoundingYear" class="control-label col-xs-2">Fouding Year</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyFoundingYear" ng-model="company.founding_year" value="{{company.founding_year}}"/>
-			        </div>
-			    </div>
+                        <div class="form-group">
+                            <label for="companyFoundingYear" class="control-label col-xs-2">Fouding Year</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companyFoundingYear" ng-model="company.founding_year" value="{{company.founding_year}}"/>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="companyFounders" class="control-label col-xs-2">Founders</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyFounders" ng-model="company.founders" value="{{company.founders}}"/>
-			        </div>
-			    </div>
+                        <div class="form-group">
+                            <label for="companyFounders" class="control-label col-xs-2">Founders</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companyFounders" ng-model="company.founders" value="{{company.founders}}"/>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="companyURL" class="control-label col-xs-2">Website URL</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyURL" ng-model="company.website_url" value="{{company.website_url}}"/>
-			        </div>
-			    </div>
-<!--
-				<div class="form-group">
-			        <label for="companyName" class="control-label col-xs-2">LinkedIn URL</label>
-			        <div class="col-xs-10">
-			            <input type="text" class="form-control" id="companyLinkedInURL" ng-model="company.linked_in_url" value="{{company.linked_in_url}}"/>
-			        </div>
-			    </div>-->
+                        <div class="form-group">
+                            <label for="companyURL" class="control-label col-xs-2">Website URL</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="companyURL" ng-model="company.website_url" value="{{company.website_url}}"/>
+                            </div>
+                        </div>
+                        <!--
+                                        <div class="form-group">
+                                            <label for="companyName" class="control-label col-xs-2">LinkedIn URL</label>
+                                            <div class="col-xs-10">
+                                                <input type="text" class="form-control" id="companyLinkedInURL" ng-model="company.linked_in_url" value="{{company.linked_in_url}}"/>
+                                            </div>
+                                        </div>-->
 
-				<div class="form-group">
-					<label for="image_url" class="control-label col-xs-2">Profile Image</label>
-					<div class="col-xs-10">
-						<input type="text" class="form-control" id="image_url" ng-model="company.image_url" value="{{company.image_url}}"/>
-					</div>
-				</div>
+                        <div class="form-group">
+                            <label for="image_url" class="control-label col-xs-2">Profile Image</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="image_url" ng-model="company.image_url" value="{{company.image_url}}"/>
+                            </div>
+                        </div>
 
-			    <div class="form-group">
-			    	<label for="tags" class="control-label col-xs-2"> Desired Skills</label>
-			        <div class="col-xs-10">
-						<select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in company.tags track by tag.id" ng-model="company.tags">
+                        <div class="form-group">
+                            <label for="tags" class="control-label col-xs-2"> Desired Skills</label>
+                            <div class="col-xs-10">
+                                <select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in company.tags track by tag.id" ng-model="company.tags">
 
-						</select>
-			        </div>
-			    </div>
+                                </select>
+                            </div>
+                        </div>
 
-				<div class="form-group">
-			        <label for="companyBio" class="control-label col-xs-2">Biography</label>
-			        <div class="col-xs-10">
-			            <textarea class="form-control" rows="7" id="companyBio" ng-model="company.bio"  value="{{company.bio}}"></textarea>
-			        </div>
-			    </div>
-			    <div class="form-group">
-			        <div class="col-xs-offset-2 col-xs-10 update-btn">
-			            <button type="submit" class="btn btn-primary" ng-click="update(company)">Update</button>
-			        </div>
-			    </div>
-			</form>
+                        <div class="form-group">
+                            <label for="companyBio" class="control-label col-xs-2">Biography</label>
+                            <div class="col-xs-10">
+                                <textarea class="form-control" rows="7" id="companyBio" ng-model="company.bio"  value="{{company.bio}}"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10 update-btn">
+                                <button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"  ng-click="update(company)">Update</button>
+                            </div>
+                        </div>
+                    </form>
 
-			</div>
-		</div>
+                </div>
+            </div>
 
-	</div>
-</div>
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="update(fellow)">Update</button>
-	</div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        </div>
     </div>
-  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Company Profile</h4>
+            </div>
+            <div class="modal-body">
+                Profile Updated
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
