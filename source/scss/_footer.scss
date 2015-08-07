@@ -2,7 +2,7 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 .footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -12,5 +12,8 @@
   margin-bottom: -20px;
     p {
       line-height: 46px;
+      @media #{$phone} {
+        line-height: 26px;
+      }
     }
 }

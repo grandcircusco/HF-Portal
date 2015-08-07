@@ -4,64 +4,93 @@
 */
 (function () {
     'use strict';
-    console.log("this is FellowsProfileController");
 
     angular
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope', 'Fellows'];
+    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User'];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope , Fellows) {
+    function FellowsProfileController($scope, $location, Fellows, Tags, User) {
         var vm = this;
 
-        var tempID = 1; //TODO change to not hard coded
+        // Probably can handle this in the routes or with middleware or some kind
+        if( !User.isUserLoggedIn() ) {
 
-        Fellows.get(tempID).success(function(fellow){
-            console.log("fellow first_name"+fellow.first_name);
-            console.log("fellow tags"+fellow.tags);
+            $location.path("/");
+            return;
+        }
+
+        // Make sure current user is a Fellow
+        var currentUser = User.getCurrentUser();
+        if( currentUser.userType !== "Fellow" ){
+
+            $location.path("/profile");
+            return;
+        }
+
+        Fellows.getByUserId(currentUser.id).success(function(fellow){
+
+            //console.log(fellow);
+
             $scope.fellow = fellow;
+
+            Tags.all().success(function(tags){
+
+
+                var data = [];
+                tags.forEach(function(tag){
+
+                    var item = {
+
+                        id: tag.id,
+                        text: tag.name
+                    };
+                    data.push(item);
+                });
+
+                //console.log(fellow.tags);
+                //$scope.tags = fellow.tags;
+
+                // https://github.com/angular-ui/ui-select2/blob/master/demo/app.js
+
+                $("select#tags").select2({
+                    //tags: true,
+                    data: data,
+                    tokenSeparators: [',',' ']
+                });
+
+
+
+
+            });
+
         });
-
-        // $(document).ready(function() {
-        //       $(".js-example-basic-multiple").select2({
-        //             maximumSelectionLength: 3
-        //         });
-        // });
-
-        $(".js-example-tokenizer").select2({
-          tags: true,
-          tokenSeparators: [',', ' ']
-          
-        });
-
-
 
         activate();
 
         function activate() {
-            console.log('activated profile controller!');
+            //console.log('activated profile controller!');
             //Profile.all();
-
         }
 
-        $scope.update= function() {
+        $scope.update= function(fellow) {
+
+            //console.log(fellow.tags);
 
             // console.log($scope.fellow);
-            $scope.fellow.skills = $(".js-example-tokenizer").val();
+            fellow.tags = $("#tags").val();
+            console.log(fellow.tags);
 
             // send fellows info to API via Service
-            Fellows.update($scope.fellow, tempID);
+            Fellows.update($scope.fellow, fellow.id).success(function(data){
 
+                // ** Trigger Success message here
+            });
         };
-        
-
-
     }
-
-
 
 })();

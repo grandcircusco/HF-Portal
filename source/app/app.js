@@ -54,28 +54,18 @@
 app.controller('RoutingController', RoutingController)
 .controller('LoginModalInstanceController', LoginModalInstanceController);
 
-RoutingController.$inject = ['$scope', '$modal', 'User'];
-LoginModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
+RoutingController.$inject = ['$scope', '$modal', '$window', 'User'];
+LoginModalInstanceController.$inject = ['$scope', '$window', '$modalInstance', 'User'];
 
-function RoutingController($scope, $modal, User) {
+function RoutingController($scope, $modal, $window, User) {
 
     $scope.isUserLoggedIn = false;
     updateLoginStatus();
 
      function updateLoginStatus(){
 
-        var currentUser = User.getCurrentUser();
-         console.log(currentUser);
-        if( Object.keys(currentUser).length > 0 ){
-
-            $scope.isUserLoggedIn = true;
-        }
-        else{
-
-            $scope.isUserLoggedIn = false;
-        }
-
-     };
+         $scope.isUserLoggedIn = User.isUserLoggedIn();
+     }
 
     $scope.openModal = function() {
         var modalInstance = $modal.open({
@@ -95,10 +85,11 @@ function RoutingController($scope, $modal, User) {
         console.log("User Logout");
         User.ClearCredentials();
         $scope.isUserLoggedIn = false;
+        $window.location.reload();
     };
 }
 
-function LoginModalInstanceController ($scope, $modalInstance, User) {
+function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
 
     // save this through a refesh
     $scope.loginForm = {
@@ -109,12 +100,13 @@ function LoginModalInstanceController ($scope, $modalInstance, User) {
 
     $scope.login = function(loginForm) {
 
-        //console.log(loginForm);
+        console.log(loginForm);
         User.login(loginForm).success(function(user){
 
             console.log(user);
             //User.currentUser = user
             User.SetCredentials(user.id, user.email, user.userType);
+            $window.location.reload();
             $modalInstance.close();
         });
 
@@ -133,7 +125,7 @@ function run($cookieStore, User) {
     var currentUser = $cookieStore.get('globals') || {};
     User.setCurrentUser(currentUser);
 
-    //console.log(currentUser);
+    console.log(currentUser);
     //if ($rootScope.globals.currentUser) {
     //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
     //}

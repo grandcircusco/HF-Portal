@@ -22,8 +22,11 @@
     var vm = this;
 
     activate();
-    //$scope.companies = Companies.all();
-    // Use vm for this?
+    Companies.all().success( function(companies){
+
+          $scope.companies = companies;
+          //console.log(companies);
+    });
 
     $scope.openModal = function (company) {
 
@@ -48,12 +51,8 @@
     };
 
     function activate() {
-      Companies.all()
-        .success( function(companies){
-          $scope.companies = companies;
-          console.log(companies);
-        });
-      console.log('activated companies controller!');
+
+      //console.log('activated companies controller!');
     }
 
   }
@@ -72,12 +71,10 @@
 
     $scope.vote = function vote(company) {
       var current = User.getCurrentUser();
-      console.log(current);
-      console.log(current.userType);
       if(current.userType === "Fellow") {
-        return CompanyVotes.create(company.id, fellow.id);
+        return CompanyVotes.create(company.id, current.id);
       }
-    }
+    };
   }
 
 })();

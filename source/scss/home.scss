@@ -3,8 +3,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #a7a9ab;
+	background-color: $odd-section;
 }
+
 h1 {
 	@include text($family: $head-font, $weight: semi-bold);
 	letter-spacing: 0.075em;
@@ -13,10 +14,13 @@ h1 {
 	padding-bottom: 50px;
 	margin: 0px;
 	/*color: #dededd;*/
+	@media #{$phone} {
+		padding-bottom: 15px;
+	}
 }
 
 .background-img{
-	background-image: url("/public/assets/images/grandcircus-sm.png");
+	background-image: url("/public/assets/images/grandcircus2-sm.png");
 	background-position: top left;
 	background-repeat: no-repeat;
 	background-size:cover;
@@ -94,7 +98,7 @@ img {
 
 .odd-section {
 	background: $odd-section;
-	color: #dededd;
+	color: $heading-text-color;
 }
 
 .even-section {
@@ -120,6 +124,7 @@ img {
 		display:block; 
 		width:100%;
 		margin: 0 0% 5% 0%;
+		border-top: none;
 	}
 }
 
@@ -174,6 +179,7 @@ img {
 		width:60%;
 		margin:0 5% 0 0;
 		padding: 2em 0 2em 0;
+		border: none;
 	}
 }
 
@@ -196,7 +202,7 @@ img {
 		border-radius:50px;
 		border: 5px solid $body-text-color;
 		top:4em;
-		background-color:$odd-section;
+		background-color:$even-section;
 	
 	@media #{$phone} {
 		display:none;
@@ -227,6 +233,7 @@ img {
 		width: 4em; 
 		margin-right:1em;
 		float:left;
+		display: none;
 	}
 }
 
@@ -239,6 +246,9 @@ img {
 	height: 10em;
 
 	background:$bar-color;
+	@media #{$phone} {
+		display: none;
+	}
 	@media #{$tablet} {
 		display: none;
 	}

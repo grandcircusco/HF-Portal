@@ -3,22 +3,22 @@
 	<figure>
 
 		<div class="imgCrop">
-			<img ng-src="{{ company.src }}">
+			<img ng-src="{{ company.image_url }}" />
 		</div>
 	</figure>
 
 	<div class="companyInfo"><!-- div containing information -->
 
 
-		<div class="companyName "> <!-- fellow name section -->
+		<div class="companyName ">
 			<figcaption> {{ company.name }} </figcaption>
 		</div>
 
-		<div class="quote">{{ company.desc }}</div>
+		<div class="quote">{{ company.bio }}</div>
 
 
-		<div class="tag company_tag " ng-repeat='tag in company.tags'><!-- fellow tags section -->
-			<p> {{tag}} </p>
+		<div class="tag company_tag" ng-repeat="tag in company.tags | limitTo:3">
+			<p>{{ tag.name }}</p>
 		</div>
 		
 	</div>

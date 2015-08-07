@@ -7,7 +7,8 @@ var Companies = models.companies;
 var Fellows = models.fellows;
 
 
-function resolvePromisesAndPost(voter, votee) {
+
+function resolvePromisesAndPost(voter, votee,res) {
   voter.then(function(voter){
     votee.then(function(votee){
       voter.getVotees().then( function(data) {
@@ -16,13 +17,14 @@ function resolvePromisesAndPost(voter, votee) {
         }
         else {
           voter.addVotee(votee);
+          res.send("Vote Added");
         }
       });
     });
   });
 }
 
-function resolvePromisesAndDelete(voter, votee) {
+function resolvePromisesAndDelete(voter, votee, res) {
   voter.then(function(voter){
     votee.then(function(votee){
       voter.getVotees().then( function(data) {
@@ -56,6 +58,7 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
 // POST /fellow/ - Fellow votes for a company
 app.post('/fellow/', function postFellowVote(req, res) {
 
+	console.log('\n\n\n\npost getting called in express');
   var company = Companies.findOne({
     where: {
       id: req.body.company_id
@@ -70,7 +73,7 @@ app.post('/fellow/', function postFellowVote(req, res) {
 
   });
 
-  resolvePromisesAndPost(fellow, company);
+  resolvePromisesAndPost(fellow, company, res);
 
 });
 
@@ -92,7 +95,7 @@ app.post('/company/', function postCompanyVote(req, res) {
 
   });
 
-  resolvePromisesAndPost(company, fellow);
+  resolvePromisesAndPost(company, fellow, res);
 
 });
 
@@ -131,7 +134,7 @@ app.delete('/fellow/', function(req, res) {
     }
   });
 
-  resolvePromisesAndDelete(fellow, company);
+  resolvePromisesAndDelete(fellow, company, res);
 
 });
 
@@ -152,7 +155,7 @@ app.delete('/company/', function(req, res) {
 
   });
 
-  resolvePromisesAndDelete(company, fellow);
+  resolvePromisesAndDelete(company, fellow, res);
 
 });
 

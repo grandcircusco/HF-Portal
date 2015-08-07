@@ -11,7 +11,7 @@ var Tags = models.tags;
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/assets/images/')
+    cb(null, './public/assets/images/');
   },
   filename: function (req, file, cb) {
     console.log(file);
@@ -33,6 +33,7 @@ app.get('/', function getCompanies(req, res) {
 
             name: {ne: null}
         },
+        order: '"name" ASC',
         include: [{
             model: Tags
         }]
@@ -62,7 +63,8 @@ app.post('/', function postCompany(req, res) {
         founders: req.body.founders,
         website_url: req.body.website_url,
         linked_in_url: req.body.linked_in_url,
-        image_url: req.body.image_url
+        image_url: req.body.image_url,
+        location: req.body.location
 
     }).then(function(err, company) {
 
@@ -93,8 +95,28 @@ app.get('/:id', function getCompany(req, res) {
 
 });
 
+// GET /companies/user_id/:id - get one company by user_id
+app.get('/user_id/:user_id', function getFellow(req, res){
+
+    //res.send('GET request - get a company record');
+    Companies.findOne({
+
+        where: {
+            user_id: req.params.user_id
+        },
+        include: [{
+            model: Tags
+        }]
+
+    }).then(function(company) {
+
+        res.send(company);
+    });
+});
+
 // PUT /companies/:id - updates an existing company record
 app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
+
 
     // Handle image upload here -- create image_url for below
     var image_url = "";
@@ -117,14 +139,34 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.primary_contact = req.body.primary_contact;
         company.company_size = req.body.company_size;
         company.industry = req.body.industry;
-        company.description = req.body.description;
+        company.bio = req.body.bio;
         company.founding_year = req.body.founding_year;
         company.founders = req.body.founders;
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
-        company.image_url = image_url;
+        company.image_url = req.body.image_url;
+        company.location = req.body.location;
 
         company.save();
+
+        company.setTags(null).then(function() {
+
+            var tags = req.body.tags;
+            if (Array.isArray(tags)) {
+                tags.forEach(function (tag_id) {
+
+                    Tags.findOne({
+                        where: {
+                            id: parseInt(tag_id)
+                        }
+                    }).then(function (tagObj) {
+
+                        company.addTag(tagObj);
+                    });
+                });
+            }
+
+        });
 
         res.send(company);
     });

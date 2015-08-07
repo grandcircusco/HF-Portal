@@ -11,10 +11,7 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    // var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-    // var rootUrl = "http://10.251.1.61:3000";
-  var rootUrl = "http://localhost:5000";
-
+    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
    * @namespace User
@@ -26,13 +23,13 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          console.log(currentUser.userType);
+
           return currentUser;
       }
 
       function setCurrentUser(user) {
 
-          currentUser = user
+          currentUser = user;
       }
 
 
@@ -55,7 +52,8 @@
           SetCredentials: SetCredentials,
           ClearCredentials: ClearCredentials,
           getCurrentUser: getCurrentUser,
-          setCurrentUser: setCurrentUser
+          setCurrentUser: setCurrentUser,
+          isUserLoggedIn: isUserLoggedIn
       };
 
 
@@ -67,7 +65,7 @@
       //
       //    return [];
       //
-      //    //return $http.get('/api/v1/companies/');
+      //    //return $http.get(rootUrl + '/api/v1/companies/');
       //}
 
       /**
@@ -75,7 +73,7 @@
        * @desc get just one company
        */
       //function get(id) {
-      //    return $http.get('/api/v1/users/' + parseInt(id) );
+      //    return $http.get(rootUrl + '/api/v1/users/' + parseInt(id) );
       //}
 
       /**
@@ -91,15 +89,28 @@
        * @desc destroy a user record
        */
       //function destroy(id) {
-      //    return $http.delete(rootUrl + '/api/v1/users/' + id);
+      //    return $http.delete(rootUrl + rootUrl + '/api/v1/users/' + id);
       //}
 
+      function isUserLoggedIn(){
 
-      function SetCredentials(username, password, userType) {
+          //console.log(currentUser);
+          if( Object.keys(currentUser).length > 0 ){
 
-          var authdata = Base64.encode(username + ':' + password + ':' + userType);
+              return true;
+          }
+          else{
+
+              return false;
+          }
+      }
+
+      function SetCredentials(id, username, userType) {
+
+          var authdata = Base64.encode(id + ':' + username + ':' + userType);
 
           currentUser = {
+              id: id,
               username: username,
               userType: userType,
               authdata: authdata
@@ -112,7 +123,6 @@
 
           $rootScope.globals = {};
           $cookieStore.remove('globals');
-
       }
 
   }

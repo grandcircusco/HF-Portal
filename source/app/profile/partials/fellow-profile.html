@@ -1,82 +1,123 @@
-<div class="fellow-profile">
-	<div class="row">
+<div class="profile">
+	<div class="wrapper">
+		<div class="heading-img">
+			<div class="headingOverlay">
+				<div class="textWrapper">
+					<span class="headingText">
+						<span class="headWord">FELL<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"></img> W</span> <span class="headWord">PR<img class="logoClass" src="public/assets/images/investdetroitlogo.svg"></img> FILE</span>
+					</span>
+				</div>
+				</div>
+			</div>
 
-		<div class="col-md-3">
-			<img class="user-photo" git
-			src={{fellow.image_url}} width="200" height="200">
-			<input type="file" name="picUpload"/>
-			<br>
-
-
-			<i class="fa fa-github"></i>
-			<i class="fa fa-envelope"></i>
-		</div>
-
-		<div class="col-md-9">
-			<h1 class="fd_hdr">Fellow Profile</h1>
-			<p>Name:
-				<input type="text" value="{{fellow.first_name}}" ng-model="fellow.first_name"/> 
-				<input type="text" value="{{fellow.last_name}}" ng-model="fellow.last_name"/> 
-			</p>
-			<p>Email:
-				<input type="text" value="{{fellow.email}}" ng-model="fellow.email"/> 
-			</p>
-			<p>School:
-				<input type="text" value="{{fellow.university}}" ng-model="fellow.university"/>
-			</p>
-			<p>Major:
-				<input type="text" value="{{fellow.major}}" ng-model="fellow.major"/>
-			</p>
-
-			<span>Resume: <input type="file" ng-
-				model="fellow.resume"/>
-			</span>
-			<p>Website URL:
-				<input type="text" value="{{fellow.url}}" ng-model="fellow.url"/>
-			</p>
-
- 			<span>Top Skills:</span>
-			<select class="js-example-tokenizer" multiple="multiple">
-			  <option value="C">C</option>
-			  <option value="CPP">C++</option>
-			  <option value="JAVA">Java</option>
-			  <option value="Javascript">Javascript</option>
-			  <option value="AL">Alabama</option>
-			  <option value="WY">Wyoming</option>
-			</select>
 			
-		</div>
 	</div>
+<div class="container">
+	<div class="profile">
+		<div class="row">
 
-	<div class="row">
-		<div class="main-content" ng-model="fellow">
-			<h3 class="fd_subhdr">Biography</h3>
-			<input type="text" value="{{fellow.bio}}" ng-model="fellow.bio"/>
+			<div class="col-md-3">
+				<center><img class="user-photo" ng-src={{fellow.image_url}} width="200" height="200"></center>
+				<br>
+				<div class="input-group">
+				  <span class="input-group-btn">
+					  <!--<input type="file" name="picUpload"/>-->
+					  <!--<button class="btn btn-default" type="button">Browse</button>-->
+				  </span>
+				  <!--<input type="text" class="form-control" placeholder="">-->
+				</div><!-- /input-group -->
+			</div>
+
+			<div class="col-md-9">
+
+				<form class="form-horizontal">
+					<div class="form-group">
+							<label for="fellowFirstName" class="control-label col-xs-2">First Name</label>
+							<div class="col-xs-10">
+									<input type="text" class="form-control" id="fellowFirstName" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
+							</div>
+					</div>
+					<div class="form-group">
+							<label for="fellowLastName" class="control-label col-xs-2">Last Name</label>
+							<div class="col-xs-10">
+									<input type="text" class="form-control" id="fellowLastName" ng-model="fellow.last_name" value="{{fellow.last_name}}"/>
+							</div>
+					</div>
+					<div class="form-group">
+							<label for="fellowEmail" class="control-label col-xs-2">Email</label>
+							<div class="col-xs-10">
+									<input type="text" class="form-control" id="fellowEmail" ng-model="fellow.email" value="{{fellow.email}}"/>
+							</div>
+					</div>
+					<div class="form-group">
+							<label for="fellowUniversity" class="control-label col-xs-2">University</label>
+							<div class="col-xs-10">
+									<input type="text" class="form-control" id="fellowUniversity" ng-model="fellow.university" value="{{fellow.university}}"/>
+							</div>
+					</div>
+					<div class="form-group">
+							<label for="fellowMajor" class="control-label col-xs-2">Major</label>
+							<div class="col-xs-10">
+									<input type="text" class="form-control" id="fellowMajor" ng-model="fellow.major" value="{{fellow.major}}"/>
+							</div>
+					</div>
+
+					<div class="form-group">
+			        <label for="fellowBio" class="control-label col-xs-2">Biography</label>
+			        <div class="col-xs-10">
+			            <textarea class="form-control" rows="7" id="fellowBio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
+			        </div>
+			    </div>
+
+                <div class="form-group">
+                    <label for="image_url" class="control-label col-xs-2">Profile Image</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="image_url" ng-model="fellow.image_url" value="{{fellow.image_url}}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+			        <label for="fellowIntrests" class="control-label col-xs-2">Interests</label>
+			        <div class="col-xs-10">
+			            <textarea class="form-control" rows="7" id="fellowIntrests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
+			        </div>
+			    </div>
+
+				<div class="form-group">
+					<label for="tags" class="control-label col-xs-2"> Top Skills</label>
+					<div class="col-xs-10">
+						<select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in fellow.tags track by tag.id" ng-model="fellow.tags">
+						</select>
 
 
-			<h3 class="fd_subhdr">Interests</h3>
-			<input type="text" value="{{fellow.interests}}"  ng-model="fellow.interests" />
+                        <!--<select ui-select2="{ allowClear: true}" class="jsexample-tokenizer form-control" id="tags" name="tags" ng-model="alltags">
+                        </select>-->
+					</div>
+				</div>
 
-		</div>
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="update(fellow)">Update</button>
+<!--					<div class="form-group">
+							<label for="companyName" class="control-label col-xs-2">Top Skills: </label>
+							<div class="col-xs-10">
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										Select
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li><a href="#">C</a></li>
+										<li><a href="#">C++</a></li>
+										<li><a href="#">Javascript</a></li>
+										<li><a href="#">Java</a></li>
+									</ul>
+								</div>
+							</div>
+					</div>-->
+					<div class="form-group">
+							<div class="col-xs-offset-2 col-xs-10 update-btn">
+									<button type="submit" class="btn btn-primary" ng-click="update(fellow)">Update</button>
+							</div>
+					</div>
+			</form>
 	</div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>

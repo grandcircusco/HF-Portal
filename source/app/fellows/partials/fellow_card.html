@@ -2,7 +2,7 @@
 
 	<figure> <!-- image section -->
 		<div class="imgCrop">
-			<img ng-src={{fellow.src}}>
+			<img ng-src={{fellow.image_url}} />
 		</div>
 	</figure>
 
@@ -12,13 +12,13 @@
 			<figcaption> {{fellow.first_name +" "+ fellow.last_name}} </figcaption>
 		</div>
 
-		<div class="quote">{{fellow.bio}}
+		<div class="quote">{{ fellow.bio }}
 
 		</div>
 
 	
-		<div class="tag fellow_tag " ng-repeat='tag in fellow.tags'><!-- fellow tags section -->
-			<p> {{tag}} </p>
+		<div class="tag fellow_tag " ng-repeat='tag in fellow.tags | limitTo:3'><!-- fellow tags section -->
+			<p> {{ tag.name }} </p>
 		</div>
 
 	</div>

@@ -11,19 +11,17 @@
 
   Companies.$inject = ['$http'];
 
-  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-  // var rootUrl = "http://10.251.1.61:3000";
-  var rootUrl = "http://localhost:5000";
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace Companies
-  * @returns {Service}
   */
   function Companies($http) {
 
     return {
       all: all,
       get: get,
+      getByUserId: getByUserId,
       create: create,
       update: update,
       destroy: destroy
@@ -48,6 +46,15 @@
     }
 
     /**
+    * @name getByUserId
+    * @desc get just one company by user id
+    */
+    function getByUserId(user_id) {
+      return $http.get(rootUrl + '/api/v1/companies/user_id/' + parseInt(user_id) );
+    }
+
+
+    /**
      * @name create
      * @desc creeate a new company record
      */
@@ -60,6 +67,7 @@
      * @desc updates a company record
      */
     function update(company, id) {
+
       return $http.put(rootUrl + '/api/v1/companies/' + id, company);
     }
 

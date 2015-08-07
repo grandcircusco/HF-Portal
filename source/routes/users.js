@@ -34,25 +34,31 @@ app.post('/create', function createUser(req, res) {
 			email: req.body.email
 		}
 	}).then(function(user) {
-		if(user === null) {
-			console.log('Creating new user');
+
+		if( user === null ) {
+
 			bcrypt.genSalt(10, function(err, salt) {
 				bcrypt.hash(req.body.password, salt, function(err, hash) {
 					Users.create({
 						email: req.body.email,
 						password: hash,
 						userType: req.body.userType
-					}).then(function(err, user) {
+					}).then(function(user) {
+
+						console.log(user);
 						res.send(user);
 					});
 				});
 			});
-			
+
+		}else{
+
+
+			res.send("User already exists");
 		}
-		res.send(user);
 	});
 
-	
+
 });
 
 module.exports = app;
