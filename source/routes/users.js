@@ -50,7 +50,7 @@ app.post('/create', function createUser(req, res) {
 					});
 				});
 			});
-			
+
 		}else{
 
 
@@ -58,7 +58,7 @@ app.post('/create', function createUser(req, res) {
 		}
 	});
 
-	
+
 });
 
 module.exports = app;
