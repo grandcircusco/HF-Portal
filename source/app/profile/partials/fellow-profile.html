@@ -67,7 +67,14 @@
 			        </div>
 			    </div>
 
-					<div class="form-group">
+                <div class="form-group">
+                    <label for="image_url" class="control-label col-xs-2">Profile Image</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="image_url" ng-model="fellow.image_url" value="{{fellow.image_url}}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
 			        <label for="fellowIntrests" class="control-label col-xs-2">Interests</label>
 			        <div class="col-xs-10">
 			            <textarea class="form-control" rows="7" id="fellowIntrests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
