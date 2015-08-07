@@ -11,7 +11,7 @@
 
   User.$inject = ['$rootScope', '$cookieStore', '$http'];
 
-    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
    * @namespace User
@@ -23,8 +23,13 @@
       var currentUser = {};
 
       function getCurrentUser() {
-          console.log(currentUser.userType);
-          return currentUser;
+          //return currentUser;
+        return {
+          username: "Seelio",
+          userType: "Company",
+          authdata: currentUser.authdata,
+          id: 1
+        }
       }
 
       function setCurrentUser(user) {
@@ -38,7 +43,7 @@
        * @desc login a new user record
        */
       function login(user) {
-          return $http.post(rootUrl + '/api/v1/users/login', user);
+          return $http.post('/api/v1/users/login', user);
       }
 
       return {
@@ -81,7 +86,7 @@
        * @desc create a new fellow record
        */
       function create(user) {
-          return $http.post(rootUrl + '/api/v1/users/create', user);
+          return $http.post('/api/v1/users/create', user);
       }
 
       /**

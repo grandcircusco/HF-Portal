@@ -97,6 +97,7 @@ app.get('/:id', function getCompany(req, res) {
 // PUT /companies/:id - updates an existing company record
 app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
 
+
     // Handle image upload here -- create image_url for below
     var image_url = "";
 
@@ -124,9 +125,22 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
         company.image_url = image_url;
-        company.location = location;
+        company.location = req.body.location;
 
         company.save();
+
+        var tags = req.body.tags;
+        tags.forEach(function(tag_id){
+
+            Tags.findOne({
+                where: {
+                    id: parseInt(tag_id)
+                }
+            }).then(function(tagObj){
+
+                company.addTag(tagObj);
+            })
+        });
 
         res.send(company);
     });

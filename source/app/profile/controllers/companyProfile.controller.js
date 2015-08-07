@@ -9,47 +9,66 @@
     .module('app.profile.controllers')
     .controller('CompanyProfileController', CompanyProfileController);
 
-    CompanyProfileController.$inject = ['$scope', 'Companies'];
+    CompanyProfileController.$inject = ['$scope', 'Companies', 'User', 'Tags'];
 
     /**
     * @namespace CompanyProfileController
     */
-    function CompanyProfileController($scope, Companies) {
+    function CompanyProfileController($scope, Companies, User, Tags) {
         var vm = this;
 
-        var tempID = 4; //TODO change to not hard coded
+        var currentUser = User.getCurrentUser();
+        Companies.get(currentUser.id).success(function(company){
 
-        Companies.get(tempID).success(function(company){
             $scope.company = company;
-        });
 
-        // $scope.company= {
-        //     img:"public/assets/images/placeholder-hi.png"
-        // };
+            Tags.all().success(function(tags){
+                console.log(tags);
 
+                var data = [];
+                tags.forEach(function(tag){
 
+                    var item = {
 
-        $(".js-example-tokenizer").select2({
-          tags: true,
-          tokenSeparators: [',', ' ']
+                        id: tag.id,
+                        text: tag.name
+                    };
+                    data.push(item)
+                });
+
+                var vals = [];
+                company.tags.forEach(function(tag){
+
+                    vals.push(tag.id);
+                });
+
+                $("#tags").select2({
+                    //tags: true,
+                    data: data
+                }).select2('val', vals);
+
+            });
 
         });
 
         activate();
 
         function activate() {
-            console.log('activated profile controller!');
+
+            //console.log('activated profile controller!');
             //Profile.all();
         }
 
-        $scope.update= function() {
+        $scope.update= function(company) {
 
-            $scope.company.skills = $(".js-example-tokenizer").val();
-            console.log($scope.company);
-            console.log($(".js-example-tokenizer").val());
+            // get the tags from the form
+            company.tags = $("#tags").val();
 
             // send fellows info to API via Service
-            Companies.update($scope.company, tempID);
+            Companies.update(company, currentUser.id).success(function(data){
+                console.log("POST");
+              console.log(data);
+            });
         };
 
 

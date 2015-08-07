@@ -99,7 +99,7 @@ function LoginModalInstanceController ($scope, $modalInstance, User) {
 
     $scope.login = function(loginForm) {
 
-        //console.log(loginForm);
+        console.log(loginForm);
         User.login(loginForm).success(function(user){
 
             console.log(user);
@@ -123,7 +123,7 @@ function run($cookieStore, User) {
     var currentUser = $cookieStore.get('globals') || {};
     User.setCurrentUser(currentUser);
 
-    //console.log(currentUser);
+    console.log(currentUser);
     //if ($rootScope.globals.currentUser) {
     //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
     //}

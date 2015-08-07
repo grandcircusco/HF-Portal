@@ -81,8 +81,16 @@
 			        </div>
 			    </div>
 
+				<div class="form-group">
+					<label for="tags" class="control-label col-xs-2"> Top Skills</label>
+					<div class="col-xs-10">
+						<select class="js-example-tokenizer form-control" id="tags" name="tags" ng-model="fellow.tags" multiple="multiple">
 
-					<div class="form-group">
+						</select>
+					</div>
+				</div>
+
+<!--					<div class="form-group">
 							<label for="companyName" class="control-label col-xs-2">Top Skills: </label>
 							<div class="col-xs-10">
 								<div class="dropdown">
@@ -98,10 +106,10 @@
 									</ul>
 								</div>
 							</div>
-					</div>
+					</div>-->
 					<div class="form-group">
 							<div class="col-xs-offset-2 col-xs-10 update-btn">
-									<button type="submit" class="btn btn-primary">Update</button>
+									<button type="submit" class="btn btn-primary" ng-click="update(company)">Update</button>
 							</div>
 					</div>
 			</form>

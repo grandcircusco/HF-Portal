@@ -36,10 +36,14 @@ app.get('/', function getFellows(req, res) {
         },
         include: [{
             model: Tags
+            /**********DEBUG START*********/
+            // model: Tags.name = "C++, PHP, RUBY"
+            /**********DEBUG END*********/
         }]
 
     }).then(function(fellows) {
-
+        fellows.tags = ['PHP', 'Ruby','C'];
+        console.log("**************************** without id");
         res.send(fellows);
     });
 
@@ -56,11 +60,18 @@ app.get('/:id', function getFellow(req, res){
         },
         include: [{
             model: Tags
+            /**********DEBUG START*********/
+            // model: Tags.name = "C++, PHP, RUBY"
+            /**********DEBUG END*********/
             //where: { state: Sequelize.col('project.state') }
         }]
 
     }).then(function(fellow) {
-
+        console.log("**************************** alsdjflaskd");
+        fellow.tags = "test";
+        // fellow.tags = ['PHP', 'Ruby','C'];
+        fellow.first_name = "major";
+        console.log("fellows first_name:"+fellow.first_name);
         res.send(fellow);
     });
 });
@@ -132,13 +143,24 @@ app.put('/:id', upload.single('fellow_profile'), function putFellow(req, res) {
         fellow.major = req.body.major;
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
-        fellow.resume_file_path = req.body.resume_file_path;
-        //console.log("####################"+req.file.path);
-        fellow.image_url = req.file.path;
+        //fellow.resume_file_path = req.body.resume_file_path;
+        //fellow.image_url = req.file.path;
         fellow.website_url = req.body.website_url
 
-
         fellow.save();
+
+        var tags = req.body.tags;
+        tags.forEach(function(tag_id){
+
+            Tags.findOne({
+                where: {
+                    id: parseInt(tag_id)
+                }
+            }).then(function(tagObj){
+
+                fellow.addTag(tagObj);
+            })
+        });
 
         res.send(fellow);
     });
