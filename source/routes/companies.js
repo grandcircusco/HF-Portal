@@ -11,7 +11,7 @@ var Tags = models.tags;
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/assets/images/')
+    cb(null, './public/assets/images/');
   },
   filename: function (req, file, cb) {
     console.log(file);
@@ -139,7 +139,7 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
             }).then(function(tagObj){
 
                 company.addTag(tagObj);
-            })
+            });
         });
 
         res.send(company);

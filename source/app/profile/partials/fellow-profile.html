@@ -15,22 +15,15 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<center><img class="user-photo"
-				ng-src={{fellow.image_url}} width="200" height="200"></center>
+				<center><img class="user-photo" ng-src={{fellow.image_url}} width="200" height="200"></center>
 				<br>
 				<div class="input-group">
-		      <span class="input-group-btn">
-                  <input type="file" name="picUpload"/>
-                  <button class="btn btn-default" type="button">Browse</button>
-		      </span>
-		      <input type="text" class="form-control" placeholder="">
-		    </div><!-- /input-group -->
-
-
-				<br>
-
-				<i class="fa fa-github"></i>
-				<i class="fa fa-envelope"></i>
+				  <span class="input-group-btn">
+					  <input type="file" name="picUpload"/>
+					  <!--<button class="btn btn-default" type="button">Browse</button>-->
+				  </span>
+				  <!--<input type="text" class="form-control" placeholder="">-->
+				</div><!-- /input-group -->
 			</div>
 
 			<div class="col-md-9">
@@ -39,45 +32,45 @@
 					<div class="form-group">
 							<label for="fellowFirstName" class="control-label col-xs-2">First Name</label>
 							<div class="col-xs-10">
-									<input type="text" class="form-control" id="fellowFirstName" value="{{fellow.first_name}}"/>
+									<input type="text" class="form-control" id="fellowFirstName" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
 							</div>
 					</div>
 					<div class="form-group">
 							<label for="fellowLastName" class="control-label col-xs-2">Last Name</label>
 							<div class="col-xs-10">
-									<input type="text" class="form-control" id="fellowLastName" value="{{fellow.last_name}}"/>
+									<input type="text" class="form-control" id="fellowLastName" ng-model="fellow.last_name" value="{{fellow.last_name}}"/>
 							</div>
 					</div>
 					<div class="form-group">
 							<label for="fellowEmail" class="control-label col-xs-2">Email</label>
 							<div class="col-xs-10">
-									<input type="text" class="form-control" id="fellowEmail" value="{{fellow.email}}"/>
+									<input type="text" class="form-control" id="fellowEmail" ng-model="fellow.email" value="{{fellow.email}}"/>
 							</div>
 					</div>
 					<div class="form-group">
 							<label for="fellowUniversity" class="control-label col-xs-2">University</label>
 							<div class="col-xs-10">
-									<input type="text" class="form-control" id="fellowUniversity" value="{{fellow.university}}"/>
+									<input type="text" class="form-control" id="fellowUniversity" ng-model="fellow.university" value="{{fellow.university}}"/>
 							</div>
 					</div>
 					<div class="form-group">
 							<label for="fellowMajor" class="control-label col-xs-2">Major</label>
 							<div class="col-xs-10">
-									<input type="text" class="form-control" id="fellowMajor" value="{{fellow.major}}"/>
+									<input type="text" class="form-control" id="fellowMajor" ng-model="fellow.major" value="{{fellow.major}}"/>
 							</div>
 					</div>
 
 					<div class="form-group">
 			        <label for="fellowBio" class="control-label col-xs-2">Biography</label>
 			        <div class="col-xs-10">
-			            <textarea class="form-control" rows="7" id="fellowBio" value="{{fellow.bio}}"></textarea>
+			            <textarea class="form-control" rows="7" id="fellowBio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
 			        </div>
 			    </div>
 
 					<div class="form-group">
 			        <label for="fellowIntrests" class="control-label col-xs-2">Interests</label>
 			        <div class="col-xs-10">
-			            <textarea class="form-control" rows="7" id="fellowIntrests" value="{{fellow.interests}}"></textarea>
+			            <textarea class="form-control" rows="7" id="fellowIntrests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
 			        </div>
 			    </div>
 

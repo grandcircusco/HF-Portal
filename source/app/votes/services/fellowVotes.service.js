@@ -17,16 +17,15 @@
 
   /**
   * @namespace FellowVotes
-  * @returns {Service}
   */
   function FellowVotes($http) {
-    var FellowVotes = {
+
+    return {
       get: get,
       create: create,
       destroy: destroy
     };
 
-    return FellowVotes;
 
     ////////////////////
 

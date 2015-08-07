@@ -71,12 +71,10 @@
 
     $scope.vote = function vote(company) {
       var current = User.getCurrentUser();
-      //console.log(current);
-      //console.log(current.userType);
       if(current.userType === "Fellow") {
         return CompanyVotes.create(company.id, current.id);
       }
-    }
+    };
   }
 
 })();

@@ -17,18 +17,13 @@
 
   /**
   * @namespace CompanyVotes
-  * @returns {Service}
   */
   function CompanyVotes($http) {
-    var CompanyVotes = {
+    return {
       get: get,
       create: create,
       destroy: destroy
     };
-
-    return CompanyVotes;
-
-    ////////////////////
 
 
     /**

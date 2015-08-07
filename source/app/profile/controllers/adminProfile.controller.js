@@ -8,7 +8,7 @@
 
     angular
     .module('app.profile.controllers')
-    .controller('AdminProfileController', AdminProfileController)
+    .controller('AdminProfileController', AdminProfileController);
     //.controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
     AdminProfileController.$inject = ['$scope', '$location', 'User', 'Fellows', 'Companies'];

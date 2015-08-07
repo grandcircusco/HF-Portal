@@ -47,14 +47,16 @@
                         id: tag.id,
                         text: tag.name
                     };
-                    data.push(item)
+                    data.push(item);
                 });
 
                 var vals = [];
-                fellow.tags.forEach(function(tag){
+                if( typeof fellow.tags !== 'undefined' ) {
+                    fellow.tags.forEach(function (tag) {
 
-                    vals.push(tag.id);
-                });
+                        vals.push(tag.id);
+                    });
+                }
 
                 $("#tags").select2({
                     //tags: true,
@@ -68,7 +70,7 @@
         activate();
 
         function activate() {
-            console.log('activated profile controller!');
+            //console.log('activated profile controller!');
             //Profile.all();
         }
 

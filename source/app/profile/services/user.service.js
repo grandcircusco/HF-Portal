@@ -29,7 +29,7 @@
 
       function setCurrentUser(user) {
 
-          currentUser = user
+          currentUser = user;
       }
 
 
@@ -105,12 +105,12 @@
           }
       }
 
-      function SetCredentials(username, password, userType) {
+      function SetCredentials(id, username, userType) {
 
-          var authdata = Base64.encode(username + ':' + password + ':' + userType);
+          var authdata = Base64.encode(id + ':' + username + ':' + userType);
 
           currentUser = {
-
+              id: id,
               username: username,
               userType: userType,
               authdata: authdata

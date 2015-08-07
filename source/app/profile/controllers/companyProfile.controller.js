@@ -49,14 +49,16 @@
                         id: tag.id,
                         text: tag.name
                     };
-                    data.push(item)
+                    data.push(item);
                 });
 
                 var vals = [];
-                company.tags.forEach(function(tag){
+                if( typeof fellow.tags !== 'undefined' ) {
+                    company.tags.forEach(function (tag) {
 
-                    vals.push(tag.id);
-                });
+                        vals.push(tag.id);
+                    });
+                }
 
                 $("#tags").select2({
                     //tags: true,
