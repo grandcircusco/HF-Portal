@@ -12,5 +12,8 @@
   margin-bottom: -20px;
     p {
       line-height: 46px;
+      @media #{$phone} {
+        line-height: 26px;
+      }
     }
 }
