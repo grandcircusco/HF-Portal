@@ -151,6 +151,7 @@ app.put('/:id', upload.single('fellow_profile'), function putFellow(req, res) {
         fellow.interests = req.body.interests;
         //fellow.resume_file_path = req.body.resume_file_path;
         //fellow.image_url = req.file.path;
+        fellow.image_url = req.body.image_url;
         fellow.website_url = req.body.website_url;
 
         fellow.save();
