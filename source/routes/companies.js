@@ -148,20 +148,24 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
 
         company.save();
 
-        var tags = req.body.tags;
-        if( Array.isArray(tags) ) {
-            tags.forEach(function (tag_id) {
+        company.setTags(null).then(function() {
 
-                Tags.findOne({
-                    where: {
-                        id: parseInt(tag_id)
-                    }
-                }).then(function (tagObj) {
+            var tags = req.body.tags;
+            if (Array.isArray(tags)) {
+                tags.forEach(function (tag_id) {
 
-                    company.addTag(tagObj);
+                    Tags.findOne({
+                        where: {
+                            id: parseInt(tag_id)
+                        }
+                    }).then(function (tagObj) {
+
+                        company.addTag(tagObj);
+                    });
                 });
-            });
-        }
+            }
+
+        });
 
         res.send(company);
     });

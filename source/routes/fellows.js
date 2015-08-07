@@ -154,20 +154,25 @@ app.put('/:id', upload.single('fellow_profile'), function putFellow(req, res) {
 
         fellow.save();
 
-        var tags = req.body.tags;
-        if( Array.isArray(tags) ) {
-            tags.forEach(function (tag_id) {
+        fellow.setTags(null).then(function() {
 
-                Tags.findOne({
-                    where: {
-                        id: parseInt(tag_id)
-                    }
-                }).then(function (tagObj) {
+            var tags = req.body.tags;
+            console.log(tags);
+            if (Array.isArray(tags)) {
+                tags.forEach(function (tag_id) {
 
-                    fellow.addTag(tagObj);
+                    Tags.findOne({
+                        where: {
+                            id: parseInt(tag_id)
+                        }
+                    }).then(function (tagObj) {
+
+                        fellow.addTag(tagObj);
+                    });
                 });
-            });
-        }
+            }
+
+        });
 
         res.send(fellow);
     });

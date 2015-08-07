@@ -139,14 +139,14 @@
 
                 });
 
-                $modalInstance.close();
+                //$modalInstance.close();
             }
 
         };
 
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
+        //$scope.cancel = function () {
+        //    $modalInstance.dismiss('cancel');
+        //};
 
         $scope.switchType = function(user){
 

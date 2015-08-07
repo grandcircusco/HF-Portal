@@ -38,6 +38,8 @@
 
             $scope.company = company;
 
+            console.log(company);
+
             Tags.all().success(function(tags){
                 //console.log(tags);
 
@@ -52,7 +54,7 @@
                     data.push(item);
                 });
 
-                $("#tags").select2({
+                $("select#tags").select2({
                     //tags: true,
                     data: data,
                     tokenSeparators: [',',' ']
@@ -76,6 +78,8 @@
 
             // get the tags from the form
             company.tags = $("#tags").val();
+
+            console.log(company.tags);
 
             // send fellows info to API via Service
             Companies.update(company, company.id).success(function(data){

@@ -34,7 +34,7 @@
 
         Fellows.getByUserId(currentUser.id).success(function(fellow){
 
-            console.log(fellow);
+            //console.log(fellow);
 
             $scope.fellow = fellow;
 
@@ -52,13 +52,19 @@
                     data.push(item);
                 });
 
+                //console.log(fellow.tags);
+                //$scope.tags = fellow.tags;
+
                 // https://github.com/angular-ui/ui-select2/blob/master/demo/app.js
 
-                $("#tags").select2({
+                $("select#tags").select2({
                     //tags: true,
                     data: data,
                     tokenSeparators: [',',' ']
                 });
+
+
+
 
             });
 
@@ -73,12 +79,11 @@
 
         $scope.update= function(fellow) {
 
-            console.log(fellow.tags);
+            //console.log(fellow.tags);
 
             // console.log($scope.fellow);
             fellow.tags = $("#tags").val();
-
-            console.log(fellow);
+            console.log(fellow.tags);
 
             // send fellows info to API via Service
             Fellows.update($scope.fellow, fellow.id).success(function(data){
