@@ -3,8 +3,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #a7a9ab;
+	background-color: $odd-section;
 }
+
 h1 {
 	@include text($family: $head-font, $weight: semi-bold);
 	letter-spacing: 0.075em;
