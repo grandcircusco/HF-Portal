@@ -1,3 +1,4 @@
+@import 'variables';
 @mixin text($family: null, $size: null, $l-height: null, $weight: null, $color: null) {
 	font-family: $family;
 	font-size: $size;
@@ -14,3 +15,10 @@
   	column-count: $column-count;        
   	column-gap: $column-gap; /* Opera 11+*/
 }
+
+@mixin standard-button-light() {
+	background-color: $GREY002;
+	color: $heading-text-color;
+	border: none;
+}
+

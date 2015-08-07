@@ -15,14 +15,12 @@
   */
   function ProfileController($scope, $location, User) {
 
-    var vm = this;
+      var vm = this;
 
-    var currentUser = User.getCurrentUser();
+      if( User.isUserLoggedIn() ) {
 
-    console.log("Profile User");
-    console.log(currentUser);
+          var currentUser = User.getCurrentUser();
 
-      if( typeof currentUser !== 'undefined') {
           // redirect the user based on their type
           if (currentUser.userType === 'Admin') {
               $location.path("/profile/admin");
@@ -33,6 +31,10 @@
           else if (currentUser.userType === 'Company') {
               $location.path("/profile/company");
           }
+      }
+      else{
+
+           $location.path("/");
       }
 
   }

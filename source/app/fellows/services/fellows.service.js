@@ -11,9 +11,7 @@
 
   Fellows.$inject = ['$http'];
 
-  // var rootUrl = "http://10.251.1.61:3000";
-  var rootUrl = "http://localhost:5000";
-  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace Fellows
@@ -24,6 +22,7 @@
 	return {
 	  all: all,
 	  get: get,
+      getByUserId: getByUserId,
 	  create: create,
 	  update: update,
 	  destroy: destroy
@@ -36,24 +35,29 @@
 	 * @desc get all the fellows
 	 */
 	function all() {
+
 		return $http.get(rootUrl + '/api/v1/fellows');
 	}
 
 	/**
 	 * @name get
 	 * @desc get one fellow
-	 * @desc get one fellow
 	 */
 	function get(id) {
-		console.log("request from angular to node");
-		var res = $http.get(rootUrl + '/api/v1/fellows/' + id).success(function(data) {
-			console.log("fellows data");
-			console.log(data.first_name);
-			console.log(data.tags);
-		});
 
-		return res;
+		return $http.get(rootUrl + '/api/v1/fellows/' + id);
 	}
+
+	/**
+	* @name getByUserId
+	* @desc get one fellow by user_id
+	*/
+	function getByUserId(user_id) {
+
+	  return $http.get(rootUrl + '/api/v1/fellows/user_id/' + user_id);
+	}
+
+
 	/**
 	 * @name create
 	 * @desc creeate a new fellow record
@@ -78,61 +82,5 @@
 	  return $http.delete(rootUrl + '/api/v1/fellows/' + id);
 	}
   }
-
-  var fellows = [
-		{
-		  name:	'Name 1',
-		  tags:	['C++', 'Java', 'PHP'],
-		  desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-		  ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-		  ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-		  'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-		  ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-		  ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-		  'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-		  'Praesent eu vulputate ex, ac rhoncus nisi.',
-		  src:	'/public/assets/images/placeholder-hi.png'
-		},
-		{
-		  name:	'Name 2',
-		  tags:	['C++', 'Matlab', 'PHP'],
-		  desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-		  ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-		  ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-		  'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-		  ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-		  ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-		  'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-		  'Praesent eu vulputate ex, ac rhoncus nisi.',
-		  src:	'/public/assets/images/placeholder-hi.png'
-		},
-
-		{
-		  name:	'Name 3',
-		  tags:	['C++', 'Java', 'C'],
-		  desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-		  ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-		  ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-		  'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-		  ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-		  ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-		  'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-		  'Praesent eu vulputate ex, ac rhoncus nisi.',
-		  src:	'/public/assets/images/placeholder-hi.png'
-		},
-		{
-		  name:	'Name 4',
-		  tags:	['C++', 'Android', 'PHP'],
-		  desc:	'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-		  ' Etiam ut interdum nunc. In hac habitasse platea dictumst.' +
-		  ' Duis eget dolor ut justo cursus convallis sed eget nibh. ' +
-		  'Fusce sed elit eu quam pretium vestibulum in eu nulla. Sed' +
-		  ' dictum sem ut tellus blandit mattis. Aliquam nec erat mi.' +
-		  ' Nulla non dui nec augue facilisis consequat. Nulla mollis' +
-		  'nunc sed eros eleifend, in volutpat ante hendrerit. ' +
-		  'Praesent eu vulputate ex, ac rhoncus nisi.',
-		  src:	'/public/assets/images/placeholder-hi.png'
-		}
-	  ];
 
 })();
