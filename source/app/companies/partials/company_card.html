@@ -17,7 +17,7 @@
 		<div class="quote">{{ company.bio }}</div>
 
 
-		<div class="tag company_tag" ng-repeat="tag in company.tags">
+		<div class="tag company_tag" ng-repeat="tag in company.tags | limitTo:3">
 			<p>{{ tag.name }}</p>
 		</div>
 		
