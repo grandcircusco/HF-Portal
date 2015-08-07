@@ -27,4 +27,4 @@ $bar-color: #fff;
 $profile-accent-color: lighten($odd-section, 15%);
 
 $phone: "only screen and (max-width: 700px)";
-$tablet: "only screen and (max-width: 1000px)";
+$tablet: "only screen and (max-width: 1000px) and (min-width: 700px)";
