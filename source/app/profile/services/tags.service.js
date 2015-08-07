@@ -11,7 +11,7 @@
 
     Tags.$inject = ['$http'];
 
-    //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
     /**
      * @namespace Tags
@@ -35,7 +35,7 @@
          */
         function all() {
 
-            return $http.get('/api/v1/tags');
+            return $http.get(rootUrl + '/api/v1/tags');
         }
 
         /**
@@ -45,7 +45,7 @@
          */
         function get(id) {
 
-            return $http.get('/api/v1/tags/' + id);
+            return $http.get(rootUrl + '/api/v1/tags/' + id);
 
         }
 
@@ -54,7 +54,7 @@
          * @desc creeate a new fellow record
          */
         //function create(fellow) {
-        //    return $http.post('/api/v1/fellows/', fellow);
+        //    return $http.post(rootUrl + '/api/v1/fellows/', fellow);
         //}
 
         /**
@@ -62,7 +62,7 @@
          * @desc updates a fellow record
          */
         //function update(fellow, id) {
-        //    return $http.put('/api/v1/fellows/' + id, fellow);
+        //    return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
         //}
 
         /**
@@ -70,7 +70,7 @@
          * @desc destroy a fellow record
          */
         //function destroy(id) {
-        //    return $http.delete('/api/v1/fellows/' + id);
+        //    return $http.delete(rootUrl + '/api/v1/fellows/' + id);
         //}
     }
 

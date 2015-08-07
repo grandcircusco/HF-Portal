@@ -11,7 +11,7 @@
 
   Companies.$inject = ['$http'];
 
-  //var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace Companies
@@ -34,7 +34,7 @@
      * @desc get all the companies
      */
     function all() {
-      return $http.get('/api/v1/companies/');
+      return $http.get(rootUrl + '/api/v1/companies/');
     }
 
     /**
@@ -42,7 +42,7 @@
      * @desc get just one company
      */
     function get(id) {
-      return $http.get('/api/v1/companies/' + parseInt(id) );
+      return $http.get(rootUrl + '/api/v1/companies/' + parseInt(id) );
     }
 
     /**
@@ -50,7 +50,7 @@
     * @desc get just one company by user id
     */
     function getByUserId(user_id) {
-      return $http.get('/api/v1/companies/user_id/' + parseInt(user_id) );
+      return $http.get(rootUrl + '/api/v1/companies/user_id/' + parseInt(user_id) );
     }
 
 
@@ -59,7 +59,7 @@
      * @desc creeate a new company record
      */
     function create(company) {
-      return $http.post('/api/v1/companies/', company);
+      return $http.post(rootUrl + '/api/v1/companies/', company);
     }
 
     /**
@@ -68,7 +68,7 @@
      */
     function update(company, id) {
 
-      return $http.put('/api/v1/companies/' + id, company);
+      return $http.put(rootUrl + '/api/v1/companies/' + id, company);
     }
 
     /**
@@ -76,7 +76,7 @@
      * @desc destroy a company record
      */
     function destroy(id) {
-      return $http.delete('/api/v1/companies/' + id);
+      return $http.delete(rootUrl + '/api/v1/companies/' + id);
     }
   }
 })();
