@@ -22,6 +22,7 @@
 	return {
 	  all: all,
 	  get: get,
+      getByUserId: getByUserId,
 	  create: create,
 	  update: update,
 	  destroy: destroy
@@ -46,6 +47,16 @@
 
 		return $http.get('/api/v1/fellows/' + id);
 	}
+
+	/**
+	* @name getByUserId
+	* @desc get one fellow by user_id
+	*/
+	function getByUserId(user_id) {
+
+	  return $http.get('/api/v1/fellows/user_id/' + user_id);
+	}
+
 
 	/**
 	 * @name create

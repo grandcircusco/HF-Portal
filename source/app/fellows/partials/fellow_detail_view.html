@@ -6,20 +6,18 @@
       <div class="col-md-3">
         <img class="user-photo" src="public/assets/images/placeholder-hi.png" width="200" height="200">
         <br>
-        <span class="label label-default">HTML</span>
-        <span class="label label-default">CSS</span>
-        <span class="label label-default">JavaScript</span>
+        <span class="label label-default" ng-repeat='tag in fellow.tags'>{{ tag.name }}</span>
 
         <i class="fa fa-github"></i>
         <i class="fa fa-envelope"></i>
       </div>
 
       <div class="col-md-9">
-        <h1>{{ fellow.name }}</h1>
+        <h1>{{ fellow.first_name +" "+ fellow.last_name }}</h1>
         <div class="user-facts">
           {{ fellow.university }} <br>
           {{ fellow.major }} <br>
-          <a href="{{ fellow.resume_file_path }}">Resume</a> <br>
+          <!--<a href="{{ fellow.resume_file_path }}">Resume</a> <br>-->
           <a href="{{ fellow.website_url }}">Website</a> <br>
         </div>
       </div>

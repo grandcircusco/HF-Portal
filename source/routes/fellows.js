@@ -62,6 +62,25 @@ app.get('/:id', function getFellow(req, res){
     });
 });
 
+// GET /fellows/user_id/:id - get one fellow by user_id
+app.get('/user_id/:user_id', function getFellow(req, res){
+
+    //res.send('GET request - get a company record');
+    Fellows.findOne({
+
+        where: {
+            user_id: req.params.user_id
+        },
+        include: [{
+            model: Tags
+        }]
+
+    }).then(function(fellow) {
+
+        res.send(fellow);
+    });
+});
+
 // POST /fellows - create a new fellow record
 app.post('/', function postFellow(req, res) {
 
@@ -136,17 +155,19 @@ app.put('/:id', upload.single('fellow_profile'), function putFellow(req, res) {
         fellow.save();
 
         var tags = req.body.tags;
-        tags.forEach(function(tag_id){
+        if( Array.isArray(tags) ) {
+            tags.forEach(function (tag_id) {
 
-            Tags.findOne({
-                where: {
-                    id: parseInt(tag_id)
-                }
-            }).then(function(tagObj){
+                Tags.findOne({
+                    where: {
+                        id: parseInt(tag_id)
+                    }
+                }).then(function (tagObj) {
 
-                fellow.addTag(tagObj);
+                    fellow.addTag(tagObj);
+                });
             });
-        });
+        }
 
         res.send(fellow);
     });

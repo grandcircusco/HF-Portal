@@ -6,11 +6,10 @@
 
     <div class="row">
         <div class="col-md-3">
-            <img class="user-photo" src="{{ company.image_url }}" width="200" height="200">
+            <img class="user-photo" ng-src="{{ company.image_url }}" width="200" height="200">
             <br>
-            <span class="label label-default">HTML</span>
-            <span class="label label-default">CSS</span>
-            <span class="label label-default">JavaScript</span>
+
+            <span class="label label-default" ng-repeat='tag in fellow.tags'>{{ tag.name }}</span>
 
             <i class="fa fa-github"></i>
             <i class="fa fa-envelope"></i>

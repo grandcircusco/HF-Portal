@@ -15,13 +15,13 @@
 
   /**
   * @namespace Companies
-  * @returns {Service}
   */
   function Companies($http) {
 
     return {
       all: all,
       get: get,
+      getByUserId: getByUserId,
       create: create,
       update: update,
       destroy: destroy
@@ -44,6 +44,15 @@
     function get(id) {
       return $http.get('/api/v1/companies/' + parseInt(id) );
     }
+
+    /**
+    * @name getByUserId
+    * @desc get just one company by user id
+    */
+    function getByUserId(user_id) {
+      return $http.get('/api/v1/companies/user_id/' + parseInt(user_id) );
+    }
+
 
     /**
      * @name create

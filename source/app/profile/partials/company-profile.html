@@ -103,7 +103,7 @@
 			    <div class="form-group">
 			    	<label for="tags" class="control-label col-xs-2"> Desired Skills</label>
 			        <div class="col-xs-10">
-			        	<select class="js-example-tokenizer form-control" id="tags" name="tags" ng-model="company.tags" multiple="multiple">
+						<select class="jsexample-tokenizer form-control" id="tags" name="tags" ng-model="company.tags" multiple="multiple" ng-options="tag.name for tag in fellow.tags track by tag.id">
 
 						</select>
 			        </div>

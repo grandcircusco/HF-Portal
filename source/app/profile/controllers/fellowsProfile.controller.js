@@ -32,7 +32,9 @@
             return;
         }
 
-        Fellows.get(currentUser.id).success(function(fellow){
+        Fellows.getByUserId(currentUser.id).success(function(fellow){
+
+            console.log(fellow);
 
             $scope.fellow = fellow;
 
@@ -50,18 +52,13 @@
                     data.push(item);
                 });
 
-                var vals = [];
-                if( typeof fellow.tags !== 'undefined' ) {
-                    fellow.tags.forEach(function (tag) {
-
-                        vals.push(tag.id);
-                    });
-                }
+                // https://github.com/angular-ui/ui-select2/blob/master/demo/app.js
 
                 $("#tags").select2({
                     //tags: true,
-                    data: data
-                }).select2('val', vals);
+                    data: data,
+                    tokenSeparators: [',',' ']
+                });
 
             });
 
@@ -74,13 +71,17 @@
             //Profile.all();
         }
 
-        $scope.update= function() {
+        $scope.update= function(fellow) {
+
+            console.log(fellow.tags);
 
             // console.log($scope.fellow);
-            $scope.fellow.tags = $("#tags").val();
+            fellow.tags = $("#tags").val();
+
+            console.log(fellow);
 
             // send fellows info to API via Service
-            Fellows.update($scope.fellow, tempID).success(function(data){
+            Fellows.update($scope.fellow, fellow.id).success(function(data){
 
                 // ** Trigger Success message here
             });

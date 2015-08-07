@@ -34,7 +34,7 @@
 
         console.log(currentUser);
 
-        Companies.get(currentUser.id).success(function(company){
+        Companies.getByUserId(currentUser.id).success(function(company){
 
             $scope.company = company;
 
@@ -52,18 +52,11 @@
                     data.push(item);
                 });
 
-                var vals = [];
-                if( typeof fellow.tags !== 'undefined' ) {
-                    company.tags.forEach(function (tag) {
-
-                        vals.push(tag.id);
-                    });
-                }
-
                 $("#tags").select2({
                     //tags: true,
-                    data: data
-                }).select2('val', vals);
+                    data: data,
+                    tokenSeparators: [',',' ']
+                });
 
             });
 
@@ -79,11 +72,13 @@
 
         $scope.update= function(company) {
 
+            console.log(company.tags);
+
             // get the tags from the form
             company.tags = $("#tags").val();
 
             // send fellows info to API via Service
-            Companies.update(company, currentUser.id).success(function(data){
+            Companies.update(company, company.id).success(function(data){
                 //console.log("POST");
                 //console.log(data);
 

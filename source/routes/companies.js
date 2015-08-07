@@ -94,6 +94,25 @@ app.get('/:id', function getCompany(req, res) {
 
 });
 
+// GET /companies/user_id/:id - get one company by user_id
+app.get('/user_id/:user_id', function getFellow(req, res){
+
+    //res.send('GET request - get a company record');
+    Companies.findOne({
+
+        where: {
+            user_id: req.params.user_id
+        },
+        include: [{
+            model: Tags
+        }]
+
+    }).then(function(company) {
+
+        res.send(company);
+    });
+});
+
 // PUT /companies/:id - updates an existing company record
 app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
 
@@ -130,17 +149,19 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.save();
 
         var tags = req.body.tags;
-        tags.forEach(function(tag_id){
+        if( Array.isArray(tags) ) {
+            tags.forEach(function (tag_id) {
 
-            Tags.findOne({
-                where: {
-                    id: parseInt(tag_id)
-                }
-            }).then(function(tagObj){
+                Tags.findOne({
+                    where: {
+                        id: parseInt(tag_id)
+                    }
+                }).then(function (tagObj) {
 
-                company.addTag(tagObj);
+                    company.addTag(tagObj);
+                });
             });
-        });
+        }
 
         res.send(company);
     });
