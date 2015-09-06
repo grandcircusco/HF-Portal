@@ -13,14 +13,29 @@ app.post('/login', function loginUser(req, res) {
 			email: req.body.email
 		}
 	}).then(function(user) {
-		bcrypt.compare(req.body.password, user.password, function(err, res) {
-			if(res === true) {
-				console.log('password is correct!');
-			} else {
-				console.log('Wrong password!');
-			}
-		});
-		res.send(user);
+
+		if( user !== null ) {
+
+			bcrypt.compare(req.body.password, user.password, function (err, result) {
+
+				if (result === true) {
+
+					//console.log('password is correct!');
+					res.send(user);
+
+				} else {
+
+					//console.log('Wrong password!');
+					res.send(0);
+				}
+			});
+
+		}
+		else{
+
+			//console.log("No user found");
+			res.send(0);
+		}
 	});
 
 });

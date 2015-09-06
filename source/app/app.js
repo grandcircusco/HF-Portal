@@ -70,7 +70,7 @@ function RoutingController($scope, $modal, $window, User) {
         var modalInstance = $modal.open({
             templateUrl: 'source/app/profile/partials/login-page.html',
             controller: 'LoginModalInstanceController',
-            size: 'sm'
+            size: ''
         });
 
         modalInstance.result.then(function(){
@@ -94,10 +94,13 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
     $scope.loginForm = {
 
         email: "",
-        password: ""
+        password: "",
+        errors: []
     };
 
     $scope.login = function(loginForm) {
+
+        $scope.loginForm.errors = [];
 
         console.log(loginForm);
         User.login(loginForm).success(function(user){
@@ -107,6 +110,11 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
             User.SetCredentials(user.id, user.email, user.userType);
             $window.location.reload();
             $modalInstance.close();
+
+        }).error( function(error){
+
+            $scope.loginForm.errors.push("Invalid user credentials");
+
         });
 
     };
