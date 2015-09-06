@@ -9,15 +9,14 @@
     .module('app.companies.services')
     .service('Companies', Companies);
 
-  Companies.$inject = ['$http'];
-
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-	// var rootUrl = "https://boiling-springs-7523.herokuapp.com";
+  Companies.$inject = ['$http', 'CONFIG'];
 
   /**
   * @namespace Companies
   */
-  function Companies($http) {
+  function Companies($http, CONFIG) {
+
+    var rootUrl = CONFIG.SERVICE_URL;
 
     return {
       all: all,

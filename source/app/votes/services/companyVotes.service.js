@@ -9,23 +9,21 @@
     .module('app.votes.services')
     .service('CompanyVotes', CompanyVotes);
 
-  CompanyVotes.$inject = ['$http'];
+  CompanyVotes.$inject = ['$http', 'CONFIG'];
 
-  //var rootUrl = "http://10.251.1.61:3000";
-  //var rootUrl = "localhost:3000";
-	// var rootUrl = "https://boiling-springs-7523.herokuapp.com";
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace CompanyVotes
   */
-  function CompanyVotes($http) {
+  function CompanyVotes($http, CONFIG) {
+
+    var rootUrl = CONFIG.SERVICE_URL;
+
     return {
       get: get,
       create: create,
       destroy: destroy
     };
-
 
     /**
      * @name get by company

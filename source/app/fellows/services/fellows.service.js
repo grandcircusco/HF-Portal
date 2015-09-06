@@ -9,16 +9,18 @@
 	.module('app.fellows.services')
 	.service('Fellows', Fellows);
 
-  Fellows.$inject = ['$http'];
+  Fellows.$inject = ['$http', 'CONFIG'];
 
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
-	// var rootUrl = "https://boiling-springs-7523.herokuapp.com";
+
 
   /**
   * @namespace Fellows
   * @returns {Service}
   */
-  function Fellows($http) {
+  function Fellows($http, CONFIG) {
+
+
+	  var rootUrl = CONFIG.SERVICE_URL;
 
 	return {
 	  all: all,

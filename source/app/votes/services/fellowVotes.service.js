@@ -9,15 +9,15 @@
     .module('app.votes.services')
     .service('FellowVotes', FellowVotes);
 
-  FellowVotes.$inject = ['$http'];
+  FellowVotes.$inject = ['$http', 'CONFIG'];
 
-	// var rootUrl = "https://boiling-springs-7523.herokuapp.com";
-  var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
 
   /**
   * @namespace FellowVotes
   */
-  function FellowVotes($http) {
+  function FellowVotes($http, CONFIG) {
+
+    var rootUrl = CONFIG.SERVICE_URL;
 
     return {
       get: get,

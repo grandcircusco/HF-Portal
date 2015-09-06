@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 
 var options = {
 	mangle:true
-}
+};
 
 gulp.task('default', ['jshint','build-js','build-css','spec']);
 

@@ -9,15 +9,15 @@
     .module('app.profile.services')
     .factory('User', User);
 
-  User.$inject = ['$rootScope', '$cookieStore', '$http'];
-
-	var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+  User.$inject = ['$rootScope', '$cookieStore', '$http', 'CONFIG'];
 
   /**
    * @namespace User
    * @returns {Service}
    */
-  function User($rootScope, $cookieStore, $http) {
+  function User($rootScope, $cookieStore, $http, CONFIG) {
+
+      var rootUrl = CONFIG.SERVICE_URL;
 
       // Will hold info for the currently logged in user
       var currentUser = {};

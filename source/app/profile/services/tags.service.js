@@ -9,15 +9,15 @@
         .module('app.profile.services')
         .service('Tags', Tags);
 
-    Tags.$inject = ['$http'];
-
-    var rootUrl = 'https://quiet-cove-6830.herokuapp.com';
+    Tags.$inject = ['$http', 'CONFIG'];
 
     /**
      * @namespace Tags
      * @returns {Service}
      */
-    function Tags($http) {
+    function Tags($http, CONFIG) {
+
+        var rootUrl = CONFIG.SERVICE_URL;
 
         return {
             all: all,

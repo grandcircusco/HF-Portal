@@ -1,11 +1,10 @@
-
 /**
  * app.routes
  * @desc    contains the routes for the app
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap',
-     'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+    'app.config', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
     .run(run);
 
 /**
@@ -119,13 +118,13 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
 
 
 run.$inject = ['$cookieStore', 'User'];
-function run($cookieStore, User) {
+function run($cookieStore, User){
 
     // keep user logged in after page refresh
     var currentUser = $cookieStore.get('globals') || {};
     User.setCurrentUser(currentUser);
 
-    console.log(currentUser);
+    //console.log(currentUser);
     //if ($rootScope.globals.currentUser) {
     //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
     //}
