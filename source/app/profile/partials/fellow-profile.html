@@ -15,11 +15,12 @@
 	<div class="profile">
 		<div class="row">
 
-                <div class="col-md-3">
-                    <img id="profile-photo" class="user-photo" ngf-src="fellow.file || fellow.image_url" width="200" height="200">
-                    <div class="input-group">
+                <div id="profile-photo" class="col-md-3">
+                    <img class="user-photo" ngf-src="fellow.file || fellow.image_url" width="200" height="200" />
+                    <p class="description">For best results use a square image</p>
+                    <div class="input-group profile-upload">
                         <div id="ngf-select" class="btn btn-default" ngf-select ng-model="fellow.file">Upload Image</div>
-                        <p ng-model="fellow.file" ng-show="fellow.file">Preview of: {{ fellow.file.name }}</p>
+                        <p class="upload-status" ng-model="fellow.file" ng-show="fellow.file">Preview of: {{ fellow.file.name }} <span>Click Update to Save</span></p>
                     </div><!-- /input-group -->
                 </div>
 
