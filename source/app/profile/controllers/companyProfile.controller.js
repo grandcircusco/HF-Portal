@@ -17,7 +17,7 @@
     function CompanyProfileController($scope, $location, Companies, User, Tags) {
         var vm = this;
 
-        // Probably can handle this in the routes or with middleware or some kind
+        // Probably can handle this in the routes or with middleware of some kind
         if( !User.isUserLoggedIn() ) {
 
             $location.path("/");
@@ -32,16 +32,11 @@
             return;
         }
 
-        console.log(currentUser);
-
         Companies.getByUserId(currentUser.id).success(function(company){
 
             $scope.company = company;
 
-            console.log(company);
-
             Tags.all().success(function(tags){
-                //console.log(tags);
 
                 var data = [];
                 tags.forEach(function(tag){
@@ -77,15 +72,14 @@
             // get the tags from the form
             company.tags = $("#tags").val();
 
-            console.log(company);
-
-            // send fellows info to API via Service
-            Companies.update(company, company.id).success(function(data){
-                //console.log("POST");
-                //console.log(data);
+            // send companies info to API via Service
+            Companies.update(company).success(function(newCompanyData){
 
                 // ** Trigger Success message here
+                company = newCompanyData;
 
+                // hide update message
+                $("#profile-photo").find(".upload-status").hide();
             });
         };
 

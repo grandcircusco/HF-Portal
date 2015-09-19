@@ -13,6 +13,9 @@
 public/assets/javascript/bundle.js
 public/assets/stylesheets/style.css
 
+# Dont track uploaded profile images
+public/assets/images/profile
+
 ##
 # Packages
 # it's better to unpack these files and commit the raw source
@@ -181,4 +184,3 @@ build/Release
   # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules/
 bower_components/
-

@@ -9,12 +9,12 @@
     .module('app.companies.services')
     .service('Companies', Companies);
 
-  Companies.$inject = ['$http', 'CONFIG'];
+  Companies.$inject = ['$http', 'Upload', 'CONFIG'];
 
   /**
   * @namespace Companies
   */
-  function Companies($http, CONFIG) {
+  function Companies($http, Upload, CONFIG) {
 
     var rootUrl = CONFIG.SERVICE_URL;
 
@@ -66,9 +66,17 @@
      * @name update
      * @desc updates a company record
      */
-    function update(company, id) {
+    function update(company) {
 
-      return $http.put(rootUrl + '/api/v1/companies/' + id, company);
+      return Upload.upload({
+        url: rootUrl + '/api/v1/companies/' + company.id,
+        fields: company,
+        file: company.file,
+        method: 'PUT'
+
+      });
+
+      //return $http.put(rootUrl + '/api/v1/companies/' + id, company);
     }
 
     /**

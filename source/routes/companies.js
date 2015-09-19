@@ -11,13 +11,13 @@ var Tags = models.tags;
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/assets/images/');
+    cb(null, './public/assets/images/profile');
   },
   filename: function (req, file, cb) {
-    console.log(file);
-    var ext = "." + file.mimetype.split('/')[1];
-    //console.log("********************"+ file.fieldname);
-    cb(null, file.fieldname + "_" + Date.now() + ext);
+
+      var ext = "." + file.mimetype.split('/')[1];
+      var file_name = file.fieldname + "_"+ Date.now() + ext;
+      cb(null, file_name);
   }
 });
 
@@ -115,11 +115,7 @@ app.get('/user_id/:user_id', function getFellow(req, res){
 });
 
 // PUT /companies/:id - updates an existing company record
-app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
-
-
-    // Handle image upload here -- create image_url for below
-    var image_url = "";
+app.put('/:id', upload.single('file'),function putCompany(req, res) {
 
     Companies.findOne({
 
@@ -144,7 +140,8 @@ app.put('/:id', upload.single('company_profile'),function putCompany(req, res) {
         company.founders = req.body.founders;
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
-        company.image_url = req.body.image_url;
+        //company.image_url = req.body.image_url;
+        company.image_url = req.file.path;
         company.location = req.body.location;
 
         company.save();

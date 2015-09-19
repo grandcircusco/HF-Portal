@@ -7,28 +7,29 @@
 
   angular
     .module('app.companies.controllers')
-    .controller('CompaniesController', CompaniesController)
-    .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
+    .controller('CompaniesController', CompaniesController);
 
   CompaniesController.$inject = ['$scope', '$modal', 'Companies'];
-  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance',
-    'company', 'CompanyVotes', 'User'];
 
   /**
    * @namespace CompaniesController
    */
   function CompaniesController($scope, $modal, Companies) {
 
-    var vm = this;
-
     activate();
+
+    function activate() {
+      //console.log('activated companies controller!');
+    }
+
     Companies.all().success( function(companies){
 
           $scope.companies = companies;
-          //console.log(companies);
     });
 
     $scope.openModal = function (company) {
+
+      $scope.company = company;
 
       var modalInstance = $modal.open({
 
@@ -43,19 +44,21 @@
 
       });
 
-      //modalInstance.result.then(function (selectedItem) {
-      //	$scope.selected = selectedItem;
-      //}, function () {
-      //	$log.info('Modal dismissed at: ' + new Date());
-      //});
     };
 
-    function activate() {
-
-      //console.log('activated companies controller!');
-    }
-
   }
+
+/**
+ * Companies Modal Instance Controller
+ * @namespace app.fellows.controllers
+ */
+
+  angular
+      .module('app.companies.controllers')
+      .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
+
+  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance',
+    'company', 'CompanyVotes', 'User'];
 
   function CompaniesModalInstanceController($scope, $modalInstance, company, CompanyVotes, User) {
 

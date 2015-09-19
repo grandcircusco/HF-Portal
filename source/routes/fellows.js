@@ -1,13 +1,13 @@
 var express = require('express');
 var multer  = require('multer');
-
-
-// Image Upload
-// var upload = multer({ dest: './public/assets/images/' });
 var app = express();
+
 var models = require('../models');
 var Fellows = models.fellows;
 var Tags = models.tags;
+
+// Image Upload
+// var upload = multer({ dest: './public/assets/images/' });
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
