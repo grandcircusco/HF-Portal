@@ -9,10 +9,6 @@
 *.o
 *.so
 
-#   Remove bundled files from version control
-public/assets/javascript/bundle.js
-public/assets/stylesheets/style.css
-
 # Dont track uploaded profile images
 public/assets/images/profile
 
@@ -108,8 +104,6 @@ $RECYCLE.BIN/
 #
 .sass-cache
 *.css.map
-
-public/assets/stylesheets/style.css
 
 ##
 # vim
