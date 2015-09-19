@@ -9,15 +9,15 @@
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User'];
+    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User' ];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope, $location, Fellows, Tags, User) {
+    function FellowsProfileController($scope, $location, Fellows, Tags, User ) {
         var vm = this;
 
-        // Probably can handle this in the routes or with middleware or some kind
+        // Probably can handle this in the routes or with middleware of some kind
         if( !User.isUserLoggedIn() ) {
 
             $location.path("/");
@@ -34,12 +34,9 @@
 
         Fellows.getByUserId(currentUser.id).success(function(fellow){
 
-            //console.log(fellow);
-
             $scope.fellow = fellow;
 
             Tags.all().success(function(tags){
-
 
                 var data = [];
                 tags.forEach(function(tag){
@@ -52,9 +49,6 @@
                     data.push(item);
                 });
 
-                //console.log(fellow.tags);
-                //$scope.tags = fellow.tags;
-
                 // https://github.com/angular-ui/ui-select2/blob/master/demo/app.js
 
                 $("select#tags").select2({
@@ -62,9 +56,6 @@
                     data: data,
                     tokenSeparators: [',',' ']
                 });
-
-
-
 
             });
 
@@ -77,20 +68,21 @@
             //Profile.all();
         }
 
-        $scope.update= function(fellow) {
+        $scope.update = function(fellow, file) {
 
-            //console.log(fellow.tags);
-
-            // console.log($scope.fellow);
             fellow.tags = $("#tags").val();
-            console.log(fellow.tags);
 
             // send fellows info to API via Service
-            Fellows.update($scope.fellow, fellow.id).success(function(data){
+            Fellows.update(fellow).success(function(newFellowData){
 
                 // ** Trigger Success message here
+                fellow = newFellowData;
+
+                // hide update message
+                $("#profile-photo").find(".upload-status").hide();
             });
         };
+
     }
 
 })();

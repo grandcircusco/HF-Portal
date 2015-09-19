@@ -128,8 +128,44 @@
 .headWord {
 	white-space: nowrap;
 }
-.user-photo {
+
+
+#profile-photo{
+
+  text-align: center;
+
+  .user-photo{
+
 	border-radius: 100px;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+  }
+
+  .description{
+
+	font-size: 13px;
+	font-style: italic;
+	margin-top: 5px;
+  }
+
+  .profile-upload {
+
+	margin-top: 15px;
+	display: inline-block;
+
+	.upload-status{
+
+	  margin-top: 10px;
+	  text-align: center;
+
+	  span{
+
+		display: block;
+		color: red;
+	  }
+	}
+  }
 }
 
 #tags {

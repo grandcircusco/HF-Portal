@@ -43,6 +43,7 @@
         }
 
       });
+
     };
 
 
@@ -93,7 +94,7 @@
 						$scope.done = true;
 					$timeout(function() {
 						$scope.done = false;
-					},3000);
+					}, 3000);
 				});
 			}
 		};

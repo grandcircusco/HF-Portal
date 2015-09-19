@@ -12,7 +12,6 @@
     //.controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
     AdminProfileController.$inject = ['$scope', '$location', 'User', 'Fellows', 'Companies'];
-    //AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies'];
 
     /**
      * @namespace AdminProfileController
@@ -70,6 +69,22 @@
 
             jQuery("userType").addClass('error');
         }
+
+        // Admin profile tabs
+        $scope.tabs = [
+            {
+                title:'User List',
+                template:'source/app/profile/partials/admin/user-list.html'
+            },
+            {
+                title:'New User',
+                template:'source/app/profile/partials/admin/new-user-form.html'
+            },
+            {
+                title:'Votes',
+                template:'source/app/profile/partials/admin/admin-votes.html'
+            }
+        ];
 
 
         $scope.ok = function (user) {
