@@ -11,8 +11,7 @@
     .controller('AdminProfileController', AdminProfileController);
     //.controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
-    AdminProfileController.$inject = ['$scope', '$location',  'FileUploader', 'ngFileUpload', 'User', 'Fellows', 'Companies'];
-    //AdminProfileModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies'];
+    AdminProfileController.$inject = ['$scope', '$location', 'User', 'Fellows', 'Companies'];
 
     /**
      * @namespace AdminProfileController
