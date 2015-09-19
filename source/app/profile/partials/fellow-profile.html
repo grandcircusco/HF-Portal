@@ -16,19 +16,14 @@
 		<div class="row">
 
                 <div class="col-md-3">
-                    <center><img class="user-photo" ng-src={{fellow.image_url}} width="200" height="200"></center>
-                    <br>
+                    <img id="profile-photo" class="user-photo" ngf-src="fellow.file || fellow.image_url" width="200" height="200">
                     <div class="input-group">
-				  <span class="input-group-btn">
-					  <input type="file" name="picUpload"/>
-					  <!--<button class="btn btn-default" type="button">Browse</button>-->
-				  </span>
-                        <!--<input type="text" class="form-control" placeholder="">-->
+                        <div id="ngf-select" class="btn btn-default" ngf-select ng-model="fellow.file">Upload Image</div>
+                        <p ng-model="fellow.file" ng-show="fellow.file">Preview of: {{ fellow.file.name }}</p>
                     </div><!-- /input-group -->
                 </div>
 
                 <div class="col-md-9">
-
 
                     <form class="form-horizontal">
                         <div class="form-group">
@@ -66,13 +61,6 @@
                             <label for="fellowBio" class="control-label col-xs-2">Biography</label>
                             <div class="col-xs-10">
                                 <textarea class="form-control" rows="7" id="fellowBio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="image_url" class="control-label col-xs-2">Profile Image</label>
-                            <div class="col-xs-10">
-                                <input type="text" class="form-control" id="image_url" ng-model="fellow.image_url" value="{{fellow.image_url}}"/>
                             </div>
                         </div>
 
@@ -132,7 +120,7 @@
                         Profile Updated
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" ngf-reset-on-click data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

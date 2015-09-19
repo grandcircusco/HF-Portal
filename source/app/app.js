@@ -3,7 +3,7 @@
  * @desc    contains the routes for the app
  */
 
- var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap',
+ var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
     'app.config', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
     .run(run);
 

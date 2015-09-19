@@ -36,7 +36,7 @@ gulp.task('build-css', function () {
 });
 
 gulp.task('build-js', function () {
-	return gulp.src(['source/app/**/*.js'])
+	return gulp.src(['source/app/**/*.js', 'node_modules/ng-file-upload/dist/ng-file-upload.min.js'])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
 		.pipe(gutil.env.type === 'production' ? uglify(options) : gutil.noop())

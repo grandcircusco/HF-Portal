@@ -9,7 +9,7 @@
 	.module('app.fellows.services')
 	.service('Fellows', Fellows);
 
-  Fellows.$inject = ['$http', 'CONFIG'];
+  Fellows.$inject = ['$http', 'Upload', 'CONFIG'];
 
 
 
@@ -17,7 +17,7 @@
   * @namespace Fellows
   * @returns {Service}
   */
-  function Fellows($http, CONFIG) {
+  function Fellows($http, Upload, CONFIG) {
 
 
 	  var rootUrl = CONFIG.SERVICE_URL;
@@ -73,8 +73,17 @@
 	 * @name update
 	 * @desc updates a fellow record
 	 */
-	function update(fellow, id) {
-		return $http.put(rootUrl + '/api/v1/fellows/' + id, fellow);
+	function update(fellow) {
+
+        return Upload.upload({
+            url: rootUrl + '/api/v1/fellows/' + fellow.id,
+            fields: fellow,
+            file: fellow.file,
+            method: 'PUT'
+
+        });
+
+		//return $http.put(rootUrl + '/api/v1/fellows/' + fellow.id, fellow);
 	}
 
 	/**
