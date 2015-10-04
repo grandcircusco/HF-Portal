@@ -22,6 +22,9 @@
     db.sequelize = sequelize;
     db.Sequelize = Sequelize;
 
+    db.companies.belongsTo(db.users, { foreignKey: 'user_id' });
+    db.fellows.belongsTo(db.users, { foreignKey: 'user_id' });
+
     db.companies.belongsToMany(db.tags, {through: 'companies_tags'});
     db.tags.belongsToMany(db.companies, {through: 'companies_tags'});
 

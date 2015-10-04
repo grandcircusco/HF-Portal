@@ -80,7 +80,7 @@
       var current = User.getCurrentUser();
       if(current.userType === "Company") {
 				$scope.loading = true;
-        FellowVotes.create(fellow.id, current.id)
+        FellowVotes.create(current.id, fellow.id)
 					.success( function(vote) {
 						console.log("success!");
 						//return vote;

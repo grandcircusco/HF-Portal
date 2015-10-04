@@ -41,11 +41,11 @@
      * @name create
      * @desc fellow votes on a company
      */
-    function create(fellow_id, company_id) {
-      console.log("fellowVoteCreate" + fellow_id + ' ' + company_id);
+    function create(user_id, fellow_id) {
+      console.log("fellowVoteCreate" + user_id + ' ' + fellow_id);
       return $http.post(rootUrl + '/api/v1/votes/fellow/', {
-        fellow_id: fellow_id,
-        company_id: company_id
+        user_id: user_id,
+        fellow_id: fellow_id
       });
     }
 

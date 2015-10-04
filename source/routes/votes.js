@@ -9,8 +9,10 @@ var Fellows = models.fellows;
 
 
 function resolvePromisesAndPost(voter, votee,res) {
+
   voter.then(function(voter){
     votee.then(function(votee){
+
       voter.getVotees().then( function(data) {
         if(data.length >= 5) {
           res.status(500).send('Something broke!');
@@ -55,13 +57,12 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
 
 
 
-// POST /fellow/ - Fellow votes for a company
+// POST /fellow/ - fellow votes for a company
 app.post('/fellow/', function postFellowVote(req, res) {
 
-	console.log('\n\n\n\npost getting called in express');
   var company = Companies.findOne({
     where: {
-      id: req.body.company_id
+      user_id: req.body.user_id
     }
 
   });
@@ -78,7 +79,7 @@ app.post('/fellow/', function postFellowVote(req, res) {
 });
 
 
-// POST /company/ - Company votes for a fellow
+// POST /company/ - fellow votes for a company
 app.post('/company/', function postCompanyVote(req, res) {
 
   var company = Companies.findOne({
@@ -90,7 +91,7 @@ app.post('/company/', function postCompanyVote(req, res) {
 
   var fellow = Fellows.findOne({
     where: {
-      id: req.body.fellow_id
+      user_id: req.body.user_id
     }
 
   });

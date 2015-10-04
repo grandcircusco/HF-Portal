@@ -14,7 +14,7 @@
 		<div class="row">
 
 			<tabset>
-				<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+				<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled"  select="tab.action()">
 					<div ng-include="tab.template"></div>
 				</tab>
 			</tabset>

@@ -20,6 +20,7 @@
 
     return {
       all: all,
+      allWithUser: allWithUser,
       get: get,
       getByUserId: getByUserId,
       create: create,
@@ -35,6 +36,14 @@
      */
     function all() {
       return $http.get(rootUrl + '/api/v1/companies/');
+    }
+
+    /**
+     * @name all
+     * @desc get all the companies with their user account info
+     */
+    function allWithUser() {
+      return $http.get(rootUrl + '/api/v1/companies/users');
     }
 
     /**

@@ -4,7 +4,9 @@ var app = express();
 
 var models = require('../models');
 var Fellows = models.fellows;
+var Companies = models.companies;
 var Tags = models.tags;
+var Users = models.users;
 
 // Image Upload
 // var upload = multer({ dest: './public/assets/images/' });
@@ -36,6 +38,25 @@ app.get('/', function getFellows(req, res) {
         include: [{
             model: Tags
         }]
+
+    }).then(function(fellows) {
+
+        res.send(fellows);
+    });
+
+});
+
+// GET /fellows - get all fellows
+app.get('/users', function getFellows(req, res) {
+
+    Fellows.all({
+
+        where: {
+
+            first_name: {ne: null}
+        },
+        order: '"last_name" ASC',
+        include: [{ all: true }]
 
     }).then(function(fellows) {
 

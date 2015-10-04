@@ -24,6 +24,7 @@
 
 	return {
 	  all: all,
+	  allWithUser: allWithUser,
 	  get: get,
       getByUserId: getByUserId,
 	  create: create,
@@ -40,6 +41,15 @@
 	function all() {
 
 		return $http.get(rootUrl + '/api/v1/fellows');
+	}
+
+	/**
+	* @name all
+	* @desc get all the fellows with their user account info
+	*/
+	function allWithUser() {
+
+	  return $http.get(rootUrl + '/api/v1/fellows/users');
 	}
 
 	/**

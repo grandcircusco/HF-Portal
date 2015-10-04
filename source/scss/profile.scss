@@ -174,7 +174,7 @@
 
 .alert{
 
-  margin-bottom: 20px;
+  	margin-bottom: 20px;
 }
 
 .select2-container {
@@ -184,4 +184,21 @@
 .select2-container--default .select2-selection--multiple {
 	background-color: $profile-accent-color;
 	border: none;
+}
+
+
+/* User List */
+
+.tab-content{
+
+  background-color: #ffffff;
+  position: relative;
+  padding: 10px 30px;
+  overflow: hidden;
+
+  .fa{
+
+	color: #333333;
+  }
+
 }

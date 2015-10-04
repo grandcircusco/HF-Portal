@@ -47,7 +47,7 @@
           //get: get,
           create: create,
           login: login,
-          //update: update,
+          update: update,
           //destroy: destroy
           SetCredentials: SetCredentials,
           ClearCredentials: ClearCredentials,
@@ -59,7 +59,7 @@
 
       /**
        * @name all
-       * @desc get all the companies
+       * @desc get all the users
        */
       //function all() {
       //
@@ -70,7 +70,7 @@
 
       /**
        * @name get
-       * @desc get just one company
+       * @desc get just one user
        */
       //function get(id) {
       //    return $http.get(rootUrl + '/api/v1/users/' + parseInt(id) );
@@ -78,10 +78,20 @@
 
       /**
        * @name create
-       * @desc create a new fellow record
+       * @desc create a new user record
        */
       function create(user) {
           return $http.post(rootUrl + '/api/v1/users/create', user);
+      }
+
+      /**
+       * @name update
+       * @desc updatea a user record
+       */
+      function update(user) {
+            console.log(user);
+
+          return $http.put(rootUrl + '/api/v1/users/' + user.id, user);
       }
 
       /**

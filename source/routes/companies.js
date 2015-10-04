@@ -5,6 +5,7 @@ var app = express();
 var models = require('../models');
 var Companies = models.companies;
 var Tags = models.tags;
+var Users = models.users;
 
 // Image Upload
 // var upload = multer({ dest: './public/assets/images/' });
@@ -75,6 +76,24 @@ app.post('/', function postCompany(req, res) {
      });
 });
 
+// GET /companies - get all companies
+app.get('/users', function getCompanies(req, res) {
+
+    Companies.all({
+
+        where: {
+
+            name: {ne: null}
+        },
+        order: '"name" ASC',
+        include: [{ all: true }]
+
+    }).then(function(companies) {
+
+        res.send(companies);
+    });
+
+});
 
 // GET /companies/:id - get one company
 app.get('/:id', function getCompany(req, res) {

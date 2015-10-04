@@ -68,11 +68,44 @@ app.post('/create', function createUser(req, res) {
 
 		}else{
 
-
 			res.send("User already exists");
 		}
 	});
 
+});
+
+// PUT /fellows/:id - updates an existing fellow record
+app.put('/:id', function putUser(req, res) {
+
+	console.log(req.body);
+
+	Users.findOne({
+
+		where: {
+			id: req.params.id
+		}
+
+	}).then(function(user) {
+
+		user.email = req.body.email;
+		user.save();
+
+		if( req.body.password.length > 0 ){
+
+			bcrypt.genSalt(10, function(err, salt) {
+				bcrypt.hash(req.body.password, salt, function(err, hash) {
+
+					user.password = hash;
+					user.save();
+				});
+			});
+		}
+		else{
+
+			res.send(user);
+		}
+
+	});
 
 });
 
