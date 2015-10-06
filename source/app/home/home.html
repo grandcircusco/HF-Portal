@@ -1,182 +1,376 @@
 
-    <script>
-      function popup() {
-        BootstrapDialog.show({
-            message: 'Hi Apple!'
-        });
-      }
-    </script>
     <div class="top">
       <div class="row background-img">
         <div class="frameGradient">
           <div class="frame">
             <div class="borderFrame">
-              <div class="logo"><img src="public/assets/images/hf-logo.svg" class="logo-img"></div>
+              <div class="logo">
+
+                <img src="public/assets/images/hf-logo.svg" class="logo-img">
+
+                <div class="form-container">
+                  <a href="https://docs.google.com/forms/d/1RuD6Kzww3abf0vl0YC8ygHvXdLRD1Cr5FI6DZbWSjJE/viewform" target="_blank" class="form-link" >Are you a game changer?</a>
+                </div>
+
+              </div>
             </div><!--  borderFrame -->
-
-
-
           </div><!-- frame -->
         </div><!-- frameGradient -->
-          
+        <!-- removing carousel for static image -->
+        <!-- <carousel>
+          <slide>
+            <img src="public/assets/images/hf-logo-fullcolor.png" align="middle" data-holder-rendered="true">
+          </slide>
 
-          <!-- removing carousel for static image -->
-          <!-- <carousel>
-            <slide>
-              <img src="public/assets/images/hf-logo-fullcolor.png" align="middle" data-holder-rendered="true">
-            </slide>
+          <slide>
+            <img src="public/assets/images/hf-tour.png" align="middle" data-holder-rendered="true">
+          </slide>
 
-            <slide>
-              <img src="public/assets/images/hf-tour.png" align="middle" data-holder-rendered="true">
-            </slide>
-
-            <slide>
-              <img src="public/assets/images/id_gc.png" align="middle" data-holder-rendered="true">
-            </slide>
-          </carousel> -->
+          <slide>
+            <img src="public/assets/images/id_gc.png" align="middle" data-holder-rendered="true">
+          </slide>
+        </carousel> -->
       </div><!-- background img -->
     </div>
 
-    <div class="main-content">
+    <div id="home" class="main-content">
+
       <div class="row">
-        <div class= "odd-section section">
+        <div class="section even-section">
 
-          <div class="container-fluid">
-            <h1>Welcome!</h1>
-            <div class="row">
-              
-              <div class="col-md-6"> 
-                  <div class="textBox">
-                  <div class="col-md-1"><div class="rectangle"> </div></div> 
-                  <div class="contain col-md-11">
-                  <h3>Fellows:</h3>
-                    Congratulations! You have all made it through the rounds, and are officially Hackerfellows! In the next phases you all will interview with various start-ups to find a match, complete the 5 week coding bootcamp, and then begin working for your companies. The purpose of this website is to serve as the first method interaction with the companies. You will be able to view basic information about the various companies, and vote on the 5 that you are interested in. 
-                 </div>
-               </div>
-              </div>
+            <div id="about-section">
+              <div class="container">
 
-              <div class="col-md-6">
-                <div class="textBox">
-                  <div class="col-md-1"><div class="rectangle"> </div></div>
-                <div class="contain col-md-11">
-                <h3>Companies:</h3> 
+                <div class="row top-row">
+                    <div class="col-md-12">
 
-                 Thank you for participating in our annual fellowship, Hackerfellows. In the next phase you will interview with the fellows to find a good match for your startup. The purpose of this website is to serve as the first method of interaction with the fellows. You will be able to view basic information about the fellows, and vote on the 5 that you are interested conducting an interview with. 
-                </div> 
-                </div> 
-              </div>
-          </div>
-        </div>
+                      <h2>WHAT IS HACKER FELLOWS PROGRAM?</h2>
+                      <p>Recruiting recent Michigan and national college graduates to participate in a one-year program, <em>Hacker Fellows</em>. As <em>Hacker Fellows</em>, you'll get to work at an amazing Michigan tech start-up. You'll start with 5 weeks of training with your cohorts and dive into the start-up world by getting matched with a Michigan start-up. In short, you'll learn with the best and brightest in Michigan as you start your career.</p>
+                    </div>
+                </div>
 
+                <div class="row bottom-row">
+                    <div class="col-md-6 side">
 
-      </div>
-      <div class="row">
-        <div class="even-section section">
-          <div class="container-fluid">
-            <h1>Important Dates</h1>
-            
-              <div class="dateList">
-                <div class="dateListItem"><!-- main div for list -->
-                  <div class="dateItem">4/05</div> <!-- sub div 1 -->
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                    <span class="dateInfoText">Phone Interviews</span></div><!-- sub div2 -->
-                </div>
-                <div class="dateListItem">
-                  <div class="dateItem">4/15</div> 
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                    <span class="dateInfoText">In-person Interviews</span></div>
-                </div>
-                <div class="dateListItem">
-                  <div class="dateItem">7/04</div> 
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                  <span class="dateInfoText">Move-In Day</span></div>
-                </div>
-                <div class="dateListItem">
-                  <div class="dateItem">7/06</div> 
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                  <span class="dateInfoText">Bootcamp Begins</span></div>
-                </div>
-                <div class="dateListItem">
-                  <div class="dateItem">8/07</div> 
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                    <span class="dateInfoText">Bootcamp Ends</span> </div>
-                </div>
-                <div class="dateListItem">
-                  <div class="dateItem">8/09</div> 
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                    <span class="dateInfoText">Recommended Move-Out Day</span></div>
-                </div>
-                <div class="dateListItem">
-                  <div class="dateItem">8/10</div> 
-                  <div class="dateInfo">
-                    <div class="dateMarker"></div>
-                    <div class="dateIcon"></div>
-                    <span class="dateInfoText">Begin at Startup!</span></div>
-                </div>
-              </div>
-            
-          </div> <!-- date list -->
-         <div class="container-fluid">
-            <div class="col-md-6">
+                      <h3>BOOTCAMP</h3>
+                      <p>An elite group of selected fellows will train in the Grand Circus classroom space in downtown Detroit over the course of five weeks. During this time, <em>Hacker Fellows</em> will acquire the entrepreneurial and technical skills needed to work for an amazing start-up in Michigan. Fellows will also develop a strong cohort of peers and start-up junkies. By being immersed in the start-up ecosystem, Fellows will create relationships and develop a firm understanding of the business side of start-ups.</p>
 
-            <div class="dateInfoP">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tincidunt arcu, at varius ante porta ultrices. Praesent feugiat, leo vel finibus molestie, nisi enim ullamcorper nibh, sed facilisis eros odio et ex. Suspendisse ornare nisl augue, blandit viverra sem consectetur ut.
-              </div>
-            </div>
-            <div class="col-md-6">
-            <div class="dateInfoP">
-              Vestibulum lobortis feugiat sapien, vel varius diam laoreet non. Morbi convallis enim nec eros luctus, ac malesuada enim auctor. Maecenas eleifend elit nec ultricies efficitur. Ut nibh diam, consectetur vel quam eu, volutpat aliquam odio.
+                    </div>
+                    <div class="col-md-6 side">
+
+                      <h3>WORKING AT A STARTUP</h3>
+                      <p>Fellows will be thrown into the deep end and given the opportunity to make a huge impact on the high-growth high-demand tech sector. Fellows will be matched with a Michigan start-up following training and work as a developer for the remainder of the year-long fellowship. <em>Hacker Fellows</em> will also participate in ongoing mentorship and activities throughout the year. This program will provide the support required to create a "soft-landing" for recent Computer Science graduates coming to new cities in Michigan.</p>
+
+                    </div>
+                </div>
+
               </div>
             </div>
 
-          
-          </div><!--  additional copy -->
         </div>
-        </div>
+      </div>
+
       <div class="row">
-        <div class="odd-section section">
-          <div class="container">
-            <h1>FAQs</h1>
-            <p>
-            <div><strong>Question:</strong> How does the interview process work? <br>
-              <strong>Answer:</strong> You will be given a set amount to time to choose five companies which you are most interested in via the Hacker Fellows portal. Afterwards, you will have the opportunity to phone interview with your top companies. Companies who wish to continue the interview process with you can set up an in-person interview on our scheduled interview day. From here it is up to the companies to proceed with the hiring process with you.
-            </div> <br>
-            <div><strong>Question:</strong> Do I have to stay in the Wayne State dorms? <br>
-              <strong>Answer:</strong> You are strongly encouraged you to take advantage of the paid room and
-                board provided by Hacker Fellows at Wayne State. This is a great opportunity to spend time together with other Hacker Fellows and the cost of housing is part of your total compensation. You can choose to live elsewhere but you will be foregoing a chance to connect with other fellows!
-            </div> <br>
-              <div><strong>Question:</strong> Do I have to take the Wayne State meal plan? <br>
-              <strong>Answer:</strong>  No. We recommend you take advantage of the 45 swipe meal plan because it
-                will be very convenient and a great price, but it’s up to you! If you
-                decline the provided meal plan, you will receive the cost of the meal plan as part of your stipend.
-            </div> <br>
-            <div><strong>Question:</strong> How does the stipend work? <br>
-              <strong>Answer:</strong> You’re receiving ~$60,000 in total annualized compensation as part of
-                Hacker Fellows. During the training session, Hacker Fellows will directly 
-                pay for your WSU housing and parking, plus breakfast and dinner during
-                the week. You’ll also receive a $1,000 stipend to cover lunch, weekend
-                meals and incidentals. For those fellows that choose to not live in the
-                provided housing, you will receive a $300 stipend for lunch.
-            </div> <br>
-            <div><strong>Question:</strong> Will we have chances to network? <br>
-              <strong>Answer:</strong> Yes! Hacker Fellows will host multiple happy hours and discussion panels with other developers and entrepreneurs. After the bootcamp is finished, fellows will be invited to multiple networking events around southeast Michigan as well as staying connected with other fellows.
+        <div class="section odd-section">
+
+            <div id="apply-section">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-5 left-side">
+
+                            <div class="form-container">
+                                <a href="https://docs.google.com/forms/d/1RuD6Kzww3abf0vl0YC8ygHvXdLRD1Cr5FI6DZbWSjJE/viewform" target="_blank" class="form-link" >APPLY</a>
+                            </div>
+
+                            <p>Are you ready for greatness? Apply here.</p>
+
+                        </div>
+                        <div class="col-md-7 right-side">
+
+                            <h2>DEADLINES</h2>
+                            <p>Application Deadline: <em><strong>November 8 (Round 1) &amp; February 7 (Round 2)</strong></em><br />
+                                Interviews: <strong><em>November 11 - December 4 (Round 1) &amp;&nbsp;February 10 - 26 (Round 2)</em></strong><br />
+                                Fellows Selected: <em><strong>December 10 (Round 1) &amp; February 29 (Round 2)</strong></em></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-            </p>
+
         </div>
       </div>
-      </div>
-      
-      </div>
+
+    <div class="row">
+        <div class="section even-section">
+
+            <div id="students-section">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-6 left-side">
+
+                            <h2>REQUIREMENTS</h2>
+                            <ul>
+                                <li><p>Graduation between 2014-2015</p></li>
+                                <li><p>Computer Science Major or equivalent</p></li>
+                                <li><p>Graduating from accredited 4-year college or university</p></li>
+                                <li><p>Energized about making an impact in the Michigan entrepreneurial community</p></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-6 right-side">
+
+                            <h2>PAYOFF</h2>
+                            <ul>
+                                <li><p>Fellows receive annualized compensation of $60,000*</p></li>
+                                <li><p>Launch a career in a Michigan start-up</p></li>
+                                <li><p>Get mentored by local entrepreneurs to understand what it takes to be successful</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <div class="row">
+        <div class="section odd-section">
+
+            <div id="employers-section">
+                <div class="container">
+
+                    <div class="center">
+                        <h2>INTERESTED IN HIRING OUR FELLOWS?</h2>
+                        <p>Email info@hackerfellows.com</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <h3>PAYOFF</h3>
+                            <p>Simply put, <em>The Hacker Fellows</em> addresses the #1 problem tech start-ups in Michigan report: finding top developer talent for companies. The primary goals of Hacker Fellows are:</p>
+                            <ul>
+                                <li>Attract tech entrepreneurs to Michigan start-ups</li>
+                                <li>Promote job creation within the tech community</li>
+                                <li>Fill the void of developers among Michigan start-ups and tech communities</li>
+                                <li>Create a platform for mentoring, relationships and collaboration within the tech community</li>
+                                <li>Boost <em>Hacker Fellows</em> compensation by ~$20,000 to help attract the top talent</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <h3>REQUIREMENTS</h3>
+                            <ul>
+                                <li><p>Backed by a venture capital company or angel investor</p></li>
+                                <li><p>Have substantial operations in Michigan</p></li>
+                                <li><p>Early stage start-up (less than 5 years old)</p></li>
+                                <li><p>For profit business</p></li>
+                                <li><p>Doing cool techy things, commercializing innovative technology</p></li>
+                                <li><p>Willing to commit to hiring and keeping a computer science major over the one-year fellowship</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h3>PARTICIPATING EMPLOYERS</h3>
+
+                        <div class="col-md-4">
+                            <ul class="employer-list">
+                                <li><a target="_blank" href="http://adadapted.com">AdAdapted</a></li>
+                                <li><a target="_blank" href="http://amplifinity.com/">Amplifinity</a></li>
+                                <li><a target="_blank" href="https://www.boostup.com/">BoostUp</a></li>
+                                <li><a target="_blank" href="http://cribspot.com">Cribspot</a></li>
+                                <li><a target="_blank" href="http://iruleathome.com">iRule</a></li>
+                                <li><a target="_blank" href="http://www.notion.co/">Notion</a></li>
+                                <li><a target="_blank" href="http://myfab5.com">MyFab5</a></li>
+                                <li><a target="_blank" href="http://seelio.com">Seelio</a></li>
+                                <li><a target="_blank" href="http://spiritshop.com">SpiritShop</a></li>
+                                <li><a target="_blank" href="http://wise.ly">Wisely</a></li>
+                                <li><a target="_blank" href="http://fireside.audio/">Fireside</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="employer-list">
+                                <li><a target="_blank" href="http://AdvaitaBio.com">Advaita Bioinformatics</a></li>
+                                <li><a target="_blank" href="http://areyouahuman.com/">Are You A Human</a></li>
+                                <li><a target="_blank" href="http://careernowbrands.com">Career Now Brands</a></li>
+                                <li><a target="_blank" href="http://dnasoftware.com">DNA Software</a></li>
+                                <li><a target="_blank" href="http://locqus.com">Locqus</a></li>
+                                <li><a target="_blank" href="http://meetmaestro.com">Maestro</a></li>
+                                <li><a target="_blank" href="http://nutshell.com">Nutshell</a></li>
+                                <li><a target="_blank" href="http://goslope.com">Slope</a></li>
+                                <li><a target="_blank" href="http://sportsmantracker.com">Sportsman Tracker</a></li>
+                                <li><a target="_blank" href="http://varsitynewsnetwork.com">Varsity News Network</a></li>
+                                <li><a target="_blank" href="http://tether.space/register">Tether</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="employer-list">
+                                <li><a target="_blank" href="http://ambrdetroit.com">AMBR Detroit</a></li>
+                                <li><a target="_blank" href="http://backstit.ch/">Backstitch</a></li>
+                                <li><a href="http://www.duosecurity.com">Duo Security</a></li>
+                                <li><a target="_blank" href="http://foodjunky.com">FoodJunky</a></li>
+                                <li><a target="_blank" href="http://larky.com">Larky</a></li>
+                                <li><a href="https://www.grubbable.com/">G</a><a href="https://www.grubbable.com/">rubbable Inc.</a></li>
+                                <li><a target="_blank" href="http://OPS-SOLUTIONS.COM">OPS Solutions</a></li>
+                                <li>&nbsp;<a target="_blank" href="http://stik.com">SocialProof</a></li>
+                                <li><a target="_blank" href="https://stratoscard.com/">Stratos</a></li>
+                                <li><a href="http://a2bbikeshare.com/">A2B Bike Share</a></li>
+                                <li>TAGS Detroit (website coming soon)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="section even-section">
+
+            <div id="theteam-section">
+                <div class="container">
+
+                    <h2>OUR TEAM</h2>
+                    <img src="http://static1.squarespace.com/static/53e38ec5e4b038bdcd54c24e/t/53faac9ee4b03f6c4110c144/1408937119021/id_gc.png"  alt="id_gc.png"  />
+
+                    <div class="row">
+                        <div class="col-md-6 left-side">
+
+                            <h3><a target="_blank" href="http://investdetroit.com/">INVEST DETROIT</a></h3>
+                            <p>Invest Detroit is deeply engaged in the entrepreneurial ecosystem throughout Michigan, particularly through two of its funds, the <a target="_blank" href="http://investdetroit.com/managed-funds/first-step-fund/">First Step Fund</a> (a development fund that primarily invests at the pre-seed and seed stages) and <a target="_blank" href="http://detroitinnovate.com/">Detroit Innovate</a> (a venture fund that primarily invests at the seed and Series A stages). Combined, these two funds have 70 portfolio companies across the state but primarily in southeast Michigan.</p>
+                            <p>The economic development efforts of Invest Detroit have resulted in 2,000 jobs created or retained through the successful implementation of entrepreneurial-based programs, investment funds, and services. Actively involving Michigan higher education institutions along with local start-ups will help to strengthen the tech community while also filling much needed skill set voids.</p>
+
+                        </div>
+
+                        <div class="col-md-6 right-side">
+
+                            <h3><a target="_blank" href="http://www.grandcircus.co/">GRAND CIRCUS</a></h3>
+                            <p>Grand Circus is a training institute in the heart of downtown Detroit on a mission to elevate the tech community. We offer training, co-working and event hosting &#45;&#45; all under the same tent.</p>
+                            <p>When it comes to training we dismiss that true skill comes with a certificate. We focus instead on outcomes that matter. With project based instruction our training delivers real world expertise. We call it training with a purpose.</p>
+                            <p>Our curriculum is built on the latest in technology, business and design and we have partnered with the best and brightest. Our instructors are real practitioners who are at the top of their fields and committed to the success of their students.</p>
+                            <p>We are located in the heart of Detroit, and the community is as central to our success as our location. Our space is available for co-working and events, because where there are relationships there are possibilities for learning.</p>
+
+                        </div>
+                    </div>
+
+                    <h3>ADVISORY BOARD</h3>
+
+                    <div class="row">
+                        <div class="col-md-6 left-side">
+
+                            <ul class="board-list-left">
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=163742368&amp;authType=NAME_SEARCH&amp;authToken=aYeu&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436291967584%2Ctas%3Aerika%20carlson">Erika Carlson</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/pub/donald-jones/43/b6a/561">Donald Jones</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=231174&amp;authType=NAME_SEARCH&amp;authToken=P1BF&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436292035911%2Ctas%3Aterry%20cross">Terry Cross</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=5401097&amp;authType=NAME_SEARCH&amp;authToken=o5HG&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436292204975%2Ctas%3AChester%20Kustarz">Chester Kustarz</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=1807322&amp;authType=NAME_SEARCH&amp;authToken=jLL9&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436292112103%2Ctas%3Amartin%20dober">Martin Dober</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=14123242&amp;trk=send_invitation_success_message_name&amp;goback=%2Enpv_14123242_*1_*1_NAME*4SEARCH_w5KY_*1_en*4US_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_*1_tyah_*1_*1">Marlin Page</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-6 right-side">
+
+                            <ul class="board-list-right">
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=1869119&amp;authType=NAME_SEARCH&amp;authToken=5qDc&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436292333478%2Ctas%3Adam">Damien Rocchi </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=5922431&amp;authType=NAME_SEARCH&amp;authToken=Cph_&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436292369632%2Ctas%3ATed%20Serbinski">Ted Serbinski</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=548251&amp;authType=OPENLINK&amp;authToken=QXuu&amp;locale=en_US&amp;srchid=1949700231436293282149&amp;srchindex=1&amp;srchtotal=1&amp;trk=vsrp_people_res_name&amp;trkInfo=VSRPsearchId%3A1949700231436293282149%2CVSRPtargetId%3A548251%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue">Richard Sheridan</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/in/bradleyhoos">Bradley Hoos</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=6820169&amp;trk=hb_ntf_ACCEPTED_YOUR_CONNECTION_REQUEST">Nataliya Stasiw</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/profile/view?id=11876471&amp;authType=NAME_SEARCH&amp;authToken=dYWO&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1436293365016%2Ctas%3APaul%20Jaques">Paul Jaques</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+
+                    <h3>ADDITIONAL PARTNERS</h3>
+
+                    <img src="http://static1.squarespace.com/static/53e38ec5e4b038bdcd54c24e/t/5554a5f9e4b0565df9f26c1d/1431610874385/"  />
+                    
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="section odd-section">
+
+            <div id="faqs-section">
+              <div class="container">
+
+                  <div class="row">
+                      <div class="col-md-10">
+
+                          <h3>FAQ's</h3>
+                          <p><strong>1. How can I apply?</strong><br />
+                              Currently the application window for our 2016 class is open and you can apply at the top of this page. The application process includes an online application, phone interview, and in-person (or Google Hangout) interview. What are you waiting for?</p>
+                          <p><strong>2. What start-up will a fellow work at?</strong><br />
+                              The Hacker Fellows portal will allow you to research the participating start-ups and schedule interviews. Fellows will work with the start-up that shares a common interest. Ultimately, it's up to you and the participating companies to decide where you work. The Hacker Fellows is actively involved in the recruiting process, but ultimately both the fellow and the company have to agree that there's a good fit!</p>
+                          <p><strong>3. Do you accept students with majors other than Computer Science?</strong><br />
+                              This program accepts Computer Science majors and equivalent majors. (e.g. Computer Engineering, Computer Software, etc.). If you're a Hacker, you belong.</p>
+                          <p><strong>4. Will you sponsor work visas?</strong><br />
+                              We welcome international fellows, but we cannot offer work sponsorship.</p>
+
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="section even-section">
+
+            <div id="2015-fellows-section">
+                <div class="container">
+
+                    <h2 class="text-align-center">INTRODUCING THE INAUGURAL CLASS OF 2015</h2>
+
+                    <img src="http://static1.squarespace.com/static/53e38ec5e4b038bdcd54c24e/t/55c8fc43e4b052465095e570/1439235139839/"  /></noscript>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+      
+  </div>
+</div>
