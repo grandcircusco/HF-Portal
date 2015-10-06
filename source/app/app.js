@@ -53,18 +53,26 @@
 app.controller('RoutingController', RoutingController)
 .controller('LoginModalInstanceController', LoginModalInstanceController);
 
-RoutingController.$inject = ['$scope', '$modal', '$window', 'User'];
+RoutingController.$inject = ['$scope', '$modal', '$window', 'User', '$location', '$anchorScroll'];
 LoginModalInstanceController.$inject = ['$scope', '$window', '$modalInstance', 'User'];
 
-function RoutingController($scope, $modal, $window, User) {
+function RoutingController($scope, $modal, $window, User, $location, $anchorScroll) {
 
     $scope.isUserLoggedIn = false;
     updateLoginStatus();
 
-     function updateLoginStatus(){
+    $scope.scrollTo = function(id){
 
-         $scope.isUserLoggedIn = User.isUserLoggedIn();
-     }
+        console.log(id);
+
+        $location.hash(id);
+        $anchorScroll();
+    };
+
+    function updateLoginStatus(){
+
+        $scope.isUserLoggedIn = User.isUserLoggedIn();
+    }
 
     $scope.openModal = function() {
         var modalInstance = $modal.open({
