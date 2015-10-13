@@ -4,7 +4,7 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
-    'app.config', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
     .run(run);
 
 /**
@@ -15,11 +15,11 @@
 
     $routeProvider
     .when('/', {
-        controller  : 'RoutingController',
+        controller  : 'HomeController',
         templateUrl : 'source/app/home/home.html'
     })
     .when('/fellows', {
-        controller: 'RoutingController',
+        controller: 'FellowsController',
         templateUrl: 'source/app/fellows/fellows.html'
     })
     .when('/companies', {
@@ -62,8 +62,6 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
     updateLoginStatus();
 
     $scope.scrollTo = function(id){
-
-        console.log(id);
 
         $location.hash(id);
         $anchorScroll();

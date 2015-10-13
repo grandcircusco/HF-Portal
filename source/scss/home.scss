@@ -429,7 +429,7 @@ img {
   }
 }
 
-#employers-section{
+#start-ups-section{
 
   h2, h3{
 	text-align: left;
@@ -491,6 +491,12 @@ img {
 	  a{
 
 		color: #ff7a38;
+
+		span{
+
+		  font-size: 0.9em;
+		  margin-left: 10px;
+		}
 	  }
 	}
   }
@@ -502,7 +508,7 @@ img {
 
 	  ul{
 
-		text-align: right;
+		text-align: left;
 	  }
 	}
 
@@ -518,6 +524,25 @@ img {
 	}
 }
 
+@media only screen and ( max-width: 991px ){
+
+  #theteam-section{
+
+	.left-side {
+
+	  padding-right: 0;
+	}
+
+	.right-side {
+
+	  padding-left: 0;
+	}
+  }
+}
+
+
+
+
 #faqs-section{
 
   h3{
@@ -528,5 +553,60 @@ img {
   p{
 
 	margin-bottom: 40px;
+  }
+}
+
+
+#fellows-section{
+
+	.fellows-container{
+
+	  text-align: center;
+	  padding: 0 120px;
+
+	  .fellow{
+
+		height: 225px;
+	  }
+
+	  figure {
+
+		width: 100%;
+		padding: 2em 0 0 1em;
+
+
+		& > .imgCrop {
+		  border-style: none;
+		  max-width: 150px;
+		  max-height: 150px;
+		  display: block;
+		  margin: 5px auto;
+		  border-radius: 50%;
+		  overflow: hidden;
+
+		  & > img {
+			position: relative;
+			top: 0;
+			left: 0;
+			max-width: 150px;
+			max-height: 150px;
+			height: auto;
+			width: auto;
+			margin: 0;
+
+		  }
+		}
+	  }
+	}
+}
+
+@media only screen and ( max-width: 991px ){
+
+  #fellows-section{
+
+	.fellows-container{
+
+		padding: 0;
+	}
   }
 }

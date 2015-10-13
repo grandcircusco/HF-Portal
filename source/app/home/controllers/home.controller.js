@@ -9,13 +9,19 @@
     .module('app.home.controllers')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['$scope'];
+  HomeController.$inject = ['$scope', 'Fellows'];
 
   /**
   * @namespace HomeController
   */
-  function HomeController($scope) {
+  function HomeController($scope, Fellows) {
+
     var vm = this;
+
+    Fellows.all().success(function(fellows){
+
+      $scope.fellows = fellows;
+    });
 
     activate();
 
