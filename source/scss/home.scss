@@ -577,8 +577,8 @@ img {
 
 		& > .imgCrop {
 		  border-style: none;
-		  max-width: 150px;
-		  max-height: 150px;
+		  width: 150px;
+		  height: 150px;
 		  display: block;
 		  margin: 5px auto;
 		  border-radius: 50%;
@@ -588,10 +588,9 @@ img {
 			position: relative;
 			top: 0;
 			left: 0;
-			max-width: 150px;
-			max-height: 150px;
-			height: auto;
-			width: auto;
+			max-width: 100%;
+			width: 150px;
+			height: 150px;
 			margin: 0;
 
 		  }
