@@ -11,7 +11,7 @@
  *   * @name config
  *     * @desc Define valid application routes
  *       */
- app.config(function($routeProvider){
+ app.config(function($routeProvider, $locationProvider){
 
     $routeProvider
     .when('/', {
