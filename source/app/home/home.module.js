@@ -8,7 +8,7 @@
   angular
     .module('app.home', [
         'app.home.controllers',
-        'app.home.services'
+        //'app.home.services'
         ]);
 
   //declare the controllers module

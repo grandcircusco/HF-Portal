@@ -19,7 +19,7 @@ $odd-section: #000; /*d4d4d4*/
 $even-section: #fff; /*dededf*/
 $heading-text-color: #dededd; /*2f2f2f*/
 $button-color:#2f2f2f;
-$body-text-color: #999999; /*999999*/
+$body-text-color: #3f3f3f;
 $nav-bar-color-main: #f2663a;
 $nav-bar-color-secondary: #dededf;
 $logo-height: 100%;
@@ -27,4 +27,4 @@ $bar-color: #fff;
 $profile-accent-color: lighten($odd-section, 35%);
 
 $phone: "only screen and (max-width: 700px)";
-$tablet: "only screen and (max-width: 1000px) and (min-width: 700px)";
+$tablet: "only screen and (max-width: 1000px)";

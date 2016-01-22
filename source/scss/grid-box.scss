@@ -60,6 +60,8 @@
         max-height: 150px;
         height: auto;
         width: auto;
+        margin: 0;
+
         @media #{$phone} {
           width: 90px;
           height: 90px;

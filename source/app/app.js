@@ -4,22 +4,22 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
-    'app.config', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
     .run(run);
 
 /**
  *   * @name config
  *     * @desc Define valid application routes
  *       */
- app.config(function($routeProvider){
+ app.config(function($routeProvider, $locationProvider){
 
     $routeProvider
     .when('/', {
-        controller  : 'RoutingController',
+        controller  : 'HomeController',
         templateUrl : 'source/app/home/home.html'
     })
     .when('/fellows', {
-        controller: 'RoutingController',
+        controller: 'FellowsController',
         templateUrl: 'source/app/fellows/fellows.html'
     })
     .when('/companies', {
@@ -53,18 +53,24 @@
 app.controller('RoutingController', RoutingController)
 .controller('LoginModalInstanceController', LoginModalInstanceController);
 
-RoutingController.$inject = ['$scope', '$modal', '$window', 'User'];
+RoutingController.$inject = ['$scope', '$modal', '$window', 'User', '$location', '$anchorScroll'];
 LoginModalInstanceController.$inject = ['$scope', '$window', '$modalInstance', 'User'];
 
-function RoutingController($scope, $modal, $window, User) {
+function RoutingController($scope, $modal, $window, User, $location, $anchorScroll) {
 
     $scope.isUserLoggedIn = false;
     updateLoginStatus();
 
-     function updateLoginStatus(){
+    $scope.scrollTo = function(id){
 
-         $scope.isUserLoggedIn = User.isUserLoggedIn();
-     }
+        $location.hash(id);
+        $anchorScroll();
+    };
+
+    function updateLoginStatus(){
+
+        $scope.isUserLoggedIn = User.isUserLoggedIn();
+    }
 
     $scope.openModal = function() {
         var modalInstance = $modal.open({

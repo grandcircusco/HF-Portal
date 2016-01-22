@@ -14,8 +14,8 @@ public/assets/javascript/bundle.js
 public/assets/stylesheets/style.css
 
 # Dont track uploaded profile images
-public/assets/images/profile/*
-!public/assets/images/profile/.gitignore
+#public/assets/images/profile/*
+#!public/assets/images/profile/.gitignore
 
 ##
 # Packages

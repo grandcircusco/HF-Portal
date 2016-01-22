@@ -9,9 +9,7 @@ body {
 	@include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
 	margin: 50px 0 0 0;
 	padding: 0 0 20px 0;
-	@media #{$phone}{
-		font-size: 8px;
-	}
+
 	}
 
 h1, h2, h3, h4, h5, h6 {
