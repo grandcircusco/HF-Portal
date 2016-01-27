@@ -8,9 +8,14 @@ var Users = models.users;
 // POST /users/login - try to login a user
 app.post('/login', function loginUser(req, res) {
 
+	// ilike does case in-sensitive compare of email
 	Users.findOne({
+
 		where: {
-			email: req.body.email
+			email: {
+
+				ilike: req.body.email
+			}
 		}
 	}).then(function(user) {
 
