@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
-        <div class=" profile company-container" ng-controller="CompanyController">
+        <p><a class="btn btn-default" href="/#/companies">&laquo; Back to Companies</a></p>
+
+        <div class=" profile company-container">
 
             <div class="row">
                 <div class="col-md-3">
@@ -31,14 +33,14 @@
                 </div>
             </div>
 
-            <div class="row vote-container">
+            <div class="row vote-container" ng-show="isFellow()">
 
-                <span class="btn btn-default btn-lg vote-button" ng-show="done">
+                <span class="btn btn-default btn-lg vote-button" ng-show="done || currentUserVoted(company)">
                     Interested
                     <span class="fa fa-check fa-lg"></span>
                 </span>
 
-                <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(company)" ng-hide="done">
+                <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(company)" ng-hide="done || currentUserVoted(company)">
                     Show Interest
                     <span class="fa fa-thumbs-o-up" ng-hide="loading"></span>
                     <span class="fa fa-spinner fa-spin" ng-show="loading"></span>

@@ -31,7 +31,7 @@
         templateUrl: 'source/app/companies/companies.html'
     })
     .when('/companies/:company_id/:company_name', {
-        controller: 'CompaniesController',
+        controller: 'CompanyController',
         templateUrl: 'source/app/companies/company.html'
     })
 

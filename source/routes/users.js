@@ -20,7 +20,13 @@ app.get( '/:user_id/votes', function( req, res ){
 
 	}).then(function(fellows) {
 
-		res.send(fellows);
+		var results = {
+
+			votesFor: fellows.VotesFor,
+			votesCast: fellows.VotesCast
+		};
+
+		res.send(results);
 	});
 
 });
