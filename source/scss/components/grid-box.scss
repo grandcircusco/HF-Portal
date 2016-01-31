@@ -1,5 +1,4 @@
-@import 'variables';
-@import 'mixins';
+
 .grid-container {
   width:100%;
   margin: 0 0 0 0;
@@ -163,15 +162,23 @@
 
     }
 
-    .detButton{
-      color:$GREY006;
-      background-color:$button-color;
-      height:100%;
-      width:100%;
-      border-style:none;
-      outline:0;
+    .detButton {
+      color: $GREY006;
+      background-color: $button-color;
+      height: 100%;
+      width: 100%;
+      border-style: none;
+      outline: 0;
       border-top-right-radius: 1.5em;
       border-bottom-right-radius: 1.5em;
+
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .detButton:hover{

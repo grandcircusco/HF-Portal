@@ -1,0 +1,43 @@
+<div class="profile fellow-container" ng-controller="FellowController">
+
+    <div class="row">
+        <div class="col-md-3">
+            <img class="user-photo" ng-src="{{ fellow.image_url }}" width="200" height="200">
+            <br>
+            <span class="label label-default" ng-repeat='tag in fellow.tags'>{{ tag.name }}</span>
+
+            <i class="fa fa-github"></i>
+            <i class="fa fa-envelope"></i>
+        </div>
+
+        <div class="col-md-9">
+            <h1>{{ fellow.first_name +" "+ fellow.last_name }}</h1>
+            <div class="user-facts">
+                {{ fellow.university }} <br>
+                {{ fellow.major }} <br>
+                <!--<a href="{{ fellow.resume_file_path }}">Resume</a> <br>-->
+                <!--<a href="{{ fellow.website_url }}">Website</a> <br>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="main-content">
+            <h3 class="fd_subhdr">Biography</h3>
+            <p>{{ fellow.bio }}</p>
+            <h3 class="fd_subhdr">Interests</h3>
+            <p>{{ fellow.interests }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <center>
+            <button type="button" class="btn btn-default btn-lg" ng-click="vote(fellow)">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Vote
+            </button>
+            <img id="spinner" width="25px" src="http://khan4019.github.io/HighPerfJS/images/spinner.gif" ng-show="loading"/>
+            <i class="fa fa-check fa-lg" ng-show="done"> </i>
+        </center>
+    </div>
+
+</div>

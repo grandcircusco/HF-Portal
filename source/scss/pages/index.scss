@@ -1,5 +1,4 @@
-@import 'variables';
-@import 'mixins';
+
 html {
   min-height: 100%;
   position: relative;
@@ -30,12 +29,6 @@ p {
 	margin-left: 0;
 	margin-right: 0;
 }
-
-@import 'navbar';
-
-@import 'footer';
-
-@import 'hexagon';
 
 
 /* Form Styles */

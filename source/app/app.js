@@ -22,9 +22,17 @@
         controller: 'FellowsController',
         templateUrl: 'source/app/fellows/fellows.html'
     })
+    .when('/fellows/:fellow_id/:fellow_name', {
+        controller: 'FellowController',
+        templateUrl: 'source/app/fellows/fellow.html'
+    })
     .when('/companies', {
         controller: 'CompaniesController',
         templateUrl: 'source/app/companies/companies.html'
+    })
+    .when('/companies/:company_id/:company_name', {
+        controller: 'CompaniesController',
+        templateUrl: 'source/app/companies/company.html'
     })
 
     .when('/profile', {
@@ -158,3 +166,23 @@ function run($cookieStore, User){
     //    }
     //});
 }
+
+
+/**
+ * Helper Functions
+ **/
+
+var HFHelpers = HFHelpers || {};
+
+HFHelpers.helpers = {
+
+    slugify: function(str) {
+        
+        return str.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+    }
+};

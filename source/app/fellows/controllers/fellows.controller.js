@@ -22,6 +22,8 @@
             //console.log('activated fellows controller!');
         }
 
+        $scope.helpers = HFHelpers.helpers;
+
         Fellows.all().success(function (fellows) {
 
             $scope.fellows = fellows;
@@ -79,7 +81,6 @@
 
             var current = User.getCurrentUser();
             if (current.userType === "Company") {
-
 
                 $scope.loading = true;
 

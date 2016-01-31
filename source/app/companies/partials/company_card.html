@@ -24,9 +24,9 @@
 	</div>
 		<!-- Button trigger modal -->
 		<div class="details-button">
-			<button type="button" class="detButton" ng-click="openModal(company)">
+			<a type="button" class="detButton" ng-href="/#/companies/{{ company.id }}/{{ helpers.slugify( company.name ) }}">
 				<!-- View Details -->
 				<i class="fa fa-th-list fa-lg"></i>
-			</button>
+			</a>
 		</div>
 </div>

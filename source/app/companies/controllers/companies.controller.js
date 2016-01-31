@@ -27,6 +27,8 @@
             $scope.companies = companies;
         });
 
+        $scope.helpers = HFHelpers.helpers;
+
         $scope.openModal = function (company) {
 
             $scope.company = company;
