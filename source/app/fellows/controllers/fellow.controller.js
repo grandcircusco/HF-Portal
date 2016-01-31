@@ -1,0 +1,89 @@
+/**
+ * FellowsController
+ * @namespace app.fellows.controllers
+ */
+(function () {
+    'use strict';
+
+    angular
+        .module('app.fellows.controllers')
+        .controller('FellowController', FellowController);
+
+    FellowController.$inject = ['$routeParams', '$scope', '$timeout', 'Fellows', 'User'];
+
+    /**
+     * @namespace FellowsController
+     */
+    function FellowController($routeParams, $scope, $timeout, Fellows, User) {
+
+        activate();
+
+        function activate() {
+            //console.log('activated fellows controller!');
+        }
+
+        $scope.votesFor = [];
+        $scope.votesCast = [];
+        $scope.currentUser = User.getCurrentUser();
+
+        Fellows.get( $routeParams.fellow_id ).success(function (fellow) {
+
+            $scope.fellow = fellow;
+
+            User.getVotes( fellow.user_id ).success( function( votes ){
+
+                $scope.votesFor = votes.votesFor;
+                $scope.votesCast = votes.votesCast;
+            });
+        });
+
+        $scope.currentUserVoted = function currentUserVoted(){
+
+            for( var i = 0; i < $scope.votesFor.length; i++ ){
+
+                var element = $scope.votesFor[i];
+                if( element.id == $scope.currentUser.id ) return true;
+            }
+            return false;
+        };
+
+        $scope.isCompany = function(){
+
+            return ( $scope.currentUser.userType === "Company" );
+        };
+
+        $scope.vote = function vote(fellow) {
+
+            if ( $scope.isCompany() ) {
+
+                $scope.loading = true;
+
+                Votes.create(current.id, fellow.user_id)
+                    .success(function (vote) {
+
+                        console.log("success: "+vote);
+                        return vote;
+                    })
+                    .catch(function (err) {
+
+                        console.log("Error: "+err);
+                    })
+                    .finally(function () {
+
+                        $scope.loading = false;
+                        $scope.done = true;
+
+                        $timeout(function () {
+
+                            $scope.done = false;
+
+                        }, 3000);
+
+                    });
+            }
+        };
+
+    }
+
+
+})();

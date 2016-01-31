@@ -3,7 +3,7 @@
 
     module.exports = function(sequelize, DataTypes) {
 
-        var Fellow = sequelize.define("fellows", {
+        return sequelize.define("fellows", {
 
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
             user_id: { type: DataTypes.INTEGER },
@@ -25,6 +25,5 @@
 
         });
 
-        return Fellow;
     };
 }());

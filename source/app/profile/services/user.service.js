@@ -32,6 +32,11 @@
           currentUser = user;
       }
 
+      function getVotes( user_id ){
+
+          return $http.get(rootUrl + '/api/v1/users/' + user_id + '/votes' );
+      }
+
 
       /**
        * @name login
@@ -45,6 +50,7 @@
 
           //all: all,
           //get: get,
+          getVotes: getVotes,
           create: create,
           login: login,
           update: update,

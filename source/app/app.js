@@ -4,7 +4,7 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
-    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes' ])
     .run(run);
 
 /**
@@ -22,9 +22,17 @@
         controller: 'FellowsController',
         templateUrl: 'source/app/fellows/fellows.html'
     })
+    .when('/fellows/:fellow_id/:fellow_name', {
+        controller: 'FellowController',
+        templateUrl: 'source/app/fellows/fellow.html'
+    })
     .when('/companies', {
         controller: 'CompaniesController',
         templateUrl: 'source/app/companies/companies.html'
+    })
+    .when('/companies/:company_id/:company_name', {
+        controller: 'CompanyController',
+        templateUrl: 'source/app/companies/company.html'
     })
 
     .when('/profile', {
@@ -46,6 +54,12 @@
         controller: 'CompanyProfileController',
         templateUrl: 'source/app/profile/partials/company-profile.html'
     })
+
+    .when( '/votes', {
+        controller: 'VotesController',
+        templateUrl: 'source/app/votes/partials/votes.html'
+    })
+
     .otherwise({ redirectTo: '/' });
 
 });
@@ -108,14 +122,13 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
 
         $scope.loginForm.errors = [];
 
-        console.log(loginForm);
         User.login(loginForm).success(function(user){
 
             console.log(user);
+            $modalInstance.close();
             //User.currentUser = user
             User.SetCredentials(user.id, user.email, user.userType);
             $window.location.reload();
-            $modalInstance.close();
 
         }).error( function(error){
 
@@ -152,3 +165,23 @@ function run($cookieStore, User){
     //    }
     //});
 }
+
+
+/**
+ * Helper Functions
+ **/
+
+var HFHelpers = HFHelpers || {};
+
+HFHelpers.helpers = {
+
+    slugify: function(str) {
+        
+        return str.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+    }
+};
