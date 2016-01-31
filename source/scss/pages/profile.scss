@@ -1,0 +1,29 @@
+.profile {
+
+  background: $GREY005;
+  // border: .2em solid #DEDEDD;
+  border-radius: 1.5em;
+  padding: 10px 20px;
+  margin: 20px auto;
+  max-width: 750px;
+
+  .vote-container {
+
+    margin: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span.vote-button:hover,
+    span.vote-button:active{
+
+      color: #333;
+      background-color: #fff;
+      border-color: #ccc;
+      cursor: default;
+      box-shadow: none;
+    }
+  }
+}

@@ -28,15 +28,18 @@
         </div>
     </div>
 
-    <div class="row">
-        <center>
-            <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal" ng-click="vote(company)">
-                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Vote
-            </button>
-            <img id="spinner" width="25px" ng-show="loading"
-                 src="http://khan4019.github.io/HighPerfJS/images/spinner.gif" />
-            <i class="fa fa-check fa-lg" ng-show="done"> </i>
-        </center>
+    <div class="row vote-container">
+
+        <span class="btn btn-default btn-lg vote-button" ng-show="done">
+            Interested
+            <span class="fa fa-check fa-lg"></span>
+        </span>
+
+        <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(company)" ng-hide="done">
+            Show Interest
+            <span class="fa fa-thumbs-o-up" ng-hide="loading"></span>
+            <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
+        </button>
     </div>
 
 </div>
