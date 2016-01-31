@@ -31,15 +31,15 @@
 
     /**
      * @name get by company
-     * @desc get the companies one fellow voted on)
+     * @desc get the votes for a fellow by user id)
      */
-    function get(id) {
-      return $http.get(rootUrl + '/api/v1/votes/fellow/' + id);
+    function get(user_id) {
+      return $http.get(rootUrl + '/api/v1/votes/fellow/' + user_id);
     }
 
     /**
      * @name create
-     * @desc fellow votes on a company
+     * @desc company votes on a fellow
      */
     function create(fellow_id, company_id) {
       console.log("fellowVoteCreate" + fellow_id + ' ' + company_id);

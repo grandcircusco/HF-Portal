@@ -4,7 +4,7 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
-    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes'])
+    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes' ])
     .run(run);
 
 /**
@@ -46,6 +46,12 @@
         controller: 'CompanyProfileController',
         templateUrl: 'source/app/profile/partials/company-profile.html'
     })
+
+    .when( '/votes', {
+        controller: 'VotesController',
+        templateUrl: 'source/app/votes/partials/votes.html'
+    })
+
     .otherwise({ redirectTo: '/' });
 
 });

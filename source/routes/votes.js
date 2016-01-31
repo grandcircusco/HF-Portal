@@ -8,6 +8,7 @@ var Fellows = models.fellows;
 
 
 
+
 function resolvePromisesAndPost(voter, votee,res) {
   voter.then(function(voter){
     votee.then(function(votee){
@@ -36,15 +37,17 @@ function resolvePromisesAndDelete(voter, votee, res) {
 }
 
 
-// GET /fellow/:id - Gets all companies voted on by one fellow
-app.get('/fellow/:id', function getFellowVotes(req, res) {
+// GET /fellow/:user_id - Gets all companies voted on by one fellow
+app.get('/fellow/:user_id', function getFellowVotes(req, res) {
   var fellow = Fellows.findOne({
     where: {
-      id: req.params.id
+      user_id: req.params.user_id
     }
   });
 
   fellow.then(function(fellow) {
+
+
     return fellow.getVotees();
   })
   .then( function(companies) {
@@ -55,35 +58,15 @@ app.get('/fellow/:id', function getFellowVotes(req, res) {
 
 
 
+
 // POST /fellow/ - Fellow votes for a company
 app.post('/fellow/', function postFellowVote(req, res) {
 
 	console.log('\n\n\n\npost getting called in express');
   var company = Companies.findOne({
     where: {
-      id: req.body.company_id
-    }
 
-  });
-
-  var fellow = Fellows.findOne({
-    where: {
-      id: req.body.fellow_id
-    }
-
-  });
-
-  resolvePromisesAndPost(fellow, company, res);
-
-});
-
-
-// POST /company/ - Company votes for a fellow
-app.post('/company/', function postCompanyVote(req, res) {
-
-  var company = Companies.findOne({
-    where: {
-      id: req.body.company_id
+      user_id: req.body.company_id
     }
 
   });
@@ -100,11 +83,33 @@ app.post('/company/', function postCompanyVote(req, res) {
 });
 
 
-// GET /company/:id - Gets all fellows voted on by one company
-app.get('/company/:id', function getCompanyVotes(req, res) {
+// POST /company/ - Company votes for a fellow
+app.post('/company/', function postCompanyVote(req, res) {
+
   var company = Companies.findOne({
     where: {
-      id: req.params.id
+      id: req.body.company_id
+    }
+
+  });
+
+  var fellow = Fellows.findOne({
+    where: {
+      user_id: req.body.fellow_id
+    }
+
+  });
+
+  resolvePromisesAndPost(fellow, company, res);
+
+});
+
+
+// GET /company/:user_id - Gets all fellows voted on by one company
+app.get('/company/:user_id', function getCompanyVotes(req, res) {
+  var company = Companies.findOne({
+    where: {
+      id: req.params.user_id
     }
   });
 

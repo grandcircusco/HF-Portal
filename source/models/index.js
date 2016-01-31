@@ -28,11 +28,16 @@
     db.fellows.belongsToMany(db.tags, {through: 'fellows_tags'});
     db.tags.belongsToMany(db.fellows, {through: 'fellows_tags'});
 
-    db.fellows.belongsToMany(db.companies, {as: 'Voters', through: 'company_votes'}); //companies as voters
-    db.companies.belongsToMany(db.fellows, {as: 'Votees', through: 'company_votes'}); //fellows as votees
+    db.users.belongsToMany( db.users, { as: 'VotesFor', through: 'votes', foreignKey: 'votee_id',  otherKey: 'voter_id' });
+    db.users.belongsToMany( db.users, { as: 'VotesCast', through: 'votes', foreignKey: 'voter_id',  otherKey: 'votee_id' });
 
-    db.fellows.belongsToMany(db.companies, {as: 'Votees', through: 'fellow_votes'}); //companies as votees
-    db.companies.belongsToMany(db.fellows, {as: 'Voters', through: 'fellow_votes'}); //fellows as voters
+    //User.belongsToMany(Project, { as: 'Tasks', through: 'worker_tasks', foreignKey: 'userId', otherKey: 'projectId'})
+    //
+    //db.fellows.belongsToMany(db.companies, {as: 'Votees', through: 'votes_for_fellows'}); //companies as voters
+    //db.companies.belongsToMany(db.fellows, {as: 'Voters', through: 'votes_for_fellows'}); //fellows as votees
+    //
+    //db.fellows.belongsToMany(db.companies, {as: 'Voters', through: 'votes_for_companies'}); //companies as votees
+    //db.companies.belongsToMany(db.fellows, {as: 'Votees', through: 'votes_for_companies'}); //fellows as voters
 
     module.exports = db;
 }());

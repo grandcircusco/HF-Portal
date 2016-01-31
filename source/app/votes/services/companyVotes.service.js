@@ -20,6 +20,7 @@
     var rootUrl = CONFIG.SERVICE_URL;
 
     return {
+
       get: get,
       create: create,
       destroy: destroy
@@ -27,10 +28,11 @@
 
     /**
      * @name get by company
-     * @desc get the companies one company voted on)
+     * @desc get the votes for a company by user_id)
      */
-    function get(id) {
-      return $http.get(rootUrl + '/api/v1/votes/company/' + id);
+    function get(user_id) {
+
+      return $http.get(rootUrl + '/api/v1/votes/company/' + user_id);
     }
 
     /**

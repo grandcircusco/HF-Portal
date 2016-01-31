@@ -79,6 +79,7 @@
       if(current.userType === "Fellow") {
 				$scope.loading = true;
 				console.log(company.id);
+
         return CompanyVotes.create(current.id, company.id)
 				.success( function(vote) {
 						console.log("success!");

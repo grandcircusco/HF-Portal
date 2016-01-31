@@ -79,25 +79,29 @@
 			console.log("vote");
       var current = User.getCurrentUser();
       if(current.userType === "Company") {
-				$scope.loading = true;
-        FellowVotes.create(fellow.id, current.id)
-					.success( function(vote) {
-						console.log("success!");
-						//return vote;
-					})
-				.catch(function (err) {
-					console.log(err);
-				})
-				.finally(function () {
-					console.log("finally");
-						$scope.loading = false;
-						$scope.done = true;
-					$timeout(function() {
-						$scope.done = false;
-					}, 3000);
-				});
-			}
-		};
+
+
+          $scope.loading = true;
+
+          FellowVotes.create(current.id, fellow.id)
+                      .success( function(vote) {
+
+                          console.log("success!");
+                          //return vote;
+                      })
+                      .catch(function (err) {
+                          console.log(err);
+                      })
+                      .finally(function () {
+                          console.log("finally");
+                              $scope.loading = false;
+                              $scope.done = true;
+                          $timeout(function() {
+                              $scope.done = false;
+                          }, 3000);
+                      });
+              }
+          };
 
   }
 

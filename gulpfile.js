@@ -12,21 +12,25 @@ var options = {
 	mangle:true
 };
 
-gulp.task('default', ['jshint','build-js','build-css','spec']);
+gulp.task('default', [ 'jshint', 'build-js', 'build-css', 'spec']);
 
 
-gulp.task('watch', function(){
-	gulp.watch(['*.js','spec/**/*.js','source/**/*.js'],['jshint', 'build-js', 'spec']);
-	gulp.watch('source/scss/**/*.scss', ['build-css', 'spec']);
-});
+gulp.task('watch', function(cb){
 
-gulp.task('jshint', function(){
+	gulp.watch( ['*.js', 'spec/**/*.js', 'source/**/*.js'], [ 'jshint', 'build-js', 'spec' ]);
+	gulp.watch( 'source/scss/**/*.scss', [ 'build-css', 'spec' ]);
+
+} );
+
+gulp.task('jshint', function(cb){
+
 	return gulp.src('source/**/*.js')
 	.pipe(jshint())
 	.pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('build-css', function () {
+gulp.task('build-css', function (cb) {
+
 	return gulp.src('source/scss/**/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(concat('style.css'))
@@ -35,7 +39,8 @@ gulp.task('build-css', function () {
 		.pipe(gulp.dest('public/assets/stylesheets'));
 });
 
-gulp.task('build-js', function () {
+gulp.task('build-js', function (cb) {
+
 	return gulp.src(['source/app/**/*.js', 'node_modules/ng-file-upload/dist/ng-file-upload.min.js'])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
@@ -45,7 +50,7 @@ gulp.task('build-js', function () {
 });
 
 
-gulp.task('spec', function () {
+gulp.task('spec', function (cb) {
     // return gulp.src('spec/*.js')
         // .pipe(jasmine());
         return;
