@@ -24,10 +24,10 @@
 	</div>
 	<div class="details-button">
 		<!-- Button trigger modal -->
-		<button type="button" class="detButton" ng-click="openModal(fellow)">
+		<a type="button" class="detButton"  ng-href="/#/fellows/{{ fellow.id }}/{{ helpers.slugify( fellow.first_name + ' ' + fellow.last_name ) }}">
 			<!-- View Details -->
-			<i class="fa fa-th-list fa-lg"></i>
+			<i class="fa fa-arrow-right fa-lg"></i>
 
-		</button>
+		</a>
 	</div>
 </div>

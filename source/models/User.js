@@ -3,26 +3,20 @@
 
 	module.exports = function(sequelize, DataTypes) {
 
-	    var User = sequelize.define("users", {
+	    return sequelize.define( "users", {
 
 	        id:			{ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 	        email: 		{ type: DataTypes.STRING, allowNull: false },
 	        userType:   { type: DataTypes.STRING, allowNull: false },
 	        password: 	{ type: DataTypes.STRING, allowNull: false }
-	    },{
-			instanceMethods: {
-				toJSON: function(){
 
-					var values = this.get();
+	    },
+		{
+			// prevent password and dates getting returned by default from queries
+			defaultScope: {
 
-					console.log(values);
-
-					delete values.password;
-					return values;
-				}
+				attributes: [ 'id', 'email', 'userType' ]
 			}
 		});
-
-	    return User;
 	};
 }());

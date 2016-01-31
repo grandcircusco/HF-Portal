@@ -3,7 +3,7 @@
 
     module.exports = function(sequelize, DataTypes) {
 
-        var Company = sequelize.define("companies", {
+        return sequelize.define("companies", {
 
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
             user_id: { type: DataTypes.INTEGER },
@@ -26,6 +26,5 @@
             paranoid: true // add deleted_at
 
         });
-        return Company;
     };
 }());
