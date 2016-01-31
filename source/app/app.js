@@ -122,14 +122,13 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
 
         $scope.loginForm.errors = [];
 
-        console.log(loginForm);
         User.login(loginForm).success(function(user){
 
             console.log(user);
+            $modalInstance.close();
             //User.currentUser = user
             User.SetCredentials(user.id, user.email, user.userType);
             $window.location.reload();
-            $modalInstance.close();
 
         }).error( function(error){
 
