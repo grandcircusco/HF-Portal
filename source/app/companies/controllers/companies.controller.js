@@ -3,101 +3,106 @@
  * @namespace app.companies.controllers
  */
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app.companies.controllers')
-    .controller('CompaniesController', CompaniesController);
+    angular
+        .module('app.companies.controllers')
+        .controller('CompaniesController', CompaniesController);
 
-  CompaniesController.$inject = ['$scope', '$modal', 'Companies'];
+    CompaniesController.$inject = ['$scope', '$modal', 'Companies'];
 
-  /**
-   * @namespace CompaniesController
-   */
-  function CompaniesController($scope, $modal, Companies) {
+    /**
+     * @namespace CompaniesController
+     */
+    function CompaniesController($scope, $modal, Companies) {
 
-    activate();
+        activate();
 
-    function activate() {
-      //console.log('activated companies controller!');
-    }
-
-    Companies.all().success( function(companies){
-
-          $scope.companies = companies;
-    });
-
-    $scope.openModal = function (company) {
-
-      $scope.company = company;
-
-      var modalInstance = $modal.open({
-
-        templateUrl: 'source/app/companies/partials/company_detail_view.html',
-        controller: 'CompaniesModalInstanceController',
-        size: 'lg',
-        resolve: {
-          company: function(){
-            return company;
-          }
+        function activate() {
+            //console.log('activated companies controller!');
         }
 
-      });
+        Companies.all().success(function (companies) {
 
-    };
+            $scope.companies = companies;
+        });
 
-  }
+        $scope.openModal = function (company) {
 
-/**
- * Companies Modal Instance Controller
- * @namespace app.fellows.controllers
- */
+            $scope.company = company;
 
-  angular
-      .module('app.companies.controllers')
-      .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
+            var modalInstance = $modal.open({
 
-  CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance',
-    'company', 'CompanyVotes', 'User'];
+                templateUrl: 'source/app/companies/partials/company_detail_view.html',
+                controller: 'CompaniesModalInstanceController',
+                size: 'lg',
+                resolve: {
+                    company: function () {
+                        return company;
+                    }
+                }
 
-  function CompaniesModalInstanceController($scope, $modalInstance, company, CompanyVotes, User) {
+            });
 
-    $scope.company = company;
+        };
 
-    $scope.ok = function () {
-      $modalInstance.close($scope.company);
-    };
+    }
 
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
+    /**
+     * Companies Modal Instance Controller
+     * @namespace app.fellows.controllers
+     */
 
-    $scope.vote = function vote(company) {
-			console.log(company.id);
-      var current = User.getCurrentUser();
-			console.log(current);
-      if(current.userType === "Fellow") {
-				$scope.loading = true;
-				console.log(company.id);
+    angular
+        .module('app.companies.controllers')
+        .controller('CompaniesModalInstanceController', CompaniesModalInstanceController);
 
-        return CompanyVotes.create(current.id, company.id)
-				.success( function(vote) {
-						console.log("success!");
-						return vote;
-					})
-				.catch(function (err) {
-					console.log(err);
-				})
-				.finally(function () {
-					console.log("finally");
-					$scope.loading = false;
-					$scope.done = true;
-					$timeout(function() {
-						$scope.done = false;
-					},3000);
-				});
-      }
-    };
-  }
+    CompaniesModalInstanceController.$inject = ['$scope', '$modalInstance',
+        'company', 'Votes', 'User'];
+
+    function CompaniesModalInstanceController($scope, $modalInstance, company, Votes, User) {
+
+        $scope.company = company;
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.company);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+
+        $scope.vote = function vote(company) {
+
+            var current = User.getCurrentUser();
+
+            if (current.userType === "Fellow") {
+
+                $scope.loading = true;
+
+                return Votes.create(current.id, company.user_id)
+                    .success(function (vote) {
+
+                        console.log("success: "+vote);
+                        return vote;
+                    })
+                    .catch(function (err) {
+
+                        console.log("Error: "+err);
+                    })
+                    .finally(function () {
+
+                        $scope.loading = false;
+                        $scope.done = true;
+
+                        $timeout(function () {
+
+                            $scope.done = false;
+
+                        }, 3000);
+                    });
+            }
+        };
+    }
 
 })();

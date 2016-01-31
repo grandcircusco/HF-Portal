@@ -9,11 +9,11 @@
         .module( 'app.votes.controllers' )
         .controller( 'VotesController', VotesController );
 
-    VotesController.$inject = [ '$scope', '$location', 'User', 'CompanyVotes', 'FellowVotes' ];
+    VotesController.$inject = [ '$scope', '$location', 'User', 'Votes' ];
     /**
      * @namespace VoteController
      */
-    function VotesController($scope, $location, User, CompanyVotes, FellowVotes) {
+    function VotesController($scope, $location, User, Votes) {
 
         var vm = this;
 
