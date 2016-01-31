@@ -32,6 +32,15 @@
           currentUser = user;
       }
 
+      function getVotesCast( user_id ){
+
+          return $http.get(rootUrl + '/api/v1/users/' + user.id + '/votes-cast' );
+      }
+
+      function getVotesFor( user_id ){
+
+          return $http.get(rootUrl + '/api/v1/users/' + user.id + '/votes-for' );
+      }
 
       /**
        * @name login

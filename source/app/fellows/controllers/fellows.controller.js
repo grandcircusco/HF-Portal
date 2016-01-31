@@ -77,38 +77,6 @@
             $modalInstance.dismiss('cancel');
         };
 
-        $scope.vote = function vote(fellow) {
-
-            var current = User.getCurrentUser();
-            if (current.userType === "Company") {
-
-                $scope.loading = true;
-
-                Votes.create(current.id, fellow.user_id)
-                    .success(function (vote) {
-
-                        console.log("success: "+vote);
-                        return vote;
-                    })
-                    .catch(function (err) {
-
-                        console.log("Error: "+err);
-                    })
-                    .finally(function () {
-
-                        $scope.loading = false;
-                        $scope.done = true;
-
-                        $timeout(function () {
-
-                            $scope.done = false;
-
-                        }, 3000);
-
-                    });
-            }
-        };
-
     }
 
 })();

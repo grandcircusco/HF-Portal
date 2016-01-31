@@ -9,6 +9,13 @@
 	        email: 		{ type: DataTypes.STRING, allowNull: false },
 	        userType:   { type: DataTypes.STRING, allowNull: false },
 	        password: 	{ type: DataTypes.STRING, allowNull: false }
-	    });
+	    },
+		{
+			// prevent password and dates getting returned by default from queries
+			defaultScope: {
+
+				attributes: [ 'id', 'email', 'userType' ]
+			}
+		});
 	};
 }());

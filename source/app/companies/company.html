@@ -1,46 +1,52 @@
-<div class=" profile company-container" ng-controller="CompanyController">
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
 
-    <div class="row">
-        <div class="col-md-3">
-            <img class="user-photo" ng-src="{{ company.image_url }}" width="200" height="200">
-            <br>
+        <div class=" profile company-container" ng-controller="CompanyController">
 
-            <span class="label label-default" ng-repeat='tag in company.tags'>{{ tag.name }}</span>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="user-photo" ng-src="{{ company.image_url }}" width="200" height="200">
+                    <br>
 
-            <i class="fa fa-github"></i>
-            <i class="fa fa-envelope"></i>
-        </div>
+                    <span class="label label-default" ng-repeat='tag in company.tags'>{{ tag.name }}</span>
 
-        <div class="col-md-9">
-            <h1>{{ company.name }}</h1>
-            <div class="user-facts">
-                Since {{ company.founding_year }} <br>
-                {{ company.location }} <br>
-                {{ company.website_url }} <br>
+                    <i class="fa fa-github"></i>
+                    <i class="fa fa-envelope"></i>
+                </div>
+
+                <div class="col-md-9">
+                    <h1>{{ company.name }}</h1>
+                    <div class="user-facts">
+                        Since {{ company.founding_year }} <br>
+                        {{ company.location }} <br>
+                        {{ company.website_url }} <br>
+                    </div>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="main-content">
+                    <h3>Biography</h3>
+                    <p>{{ company.bio }}</p>
+                </div>
+            </div>
+
+            <div class="row vote-container">
+
+                <span class="btn btn-default btn-lg vote-button" ng-show="done">
+                    Interested
+                    <span class="fa fa-check fa-lg"></span>
+                </span>
+
+                <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(company)" ng-hide="done">
+                    Show Interest
+                    <span class="fa fa-thumbs-o-up" ng-hide="loading"></span>
+                    <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
+                </button>
+            </div>
+
         </div>
+
     </div>
-
-    <div class="row">
-        <div class="main-content">
-            <h3>Biography</h3>
-            <p>{{ company.bio }}</p>
-        </div>
-    </div>
-
-    <div class="row vote-container">
-
-        <span class="btn btn-default btn-lg vote-button" ng-show="done">
-            Interested
-            <span class="fa fa-check fa-lg"></span>
-        </span>
-
-        <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(company)" ng-hide="done">
-            Show Interest
-            <span class="fa fa-thumbs-o-up" ng-hide="loading"></span>
-            <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
-        </button>
-    </div>
-
 </div>
 
