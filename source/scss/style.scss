@@ -1,12 +1,12 @@
 @import "variables";
 @import "mixins";
+@import "base";
+
 @import "components/navbar";
 @import "components/footer";
 @import "components/grid-box";
-
 @import "components/hexagon";
 
 @import "pages/home";
-@import "pages/index";
 @import "pages/profile";
 

@@ -2,6 +2,7 @@
 .grid-container {
   width:100%;
   margin: 0 0 0 0;
+  padding-top: 15px;
   overflow: hidden;
   // colors for debugging purposes
   //   @media #{$tablet} {
@@ -20,7 +21,7 @@
     // border: .2em solid #DEDEDD;
     border-radius: 1.5em;
     font-family: $head-font;
-    margin: 2%;
+    margin: 0 2% 35px;
     float: left;
     padding: 0 0 0 0;
     @media #{$phone} {

@@ -1,0 +1,87 @@
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+
+  @include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
+  margin: 0 0 0 0;
+  padding: 70px 0 0 0;
+  background-color: $odd-section;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6{
+
+  font-family: $head-font;
+  @include text($family: $head-font, $weight: 600);
+  line-height: 1.5;
+}
+
+h1 {
+
+  @include text($family: $head-font, $weight: semi-bold);
+  letter-spacing: 0.075em;
+  font-kerning: auto;
+  text-align: center;
+  padding-bottom: 50px;
+  margin: 0px;
+  /*color: #dededd;*/
+  @media #{$phone} {
+    padding-bottom: 15px;
+  }
+}
+
+h3{
+
+  color: #ff7a38;
+}
+
+ul, ol {
+
+  margin-top: 20px;
+
+  li {
+
+    line-height: 2;
+  }
+}
+
+img{
+
+  max-width: 95%;
+  margin: 15px auto;
+  display: block;
+}
+
+p {
+  @include text($color: $body-text-color);
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Form Styles */
+
+input.error,
+.btn-group.error {
+
+  border: 2px solid #FF6969;
+}
+
+#userType .btn-info.selected {
+
+  background-color: #237A94;
+}
+
+.alert {
+  margin: 0;
+}
+
+
+/** Footer **/
+
