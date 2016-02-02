@@ -10,7 +10,6 @@ var Users = models.users;
 
 function resolvePromisesAndPost( voter, votee, res ) {
 
-
     voter.then( function ( voter ) {
 
         votee.then( function ( votee ) {
@@ -27,7 +26,6 @@ function resolvePromisesAndPost( voter, votee, res ) {
                     // Make sure vote does not already exist
                     data.forEach( function( element, index, array ){
 
-
                         if( element.votee_id === votee.id )
                         {
                             res.send( "Vote already exists" );
@@ -35,7 +33,7 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
                     });
 
-                    voter.addVotesCast( votee );
+                    voter.addVotesCast( votee.id );
                     res.send( "Vote Added" );
 
                 }
@@ -73,7 +71,7 @@ app.post('/', function postVote(req, res) {
     // - ex: Fellows only vote for companies, not other fellows.
     // - This is enforced on the front end
 
-    var voter = Users.findOne({
+    var voter = Users.unscoped().findOne({
 
         where: {
             id: req.body.voter_id
@@ -81,7 +79,7 @@ app.post('/', function postVote(req, res) {
 
     });
 
-    var votee = Users.findOne({
+    var votee = Users.unscoped().findOne({
 
         where: {
             id: req.body.votee_id

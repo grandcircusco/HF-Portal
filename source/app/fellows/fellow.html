@@ -37,12 +37,12 @@
 
             <div class="row vote-container" ng-show="isCompany()">
 
-                <span class="btn btn-default btn-lg vote-button" ng-show="done || currentUserVoted(company)">
+                <span class="btn btn-default btn-lg vote-button" ng-show="done || currentUserVoted(fellow)">
                     Interested
                     <span class="fa fa-check fa-lg"></span>
                 </span>
 
-                <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(company)" ng-hide="done || currentUserVoted(company)">
+                <button type="button" class="btn btn-default btn-lg vote-button" data-toggle="modal" data-target="#myModal" ng-click="vote(fellow)" ng-hide="done || currentUserVoted(fellow)">
                     Show Interest
                     <span class="fa fa-thumbs-o-up" ng-hide="loading"></span>
                     <span class="fa fa-spinner fa-spin" ng-show="loading"></span>

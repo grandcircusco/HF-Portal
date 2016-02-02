@@ -70,7 +70,16 @@
         $scope.update= function(company) {
 
             // get the tags from the form
-            company.tags = $("#tags").val();
+            //company.tags = $("#tags").val();
+
+            var tags = [];
+            $('#tags :selected').each(function(i, selected){
+                tags[i] = $(selected).val();
+            });
+
+            console.log( tags );
+
+            company.tags = tags;
 
             // send companies info to API via Service
             Companies.update(company).success(function(newCompanyData){
@@ -83,9 +92,6 @@
             });
         };
 
-
     }
-
-
 
 })();

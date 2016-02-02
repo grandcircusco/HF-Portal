@@ -9,12 +9,12 @@
         .module('app.fellows.controllers')
         .controller('FellowController', FellowController);
 
-    FellowController.$inject = ['$routeParams', '$scope', '$timeout', 'Fellows', 'User'];
+    FellowController.$inject = ['$routeParams', '$scope', '$timeout', 'Fellows', 'User', 'Votes'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowController($routeParams, $scope, $timeout, Fellows, User) {
+    function FellowController($routeParams, $scope, $timeout, Fellows, User, Votes) {
 
         activate();
 
@@ -58,10 +58,12 @@
 
                 $scope.loading = true;
 
-                Votes.create(current.id, fellow.user_id)
+                Votes.create($scope.currentUser.id, fellow.user_id)
                     .success(function (vote) {
 
-                        console.log("success: "+vote);
+                        console.log( vote );
+
+                        console.log("success");
                         return vote;
                     })
                     .catch(function (err) {
@@ -70,14 +72,12 @@
                     })
                     .finally(function () {
 
-                        $scope.loading = false;
-                        $scope.done = true;
-
                         $timeout(function () {
 
-                            $scope.done = false;
+                            $scope.loading = false;
+                            $scope.done = true;
 
-                        }, 3000);
+                        }, 1500);
 
                     });
             }

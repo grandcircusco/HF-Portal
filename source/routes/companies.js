@@ -160,15 +160,25 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
         //company.image_url = req.body.image_url;
-        company.image_url = req.file.path;
+
+        if( typeof req.file !== 'undefined' )
+        {
+            company.image_url = req.file.path;
+        }
         company.location = req.body.location;
 
         company.save();
 
+        // remove all tags, then re-add currently posted tags
         company.setTags(null).then(function() {
 
-            var tags = req.body.tags;
-            if (Array.isArray(tags)) {
+            // for some reason, the angular post field for tags
+            // is a string and not and array in req.body,so
+            // it needs to be parsed as a json string
+            var tags = JSON.parse(req.body.tags);
+
+            if ( Array.isArray(tags) ) {
+
                 tags.forEach(function (tag_id) {
 
                     Tags.findOne({

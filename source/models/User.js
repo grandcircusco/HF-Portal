@@ -13,9 +13,12 @@
 	    },
 		{
 			// prevent password and dates getting returned by default from queries
-			defaultScope: {
+			scopes: {
 
-				attributes: [ 'id', 'email', 'userType' ]
+				public: {
+
+					attributes: ['id', 'email', 'userType']
+				}
 			}
 		});
 	};

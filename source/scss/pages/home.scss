@@ -6,6 +6,11 @@
   }
 }
 
+.top {
+  padding: 0;
+  margin: 0 -15px;
+}
+
 .background-img{
 	background-image: url("/public/assets/images/grandcircus2-sm.png");
 	background-position: top left;
@@ -14,6 +19,7 @@
     background-color: #9f9f9f;
 	height:$logo-height;
 	width:100%;
+  	margin: -20px 0 0;
 
     @media #{$phone} {
       background-size: cover;
@@ -143,9 +149,6 @@ img {
 	background: $even-section;
 }
 
-.top {
-	padding: 0;
-}
 
 .slide {
 	padding: 0px 150px;
@@ -530,7 +533,7 @@ img {
 	  figure {
 
 		width: 100%;
-		padding: 2em 0 0 1em;
+		padding: 2em 0 0 0;
 
 
 		& > .imgCrop {

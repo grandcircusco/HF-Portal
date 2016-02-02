@@ -2,6 +2,9 @@
  * Votes
  * @namespace app.votes.services
  */
+
+// @TODO -- Is this being used somewhere?
+
 (function () {
     'use strict';
 
@@ -21,29 +24,20 @@
 
         return {
 
-            getVotesFor: getVotesFor,
-            getVotesCast: getVotesCast,
+            getVotes: getVotes,
             create: create,
             destroy: destroy
         };
 
         /**
          * @name get votes
-         * @desc get the votes cast for a user
+         * @desc get the votes for a user
          */
-        function getVotesFor(user_id) {
+        function getVotes( user_id ){
 
-            return $http.get(rootUrl + '/api/v1/votes/for/' + user_id);
+            return $http.get(rootUrl + '/api/v1/users/' + user_id + '/votes' );
         }
 
-        /**
-         * @name get votes
-         * @desc get the votes cast by a user
-         */
-        function getVotesCast(user_id) {
-
-            return $http.get(rootUrl + '/api/v1/votes/by/' + user_id);
-        }
 
         /**
          * @name create
@@ -51,7 +45,7 @@
          */
         function create( voter_id, votee_id ) {
 
-            console.log( voter_id + " " + votee_id );
+            //console.log( voter_id + " " + votee_id );
 
             return $http.post(rootUrl + '/api/v1/votes/', {
 

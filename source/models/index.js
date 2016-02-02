@@ -32,6 +32,8 @@
     db.fellows.belongsToMany(db.tags, {through: 'fellows_tags'});
     db.tags.belongsToMany(db.fellows, {through: 'fellows_tags'});
 
+    //db.users.belongsToMany(db.users, { as: 'Votes', through: 'votes', foreignKey: 'voter_id', otherKey: 'votee_id' });
+
     db.users.belongsToMany( db.users, {
         as: 'VotesFor',
         through: 'votes',

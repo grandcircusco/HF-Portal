@@ -7,23 +7,25 @@ var Users = models.users;
 
 app.get( '/:user_id/votes', function( req, res ){
 
-	Users.findOne({
+	Users.scope('public').findOne({
 
 		where: {
 
 			id: req.params.user_id
 		},
 		include: [
-			{ model: Users, as: 'VotesFor', attributes: [ 'id', 'email' ] },
-			{ model: Users, as: 'VotesCast', attributes: [ 'id', 'email' ] }
+			{ model: Users, as: 'VotesFor' },
+			{ model: Users, as: 'VotesCast' }
 		]
 
-	}).then(function(fellows) {
+	}).then(function(user) {
+
+		// @TODO - build full user info object here?
 
 		var results = {
 
-			votesFor: fellows.VotesFor,
-			votesCast: fellows.VotesCast
+			votesFor: user.VotesFor,
+			votesCast: user.VotesCast
 		};
 
 		res.send(results);
@@ -58,7 +60,7 @@ app.post('/login', function loginUser(req, res) {
 				} else {
 
 					//console.log('Wrong password!');
-					res.send(0);
+					res.sendStatus(401);
 				}
 			});
 
@@ -76,7 +78,7 @@ app.post('/create', function createUser(req, res) {
 
 	//console.log('creating');
 	//console.log(req.body);
-	Users.findOne({
+	Users.scope('public').findOne({
 		where: {
 			email: req.body.email
 		}

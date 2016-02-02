@@ -59,7 +59,7 @@
 
                 $scope.loading = true;
 
-                return Votes.create(current.id, company.user_id)
+                return Votes.create($scope.currentUser.id, company.user_id)
                     .success(function (vote) {
 
                         console.log("success: "+vote);

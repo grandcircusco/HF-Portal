@@ -57,7 +57,7 @@
 
     .when( '/votes', {
         controller: 'VotesController',
-        templateUrl: 'source/app/votes/partials/votes.html'
+        templateUrl: 'source/app/votes/partials/fellow-votes.html'
     })
 
     .otherwise({ redirectTo: '/' });
@@ -128,7 +128,8 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
             $modalInstance.close();
             //User.currentUser = user
             User.SetCredentials(user.id, user.email, user.userType);
-            $window.location.reload();
+
+            //$window.location.reload();
 
         }).error( function(error){
 

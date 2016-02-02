@@ -9,32 +9,29 @@
         .module( 'app.votes.controllers' )
         .controller( 'VotesController', VotesController );
 
-    VotesController.$inject = [ '$scope', '$location', 'User', 'Votes' ];
+    VotesController.$inject = [ '$scope', '$location', 'User' ];
     /**
      * @namespace VoteController
      */
-    function VotesController($scope, $location, User, Votes) {
+    function VotesController($scope, $location, User) {
 
         var vm = this;
 
         if( User.isUserLoggedIn() ) {
 
-            var currentUser = User.getCurrentUser();
+            $scope.votesFor = [];
+            $scope.votesCast = [];
 
-            // Get the companies voted on by the current logged in user
-            CompanyVotes.get( currentUser.id )
-                        .success( function( votes ){
+            $scope.currentUser = User.getCurrentUser();
 
-                             console.log( votes );
-                             $scope.company_votes = votes;
-                        });
+            User.getVotes( $scope.currentUser.id ).success( function( votes ){
 
-            FellowVotes.get( currentUser.id )
-                        .success( function( votes ){
+                $scope.votesFor = votes.votesFor;
+                $scope.votesCast = votes.votesCast;
 
-                            console.log( votes );
-                            $scope.fellow_votes = votes;
-                        });
+
+                console.log( $scope.votesCast );
+            });
 
 
         }

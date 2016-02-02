@@ -152,15 +152,25 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
         //fellow.resume_file_path = req.body.resume_file_path;
-        fellow.image_url = req.file.path;
+
+        //fellow.image_url = req.file.path;
         //fellow.image_url = req.body.image_url;
+        if( typeof req.file !== 'undefined' ) {
+            fellow.image_url = req.file.path;
+        }
+
         fellow.website_url = req.body.website_url;
 
         fellow.save();
 
+        // remove all tags, then re-add currently posted tags
         fellow.setTags(null).then(function() {
 
-            var tags = req.body.tags;
+            // for some reason, the angular post field for tags
+            // is a string and not and array in req.body,so
+            // it needs to be parsed as a json string
+            var tags = JSON.parse(req.body.tags);
+
             if (Array.isArray(tags)) {
                 tags.forEach(function (tag_id) {
 
