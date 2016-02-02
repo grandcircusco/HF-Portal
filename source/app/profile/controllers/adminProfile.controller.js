@@ -34,9 +34,11 @@
         }
 
 
+
         $scope.fellows = [];
         $scope.companies = [];
         $scope.userListLoad = function() {
+
 
             if( $scope.fellows.length === 0 ) {
 
@@ -56,6 +58,8 @@
                 });
             }
         };
+        $scope.userListLoad();
+
         $scope.editFellow = function(fellow){
 
             // send user data to service
@@ -120,23 +124,23 @@
         };
 
         // Admin profile tabs
-        $scope.tabs = [
-            {
-                title:'User List',
-                template:'source/app/profile/partials/admin/user-list.html',
-                action: $scope.userListLoad
-            },
-            {
-                title:'New User',
-                template:'source/app/profile/partials/admin/new-user-form.html',
-                action: $scope.userListLoad
-            },
-            {
-                title:'Votes',
-                template:'source/app/profile/partials/admin/admin-votes.html',
-                action: $scope.userListLoad
-            }
-        ];
+        //$scope.tabs = [
+        //    {
+        //        title:'User List',
+        //        template:'source/app/profile/partials/admin/user-list.html',
+        //        action: $scope.userListLoad
+        //    },
+        //    {
+        //        title:'New User',
+        //        template:'source/app/profile/partials/admin/new-user-form.html',
+        //        action: $scope.userListLoad
+        //    },
+        //    {
+        //        title:'Votes',
+        //        template:'source/app/profile/partials/admin/admin-votes.html',
+        //        action: $scope.userListLoad
+        //    }
+        //];
 
         /* Create User */
         $scope.createUser = function (user) {
