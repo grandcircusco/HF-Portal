@@ -13,6 +13,7 @@
 	    },
 		{
 			// prevent password and dates getting returned by default from queries
+
 			scopes: {
 
 				public: {
