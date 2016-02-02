@@ -9,6 +9,9 @@
     var sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
     var env       = process.env.NODE_ENV || "development";
 
+    console.log( env );
+    console.log( sequelize );
+
     var db        = {};
 
     fs.readdirSync(__dirname)
