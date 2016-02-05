@@ -4,7 +4,7 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
-    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes' ])
+    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes', 'app.alert' ])
     .run(run);
 
 /**
