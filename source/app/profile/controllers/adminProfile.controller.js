@@ -144,74 +144,16 @@
 
         /* Create User */
         $scope.createUser = function (user) {
-
-            // remove previous highlights in case data is now correct
-            unHighlightField();
-
-            // if everything is good log data and close, else highlight error
-            var errors = false;
-            if(typeof(user) == "undefined"){
-                console.log("No info");
-                //heighlight all
-                highlightEmailField();
-                highlightPasswordField();
-                highlightUserTypeField();
-                errors = true;
-            }
-            else {
-
-                if(typeof(user.email) == "undefined"){
-                    console.log("Bad email");
-                    //heighlight email
-                    highlightEmailField();
-                    errors = true;
+            var modalInstance = $modal.open({
+                templateUrl: 'source/app/profile/partials/admin/new-user-form.html',
+                controller: 'CreateUserModalInstanceController',
+                size: 'md',
+                resolve: {
+                    
                 }
-
-                if(typeof(user.password) == "undefined"){
-                    console.log("Bad password");
-                    //heighlight password
-                    highlightPasswordField();
-                    errors = true;
-                }
-
-                if(typeof(user.userType) == "undefined"){
-                    console.log("Bad type");
-                    //highlight button
-                    highlightUserTypeField();
-                    errors = true;
-                }
-            }
-
-            if( !errors ){
-
-                // send user to API via Service
-                User.create(user).then(function(response) {
-
-                    console.log(response);
-
-                    var user_id = response.data.id;
-
-                    if( user.userType === "Fellow" ){
-
-                        var fellow_post = {
-
-                            user_id: user_id
-                        };
-                        Fellows.create(fellow_post);
-                    }
-                    else if( user.userType === "Company" ){
-
-                        var company_post = {
-
-                            user_id: user_id
-                        };
-                        Companies.create(company_post);
-                    }
-
-                });
-
-                //$modalInstance.close();
-            }
+            });
+                    // remove previous highlights in case data is now correct
+                    
 
         };
         $scope.switchType = function(user){
@@ -259,7 +201,8 @@
 
     angular
         .module('app.fellows.controllers')
-        .controller('EditUserModalInstanceController', EditUserModalInstanceController);
+        .controller('EditUserModalInstanceController', EditUserModalInstanceController)
+        .controller('CreateUserModalInstanceController', CreateUserModalInstanceController);
 
     EditUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'user', 'name', 'User', '$timeout'];
 
@@ -277,6 +220,99 @@
             $modalInstance.close($scope.user);
         };
 
+        $scope.cancel = function cancel() {
+            $modalInstance.dismiss('cancel');
+        };
+
+
+    }
+//TODO user should be user service
+    function CreateUserModalInstanceController ($scope, $modalInstance, User, Fellows, Companies) {
+
+        
+        //console.log(fellow);
+
+        // $scope.ok = function ok() {
+
+        //     User.update($scope.user);
+
+        //     $modalInstance.close($scope.user);
+        // };
+
+        $scope.create = function (user){
+                // unHighlightField();
+
+                // if everything is good log data and close, else highlight error
+                var errors = false;
+                console.log("In create.");
+                if(typeof(user) == "undefined"){
+                    console.log("No info");
+                    //highlight all
+                    // highlightEmailField();
+                    // highlightPasswordField();
+                    // highlightUserTypeField();
+                    errors = true;
+                }
+                else {
+                    console.log("checking info.");
+                    if(typeof(user.email) == "undefined"){
+                        console.log("Bad email");
+                        //highlight email
+                        // highlightEmailField();
+                        errors = true;
+                    }
+
+                    if(typeof(user.password) == "undefined"){
+                        console.log("Bad password");
+                        //highlight password
+                        // highlightPasswordField();
+                        errors = true;
+                    }
+                    console.log("the user type is" + user.userType);
+                    if(typeof(user.userType) == "undefined"){
+                        console.log("Bad type");
+                        //highlight button
+                        // highlightUserTypeField();
+                        errors = true;
+                    }
+                }
+                console.log("u tryna create brah?");
+                if( !errors ){
+
+                    // send user to API via Service
+                    User.create(user).then(function(response) {
+
+                        console.log(response);
+
+                        var user_id = response.data.id;
+
+                        if( user.userType === "Fellow" ){
+
+                            var fellow_post = {
+
+                                user_id: user_id
+                            };
+                            Fellows.create(fellow_post);
+                        }
+                        else if( user.userType === "Company" ){
+
+                            var company_post = {
+
+                                user_id: user_id
+                            };
+                            Companies.create(company_post);
+                        }
+
+
+                    });
+                }
+            
+
+            $modalInstance.close();
+        
+
+        };
+        
         $scope.cancel = function cancel() {
             $modalInstance.dismiss('cancel');
         };
