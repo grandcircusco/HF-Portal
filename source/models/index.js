@@ -26,11 +26,31 @@
     db.users.hasOne( db.companies, { foreignKey: 'user_id' } );
     db.users.hasOne( db.fellows, { foreignKey: 'user_id' } );
 
-    db.companies.belongsToMany(db.tags, {through: 'companies_tags'});
-    db.tags.belongsToMany(db.companies, {through: 'companies_tags'});
+    db.companies.belongsToMany(db.tags, {
 
-    db.fellows.belongsToMany(db.tags, {through: 'fellows_tags'});
-    db.tags.belongsToMany(db.fellows, {through: 'fellows_tags'});
+        through: 'company_tag',
+        foreignKey: 'company_id',
+        otherKey: 'tag_id'
+    });
+    db.tags.belongsToMany(db.companies, {
+
+        through: 'company_tag',
+        foreignKey: 'tag_id',
+        otherKey: 'company_id'
+    });
+
+    db.fellows.belongsToMany(db.tags, {
+
+        through: 'fellow_tag',
+        foreignKey: 'fellow_id',
+        otherKey: 'tag_id'
+    });
+    db.tags.belongsToMany(db.fellows, {
+
+        through: 'fellow_tag',
+        foreignKey: 'tag_id',
+        otherKey: 'fellow_id'
+    });
 
     db.users.belongsToMany( db.users, {
         as: 'VotesFor',

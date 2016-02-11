@@ -164,13 +164,9 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
         // remove all tags, then re-add currently posted tags
         fellow.setTags(null).then(function() {
 
-            // for some reason, the angular post field for tags
-            // is a string and not and array in req.body,so
-            // it needs to be parsed as a json string
-            var tags = JSON.parse(req.body.tags);
 
-            if (Array.isArray(tags)) {
-                tags.forEach(function (tag_id) {
+            if (Array.isArray(req.body.tags)) {
+                req.body.tags.forEach(function (tag_id) {
 
                     Tags.findOne({
                         where: {

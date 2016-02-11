@@ -38,6 +38,7 @@
 
             $scope.fellow = fellow;
 
+
             Tags.all().success(function(tags){
 
                 var data = [];
@@ -72,6 +73,7 @@
 
             var tags = [];
             $('#tags :selected').each(function(i, selected){
+
                 tags[i] = $(selected).val();
             });
             fellow.tags = tags;

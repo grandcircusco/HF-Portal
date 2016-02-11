@@ -172,14 +172,10 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
         // remove all tags, then re-add currently posted tags
         company.setTags(null).then(function() {
 
-            // for some reason, the angular post field for tags
-            // is a string and not and array in req.body,so
-            // it needs to be parsed as a json string
-            var tags = JSON.parse(req.body.tags);
 
-            if ( Array.isArray(tags) ) {
+            if ( Array.isArray(req.body.tags) ) {
 
-                tags.forEach(function (tag_id) {
+                req.body.tags.forEach(function (tag_id) {
 
                     Tags.findOne({
                         where: {

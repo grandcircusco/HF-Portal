@@ -91,6 +91,8 @@
             //
             //});
 
+            console.log( fellow );
+
             return $http.put(rootUrl + '/api/v1/fellows/' + fellow.id, fellow);
         }
 
