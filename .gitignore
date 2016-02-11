@@ -9,6 +9,8 @@
 *.o
 *.so
 
+.env
+
 #   Remove bundled files from version control
 public/assets/javascript/bundle.js
 public/assets/stylesheets/style.css

@@ -77,15 +77,15 @@
      */
     function update(company) {
 
-      return Upload.upload({
-        url: rootUrl + '/api/v1/companies/' + company.id,
-        fields: company,
-        file: company.file,
-        method: 'PUT'
+      //return Upload.upload({
+      //  url: rootUrl + '/api/v1/companies/' + company.id,
+      //  fields: company,
+      //  file: company.file,
+      //  method: 'PUT'
+      //
+      //});
 
-      });
-
-      //return $http.put(rootUrl + '/api/v1/companies/' + id, company);
+      return $http.put(rootUrl + '/api/v1/companies/' + company.id, company);
     }
 
     /**

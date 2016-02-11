@@ -6,21 +6,27 @@
             <div class="row">
 
                 <div id="profile-photo" class="col-md-3">
-                    <img class="user-photo" ngf-src="company.file || company.image_url" width="200" height="200" />
-                    <p class="description">For best results use a square image</p>
-                    <div class="input-group profile-upload">
-                        <div id="ngf-select" class="btn btn-default" ngf-select ng-model="company.file">Upload Image</div>
-                        <p class="upload-status" ng-model="company.file" ng-show="company.file">Preview of: {{ company.file.name }} <span>Click Update to Save</span></p>
-                    </div><!-- /input-group -->
+
+                    <h4 class="title">Profile Image</h4>
+
+                    <div class="user-photo">
+
+                        <img id="preview" ngf-src="company.image_url" width="200" height="200" />
+                    </div>
+
+                    <p class="description">For best results - please use a square image</p>
+
+                    <div class="file">
+                        <input type="file" id="file_input" onchange="angular.element(this).scope().getS3Key(this)" />
+                        <i class='fa fa-circle-o-notch fa-spin loading-icon'></i>
+                    </div>
+
                 </div>
 
                 <div class="col-md-9">
                     <form class="form-horizontal profile-form">
-                        <!--
-                        <div class="alert alert-danger hid" id="errorAlert">
-                        <a class="close">×</a>
-                        Oops!!. You may have left some fields empty. Please fill them out.
-                        </div> -->
+
+                        <input type="hidden" id="image_url" name="image_url" ng-model="company.image_url" value="" />
 
                         <div class="form-group">
 

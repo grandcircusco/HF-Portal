@@ -151,13 +151,11 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
         fellow.major = req.body.major;
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
-        //fellow.resume_file_path = req.body.resume_file_path;
 
-        //fellow.image_url = req.file.path;
-        //fellow.image_url = req.body.image_url;
-        if( typeof req.file !== 'undefined' ) {
-            fellow.image_url = req.file.path;
-        }
+        fellow.image_url = req.body.image_url;
+        //if( typeof req.file !== 'undefined' ) {
+        //    fellow.image_url = req.file.path;
+        //}
 
         fellow.website_url = req.body.website_url;
 

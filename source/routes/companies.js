@@ -159,12 +159,12 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
         company.founders = req.body.founders;
         company.website_url = req.body.website_url;
         company.linked_in_url = req.body.linked_in_url;
-        //company.image_url = req.body.image_url;
 
-        if( typeof req.file !== 'undefined' )
-        {
-            company.image_url = req.file.path;
-        }
+        company.image_url = req.body.image_url;
+        //if( typeof req.file !== 'undefined' )
+        //{
+        //    company.image_url = req.file.path;
+        //}
         company.location = req.body.location;
 
         company.save();

@@ -27,7 +27,8 @@
     "gulp-util": "^3.0.6",
     "jshint-stylish": "^2.0.1",
     "karma": "^0.12.37",
-    "ng-file-upload": "^7.3.4"
+    "ng-file-upload": "^7.3.4",
+    "aws-sdk": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
