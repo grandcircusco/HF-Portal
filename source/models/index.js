@@ -6,7 +6,9 @@
     var path      = require("path");
     var Sequelize = require("sequelize");
 
+
     var sequelize = new Sequelize( process.env.DATABASE_URL || "postgres://localhost:5432/hfportal", { timezone: '+00:00' });
+    
     var env       = process.env.NODE_ENV || "development";
 
     var db        = {};
@@ -19,7 +21,7 @@
         var model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;
     });
-
+    
     db.sequelize = sequelize;
     db.Sequelize = Sequelize;
 
