@@ -108,7 +108,7 @@ app.post('/create', function createUser(req, res) {
 
 });
 
-// PUT /fellows/:id - updates an existing fellow record
+// PUT /users/:id - updates an existing fellow record
 app.put('/:id', function putUser(req, res) {
 
 	console.log(req.body);

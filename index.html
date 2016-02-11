@@ -80,6 +80,20 @@
     </nav>
 </div>
 
+<div class="alert" ng-show="alert.show" data-ng-controller="AlertController">
+    <div class="container">
+
+        <div class="message {{ alert.type }}">
+
+            <p>{{ alert.message }}</p>
+
+            <a class="close" ng-click="closeAlert()">&times;</a>
+
+        </div>
+
+    </div>
+</div>
+
 <div class="container main-content" ng-view="">
 
 

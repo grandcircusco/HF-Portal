@@ -9,12 +9,12 @@
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User' ];
+    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User', 'Alert' ];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope, $location, Fellows, Tags, User ) {
+    function FellowsProfileController($scope, $location, Fellows, Tags, User, Alert ) {
         var vm = this;
 
         // Probably can handle this in the routes or with middleware of some kind
@@ -80,6 +80,8 @@
 
                 // hide update message
                 $("#profile-photo").find(".upload-status").hide();
+
+                Alert.showAlert( 'Profile Updated', 'success' );
             });
         };
 

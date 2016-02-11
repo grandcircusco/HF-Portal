@@ -156,7 +156,6 @@ sftp-config.json
 
 #   Logs
 logs
-*.log
 
 #   Runtime data
 pids

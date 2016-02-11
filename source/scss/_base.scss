@@ -60,6 +60,10 @@ p {
   @include text($color: $body-text-color);
 }
 
+.navbar{
+
+  border: none;
+}
 
 .main-content{
 
