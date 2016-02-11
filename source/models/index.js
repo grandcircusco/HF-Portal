@@ -6,11 +6,8 @@
     var path      = require("path");
     var Sequelize = require("sequelize");
 
-    var sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
+    var sequelize = new Sequelize( process.env.DATABASE_URL || "postgres://localhost:5432/hfportal", { timezone: '+00:00' });
     var env       = process.env.NODE_ENV || "development";
-
-    console.log( env );
-    console.log( sequelize );
 
     var db        = {};
 
@@ -35,8 +32,6 @@
     db.fellows.belongsToMany(db.tags, {through: 'fellows_tags'});
     db.tags.belongsToMany(db.fellows, {through: 'fellows_tags'});
 
-    //db.users.belongsToMany(db.users, { as: 'Votes', through: 'votes', foreignKey: 'voter_id', otherKey: 'votee_id' });
-
     db.users.belongsToMany( db.users, {
         as: 'VotesFor',
         through: 'votes',
@@ -44,6 +39,7 @@
         otherKey: 'voter_id'
 
     });
+
     db.users.belongsToMany( db.users, {
         as: 'VotesCast',
         through: 'votes',

@@ -558,6 +558,12 @@ img {
 	  padding-right: 50px;
 	  margin-bottom: 30px;
 
+	  img{
+
+		max-width: 60%;
+		margin: 0 auto;
+	  }
+
 	  ul{
 
 		text-align: left;
@@ -565,6 +571,12 @@ img {
 	}
 
   	.right-side{
+
+	  img{
+
+		max-width: 60%;
+		margin: 0 auto;
+	  }
 
 	  padding-left: 50px;
 	  margin-bottom: 30px;
@@ -574,6 +586,29 @@ img {
 		text-align: left;
 	  }
 	}
+
+  .partners{
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin: 20px auto;
+		max-width: 990px;
+
+		.partner{
+
+		  width: 33.3333%;
+		  margin-bottom: 20px;
+
+		  img{
+
+			width: 80%;
+			margin: 0 auto;
+		  }
+		}
+
+  }
 }
 
 @media only screen and ( max-width: 991px ){
@@ -589,7 +624,22 @@ img {
 
 	  padding-left: 15px;
 	}
+
+	.partners{
+
+	  .partner{
+
+		width: 50%;
+
+		img{
+
+		}
+	  }
+
+	}
   }
+
+
 }
 
 
