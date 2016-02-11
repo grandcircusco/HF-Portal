@@ -20,8 +20,8 @@
 
         },{
 
-            timestamps: true, // add updated_at and created_at
-            paranoid: true // add deleted_at
+            timestamps: false, // add updated_at and created_at
+            paranoid: false // add deleted_at
 
         });
 
