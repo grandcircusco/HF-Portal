@@ -37,7 +37,7 @@
     height: 250px;
     background: $GREY005;
     // border: .2em solid #DEDEDD;
-    border-radius: 1.5em;
+    border-radius: 25px;
     font-family: $head-font;
     margin: 0 2% 35px;
     padding: 0 0 0 0;
@@ -262,8 +262,8 @@
       width: 100%;
       border-style: none;
       outline: 0;
-      border-top-right-radius: 1.5em;
-      border-bottom-right-radius: 1.5em;
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
 
       text-decoration: none;
       text-align: center;
