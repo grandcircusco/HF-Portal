@@ -6,8 +6,23 @@
     var path      = require("path");
     var Sequelize = require("sequelize");
 
-    var sequelize = new Sequelize( process.env.DATABASE_URL || "postgres://localhost:5432/hfportal", { timezone: '+00:00' });
-    var env       = process.env.NODE_ENV || "development";
+    //var sequelize = new Sequelize( process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
+    //var env       = process.env.NODE_ENV || "development";
+
+    var sequelize = null;
+    if (process.env.DATABASE_URL) {
+        // the application is executed on Heroku ... use the postgres database
+        sequelize = new Sequelize(process.env.DATABASE_URL, {
+            dialect:  'postgres',
+            protocol: 'postgres',
+            port:     match[4],
+            host:     match[3],
+            logging:  true //false
+        })
+    } else {
+        // the application is executed on the local machine ... use mysql
+        sequelize = new Sequelize( "postgres://localhost:5432/hfportal" )
+    }
 
     var db        = {};
 
