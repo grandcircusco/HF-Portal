@@ -24,9 +24,6 @@
 
         $scope.alert = Alert.alert;
 
-        console.log( $scope.alert );
-        console.log( "CONTROLLER" );
-
         // Close alert window
         $scope.closeAlert = function(){
 

@@ -9,11 +9,11 @@
         .module( 'app.votes.controllers' )
         .controller( 'VotesController', VotesController );
 
-    VotesController.$inject = [ '$scope', '$location', 'User' ];
+    VotesController.$inject = [ '$scope', '$location', 'User', 'Votes' ];
     /**
      * @namespace VoteController
      */
-    function VotesController($scope, $location, User) {
+    function VotesController($scope, $location, User, Votes) {
 
         var vm = this;
 
@@ -25,6 +25,8 @@
             $scope.currentUser = User.getCurrentUser();
 
             User.getVotes( $scope.currentUser.id ).success( function( votes ){
+
+                console.log( votes );
 
                 $scope.votesFor = votes.votesFor;
                 $scope.votesCast = votes.votesCast;

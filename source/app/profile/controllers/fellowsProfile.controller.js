@@ -18,7 +18,6 @@
 
         var vm = this;
 
-
         // Probably can handle this in the routes or with middleware of some kind
         if( !User.isUserLoggedIn() ) {
 
@@ -87,7 +86,7 @@
                 // hide update message
                 $("#profile-photo").find(".upload-status").hide();
 
-                Alert.showAlert( 'Profile Updated', 'success' );
+                Alert.showAlert( 'Your profile has been updated', 'success' );
             });
         };
 

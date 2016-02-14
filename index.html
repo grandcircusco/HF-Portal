@@ -23,102 +23,115 @@
 
 </head>
 
-<body ng-app="app">
+<body>
 
-<div ng-controller="RoutingController">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuitem"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    <div class="wrapper" ng-app="app">
 
-            </div>
-            <div id="menuitem" class="collapse navbar-collapse ">
+        <div ng-controller="RoutingController">
 
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="listitem">
-                        <a href="/#/">Home</a>
-                    </li>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuitem"
+                                aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
 
-                    <li class="listitem">
-                        <a ng-href="/#/#apply-section" ng-click="scrollTo('apply-section')">Apply</a>
-                    </li>
-                    <li class="listitem">
-                        <a ng-href="/#/#employers-section" ng-click="scrollTo('start-ups-section')">Start-Ups</a>
-                    </li>
-                    <li class="listitem">
-                        <a ng-href="/#/#faq-section" ng-click="scrollTo('faq-section')">FAQ</a>
-                    </li>
-                    <li class="listitem">
-                        <a ng-href="/#/#fellows-section" ng-click="scrollTo('fellows-section')">2015
-                        Fellows</a>
-                    </li>
+                    </div>
+                    <div id="menuitem" class="collapse navbar-collapse ">
 
-                    <li class="listitem"> <a href="#">|</a> </li>
-                    <li class="listitem"><a href="/#/fellows">Fellows</a></li>
-                    <li class="listitem"><a href="/#/companies">Companies</a></li>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="listitem">
+                                <a href="/#/">Home</a>
+                            </li>
 
-                </ul>
+                            <li class="listitem">
+                                <a ng-href="/#/#apply-section" ng-click="scrollTo('apply-section')">Apply</a>
+                            </li>
+                            <li class="listitem">
+                                <a ng-href="/#/#employers-section" ng-click="scrollTo('start-ups-section')">Start-Ups</a>
+                            </li>
+                            <li class="listitem">
+                                <a ng-href="/#/#faq-section" ng-click="scrollTo('faq-section')">FAQ</a>
+                            </li>
+                            <li class="listitem">
+                                <a ng-href="/#/#fellows-section" ng-click="scrollTo('fellows-section')">2015
+                                Fellows</a>
+                            </li>
 
-                <ul class="nav navbar-nav navbar-right" class="navbar-collapse collapse">
+                            <li class="listitem"> <a href="#">|</a> </li>
+                            <li class="listitem"><a href="/#/fellows">Fellows</a></li>
+                            <li class="listitem"><a href="/#/companies">Companies</a></li>
 
-                    <li ng-hide="isUserLoggedIn"><a href="" ng-click="openModal()">Login</a></li>
+                        </ul>
 
-                    <li ng-show="isUserLoggedIn"><a href="/#/votes">Votes</a></li>
-                    <li ng-show="isUserLoggedIn"><a href="/#/profile">Profile</a></li>
-                    <li ng-show="isUserLoggedIn"><a href="" ng-click="logoutUser()">Logout</a></li>
+                        <ul class="nav navbar-nav navbar-right" class="navbar-collapse collapse">
 
-                </ul>
+                            <li ng-hide="isUserLoggedIn"><a href="" ng-click="openModal()">Login</a></li>
 
-            </div>
-        </div>
-    </nav>
-</div>
+                            <li ng-show="isUserLoggedIn"><a href="/#/votes">Votes</a></li>
+                            <li ng-show="isUserLoggedIn"><a href="/#/profile">Profile</a></li>
+                            <li ng-show="isUserLoggedIn"><a href="" ng-click="logoutUser()">Logout</a></li>
 
-<div class="alert" ng-show="alert.show" data-ng-controller="AlertController">
-    <div class="container">
+                        </ul>
 
-        <div class="message {{ alert.type }}">
-
-            <p>{{ alert.message }}</p>
-
-            <a class="close" ng-click="closeAlert()">&times;</a>
-
+                    </div>
+                </div>
+            </nav>
         </div>
 
+        <div class="content">
+
+            <div class="alert" ng-show="alert.show" data-ng-controller="AlertController">
+                <div class="container">
+
+                    <div class="message {{ alert.type }}">
+
+                        <h3 ng-show="alert.type == 'success'"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Success!</h3>
+
+                        <h3 ng-show="alert.type == 'error'"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Error!</h3>
+
+                        <h3 ng-show="alert.type == 'info'"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Warning!</h3>
+
+                        <p>{{ alert.message }}</p>
+
+                        <a class="close" ng-click="closeAlert()">&times;</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container main-content" ng-view="">
+
+
+            </div>
+
+        </div>
+
+        <nav class="footer">
+            <div class="container">
+                <p class="text-muted">&copy; Hacker Fellows 2015. All rights reserved.</p>
+            </div>
+        </nav>
+
     </div>
-</div>
 
-<div class="container main-content" ng-view="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular-cookies.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />-->
+    <!--<script src="public/assets/javascript/vendor/angular-ui.select2.js"></script>-->
 
-</div>
-
-
-<nav class="navbar navbar-default navbar-fixed-bottom footer">
-    <div class="container">
-        <p class="text-muted">&copy; Hacker Fellows 2015. All rights reserved.</p>
-    </div>
-</nav>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-<script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
-<script src="https://code.angularjs.org/1.4.3/angular-cookies.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-<!--<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />-->
-<!--<script src="public/assets/javascript/vendor/angular-ui.select2.js"></script>-->
-
-<script type="text/javascript" src="public/assets/javascript/bundle.js"></script>
+    <script type="text/javascript" src="public/assets/javascript/bundle.js"></script>
 
 
 </body>

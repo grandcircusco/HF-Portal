@@ -1,5 +1,13 @@
 
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
 html {
+
   min-height: 100%;
   position: relative;
 }
@@ -7,8 +15,7 @@ html {
 body {
 
   @include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
-  margin: 0 0 0 0;
-  padding: 70px 0 0 0;
+  margin: 0;
   background-color: $odd-section;
 }
 
@@ -65,10 +72,28 @@ p {
   border: none;
 }
 
-.main-content{
 
-  padding-bottom: 60px;
+
+/** Push Footer to bottom of page or below **/
+
+.wrapper{
+  min-height: 100%;
+  position:relative;
+  padding-top: 70px;
 }
+
+.content{
+  padding-bottom: 60px;    /* height of footer */
+}
+
+.footer{
+  height: 60px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
 
 /* Form Styles */
 

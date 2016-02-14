@@ -3,14 +3,11 @@
 .footer {
 
   width: 100%;
-  height: auto;
   background-color: $GREY005;
   text-align: center;
 
   p {
-    line-height: 46px;
-    @media #{$phone} {
-      line-height: 26px;
-    }
+    line-height: 60px;
+    margin: 0;
   }
 }

@@ -37,7 +37,7 @@
                 // this is some sort of scoping weirdness going on here, but it works and I
                 // am tired, so it is getting committed ;-p
                 var alert = this.alert;
-                $timeout( function(){ alert.show = false; },  3000 );
+                $timeout( function(){ alert.show = false; },  5000 );
             },
             closeAlert: function() {
 
