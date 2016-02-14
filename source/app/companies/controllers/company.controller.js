@@ -9,12 +9,12 @@
         .module('app.companies.controllers')
         .controller('CompanyController', CompanyController);
 
-    CompanyController.$inject = [ '$routeParams', '$scope', '$timeout', 'Companies', 'User', 'Votes'];
+    CompanyController.$inject = [ '$routeParams', '$scope', '$timeout', 'Companies', 'User', 'Votes', 'Alert'];
 
     /**
      * @namespace CompaniesController
      */
-    function CompanyController( $routeParams, $scope, $timeout, Companies, User, Votes) {
+    function CompanyController( $routeParams, $scope, $timeout, Companies, User, Votes, Alert) {
 
         activate();
 
@@ -62,22 +62,20 @@
                 return Votes.create($scope.currentUser.id, company.user_id)
                     .success(function (vote) {
 
-                        console.log("success: "+vote);
-                        return vote;
-                    })
-                    .catch(function (err) {
-
-                        console.log("Error: "+err);
-                    })
-                    .finally(function () {
-
                         $timeout(function () {
 
-                            console.log( 'done' );
                             $scope.loading = false;
                             $scope.done = true;
 
                         }, 1500);
+
+                        return vote;
+                    })
+                    .catch(function (err) {
+
+                        Alert.showAlert( err.data, "info" );
+
+                        $scope.loading = false;
                     });
             }
         };

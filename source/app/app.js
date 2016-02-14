@@ -57,7 +57,17 @@
 
     .when( '/votes', {
         controller: 'VotesController',
+        templateUrl: 'source/app/votes/partials/votes.html'
+    })
+
+    .when( '/votes/fellow', {
+        controller: 'FellowVotesController',
         templateUrl: 'source/app/votes/partials/fellow-votes.html'
+    })
+
+    .when( '/votes/company', {
+        controller: 'CompanyVotesController',
+        templateUrl: 'source/app/votes/partials/company-votes.html'
     })
 
     .otherwise({ redirectTo: '/' });

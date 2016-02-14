@@ -19,19 +19,18 @@
 
         if( User.isUserLoggedIn() ) {
 
-            $scope.votesFor = [];
-            $scope.votesCast = [];
+            var currentUser = User.getCurrentUser();
 
-            $scope.currentUser = User.getCurrentUser();
-
-            Votes.get( $scope.currentUser.id ).success( function( votes ){
-
-                $scope.votes = votes;
-
-                console.log( votes );
-            });
-
-
+            // redirect the user based on their type
+            if (currentUser.userType === 'Admin') {
+                $location.path("/votes/admin");
+            }
+            else if (currentUser.userType === 'Fellow') {
+                $location.path("/votes/fellow");
+            }
+            else if (currentUser.userType === 'Company') {
+                $location.path("/votes/company");
+            }
         }
         else{
 

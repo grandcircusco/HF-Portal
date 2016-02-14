@@ -49,9 +49,18 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
             voter.getVotesCast().then( function ( data ) {
 
-                if ( data.length >= 5 ) {
 
-                    res.status( 500 ).send( 'Voting limit reached' );
+                if ( data.length >= 10 ) {
+
+                    if( voter.userType === 'Fellow' )
+                    {
+                        res.status( 500 ).send( 'You are limited to showing interest in 10 companies. You have reached the limit already.' );
+                    }
+                    else if( voter.userType === 'Company' )
+                    {
+                        res.status( 500 ).send( 'You are limited to showing interest in 10 fellows. You have reached the limit already.' );
+                    }
+
 
                 }
                 else {
@@ -61,7 +70,16 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
                         if( element.votee_id === votee.id )
                         {
-                            res.send( "Vote already exists" );
+                            if( voter.userType === 'Fellow' )
+                            {
+                                res.status( 500 ).send( "You have already shown interest in this company " );
+                            }
+                            else if( voter.userType === 'Company' )
+                            {
+                                res.status( 500 ).send( "You have already shown interest in this fellow " );
+                            }
+
+
                         }
 
                     });

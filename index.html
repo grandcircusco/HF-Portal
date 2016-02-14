@@ -72,7 +72,7 @@
 
                             <li ng-hide="isUserLoggedIn"><a href="" ng-click="openModal()">Login</a></li>
 
-                            <li ng-show="isUserLoggedIn"><a href="/#/votes">Votes</a></li>
+                            <li ng-show="isUserLoggedIn"><a href="/#/votes">Votes</a> </li>
                             <li ng-show="isUserLoggedIn"><a href="/#/profile">Profile</a></li>
                             <li ng-show="isUserLoggedIn"><a href="" ng-click="logoutUser()">Logout</a></li>
 
@@ -85,21 +85,23 @@
 
         <div class="content">
 
-            <div class="alert" ng-show="alert.show" data-ng-controller="AlertController">
+            <div class="alert ng-hide" ng-show="alert.show" data-ng-controller="AlertController">
                 <div class="container">
 
-                    <div class="message {{ alert.type }}">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="message {{ alert.type }}">
 
-                        <h3 ng-show="alert.type == 'success'"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Success!</h3>
+                            <h3 ng-show="alert.type == 'success'"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Success!</h3>
 
-                        <h3 ng-show="alert.type == 'error'"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Error!</h3>
+                            <h3 ng-show="alert.type == 'error'"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Error!</h3>
 
-                        <h3 ng-show="alert.type == 'info'"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Warning!</h3>
+                            <h3 ng-show="alert.type == 'info'"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Warning!</h3>
 
-                        <p>{{ alert.message }}</p>
+                            <p>{{ alert.message }}</p>
 
-                        <a class="close" ng-click="closeAlert()">&times;</a>
+                            <a class="close" ng-click="closeAlert()">&times;</a>
 
+                        </div>
                     </div>
 
                 </div>

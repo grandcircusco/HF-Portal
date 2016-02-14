@@ -87,7 +87,7 @@
                 // hide update message
                 $("#profile-photo").find(".upload-status").hide();
 
-                Alert.showAlert( 'Profile Updated', 'success' );
+                Alert.showAlert( 'Your profile has been updated', 'success' );
             });
         };
 

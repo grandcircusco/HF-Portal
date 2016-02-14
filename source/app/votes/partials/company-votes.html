@@ -9,11 +9,13 @@
 
                 <ol>
                     <li ng-repeat="vote in votes">
-                        <a ng-href="/#/companies/{{ vote.Votee.company.id }}/{{ helpers.slugify( vote.Votee.company.name ) }}">
-                            {{ vote.Votee.company.name }}
+                        <a ng-href="/#/fellows/{{ vote.Votee.fellow.id }}/{{ helpers.slugify( vote.Votee.fellow.first_name + ' ' + fellow.last_name ) }}">
+                            {{ vote.Votee.fellow.first_name }} {{ vote.Votee.fellow.last_name }}
                         </a>
                     </li>
                 </ol>
+
+
 
             </div>
 
