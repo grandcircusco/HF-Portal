@@ -33,8 +33,6 @@
             return;
         }
 
-
-
         $scope.fellows = [];
         $scope.companies = [];
         $scope.userListLoad = function() {

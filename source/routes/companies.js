@@ -86,7 +86,23 @@ app.get('/users', function getCompanies(req, res) {
             name: {ne: null}
         },
         order: '"name" ASC',
-        include: [{ all: true }]
+        include: [{
+
+            model: Tags
+        },{
+
+            model: Users,
+            include: [{
+
+                model: Users,
+                as: 'VotesFor'
+            },
+                {
+
+                    model: Users,
+                    as: 'VotesCast'
+                }]
+        }]
 
     }).then(function(companies) {
 

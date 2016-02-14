@@ -50,6 +50,10 @@
         foreignKey: 'company_id',
         otherKey: 'tag_id'
     });
+    db.companies.belongsTo( db.users, {
+
+        foreignKey: 'user_id'
+    });
     db.tags.belongsToMany(db.companies, {
 
         through: 'company_tag',
@@ -57,11 +61,21 @@
         otherKey: 'company_id'
     });
 
+    db.votes.belongsTo( db.users, {
+
+        as: 'Votee',
+        foreignKey: 'votee_id'
+    });
+
     db.fellows.belongsToMany(db.tags, {
 
         through: 'fellow_tag',
         foreignKey: 'fellow_id',
         otherKey: 'tag_id'
+    });
+    db.fellows.belongsTo( db.users, {
+
+        foreignKey: 'user_id'
     });
     db.tags.belongsToMany(db.fellows, {
 

@@ -56,7 +56,23 @@ app.get('/users', function getFellows(req, res) {
             first_name: {ne: null}
         },
         order: '"last_name" ASC',
-        include: [{ all: true }]
+        include: [{
+
+            model: Tags
+        },{
+
+            model: Users,
+            include: [{
+
+                model: Users,
+                as: 'VotesFor'
+            },
+            {
+
+                model: Users,
+                as: 'VotesCast'
+            }]
+        }]
 
     }).then(function(fellows) {
 

@@ -12,9 +12,9 @@
     <tbody>
     <tr ng-repeat="fellow in fellows">
         <td>{{  fellow.first_name + " " + fellow.last_name }}</td>
-        <td>{{ fellow.user.email }}</td>
-        <td>{{ fellow.Votees.length }}</td>
-        <td>{{ fellow.Voters.length }}</td>
+        <td>{{ fellow.email }}</td>
+        <td>{{ fellow.user.VotesFor.length }}</td>
+        <td>{{ fellow.user.VotesCast.length }}</td>
         <td><a href ng-click="editFellow(fellow)"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
         <td><a href ng-click="archiveFellow(fellow)"><i class="fa fa-times-circle"></i> Archive</a></td>
     </tr>
@@ -38,9 +38,9 @@
     <tbody>
     <tr ng-repeat="company in companies">
         <td>{{ company.name }}</td>
-        <td>{{ company.user.email }}</td>
-        <td>{{ company.Votees.length }}</td>
-        <td>{{ company.Voters.length }}</td>
+        <td>{{ company.email }}</td>
+        <td>{{ company.user.VotesFor.length }}</td>
+        <td>{{ company.user.VotesCast.length }}</td>
         <td><a href ng-click="editCompany(company)"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
         <td><a href ng-click="archiveCompany(company)"><i class="fa fa-times-circle"></i> Archive</a></td>
     </tr>
