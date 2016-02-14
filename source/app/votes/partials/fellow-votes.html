@@ -7,7 +7,11 @@
 
                 <h3>You have shown interest in:</h3>
 
-
+                <ul>
+                    <li ng-repeat="vote in votes">
+                        {{ vote.Votee.company.name }}
+                    </li>
+                </ul>
 
 
 

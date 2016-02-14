@@ -16,7 +16,7 @@
 
 
     /**
-     * @namespace CompanyVotes
+     * @namespace Votes
      */
     function Votes($http, CONFIG) {
 
@@ -24,7 +24,7 @@
 
         return {
 
-            getVotes: getVotes,
+            get: get,
             create: create,
             destroy: destroy
         };
@@ -33,9 +33,9 @@
          * @name get votes
          * @desc get the votes for a user
          */
-        function getVotes( user_id ){
+        function get( voter_id ){
 
-            return $http.get(rootUrl + '/api/v1/users/' + user_id + '/votes' );
+            return $http.get(rootUrl + '/api/v1/votes/' + voter_id );
         }
 
 

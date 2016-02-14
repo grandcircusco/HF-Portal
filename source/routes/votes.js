@@ -6,6 +6,39 @@ var models = require('../models');
 var Companies = models.companies;
 var Fellows = models.fellows;
 var Users = models.users;
+var Votes = models.votes;
+
+// GET /votes/ - Company votes for a fellow
+app.get('/:voter_id', function getVote(req, res) {
+
+
+    var votes = Votes.findAll({
+
+        where: {
+
+            voter_id: req.params.voter_id
+        },
+        include: [{
+
+            model: Users,
+            as: 'Votee',
+            include: [{
+
+                model: Fellows
+            },
+            {
+
+                model: Companies
+            }]
+        }]
+
+    }).then( function( votes ) {
+
+        res.send( votes );
+    });
+
+
+});
 
 
 function resolvePromisesAndPost( voter, votee, res ) {

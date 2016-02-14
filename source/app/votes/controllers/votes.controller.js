@@ -24,15 +24,11 @@
 
             $scope.currentUser = User.getCurrentUser();
 
-            User.getVotes( $scope.currentUser.id ).success( function( votes ){
+            Votes.get( $scope.currentUser.id ).success( function( votes ){
+
+                $scope.votes = votes;
 
                 console.log( votes );
-
-                $scope.votesFor = votes.votesFor;
-                $scope.votesCast = votes.votesCast;
-
-
-                console.log( $scope.votesCast );
             });
 
 

@@ -70,6 +70,32 @@
         otherKey: 'fellow_id'
     });
 
+    db.users.hasMany( db.votes, {
+
+        as: 'VotesFor',
+        foreignKey: 'votee_id',
+        otherKey: 'id'
+    });
+
+    db.users.hasMany( db.votes, {
+
+        as: 'VotesCast',
+        foreignKey: 'votee_id',
+        otherKey: 'id'
+    });
+
+    db.votes.belongsTo( db.users, {
+
+        as: 'Voter',
+        foreignKey: 'voter_id'
+    });
+
+    db.votes.belongsTo( db.users, {
+
+        as: 'Votee',
+        foreignKey: 'votee_id'
+    });
+
     db.users.belongsToMany( db.users, {
         as: 'VotesFor',
         through: 'votes',
