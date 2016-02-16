@@ -10,6 +10,8 @@
 *.so
 
 .env
+/vendor
+/build
 
 #   Remove bundled files from version control
 public/assets/javascript/bundle.js
