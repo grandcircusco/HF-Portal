@@ -1,4 +1,4 @@
-<form class="form-horizontal profile-form" ng-submit="ok(user)">
+<form class="form-horizontal profile-form">
     <!-- =======
     <div class="alert alert-danger hid" id="errorAlert">
     <a class="close">×</a>
@@ -6,20 +6,20 @@
     </div> -->
 
     <div class="form-group">
-        <label for="email">User's Email:</label>
+        <label for="email">User Email:</label>
         <input type="email" class="form-control" id="email" name="email" ng-model="user.email">
     </div>
     <div class="form-group">
-        <label for="password">User's Password:</label>
+        <label for="password">User Password:</label>
         <input type="password" class="form-control" id="password" name="password" ng-model="user.password">
     </div>
 
-    <input type="radio" name="userType"  value="Fellow" ng-model="user.userType" ng-click="switchType(user)" autocomplete="off" checked> <label>Fellow</label>
-    <input type="radio" name="userType"  value="Company" ng-model="user.userType" ng-click="switchType(user)" autocomplete="off"> <label>Company</label>
+    <input type="radio" name="userType"  value="Fellow" ng-model="user.userType" autocomplete="off" checked> <label>Fellow</label>
+    <input type="radio" name="userType"  value="Company" ng-model="user.userType" autocomplete="off"> <label>Company</label>
 
     <div class="form-group">
         <div class="col-xs-offset-2 col-xs-10">
-            <button type="submit" class="btn btn-primary" ng-click="createUser(user)">Create Account</button>
+            <button type="submit" class="btn btn-primary" ng-click="create(user)">Create Account</button>
         </div>
     </div>
 

@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^0.8.4",
+	"bcrypt": "^0.8.4",
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
     "express-stormpath": "^1.0.6",

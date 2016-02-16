@@ -16,10 +16,12 @@
 
 		<div class="quote">{{ company.bio }}</div>
 
+        <div class="tagwrap">
+            <div class="tag company_tag" ng-repeat="tag in company.tags | limitTo:3">
+                <p>{{ tag.name }}</p>
+            </div>
+        </div>
 
-		<div class="tag company_tag" ng-repeat="tag in company.tags | limitTo:3">
-			<p>{{ tag.name }}</p>
-		</div>
 		
 	</div>
 		<!-- Button trigger modal -->
