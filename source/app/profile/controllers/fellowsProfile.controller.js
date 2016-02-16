@@ -37,25 +37,32 @@
 
             $scope.fellow = fellow;
 
+            $scope.tags = [
 
+                { id: 0, name: "TEST" }
+
+            ];
             Tags.all().success(function(tags){
 
-                var data = [];
-                tags.forEach(function(tag){
+                //var data = [];
+                //tags.forEach(function(tag){
+                //
+                //    var item = {
+                //
+                //        id: tag.id,
+                //        text: tag.name
+                //    };
+                //    data.push(item);
+                //});
 
-                    var item = {
+                console.log( tags  );
+                $scope.tags = tags;
 
-                        id: tag.id,
-                        text: tag.name
-                    };
-                    data.push(item);
-                });
-
-                $("select#tags").select2({
+                /*$("select#tags").select2({
                     //tags: true,
-                    data: data,
+                    data: $scope.tags,
                     tokenSeparators: [',',' ']
-                });
+                });*/
 
             });
 
@@ -69,6 +76,8 @@
         }
 
         $scope.update = function(fellow, file) {
+
+            console.log( fellow );
 
             var tags = [];
             $('#tags :selected').each(function(i, selected){

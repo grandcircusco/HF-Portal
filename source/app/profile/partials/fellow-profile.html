@@ -78,8 +78,16 @@
                             <div class="form-group">
                                 <label for="tags" class="control-label col-xs-2"> Top Skills</label>
                                 <div class="col-xs-10">
-                                    <select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in fellow.tags track by tag.id" ng-model="fellow.tags">
-                                    </select>
+
+                                    <ui-select id="tags" name="tags" multiple ng-model="fellow.tags" theme="select2" ng-disabled="disabled" style="width: 800px;">
+                                        <ui-select-match placeholder="Select a skill...">{{$item.name}} </ui-select-match>
+                                        <ui-select-choices repeat="tag in tags">
+                                            <div ng-bind-html="tag.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <!--<select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in fellow.tags track by tag.id" ng-model="fellow.tags">-->
+                                    <!--</select>-->
 
 
                                     <!--<select ui-select2="{ allowClear: true}" class="jsexample-tokenizer form-control" id="tags" name="tags" ng-model="alltags">

@@ -31,7 +31,9 @@ gulp.task('jshint', function(cb){
 
 gulp.task('build-css', function (cb) {
 
-	return gulp.src('source/scss/style.scss')
+	return gulp.src([
+			'source/scss/style.scss'
+		])
 		.pipe(sourcemaps.init())
 		.pipe(concat('style.css'))
 		.pipe(sass())
@@ -41,7 +43,11 @@ gulp.task('build-css', function (cb) {
 
 gulp.task('build-js', function (cb) {
 
-	return gulp.src(['source/app/**/*.js', 'node_modules/ng-file-upload/dist/ng-file-upload.min.js'])
+	return gulp.src([
+			'source/app/**/*.js',
+			'node_modules/ng-file-upload/dist/ng-file-upload.min.js'
+
+		])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
 		.pipe(gutil.env.type === 'production' ? uglify(options) : gutil.noop())
