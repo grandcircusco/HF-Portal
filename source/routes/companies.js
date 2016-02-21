@@ -4,6 +4,7 @@ var app = express();
 
 var models = require('../models');
 var Companies = models.companies;
+var Fellows = models.fellows;
 var Tags = models.tags;
 var Users = models.users;
 
@@ -95,13 +96,21 @@ app.get('/users', function getCompanies(req, res) {
             include: [{
 
                 model: Users,
-                as: 'VotesFor'
-            },
-                {
+                as: 'VotesFor',
+                include: [{
 
-                    model: Users,
-                    as: 'VotesCast'
+                    model: Fellows
                 }]
+            },
+            {
+
+                model: Users,
+                as: 'VotesCast',
+                include: [{
+
+                    model: Fellows
+                }]
+            }]
         }]
 
     }).then(function(companies) {

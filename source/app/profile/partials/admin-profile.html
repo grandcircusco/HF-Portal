@@ -1,11 +1,13 @@
 <div class="row">
 
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-6 col-md-offset-3">
 
 		<div class="profile">
 
 				<div class="row">
 
+
+					<a class="btn btn-primary" ng-click="createUser()"><span class="glyphicon glyphicon-plus"></span> New User</a>
 
 					<h2>Fellows</h2>
 					<table class="table table-striped">
@@ -13,19 +15,17 @@
 						<tr>
 							<th>Name</th>
 							<th>Email</th>
-							<th>Voted For</th>
-							<th>Votes Cast</th>
-							<th></th>
+							<th class="stat">Voted For</th>
+							<th class="stat">Votes Cast</th>
 							<th></th>
 						</thead>
 						<tbody>
 						<tr ng-repeat="fellow in fellows">
 							<td>{{  fellow.first_name + " " + fellow.last_name }}</td>
 							<td>{{ fellow.user.email }}</td>
-							<td>{{ fellow.Votees.length }}</td>
-							<td>{{ fellow.Voters.length }}</td>
-							<td><a href ng-click="editFellow(fellow)"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
-							<td><a href ng-click="archiveFellow(fellow)"><i class="fa fa-times-circle"></i> Archive</a></td>
+							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesFor.length }}</a></td>
+							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesCast.length }}</a></td>
+							<td><a href ng-click="editFellow(fellow)"><i class="fa fa-pencil-square-o"></i></a></td>
 						</tr>
 
 						</tbody>
@@ -38,9 +38,8 @@
 						<tr>
 							<th>Name</th>
 							<th>Email</th>
-							<th>Voted For</th>
-							<th>Votes Cast</th>
-							<th></th>
+							<th class="stat">Voted For</th>
+							<th class="stat">Votes Cast</th>
 							<th></th>
 						</tr>
 						</thead>
@@ -48,16 +47,14 @@
 						<tr ng-repeat="company in companies">
 							<td>{{ company.name }}</td>
 							<td>{{ company.user.email }}</td>
-							<td>{{ company.Votees.length }}</td>
-							<td>{{ company.Voters.length }}</td>
-							<td><a href ng-click="editCompany(company)"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
-							<td><a href ng-click="archiveCompany(company)"><i class="fa fa-times-circle"></i> Archive</a></td>
+							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesFor.length }}</a></td>
+							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesCast.length }}</a></td>
+							<td><a href ng-click="editCompany(company)"><i class="fa fa-pencil-square-o"></i></a></td>
 						</tr>
 						</tbody>
 					</table>
 
 				</div>
-				<button ng-click="createUser()">create</button>
 
 			</div>
 

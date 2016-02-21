@@ -49,6 +49,7 @@ app.get('/', function getFellows(req, res) {
 // GET /fellows - get all fellows
 app.get('/users', function getFellows(req, res) {
 
+    // @TODO - This eager loads
     Fellows.all({
 
         where: {
@@ -62,16 +63,28 @@ app.get('/users', function getFellows(req, res) {
         },{
 
             model: Users,
+            attributes: ['id', 'email', 'userType'],
             include: [{
 
                 model: Users,
-                as: 'VotesFor'
+                as: 'VotesFor',
+                attributes: ['id', 'email', 'userType'],
+                include: [{
+
+                    model: Companies
+                }]
             },
             {
 
                 model: Users,
-                as: 'VotesCast'
+                as: 'VotesCast',
+                attributes: ['id', 'email', 'userType'],
+                include: [{
+
+                    model: Companies
+                }]
             }]
+
         }]
 
     }).then(function(fellows) {

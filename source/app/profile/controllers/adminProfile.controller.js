@@ -42,6 +42,8 @@
 
                 Fellows.allWithUser().success(function (fellows) {
 
+                    console.log( fellows );
+
                     $scope.fellows = fellows;
 
                 });
@@ -50,6 +52,8 @@
             if( $scope.companies.length === 0 ) {
 
                 Companies.allWithUser().success(function (companies) {
+
+                    console.log( companies );
 
                     $scope.companies = companies;
 
@@ -81,6 +85,50 @@
             // show success/failure
             return false;
         };
+
+        $scope.fellowVotes = function( fellow ){
+
+            var modalInstance = $modal.open({
+
+                templateUrl: 'source/app/profile/partials/admin/fellow-votes.html',
+                controller: 'FellowVotesModalInstanceController',
+                size: 'md',
+                resolve: {
+
+                    fellow: function(){
+                        return fellow;
+                    }
+                }
+
+            });
+
+            // show success/failure
+            return false;
+
+        };
+
+        $scope.companyVotes = function( company ){
+
+            var modalInstance = $modal.open({
+
+                templateUrl: 'source/app/profile/partials/admin/company-votes.html',
+                controller: 'CompanyVotesModalInstanceController',
+                size: 'md',
+                resolve: {
+
+                    company: function(){
+                        return company;
+                    }
+                }
+
+            });
+
+            // show success/failure
+            return false;
+
+        };
+
+        // @TODO - Implement Later
         $scope.archiveFellow = function(user){
 
             console.log("Archive User: "+user.id);
@@ -89,6 +137,7 @@
             // show success/failure
             return false;
         };
+
         $scope.editCompany= function(company){
 
             // send user data to service
@@ -200,10 +249,11 @@
     angular
         .module('app.fellows.controllers')
         .controller('EditUserModalInstanceController', EditUserModalInstanceController)
-        .controller('CreateUserModalInstanceController', CreateUserModalInstanceController);
+        .controller('CreateUserModalInstanceController', CreateUserModalInstanceController)
+        .controller('CompanyVotesModalInstanceController', CompanyVotesModalInstanceController)
+        .controller('FellowVotesModalInstanceController', FellowVotesModalInstanceController);
 
-    EditUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'user', 'name', 'User', '$timeout'];
-
+    EditUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'user', 'name', 'User' ];
     function EditUserModalInstanceController ($scope, $modalInstance, user, name, User) {
 
         $scope.user = user;
@@ -224,7 +274,94 @@
 
 
     }
-//TODO user should be user service
+
+    FellowVotesModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow' ];
+    function FellowVotesModalInstanceController( $scope, $modalInstance, fellow ){
+
+        $scope.fellow = fellow;
+
+        // Check fellow VotesFor to see if a company voted for a fellow
+        $scope.companyVotedForFellow = function( company_user_id ){
+
+            for( var i = 0; i < fellow.user.VotesFor.length; i++ )
+            {
+                var vote = fellow.user.VotesFor[i];
+
+                if( vote.id === company_user_id )
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        // Check fellow VotesCast to see if they voted for a company
+        $scope.fellowVotedForCompany = function( company_user_id ){
+
+            for( var i = 0; i < fellow.user.VotesCast.length; i++ )
+            {
+                var vote = fellow.user.VotesCast[i];
+
+                if( vote.id === company_user_id )
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        $scope.ok = function ok() {
+
+            $modalInstance.close();
+        };
+    }
+
+    CompanyVotesModalInstanceController.$inject = ['$scope', '$modalInstance', 'company' ];
+    function CompanyVotesModalInstanceController( $scope, $modalInstance, company ){
+
+        $scope.company = company;
+
+        // Check fellow VotesCast to see if they voted for a company
+        $scope.fellowVotedForCompany = function( company_user_id ){
+
+            for( var i = 0; i < company.user.VotesFor.length; i++ )
+            {
+                var vote = company.user.VotesFor[i];
+
+                if( vote.id === company_user_id )
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        // Check fellow VotesFor to see if a company voted for a fellow
+        $scope.companyVotedForFellow = function( company_user_id ){
+
+            for( var i = 0; i < company.user.VotesCast.length; i++ )
+            {
+                var vote = company.user.VotesCast[i];
+
+                if( vote.id === company_user_id )
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        $scope.ok = function ok() {
+
+            $modalInstance.close();
+        };
+    }
+
+    CreateUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies' ];
     function CreateUserModalInstanceController ($scope, $modalInstance, User, Fellows, Companies) {
 
         

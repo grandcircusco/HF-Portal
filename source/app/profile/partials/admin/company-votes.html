@@ -1,0 +1,46 @@
+
+<div class="modal-body box-modal">
+
+    <div class="profile vote-modal">
+
+        <h3>Votes By {{ company.name }}</h3>
+
+        <ul ng-show="company.user.VotesCast.length === 0">
+            <li>There are no votes by this company yet</li>
+        </ul>
+        <ul ng-show="company.user.VotesCast.length > 0">
+            <li ng-repeat="user in company.user.VotesCast">
+                <a class="name {{ ( fellowVotedForCompany(user.id) ) ? 'bold' : '' }}"
+                   ng-href="/#/fellows/{{ user.fellow.id }}/{{ helpers.slugify( user.fellow._first_name + ' ' + user.fellow.last_name ) }}">
+                    {{ user.fellow.first_name }} {{ user.fellow.last_name }}
+                </a>
+            </li>
+        </ul>
+
+
+        <h3>Votes For {{ company.name }}</h3>
+
+        <ul ng-show="company.user.VotesFor.length === 0">
+            <li>There are no votes for this company yet</li>
+        </ul>
+        <ul ng-show="company.user.VotesFor.length > 0">
+            <li ng-repeat="user in company.user.VotesFor">
+                <a class="name {{ ( companyVotedForFellow(user.id) ) ? 'bold' : '' }}"
+                   ng-href="/#/fellows/{{ user.fellow.id }}/{{ helpers.slugify( user.fellow._first_name + ' ' + user.fellow.last_name ) }}">
+                    {{ user.fellow.first_name }} {{ user.fellow.last_name }}
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+
+
+</div>
+
+<div class="modal-footer">
+
+    <button class="btn btn-primary" ng-click="ok()">Ok</button>
+
+</div>
+

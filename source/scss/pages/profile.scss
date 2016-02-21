@@ -3,77 +3,99 @@
   color: #cfcfcf;
   margin: 20px auto 50px;
 
-  #profile-photo{
+  #profile-photo {
 
-      .title{
+	.title {
 
-        text-align: center;
-      }
+	  text-align: center;
+	}
 
-      .user-photo{
+	.user-photo {
 
-        img {
-          border-radius: 50%;
-          height: auto;
-        }
+	  img {
+		border-radius: 50%;
+		height: auto;
+	  }
 
-      }
+	}
 
-      .loading-icon{
+	.loading-icon {
 
-        display: none;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        font-size: 30px;
-      }
+	  display: none;
+	  width: 100%;
+	  text-align: center;
+	  margin-top: 10px;
+	  font-size: 30px;
+	}
 
-      .description{
+	.description {
 
-        margin: 10px 0;
-        line-height: 1.3;
-        font-size: 14px;
-        text-align: center;
-        color: #cccccc;
-      }
+	  margin: 10px 0;
+	  line-height: 1.3;
+	  font-size: 14px;
+	  text-align: center;
+	  color: #cccccc;
+	}
 
-      .upload-status{
+	.upload-status {
 
-        color: #ffffff;
-        margin-top: 20px;
-        text-align: center;
-        font-weight: bold;
-        display: none;
-      }
+	  color: #ffffff;
+	  margin-top: 20px;
+	  text-align: center;
+	  font-weight: bold;
+	  display: none;
+	}
   }
 
-  .update-btn{
+  .update-btn {
 
-    margin-top: 20px;
+	margin-top: 20px;
   }
 
-  p{
+  p {
 
-    color: #cfcfcf;
+	color: #cfcfcf;
   }
 
   .vote-container {
 
-    margin: 20px 0;
+	margin: 20px 0;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-    span.vote-button:hover,
-    span.vote-button:active{
+	span.vote-button:hover,
+	span.vote-button:active {
 
-      color: #333;
-      background-color: #fff;
-      border-color: #ccc;
-      cursor: default;
-      box-shadow: none;
-    }
+	  color: #333;
+	  background-color: #fff;
+	  border-color: #ccc;
+	  cursor: default;
+	  box-shadow: none;
+	}
+  }
+
+  .table {
+
+	background-color: #ffffff;
+	color: #1f1f1f;
+
+	th.stat,
+	td.stat{
+
+	  text-align: center;
+	}
+  }
+}
+
+.vote-modal{
+
+  color: #2f2f2f;
+
+  .bold{
+
+	font-weight: bold;
   }
 }

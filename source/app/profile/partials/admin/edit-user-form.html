@@ -1,30 +1,27 @@
 
-<div class="modal-body box-modal">
 
-    <div class="row">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit User: {{ name }}</h4>
+    </div>
 
-        <div class="col-md-10">
+    <div class="modal-body box-modal">
 
-            <h3>Edit User Info: {{ name }}</h3>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" ng-model="user.email" name="email" class="form-control" />
+        </div>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" ng-model="user.email" name="email" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label>Change Password</label>
-                <input type="password" ng-model="user.password" name="email" class="form-control" />
-                <p class="help-block">Enter a new password to change - otherwise leave blank</p>
-            </div>
-
-
+        <div class="form-group">
+            <label>Change Password</label>
+            <input type="password" ng-model="user.password" name="email" class="form-control" />
+            <p class="text-muted">Enter a new password to change - otherwise leave blank</p>
         </div>
 
     </div>
 
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-</div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="ok()">Save</button>
+    </div>
+
