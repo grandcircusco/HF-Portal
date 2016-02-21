@@ -51,7 +51,7 @@ app.post('/login', function loginUser(req, res) {
 app.post('/create', function createUser(req, res) {
 
 	// check if a user with the same email doesn't already exist
-	Users.scope('public').findOne({
+	Users.findOne({
 
 		where: {
 			email: {

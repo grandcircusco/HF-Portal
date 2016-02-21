@@ -3,7 +3,6 @@
  * @namespace app.votes.services
  */
 
-// @TODO -- Is this being used somewhere?
 
 (function () {
     'use strict';

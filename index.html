@@ -73,7 +73,9 @@
                             <li ng-hide="isUserLoggedIn"><a href="" ng-click="openModal()">Login</a></li>
 
                             <li ng-show="isUserLoggedIn && !isUserAdmin"><a href="/#/votes">Votes</a> </li>
-                            <li ng-show="isUserLoggedIn"><a href="/#/profile">Profile</a></li>
+                            <li ng-show="isUserLoggedIn && !isUserAdmin"><a href="/#/profile">Profile</a></li>
+                            <li ng-show="isUserLoggedIn && isUserAdmin"><a href="/#/profile">Users</a></li>
+                            <li ng-show="isUserLoggedIn && isUserAdmin"><a href="/#/tags">Tags</a></li>
                             <li ng-show="isUserLoggedIn"><a href="" ng-click="logoutUser()">Logout</a></li>
 
                         </ul>

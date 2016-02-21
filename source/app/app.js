@@ -4,7 +4,7 @@
  */
 
  var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ui.bootstrap',
-    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.profile', 'app.votes', 'app.alert' ])
+    'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.tags', 'app.profile', 'app.votes', 'app.alert' ])
     .run(run);
 
 /**
@@ -33,6 +33,11 @@
     .when('/companies/:company_id/:company_name', {
         controller: 'CompanyController',
         templateUrl: 'source/app/companies/company.html'
+    })
+
+    .when('/tags', {
+        controller: 'TagsController',
+        templateUrl: 'source/app/tags/tags.html'
     })
 
     .when('/profile', {
