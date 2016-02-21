@@ -28,6 +28,17 @@
         text-decoration: underline;
       }
 
+      a.btn{
+
+        text-decoration: none;
+
+        &:hover{
+
+          color: #ffffff;
+          background: darken(#d9534f, 9%);
+        }
+      }
+
       a.name{
 
         font-size: 18px;

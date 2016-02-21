@@ -6,7 +6,10 @@
 
     <div class="row">
         <div class="col-md-3">
+
             <img class="user-photo" ng-src="{{ company.image_url }}" width="200" height="200">
+            <span class="placeholder" ng-if="!company.image_url"></span>
+
             <br>
 
             <span class="label label-default" ng-repeat='tag in company.tags'>{{ tag.name }}</span>

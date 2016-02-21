@@ -12,9 +12,26 @@
 
 	.user-photo {
 
+	  width: 150px;
+
 	  img {
 		border-radius: 50%;
+		width: 100%;
 		height: auto;
+	  }
+
+	  .placeholder{
+
+		display: block;
+		width: 150px;
+		height: 150px;
+		margin: 0 auto;
+		background: #3f3f3f;
+		border-radius: 50%;
+
+		color: #cfcfcf;
+		text-align: center;
+		line-height: 200px;
 	  }
 
 	}

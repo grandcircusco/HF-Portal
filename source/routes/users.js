@@ -5,6 +5,32 @@ var bcrypt = require('bcrypt');
 var models = require('../models');
 var Users = models.users;
 
+app.get( '/:user_id/votes', function( req, res ){
+
+	Users.scope('public').findOne({
+
+		where: {
+
+			id: req.params.user_id
+		},
+		include: [
+			{ model: Users, as: 'VotesFor' },
+			{ model: Users, as: 'VotesCast' }
+		]
+
+	}).then(function(user) {
+
+		var results = {
+
+			votesFor: user.VotesFor,
+			votesCast: user.VotesCast
+		};
+
+		res.send(results);
+	});
+
+});
+
 // POST /users/login - try to login a user
 app.post('/login', function loginUser(req, res) {
 

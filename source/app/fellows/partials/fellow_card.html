@@ -3,6 +3,7 @@
 	<figure> <!-- image section -->
 		<div class="imgCrop">
 			<img ng-src={{fellow.image_url}} />
+			<span class="placeholder" ng-if="!fellow.image_url"></span>
 		</div>
 	</figure>
 

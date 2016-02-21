@@ -95,13 +95,25 @@
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
-      & > .imgCrop{ 
+
+      & > .imgCrop{
+
         border-style:none;
         max-width: 150px;
         max-height: 150px;
         display: block;
         border-radius: 100px;
         overflow:hidden;
+
+        .placeholder{
+
+          display: block;
+          width: 150px;
+          height: 150px;
+          margin: 0 auto;
+          background: #3f3f3f;
+          border-radius: 50%;
+        }
 
         & > img {
         position:relative;
