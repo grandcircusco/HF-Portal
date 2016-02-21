@@ -12,8 +12,8 @@
                         <h4 class="title">Profile Image</h4>
 
                         <div class="user-photo">
-                            <img id="preview" ngf-src="fellow.image_url" width="200" height="200" />
-                            <span class="placeholder" ng-if="!fellow.image_url">No Profile Image</span>
+                            <img id="preview" ng-src="{{ fellow.image_url }}" ng-show="fellow.image_url" width="150" height="150" />
+                            <span class="placeholder" ng-show="!fellow.image_url">No Profile Image</span>
                         </div>
 
                         <p class="description">For best results - please use a square image</p>

@@ -96,23 +96,6 @@ function resolvePromisesAndPost( voter, votee, res ) {
     });
 }
 
-function resolvePromisesAndDelete(voter, votee, res) {
-
-    voter.then(function (voter) {
-
-        votee.then(function (votee) {
-
-            voter.getVotees().then(function (data) {
-
-                voter.removeVotee(votee);
-                res.send("Vote deleted!");
-
-            });
-
-        });
-
-    });
-}
 
 
 // POST /votes/ - Company votes for a fellow
@@ -144,21 +127,28 @@ app.post('/', function postVote(req, res) {
 
 
 // DELETE /votes/ - Deletes a fellow's vote
-app.delete('/', function (req, res) {
+app.delete('/:vote_id', function (req, res) {
 
-    var company = Companies.findOne({
+    // TODO -- this should only run if the signed in user owns the vote
+
+    var vote = Votes.findOne({
+
         where: {
-            id: req.body.votee_id
-        }
-    });
 
-    var fellow = Fellows.findOne({
-        where: {
-            id: req.body.voter_id
+            id: req.params.vote_id
         }
-    });
 
-    resolvePromisesAndDelete(fellow, company, res);
+    }).then( function( vote ){
+
+        // success callback
+        vote.destroy();
+        res.send("Vote Removed");
+
+    }, function(){
+
+        // error callback
+        res.status( 500 ).send( "Error removing vote" );
+    });
 
 });
 

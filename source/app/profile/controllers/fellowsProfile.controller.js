@@ -145,6 +145,10 @@
                     // Update fellow model
                     $scope.fellow.image_url = url;
 
+                    // Angular is weird when updating images that started with an empty string
+                    // removing ng-hide to force update
+                    $("#preview").removeClass('ng-hide');
+                    $(".user-photo").find(".placeholder").hide();
                     $("#profile-photo").find(".upload-status").show();
                 }
             };

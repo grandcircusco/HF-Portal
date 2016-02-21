@@ -20,7 +20,7 @@
       if( User.isUserLoggedIn() ) {
 
           var currentUser = User.getCurrentUser();
-          console.log("The current user is " + currentUser.userType);
+
           // redirect the user based on their type
           if (currentUser.userType === 'Admin') {
               //console.log("Like a boss");

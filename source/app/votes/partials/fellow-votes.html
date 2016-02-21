@@ -14,7 +14,7 @@
                     <a class="name" ng-href="/#/companies/{{ vote.Votee.company.id }}/{{ helpers.slugify( vote.Votee.company.name ) }}">
                         {{ vote.Votee.company.name }}
                     </a>
-                    <a class="btn btn-xs label-danger" ng-click=""><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                    <a class="btn btn-xs label-danger" ng-click="removeVote(vote)"><span class="glyphicon glyphicon-remove"></span> Remove</a>
                 </li>
             </ul>
 
