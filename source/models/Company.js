@@ -7,7 +7,7 @@
 
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
             user_id: { type: DataTypes.INTEGER },
-            name: DataTypes.STRING,
+            name: { type:DataTypes.STRING, default: "" },
             email: DataTypes.STRING,
             primary_contact: DataTypes.STRING,
             company_size: DataTypes.INTEGER,

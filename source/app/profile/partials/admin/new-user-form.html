@@ -1,51 +1,72 @@
-<form class="form-horizontal profile-form">
 
-    <div class="form-group">
-        <label for="email">User Email:</label>
-        <input type="email" class="form-control" id="email" name="email" ng-model="user.email">
-    </div>
-    <div class="form-group">
-        <label for="password">User Password:</label>
-        <input type="password" class="form-control" id="password" name="password" ng-model="user.password">
-    </div>
 
-    <input type="radio" name="userType"  value="Fellow" ng-model="user.userType" autocomplete="off" checked> <label>Fellow</label>
-    <input type="radio" name="userType"  value="Company" ng-model="user.userType" autocomplete="off"> <label>Company</label>
-
-    <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-            <button type="submit" class="btn btn-primary" ng-click="create(user)">Create Account</button>
-        </div>
-    </div>
-
-    <!--
-<div class="form-group">
-    <label for="accountType" class="control-label col-xs-2">Account Type</label>
-        <div class="col-xs-10">
-            <select class="js-example-tokenizer form-control" multiple="multiple">
-                <option value="FELLOW">Fellow</option>
-                <option value="COMPANY">Company</option>
-            </select>
-        </div>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">New User</h4>
 </div>
 
-<div class="form-group">
-            <label for="accountEmail" class="control-label col-xs-2">Account Email</label>
-            <div class="col-xs-10">
-                    <input type="text" class="form-control" id="accountEmail"/>
-            </div>
+<div class="modal-body box-modal hfmodal">
+
+    <div class="alert alert-danger" role="alert" ng-show="errors.length">
+
+        <p ng-repeat="error in errors">{{ error }}</p>
+
     </div>
 
-<div class="form-group">
-            <label for="accountPassword" class="control-label col-xs-2">Account Password</label>
-            <div class="col-xs-10">
-                    <input type="text" class="form-control" id="accountPassword"/>
-            </div>
-    </div>
-    -->
+    <form name="newUserForm" ng-submit="submitForm(userForm.$valid)" novalidate>
 
-    <!--<button type="button" ng-click="openModal()">Add User</button>-->
-    <!-- List of companies and fellows -->
-    <!-- with ability to delete accounts -->
-    <!--<p ng-model="currentUser">{{ currentUser.email }}</p>-->
-</form>
+        <div class="form-group">
+            <label for="email">User Email:</label>
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   id="email" name="email"
+                   ng-model="user.email"
+                   ng-required="true"
+                   ng-class="{ 'has-error' : newUserForm.email.$invalid && !newUserForm.email.$pristine }">
+            <p ng-show="newUserForm.email.$invalid && !newUserForm.email.$pristine" class="text-danger">A valid email is required.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="password">User Password:</label>
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   name="password"
+                   ng-model="user.password"
+                   ng-required="true"
+                   ng-class="{ 'has-error' : newUserForm.password.$invalid && !newUserForm.password.$pristine }">
+            <p ng-show="newUserForm.password.$invalid && !newUserForm.password.$pristine" class="text-danger">A password is required.</p>
+        </div>
+
+        <div class="radio">
+            <label>
+                <input type="radio"
+                       name="userType"
+                       value="Fellow"
+                       ng-model="user.userType"
+                       ng-required="true"
+                       required >
+                Fellow
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio"
+                       name="userType"
+                       value="Company"
+                       ng-model="user.userType"
+                       ng-required="true"
+                       required >
+                Company
+            </label>
+        </div>
+        <p ng-show="newUserForm.userType.$invalid && !newUserForm.userType.$pristine" class="text-danger">A user type is required.</p>
+
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="create(user)" ng-disabled="newUserForm.$invalid">Create Account</button>
+</div>

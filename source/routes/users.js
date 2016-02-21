@@ -5,33 +5,6 @@ var bcrypt = require('bcrypt');
 var models = require('../models');
 var Users = models.users;
 
-//app.get( '/:user_id/votes', function( req, res ){
-//
-//	Users.scope('public').findOne({
-//
-//		where: {
-//
-//			id: req.params.user_id
-//		},
-//		include: [
-//			{ model: Users, as: 'VotesFor' },
-//			{ model: Users, as: 'VotesCast' }
-//		]
-//
-//	}).then(function(user) {
-//
-//		var results = {
-//
-//			votesFor: user.VotesFor,
-//			votesCast: user.VotesCast
-//		};
-//
-//		res.send(results);
-//	});
-//
-//});
-
-
 // POST /users/login - try to login a user
 app.post('/login', function loginUser(req, res) {
 
@@ -62,16 +35,14 @@ app.post('/login', function loginUser(req, res) {
 
 				} else {
 
-					//console.log('Wrong password!');
-					res.sendStatus(401);
+					res.status(400).send({ error: 'Incorrect Password' });
 				}
 			});
 
 		}
 		else{
 
-			//console.log("No user found");
-			res.send(0);
+			res.status(400).send({ error: 'No User Found' });
 		}
 	});
 
@@ -79,33 +50,41 @@ app.post('/login', function loginUser(req, res) {
 
 app.post('/create', function createUser(req, res) {
 
-	//console.log('creating');
-	//console.log(req.body);
+	// check if a user with the same email doesn't already exist
 	Users.scope('public').findOne({
+
 		where: {
-			email: req.body.email
+			email: {
+
+				ilike: req.body.email
+			}
 		}
+
 	}).then(function(user) {
 
 		if( user === null ) {
 
 			bcrypt.genSalt(10, function(err, salt) {
+
 				bcrypt.hash(req.body.password, salt, function(err, hash) {
+
 					Users.create({
+
 						email: req.body.email,
 						password: hash,
 						userType: req.body.userType
+
 					}).then(function(user) {
 
-						console.log(user);
 						res.send(user);
+
 					});
 				});
 			});
 
 		}else{
 
-			res.send("User already exists");
+			res.status(400).send({ error: 'Email already exists' });
 		}
 	});
 
@@ -113,8 +92,6 @@ app.post('/create', function createUser(req, res) {
 
 // PUT /users/:id - updates an existing fellow record
 app.put('/:id', function putUser(req, res) {
-
-	console.log(req.body);
 
 	Users.findOne({
 
@@ -127,7 +104,7 @@ app.put('/:id', function putUser(req, res) {
 		user.email = req.body.email;
 		user.save();
 
-		if( req.body.password.length > 0 ){
+		if( req.body.password !== undefined && req.body.password.length > 0 ){
 
 			bcrypt.genSalt(10, function(err, salt) {
 				bcrypt.hash(req.body.password, salt, function(err, hash) {

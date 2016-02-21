@@ -66,7 +66,7 @@
 
         $scope.update = function(fellow, file) {
 
-            console.log ( fellow.tags );
+            //console.log ( fellow.tags );
 
             // send fellows info to API via Service
             Fellows.update(fellow).success(function(newFellowData){

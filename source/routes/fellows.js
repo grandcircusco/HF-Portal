@@ -52,10 +52,6 @@ app.get('/users', function getFellows(req, res) {
     // @TODO - This eager loads
     Fellows.all({
 
-        where: {
-
-            first_name: {ne: null}
-        },
         order: '"last_name" ASC',
         include: [{
 
@@ -133,6 +129,7 @@ app.get('/user_id/:user_id', function getFellow(req, res){
 });
 
 // POST /fellows - create a new fellow record
+// ** Create a new fellow and fetch relations -- admin page expects certain data
 app.post('/', function postFellow(req, res) {
 
     Fellows.create({
@@ -149,9 +146,46 @@ app.post('/', function postFellow(req, res) {
         image_url: req.body.image_url,
         website_url: req.body.website_url
 
-    }).then(function(err, fellow) {
+    }).then(function( fellow ) {
 
-        res.send(fellow);
+        // get loaded fellow obj
+        Fellows.findOne({
+
+            where: {
+                id: fellow.id
+            },
+            include: [{
+                model: Tags
+            },{
+                model: Users,
+                attributes: ['id', 'email', 'userType'],
+                include: [{
+
+                    model: Users,
+                    as: 'VotesFor',
+                    attributes: ['id', 'email', 'userType'],
+                    include: [{
+
+                        model: Companies
+                    }]
+                },
+                {
+
+                    model: Users,
+                    as: 'VotesCast',
+                    attributes: ['id', 'email', 'userType'],
+                    include: [{
+
+                        model: Companies
+                    }]
+                }]
+            }]
+
+        }).then(function(fellow) {
+
+            res.send(fellow);
+        });
+
     });
 
 });

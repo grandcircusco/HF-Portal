@@ -68,12 +68,46 @@ app.post('/', function postCompany(req, res) {
         image_url: req.body.image_url,
         location: req.body.location
 
-    }).then(function(err, company) {
+    }).then(function( company) {
 
-        console.log(company);
-        console.log(err);
+        // get loaded fellow obj
+        Companies.findOne({
 
-        res.send(company);
+            where: {
+                id: company.id
+            },
+            include: [{
+                model: Tags
+            },{
+                model: Users,
+                attributes: ['id', 'email', 'userType'],
+                include: [{
+
+                    model: Users,
+                    as: 'VotesFor',
+                    attributes: ['id', 'email', 'userType'],
+                    include: [{
+
+                        model: Fellows
+                    }]
+                },
+                {
+
+                    model: Users,
+                    as: 'VotesCast',
+                    attributes: ['id', 'email', 'userType'],
+                    include: [{
+
+                        model: Fellows
+                    }]
+                }]
+            }]
+
+        }).then(function(company) {
+
+            res.send(company);
+        });
+
      });
 });
 
@@ -82,10 +116,6 @@ app.get('/users', function getCompanies(req, res) {
 
     Companies.all({
 
-        where: {
-
-            name: {ne: null}
-        },
         order: '"name" ASC',
         include: [{
 

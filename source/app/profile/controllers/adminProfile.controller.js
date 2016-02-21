@@ -157,9 +157,9 @@
         };
 
 
-
         /* Create User */
         $scope.createUser = function (user) {
+
             var modalInstance = $modal.open({
                 templateUrl: 'source/app/profile/partials/admin/new-user-form.html',
                 controller: 'CreateUserModalInstanceController',
@@ -168,43 +168,23 @@
                     
                 }
             });
+
+            modalInstance.result.then( function( response ) {
+
+                var newItem = response.data;
+
+                if( newItem.user.userType === 'Fellow' )
+                {
+                    $scope.fellows.unshift( newItem );
+                }
+                else if( newItem.user.userType === 'Company' )
+                {
+                    $scope.companies.unshift( newItem );
+                }
+
+            });
         };
 
-        $scope.switchType = function(user){
-
-            console.log(user);
-
-            if( user.userType === "Company" ){
-
-                jQuery("optionCompany").addClass('selected');
-                jQuery("optionFellow").removeClass('selected');
-            }
-            else if( user.userType === "Fellow" ){
-
-                console.log("Fellow selection");
-
-                jQuery("optionCompany").removeClass('selected');
-                jQuery("optionFellow").addClass('selected');
-            }
-
-        };
-        function unHighlightField(){
-
-            jQuery("input").removeClass("error");
-            jQuery("#userType").removeClass('error');
-        }
-        function highlightPasswordField(){
-
-            jQuery("#password").addClass('error');
-        }
-        function highlightEmailField(){
-
-            jQuery("email").addClass('error');
-        }
-        function highlightUserTypeField(){
-
-            jQuery("userType").addClass('error');
-        }
     }
 
 
@@ -227,16 +207,34 @@
         $scope.user = fellow.user;
         $scope.fellow = fellow;
 
-        //console.log(fellow);
-
         $scope.ok = function ok() {
 
-            User.update($scope.user);
-            Fellows.update($scope.fellow);
+            User.update($scope.user).then(function(newUser){
 
-            // TODO - Wait to close until success
+                // success callback
+                $scope.user = newUser;
 
-            $modalInstance.close($scope.user);
+                // user is updated, so now update fellow
+                Fellows.update( $scope.fellow ).then(function(newFellow){
+
+                    // success callback
+                    $scope.fellow = newFellow;
+
+                    $modalInstance.close();
+                },
+                function(){
+
+                    // error callback
+                    $scope.errors = [ "There was an error updating the fellow" ];
+                });
+
+            },
+            function(){
+
+                // error callback
+                $scope.errors = [ "There was an error updating the fellow" ];
+            });
+
         };
 
         $scope.cancel = function cancel() {
@@ -252,10 +250,29 @@
 
         $scope.ok = function ok() {
 
-            User.update($scope.user);
-            Companies.update($scope.company);
+            User.update($scope.user).then( function( newUser ){
 
-            // TODO - Wait to close until success
+                // success callback
+                $scope.user = newUser;
+
+                Companies.update($scope.company).then( function( newCompany ){
+
+                    // success callback
+                    $scope.company = newCompany;
+
+                    $modalInstance.close();
+
+                }, function(){
+
+                    // error callback
+                    $scope.errors = [ "There was an error updating the company" ];
+                });
+
+            }, function(){
+
+                // error callback
+                $scope.errors = [ "There was an error updating the company" ];
+            });
 
             $modalInstance.close($scope.user);
         };
@@ -354,91 +371,100 @@
     CreateUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies' ];
     function CreateUserModalInstanceController ($scope, $modalInstance, User, Fellows, Companies) {
 
-        
-        //console.log(fellow);
-
-        // $scope.ok = function ok() {
-
-        //     User.update($scope.user);
-
-        //     $modalInstance.close($scope.user);
-        // };
-
         $scope.create = function (user){
-                // unHighlightField();
 
-                // if everything is good log data and close, else highlight error
-                var errors = false;
-                console.log("In create.");
-                if(typeof(user) == "undefined"){
-                    console.log("No info");
-                    //highlight all
-                    // highlightEmailField();
-                    // highlightPasswordField();
-                    // highlightUserTypeField();
-                    errors = true;
+            $scope.errors = [];
+
+            // Form is being validated by angular, but leaving this just in case
+            if( typeof user  === "undefined"){
+
+                $scope.errors.push( "Add some data first" );
+
+            }
+            else {
+
+                if( typeof user.email === "undefined" ) {
+
+                    $scope.errors.push( "Enter an email" );
                 }
-                else {
-                    console.log("checking info.");
-                    if(typeof(user.email) == "undefined"){
-                        console.log("Bad email");
-                        //highlight email
-                        // highlightEmailField();
-                        errors = true;
+
+                if( typeof user.password === "undefined" ) {
+
+                    $scope.errors.push( "Enter a password" );
+                }
+
+                if( typeof user.userType === "undefined" ) {
+
+                    $scope.errors.push( "Choose a user type" );
+                }
+            }
+
+
+            if( $scope.errors.length === 0 ){
+
+                // send user to API via Service
+                User.create(user).then( function(response) {
+
+                    // create user success callback
+                    //console.log(response);
+
+                    console.log( user );
+
+                    var user_id = response.data.id;
+
+                    if( user.userType === "Fellow" ){
+
+                        var fellow_post = {
+
+                            first_name: "",
+                            last_name: "",
+                            user_id: user_id
+                        };
+                        Fellows.create(fellow_post).then( function( fellow ){
+
+                            // create fellow success callback
+                            console.log( fellow );
+                            $modalInstance.close( fellow );
+
+                        }, function( response ){
+
+                            // create fellow error callback
+                            console.log( response );
+                            $scope.errors.push( response.data.error );
+                        });
+                    }
+                    else if( user.userType === "Company" ){
+
+                        var company_post = {
+
+                            name: "",
+                            user_id: user_id
+                        };
+                        Companies.create(company_post).then( function( company ){
+
+                            // create company success callback
+                            $modalInstance.close( company );
+
+                        }, function( response ){
+
+                            // create fellow error callback
+                            console.log( response );
+                            $scope.errors.push( response.data.error );
+                        });
                     }
 
-                    if(typeof(user.password) == "undefined"){
-                        console.log("Bad password");
-                        //highlight password
-                        // highlightPasswordField();
-                        errors = true;
-                    }
-                    console.log("the user type is" + user.userType);
-                    if(typeof(user.userType) == "undefined"){
-                        console.log("Bad type");
-                        //highlight button
-                        // highlightUserTypeField();
-                        errors = true;
-                    }
-                }
-                console.log("u tryna create brah?");
-                if( !errors ){
+                }, function( response ){
 
-                    // send user to API via Service
-                    User.create(user).then(function(response) {
+                    // create user error callback
 
-                        console.log(response);
-
-                        var user_id = response.data.id;
-
-                        if( user.userType === "Fellow" ){
-
-                            var fellow_post = {
-
-                                user_id: user_id
-                            };
-                            Fellows.create(fellow_post);
-                        }
-                        else if( user.userType === "Company" ){
-
-                            var company_post = {
-
-                                user_id: user_id
-                            };
-                            Companies.create(company_post);
-                        }
-
-
-                    });
-                }
-            
-
-            $modalInstance.close();
-        
-
+                    console.log( response );
+                    $scope.errors.push( response.data.error );
+                });
+            }
         };
         
         $scope.cancel = function cancel() {
+
             $modalInstance.dismiss('cancel');
         };
 

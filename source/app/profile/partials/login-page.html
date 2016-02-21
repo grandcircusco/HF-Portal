@@ -1,12 +1,14 @@
-<div class="login-modal">
-    <form>
-        <div class="modal-body">
 
-            <div class="alert alert-danger" role="alert" ng-show="loginForm.errors.length">
+    <div class="modal-body hfmodal">
 
-                <p ng-repeat="error in loginForm.errors">{{ error }}</p>
+        <div class="alert alert-danger" role="alert" ng-show="loginForm.errors.length">
 
-            </div>
+            <p ng-repeat="error in loginForm.errors">{{ error }}</p>
+
+        </div>
+
+        <form>
+
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" class="form-control" id="email" value="{{ loginForm.email }}" ng-model="loginForm.email">
@@ -15,10 +17,11 @@
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" ng-model="loginForm.password">
             </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="login(loginForm)">Login</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-    </form>
-</div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="login(loginForm)">Login</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+

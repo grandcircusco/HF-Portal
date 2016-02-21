@@ -7,8 +7,8 @@
 
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
             user_id: { type: DataTypes.INTEGER },
-            first_name: DataTypes.STRING,
-            last_name: DataTypes.STRING,
+            first_name: { type:DataTypes.STRING, default: "" },
+            last_name: { type:DataTypes.STRING, default: "" },
             email: DataTypes.STRING,
             university: DataTypes.STRING,
             major: DataTypes.STRING,
