@@ -3,7 +3,7 @@
 	<h1>Fellows</h1>
 
 	<div class="list">
-		<fellow-card ng-repeat="fellow in fellows" />
+		<fellow-card ng-repeat="fellow in fellows" ng-if="fellow.first_name && fellow.last_name" />
 	</div>
 
 </div>
