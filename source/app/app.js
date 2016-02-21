@@ -94,6 +94,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
     function updateLoginStatus(){
 
         $scope.isUserLoggedIn = User.isUserLoggedIn();
+        $scope.isUserAdmin = User.isUserAdmin();
     }
 
     $scope.openModal = function() {
@@ -104,16 +105,19 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
         });
 
         modalInstance.result.then(function(){
-            console.log("Log in complete");
+
             updateLoginStatus();
         });
     };
 
 
     $scope.logoutUser = function(){
-        console.log("User Logout");
+
         User.ClearCredentials();
+
         $scope.isUserLoggedIn = false;
+        $scope.isUserAdmin = false;
+
         $window.location.reload();
     };
 }

@@ -52,6 +52,11 @@ app.post('/login', function loginUser(req, res) {
 
 				if (result === true) {
 
+					// remove password from returned user object
+					// -- we can accomplish this using scopes,
+					//    but need to get the password to compare
+					user.password = '';
+					
 					//console.log('password is correct!');
 					res.send(user);
 

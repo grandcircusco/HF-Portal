@@ -37,7 +37,6 @@
           return $http.get(rootUrl + '/api/v1/users/' + user_id + '/votes' );
       }
 
-
       /**
        * @name login
        * @desc login a new user record
@@ -59,7 +58,8 @@
           ClearCredentials: ClearCredentials,
           getCurrentUser: getCurrentUser,
           setCurrentUser: setCurrentUser,
-          isUserLoggedIn: isUserLoggedIn
+          isUserLoggedIn: isUserLoggedIn,
+          isUserAdmin: isUserAdmin
       };
 
 
@@ -87,6 +87,7 @@
        * @desc create a new user record
        */
       function create(user) {
+
           return $http.post(rootUrl + '/api/v1/users/create', user);
       }
 
@@ -95,7 +96,6 @@
        * @desc updatea a user record
        */
       function update(user) {
-            console.log(user);
 
           return $http.put(rootUrl + '/api/v1/users/' + user.id, user);
       }
@@ -115,10 +115,16 @@
 
               return true;
           }
-          else{
+          else return false;
+      }
 
-              return false;
+      function isUserAdmin(){
+
+          if( currentUser.userType === 'Admin' )
+          {
+              return true;
           }
+          else return false;
       }
 
       function SetCredentials(id, username, userType) {
