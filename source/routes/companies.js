@@ -93,10 +93,12 @@ app.get('/users', function getCompanies(req, res) {
         },{
 
             model: Users,
+            attributes: ['id', 'email', 'userType'],
             include: [{
 
                 model: Users,
                 as: 'VotesFor',
+                attributes: ['id', 'email', 'userType'],
                 include: [{
 
                     model: Fellows
@@ -106,6 +108,7 @@ app.get('/users', function getCompanies(req, res) {
 
                 model: Users,
                 as: 'VotesCast',
+                attributes: ['id', 'email', 'userType'],
                 include: [{
 
                     model: Fellows

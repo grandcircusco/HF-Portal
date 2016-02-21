@@ -5,11 +5,9 @@
 (function () {
     'use strict';
 
-
     angular
     .module('app.profile.controllers')
     .controller('AdminProfileController', AdminProfileController);
-    //.controller('AdminProfileModalInstanceController', AdminProfileModalInstanceController);
 
     AdminProfileController.$inject = ['$scope', '$location', '$modal', 'User', 'Fellows', 'Companies'];
 
@@ -18,7 +16,7 @@
      */
      function AdminProfileController($scope, $location, $modal, User, Fellows, Companies) {
 
-        // Probably can handle this in the routes or with middleware or some kind
+        // TODO - Probably can handle this in routes or with middleware or some kind
         if( !User.isUserLoggedIn() ) {
 
             $location.path("/");
@@ -36,7 +34,6 @@
         $scope.fellows = [];
         $scope.companies = [];
         $scope.userListLoad = function() {
-
 
             if( $scope.fellows.length === 0 ) {
 
@@ -62,29 +59,6 @@
         };
         $scope.userListLoad();
 
-        $scope.editFellow = function(fellow){
-
-            // send user data to service
-
-            var modalInstance = $modal.open({
-
-                templateUrl: 'source/app/profile/partials/admin/edit-user-form.html',
-                controller: 'EditUserModalInstanceController',
-                size: 'md',
-                resolve: {
-                    user: function(){
-                        return fellow.user;
-                    },
-                    name: function(){
-                        return fellow.first_name+" "+fellow.last_name;
-                    }
-                }
-
-            });
-
-            // show success/failure
-            return false;
-        };
 
         $scope.fellowVotes = function( fellow ){
 
@@ -128,11 +102,23 @@
 
         };
 
-        // @TODO - Implement Later
-        $scope.archiveFellow = function(user){
+        $scope.editFellow = function(fellow){
 
-            console.log("Archive User: "+user.id);
             // send user data to service
+
+            var modalInstance = $modal.open({
+
+                templateUrl: 'source/app/profile/partials/admin/edit-fellow-form.html',
+                controller: 'EditFellowModalInstanceController',
+                size: 'md',
+                resolve: {
+                    fellow: function() {
+
+                        return fellow;
+                    }
+                }
+
+            });
 
             // show success/failure
             return false;
@@ -144,15 +130,12 @@
 
             var modalInstance = $modal.open({
 
-                templateUrl: 'source/app/profile/partials/admin/edit-user-form.html',
-                controller: 'EditUserModalInstanceController',
+                templateUrl: 'source/app/profile/partials/admin/edit-company-form.html',
+                controller: 'EditCompanyModalInstanceController',
                 size: 'md',
                 resolve: {
-                    user: function(){
-                        return company.user;
-                    },
-                    name: function(){
-                        return company.name;
+                    company: function(){
+                        return company;
                     }
                 }
 
@@ -161,7 +144,10 @@
             // show success/failure
             return false;
         };
-        $scope.archiveCompany = function(user){
+
+
+        // @TODO - Implement Later
+        $scope.archiveFellow = function(user){
 
             console.log("Archive User: "+user.id);
             // send user data to service
@@ -170,24 +156,7 @@
             return false;
         };
 
-        // Admin profile tabs
-        //$scope.tabs = [
-        //    {
-        //        title:'User List',
-        //        template:'source/app/profile/partials/admin/user-list.html',
-        //        action: $scope.userListLoad
-        //    },
-        //    {
-        //        title:'New User',
-        //        template:'source/app/profile/partials/admin/new-user-form.html',
-        //        action: $scope.userListLoad
-        //    },
-        //    {
-        //        title:'Votes',
-        //        template:'source/app/profile/partials/admin/admin-votes.html',
-        //        action: $scope.userListLoad
-        //    }
-        //];
+
 
         /* Create User */
         $scope.createUser = function (user) {
@@ -199,10 +168,8 @@
                     
                 }
             });
-                    // remove previous highlights in case data is now correct
-                    
-
         };
+
         $scope.switchType = function(user){
 
             console.log(user);
@@ -242,28 +209,32 @@
 
 
     /**
-     * Fellows Modal Instance Controller
+     * Modal Instance Controllers
      * @namespace app.fellows.controllers
      */
 
     angular
         .module('app.fellows.controllers')
-        .controller('EditUserModalInstanceController', EditUserModalInstanceController)
+        .controller('EditFellowModalInstanceController', EditFellowModalInstanceController)
+        .controller('EditCompanyModalInstanceController', EditCompanyModalInstanceController)
         .controller('CreateUserModalInstanceController', CreateUserModalInstanceController)
         .controller('CompanyVotesModalInstanceController', CompanyVotesModalInstanceController)
         .controller('FellowVotesModalInstanceController', FellowVotesModalInstanceController);
 
-    EditUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'user', 'name', 'User' ];
-    function EditUserModalInstanceController ($scope, $modalInstance, user, name, User) {
+    EditFellowModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow', 'User', 'Fellows' ];
+    function EditFellowModalInstanceController ($scope, $modalInstance, fellow, User, Fellows) {
 
-        $scope.user = user;
-        $scope.name = name;
+        $scope.user = fellow.user;
+        $scope.fellow = fellow;
 
         //console.log(fellow);
 
         $scope.ok = function ok() {
 
             User.update($scope.user);
+            Fellows.update($scope.fellow);
+
+            // TODO - Wait to close until success
 
             $modalInstance.close($scope.user);
         };
@@ -271,8 +242,27 @@
         $scope.cancel = function cancel() {
             $modalInstance.dismiss('cancel');
         };
+    }
 
+    EditCompanyModalInstanceController.$inject = ['$scope', '$modalInstance', 'company', 'User', 'Companies' ];
+    function EditCompanyModalInstanceController ($scope, $modalInstance, company, User, Companies) {
 
+        $scope.user = company.user;
+        $scope.company = company;
+
+        $scope.ok = function ok() {
+
+            User.update($scope.user);
+            Companies.update($scope.company);
+
+            // TODO - Wait to close until success
+
+            $modalInstance.close($scope.user);
+        };
+
+        $scope.cancel = function cancel() {
+            $modalInstance.dismiss('cancel');
+        };
     }
 
     FellowVotesModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow' ];
