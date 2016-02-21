@@ -94,6 +94,22 @@ p {
   bottom: 0;
 }
 
+/* Breadcrumbs */
+
+.breadcrumb{
+
+  background-color: transparent;
+
+  a{
+
+    text-decoration: underline;
+  }
+
+  li{
+
+    color: #cfcfcf;
+  }
+}
 
 /* Form Styles */
 

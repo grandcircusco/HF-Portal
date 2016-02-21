@@ -9,12 +9,12 @@
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User', 'Alert' ];
+    FellowsProfileController.$inject = ['$scope', '$location', '$timeout', 'Fellows', 'Tags', 'User', 'S3', 'Alert' ];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope, $location, Fellows, Tags, User, Alert ) {
+    function FellowsProfileController($scope, $location, $timeout, Fellows, Tags, User, S3, Alert ) {
 
         var vm = this;
 
@@ -37,32 +37,20 @@
 
             $scope.fellow = fellow;
 
-            $scope.tags = [
-
-                { id: 0, name: "TEST" }
-
-            ];
+            $scope.tags = [];
             Tags.all().success(function(tags){
 
-                //var data = [];
-                //tags.forEach(function(tag){
-                //
-                //    var item = {
-                //
-                //        id: tag.id,
-                //        text: tag.name
-                //    };
-                //    data.push(item);
-                //});
-
-                console.log( tags  );
                 $scope.tags = tags;
 
-                /*$("select#tags").select2({
-                    //tags: true,
-                    data: $scope.tags,
-                    tokenSeparators: [',',' ']
-                });*/
+                // bind jQuery multi select
+                // -- added timeout to make sure the #tags select element gets populated
+                // -- @TODO -- Find a better way to add functionality to Tags
+                $timeout( function(){ $("#tags").multiSelect({
+
+                    selectableHeader: 'Available Skills',
+                    selectionHeader: 'Your Skills'
+
+                }); },  500 );
 
             });
 
@@ -75,16 +63,10 @@
             //Profile.all();
         }
 
+
         $scope.update = function(fellow, file) {
 
-            console.log( fellow );
-
-            var tags = [];
-            $('#tags :selected').each(function(i, selected){
-
-                tags[i] = $(selected).val();
-            });
-            fellow.tags = tags;
+            console.log ( fellow.tags );
 
             // send fellows info to API via Service
             Fellows.update(fellow).success(function(newFellowData){
@@ -98,7 +80,6 @@
                 Alert.showAlert( 'Your profile has been updated', 'success' );
             });
         };
-
 
         /** S3 File uploading **/
         $scope.getS3Key = function(){
@@ -116,6 +97,7 @@
                 get_signed_request(file);
             }
         };
+
 
         function get_signed_request(file){
 
@@ -162,6 +144,8 @@
 
                     // Update fellow model
                     $scope.fellow.image_url = url;
+
+                    $("#profile-photo").find(".upload-status").show();
                 }
             };
 
@@ -172,7 +156,6 @@
 
             xhr.send(file);
         }
-
     }
 
 })();

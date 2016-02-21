@@ -177,17 +177,24 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
 
         fellow.save();
 
+        //console.log( req.body.tags );
+
         // remove all tags, then re-add currently posted tags
         fellow.setTags(null).then(function() {
 
 
             if (Array.isArray(req.body.tags)) {
-                req.body.tags.forEach(function (tag_id) {
+
+                req.body.tags.forEach(function ( tag ) {
+
+                    // @TODO -- add support for custom tags here, if Tag not found, create it
 
                     Tags.findOne({
+
                         where: {
-                            id: parseInt(tag_id)
+                            id: parseInt(tag.id)
                         }
+
                     }).then(function (tagObj) {
 
                         fellow.addTag(tagObj);

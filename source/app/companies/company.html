@@ -1,7 +1,10 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
-        <p><a class="btn btn-default" href="/#/companies">&laquo; Back to Companies</a></p>
+        <ul class="breadcrumb">
+            <li><a href="/#/companies">Companies</a></li>
+            <li class="active">{{ company.name }}</li>
+        </ul>
 
         <div class=" profile company-container">
 
@@ -48,6 +51,8 @@
             </div>
 
         </div>
+
+        <p><a class="" href="/#/companies"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Companies</a></p>
 
     </div>
 </div>

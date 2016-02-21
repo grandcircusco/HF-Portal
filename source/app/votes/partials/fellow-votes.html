@@ -1,21 +1,20 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+<div class="profile votes">
 
-        <div class=" profile votes">
+    <h1>Your Top Companies</h1>
 
-            <div class="row">
+    <div class="row">
 
-                <h3>You have shown interest in:</h3>
+        <div class="col-md-4 col-md-offset-4">
+            <h3>You have shown interest in:</h3>
 
-                <ol>
-                    <li ng-repeat="vote in votes">
-                        <a ng-href="/#/companies/{{ vote.Votee.company.id }}/{{ helpers.slugify( vote.Votee.company.name ) }}">
-                            {{ vote.Votee.company.name }}
-                        </a>
-                    </li>
-                </ol>
-
-            </div>
+            <ul>
+                <li ng-repeat="vote in votes">
+                    <a class="name" ng-href="/#/companies/{{ vote.Votee.company.id }}/{{ helpers.slugify( vote.Votee.company.name ) }}">
+                        {{ vote.Votee.company.name }}
+                    </a>
+                    <a class="btn btn-xs label-danger" ng-click=""><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                </li>
+            </ul>
 
         </div>
 

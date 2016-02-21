@@ -1,8 +1,9 @@
 <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-
+    <div class="col-md-8 col-md-offset-2">
 
             <div class="profile">
+
+                <h1>Edit Your Profile</h1>
 
                 <div class="row">
 
@@ -11,7 +12,6 @@
                         <h4 class="title">Profile Image</h4>
 
                         <div class="user-photo">
-
                             <img id="preview" ngf-src="fellow.image_url" width="200" height="200" />
                         </div>
 
@@ -22,101 +22,62 @@
                             <i class='fa fa-circle-o-notch fa-spin loading-icon'></i>
                         </div>
 
+                        <p class="upload-status">Click Update to Save</p>
                     </div>
 
-                    <div class="col-md-9">
+                    <div class="col-md-8 col-md-offset-1">
 
-                        <form class="form-horizontal">
+                        <form>
 
                             <input type="hidden" id="image_url" name="image_url" ng-model="fellow.image_url" value="" />
 
                             <div class="form-group">
-                                <label for="fellowFirstName" class="control-label col-xs-2">First Name</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="fellowFirstName" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowLastName" class="control-label col-xs-2">Last Name</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="fellowLastName" ng-model="fellow.last_name" value="{{fellow.last_name}}"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowEmail" class="control-label col-xs-2">Email</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="fellowEmail" ng-model="fellow.email" value="{{fellow.email}}"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowUniversity" class="control-label col-xs-2">University</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="fellowUniversity" ng-model="fellow.university" value="{{fellow.university}}"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowMajor" class="control-label col-xs-2">Major</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="fellowMajor" ng-model="fellow.major" value="{{fellow.major}}"/>
-                                </div>
+                                <label for="fellowFirstName" class="control-label">First Name</label>
+                                <input type="text" class="form-control" id="fellowFirstName" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="fellowBio" class="control-label col-xs-2">Biography</label>
-                                <div class="col-xs-10">
-                                    <textarea class="form-control" rows="7" id="fellowBio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
-                                </div>
+                                <label for="fellowLastName" class="control-label">Last Name</label>
+                                <input type="text" class="form-control" id="fellowLastName" ng-model="fellow.last_name" value="{{fellow.last_name}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="fellowEmail" class="control-label">Email</label>
+                                <input type="text" class="form-control" id="fellowEmail" ng-model="fellow.email" value="{{fellow.email}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="fellowUniversity" class="control-label">University</label>
+                                <input type="text" class="form-control" id="fellowUniversity" ng-model="fellow.university" value="{{fellow.university}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="fellowMajor" class="control-label">Major</label>
+                                <input type="text" class="form-control" id="fellowMajor" ng-model="fellow.major" value="{{fellow.major}}"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="fellowIntrests" class="control-label col-xs-2">Interests</label>
-                                <div class="col-xs-10">
-                                    <textarea class="form-control" rows="7" id="fellowIntrests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
-                                </div>
+                                <label for="fellowBio" class="control-label">Biography</label>
+                                <textarea class="form-control" rows="7" id="fellowBio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="tags" class="control-label col-xs-2"> Top Skills</label>
-                                <div class="col-xs-10">
-
-                                    <ui-select id="tags" name="tags" multiple ng-model="fellow.tags" theme="select2" ng-disabled="disabled" style="width: 800px;">
-                                        <ui-select-match placeholder="Select a skill...">{{$item.name}} </ui-select-match>
-                                        <ui-select-choices repeat="tag in tags">
-                                            <div ng-bind-html="tag.name"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-
-                                    <!--<select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in fellow.tags track by tag.id" ng-model="fellow.tags">-->
-                                    <!--</select>-->
-
-
-                                    <!--<select ui-select2="{ allowClear: true}" class="jsexample-tokenizer form-control" id="tags" name="tags" ng-model="alltags">
-                                    </select>-->
-                                </div>
+                                <label for="fellowIntrests" class="control-label">Interests</label>
+                                <textarea class="form-control" rows="7" id="fellowIntrests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
                             </div>
 
-                            <!--					<div class="form-group">
-                                                        <label for="companyName" class="control-label col-xs-2">Top Skills: </label>
-                                                        <div class="col-xs-10">
-                                                            <div class="dropdown">
-                                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                                    Select
-                                                                    <span class="caret"></span>
-                                                                </button>
-                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                                    <li><a href="#">C</a></li>
-                                                                    <li><a href="#">C++</a></li>
-                                                                    <li><a href="#">Javascript</a></li>
-                                                                    <li><a href="#">Java</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                </div>-->
                             <div class="form-group">
-                                <div class="col-xs-offset-2 col-xs-10 update-btn">
-                                    <button type="submit" class="btn btn-primary btn-lg" ng-click="update(fellow)">Update</button>
+
+                                <select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in tags track by tag.id" ng-model="fellow.tags">
+                                </select>
+
+                                <!--<select ui-select2="{ allowClear: true}" class="jsexample-tokenizer form-control" id="tags" name="tags" ng-model="alltags">
+                                </select>-->
+                            </div>
+
+                            <div class="form-group">
+                                <div class="update-btn">
+                                    <button type="submit" class="btn btn-primary btn-lg pull-right" ng-click="update(fellow)">Update</button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

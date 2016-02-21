@@ -52,8 +52,6 @@ app.get('/sign_s3', function(req, res){
 
     aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
 
-    console.log( req );
-
     var s3 = new aws.S3();
     var s3_params = {
         Bucket: S3_BUCKET,

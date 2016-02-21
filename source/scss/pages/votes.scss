@@ -1,0 +1,38 @@
+.votes{
+
+  h3{
+
+    margin-top: 0;
+  }
+
+  ul{
+
+    margin: 35px 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+
+      margin: 0 0 10px;
+      padding: 0;
+      list-style: none;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      a{
+
+        color: #cfcfcf;
+        text-decoration: underline;
+      }
+
+      a.name{
+
+        font-size: 18px;
+      }
+    }
+  }
+
+}
