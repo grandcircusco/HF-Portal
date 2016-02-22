@@ -65,6 +65,30 @@
 	}
   }
 
+  label{
+
+	margin: 0;
+	width: 100%;
+	color: #ffffff;
+
+	span{
+
+	  display: block;
+	  clear: both;
+	  color: #cfcfcf;
+	  font-size: 0.9em;
+	  font-weight:  normal;
+	}
+  }
+
+
+
+  .form-control{
+
+	margin-top: 5px;
+	background: #efefef;
+  }
+
   .update-btn {
 
 	margin-top: 20px;

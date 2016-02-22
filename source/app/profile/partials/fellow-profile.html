@@ -33,44 +33,75 @@
                             <input type="hidden" id="image_url" name="image_url" ng-model="fellow.image_url" value="" />
 
                             <div class="form-group">
-                                <label for="fellowFirstName" class="control-label">First Name</label>
-                                <input type="text" class="form-control" id="fellowFirstName" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
+                                <label for="first_name" class="control-label">First Name</label>
+                                <input type="text" class="form-control" id="first_name" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="fellowLastName" class="control-label">Last Name</label>
-                                <input type="text" class="form-control" id="fellowLastName" ng-model="fellow.last_name" value="{{fellow.last_name}}"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowEmail" class="control-label">Email</label>
-                                <input type="text" class="form-control" id="fellowEmail" ng-model="fellow.email" value="{{fellow.email}}"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowUniversity" class="control-label">University</label>
-                                <input type="text" class="form-control" id="fellowUniversity" ng-model="fellow.university" value="{{fellow.university}}"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="fellowMajor" class="control-label">Major</label>
-                                <input type="text" class="form-control" id="fellowMajor" ng-model="fellow.major" value="{{fellow.major}}"/>
+                                <label for="last_name" class="control-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" ng-model="fellow.last_name" value="{{fellow.last_name}}"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="fellowBio" class="control-label">Biography</label>
-                                <textarea class="form-control" rows="7" id="fellowBio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
+                                <label for="email" class="control-label">Email</label>
+                                <input type="text" class="form-control" id="email" ng-model="fellow.user.email" value="{{fellow.user.email}}" disabled />
                             </div>
 
                             <div class="form-group">
-                                <label for="fellowIntrests" class="control-label">Interests</label>
-                                <textarea class="form-control" rows="7" id="fellowIntrests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
+                                <label for="bio" class="control-label">Who are you? <span>Bio / Background Story / Your Mission</span></label>
+                                <textarea class="form-control" rows="7" id="bio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="interests" class="control-label">What are some interesting things you have coded? <span>Non class related if you can</span></label>
+                                <textarea class="form-control" rows="7" id="interests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description" class="control-label">Enter a single phrase to describe yourelf</label>
+                                <input type="text" class="form-control" id="description" ng-model="fellow.description" value="{{fellow.description}}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="question" class="control-label">Choose one of the following questions</label>
+                                <select name="question" class="form-control" id="question" ng-model="fellow.question">
+                                    <option>How do you define weird and how weird are you?</option>
+                                    <option>What does sock fashion mean and define your sock fashion?</option>
+                                    <option>What has been your wildest experience while traveling?</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="question" class="control-label">Answer the above question</label>
+                                <input type="text" class="form-control" id="answer" ng-model="fellow.answer" value="{{fellow.answer}}"/>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="git_hub" class="control-label">GitHub Url</label>
+                                <input type="text" class="form-control" id="git_hub" ng-model="fellow.git_hub" value="{{ fellow.git_hub }}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="portfolio" class="control-label">Portfolio Url <span>Other than GitHub</span></label>
+                                <input type="text" class="form-control" id="portfolio" ng-model="fellow.portfolio" value="{{fellow.portfolio}}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="developer_type" class="control-label">How would you best classify yourself as a developer?</label>
+                                <select name="developer_type" class="form-control" id="developer_type" ng-model="fellow.developer_type">
+                                    <option>Front End</option>
+                                    <option>Back End</option>
+                                    <option>Full Stack</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
 
-                                <select class="jsexample-tokenizer form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in tags track by tag.id" ng-model="fellow.tags">
+                                <label for="tags" class="control-label">Proficient Languages / Frameworks</label>
+                                <select class="form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in tags track by tag.id" ng-model="fellow.tags">
                                 </select>
 
-                                <!--<select ui-select2="{ allowClear: true}" class="jsexample-tokenizer form-control" id="tags" name="tags" ng-model="alltags">
-                                </select>-->
                             </div>
 
                             <div class="form-group">

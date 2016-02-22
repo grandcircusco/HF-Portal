@@ -9,14 +9,17 @@
             user_id: { type: DataTypes.INTEGER },
             first_name: { type:DataTypes.STRING, default: "" },
             last_name: { type:DataTypes.STRING, default: "" },
-            email: DataTypes.STRING,
             university: DataTypes.STRING,
             major: DataTypes.STRING,
             bio: DataTypes.TEXT,
             interests: DataTypes.TEXT,
-            resume_file_path: DataTypes.STRING,
-            image_url: DataTypes.STRING,
-            website_url: DataTypes.STRING
+            description: DataTypes.STRING,
+            git_hub: DataTypes.STRING,
+            portfolio: DataTypes.STRING,
+            developer_type: DataTypes.STRING,
+            question: DataTypes.STRING,
+            answer: DataTypes.STRING,
+            image_url: DataTypes.STRING
 
         },{
 

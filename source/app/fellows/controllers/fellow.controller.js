@@ -22,6 +22,8 @@
             //console.log('activated fellows controller!');
         }
 
+        $scope.helpers = HFHelpers.helpers;
+
         $scope.votesFor = [];
         $scope.votesCast = [];
         $scope.currentUser = User.getCurrentUser();

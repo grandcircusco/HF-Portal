@@ -32,9 +32,9 @@
             <div class="row">
                 <div class="main-content">
                     <h3 class="fd_subhdr">Biography</h3>
-                    <p>{{ fellow.bio }}</p>
+                    <div class="bio" ng-bind-html="helpers.paragraphize(fellow.bio) | sanitize"></div>
                     <h3 class="fd_subhdr">Interests</h3>
-                    <p>{{ fellow.interests }}</p>
+                    <div class="interests" ng-bind-html="helpers.paragraphize(fellow.interests) | sanitize"></div>
                 </div>
             </div>
 

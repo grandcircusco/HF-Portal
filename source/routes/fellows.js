@@ -119,7 +119,11 @@ app.get('/user_id/:user_id', function getFellow(req, res){
             user_id: req.params.user_id
         },
         include: [{
+
             model: Tags
+
+        },{
+            model: Users
         }]
 
     }).then(function(fellow) {
@@ -137,14 +141,17 @@ app.post('/', function postFellow(req, res) {
         user_id: req.body.user_id,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email: req.body.email,
-        university: req.body.university,
-        major: req.body.major,
+        //university: req.body.university,
+        //major: req.body.major,
         bio: req.body.bio,
         interests: req.body.interests,
-        resume_file_path: req.body.resume_file_path,
-        image_url: req.body.image_url,
-        website_url: req.body.website_url
+        description: req.body.description,
+        git_hub: req.body.git_hub,
+        portfolio: req.body.portfolio,
+        developer_type: req.body.developer_type,
+        question: req.body.question,
+        answer: req.body.answer,
+        image_url: req.body.image_url
 
     }).then(function( fellow ) {
 
@@ -209,18 +216,19 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
         fellow.user_id = req.body.user_id;
         fellow.first_name = req.body.first_name;
         fellow.last_name = req.body.last_name;
-        fellow.email = req.body.email;
-        fellow.university = req.body.university;
-        fellow.major = req.body.major;
+        //fellow.university = req.body.university;
+        //fellow.major = req.body.major;
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
+        fellow.description = req.body.description;
+        fellow.git_hub = req.body.git_hub;
+        fellow.portfolio = req.body.portfolio;
+        fellow.developer_type = req.body.developer_type;
+
+        fellow.question = req.body.question;
+        fellow.answer = req.body.answer;
 
         fellow.image_url = req.body.image_url;
-        //if( typeof req.file !== 'undefined' ) {
-        //    fellow.image_url = req.file.path;
-        //}
-
-        fellow.website_url = req.body.website_url;
 
         fellow.save();
 

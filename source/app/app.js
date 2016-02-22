@@ -203,5 +203,21 @@ HFHelpers.helpers = {
             .replace(/\-\-+/g, '-')         // Replace multiple - with single -
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
+    },
+
+    paragraphize: function( str ) {
+
+        if( typeof str !== 'string' ) return '';
+
+        var parts = str.split( "\n" );
+        return ( parts.length > 0 ? '<p>' + parts.join('</p><p>') + '</p>' : '' );
     }
 };
+
+app.filter("sanitize", ['$sce', function($sce) {
+
+    return function(htmlCode){
+
+        return $sce.trustAsHtml(htmlCode);
+    };
+}]);

@@ -45,12 +45,12 @@
                 // bind jQuery multi select
                 // -- added timeout to make sure the #tags select element gets populated
                 // -- @TODO -- Find a better way to add functionality to Tags
-                $timeout( function(){ $("#tags").multiSelect({
-
-                    selectableHeader: 'Available Skills',
-                    selectionHeader: 'Your Skills'
-
-                }); },  500 );
+                //$timeout( function(){ $("#tags").multiSelect({
+                //
+                //    selectableHeader: 'Available Skills',
+                //    selectionHeader: 'Your Skills'
+                //
+                //}); },  500 );
 
             });
 
