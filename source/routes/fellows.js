@@ -242,18 +242,31 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
 
                 req.body.tags.forEach(function ( tag ) {
 
-                    // @TODO -- add support for custom tags here, if Tag not found, create it
+                    if( typeof tag.id !== "undefined" ) {
 
-                    Tags.findOne({
+                        Tags.findOne({
 
-                        where: {
-                            id: parseInt(tag.id)
-                        }
+                            where: {
+                                id: parseInt(tag.id)
+                            }
 
-                    }).then(function (tagObj) {
+                        }).then(function (tagObj) {
 
-                        fellow.addTag(tagObj);
-                    });
+                            fellow.addTag(tagObj);
+                        });
+                    }
+                    else{
+
+                        Tags.create({
+
+                            name: tag.name
+                        }).then( function( tagObj ){
+
+                            console.log(tagObj);
+
+                            company.addTag(tagObj);
+                        });
+                    }
                 });
             }
 

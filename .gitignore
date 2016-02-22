@@ -12,6 +12,7 @@
 .env
 /vendor
 /build
+/components
 
 #   Remove bundled files from version control
 public/assets/javascript/bundle.js

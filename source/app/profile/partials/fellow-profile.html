@@ -98,9 +98,20 @@
 
                             <div class="form-group">
 
-                                <label for="tags" class="control-label">Proficient Languages / Frameworks</label>
-                                <select class="form-control" id="tags" name="tags" multiple="multiple" ng-options="tag.name for tag in tags track by tag.id" ng-model="fellow.tags">
-                                </select>
+                                <label class="control-label"> Desired Skills <span>Manually enter skills that are not in the list</span></label>
+                                <ui-select multiple
+                                           tagging="tagTransform"
+                                           tagging-label="(new)"
+                                           ng-model="fellow.tags"
+                                           theme="bootstrap"
+                                           ng-disabled="disabled"
+                                           style="width: 100%"
+                                           title="Choose a skill">
+                                    <ui-select-match placeholder="Select skill">{{ $item.name }}</ui-select-match>
+                                    <ui-select-choices repeat="tag in tags | propsFilter: { name: $select.search }">
+                                        <span ng-bind-html="''+tag.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
 
                             </div>
 

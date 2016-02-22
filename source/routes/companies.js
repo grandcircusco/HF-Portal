@@ -226,19 +226,39 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
         // remove all tags, then re-add currently posted tags
         company.setTags(null).then(function() {
 
+            console.log( req.body.tags );
 
             if ( Array.isArray(req.body.tags) ) {
 
-                req.body.tags.forEach(function (tag_id) {
+                req.body.tags.forEach(function (tag) {
 
-                    Tags.findOne({
-                        where: {
-                            id: parseInt(tag_id)
-                        }
-                    }).then(function (tagObj) {
+                    if( typeof tag.id !== "undefined" ) {
 
-                        company.addTag(tagObj);
-                    });
+                        Tags.findOne({
+
+                            where: {
+                                id: parseInt(tag.id)
+                            }
+
+                        }).then(function (tagObj) {
+
+                            console.log(tagObj);
+
+                            company.addTag(tagObj);
+                        });
+                    }
+                    else{
+
+                        Tags.create({
+
+                            name: tag.name
+                        }).then( function( tagObj ){
+
+                            console.log(tagObj);
+
+                            company.addTag(tagObj);
+                        });
+                    }
                 });
             }
 

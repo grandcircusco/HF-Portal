@@ -25,6 +25,16 @@
             return;
         }
 
+        $scope.tagTransform = function (newTag) {
+
+            var tag = {
+
+                name: newTag
+            };
+
+            return tag;
+        };
+
         // Make sure current user is a Fellow
         var currentUser = User.getCurrentUser();
         if( currentUser.userType !== "Fellow" ){
@@ -33,25 +43,14 @@
             return;
         }
 
+        $scope.tags = [];
         Fellows.getByUserId(currentUser.id).success(function(fellow){
 
             $scope.fellow = fellow;
 
-            $scope.tags = [];
             Tags.all().success(function(tags){
 
                 $scope.tags = tags;
-
-                // bind jQuery multi select
-                // -- added timeout to make sure the #tags select element gets populated
-                // -- @TODO -- Find a better way to add functionality to Tags
-                //$timeout( function(){ $("#tags").multiSelect({
-                //
-                //    selectableHeader: 'Available Skills',
-                //    selectionHeader: 'Your Skills'
-                //
-                //}); },  500 );
-
             });
 
         });

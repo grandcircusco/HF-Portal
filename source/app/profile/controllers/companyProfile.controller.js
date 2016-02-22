@@ -24,6 +24,16 @@
             return;
         }
 
+        $scope.tagTransform = function (newTag) {
+
+            var tag = {
+
+                name: newTag
+            };
+
+            return tag;
+        };
+
         // Make sure current user is a Company
         var currentUser = User.getCurrentUser();
         if( currentUser.userType !== "Company" ){
@@ -32,33 +42,14 @@
             return;
         }
 
+        $scope.tags = [];
         Companies.getByUserId(currentUser.id).success(function(company){
 
             $scope.company = company;
-
             Tags.all().success(function(tags){
 
                 $scope.tags = tags;
-
-                //var data = [];
-                //tags.forEach(function(tag){
-                //
-                //    var item = {
-                //
-                //        id: tag.id,
-                //        text: tag.name
-                //    };
-                //    data.push(item);
-                //});
-                //
-                //$("select#tags").select2({
-                //    //tags: true,
-                //    data: data,
-                //    tokenSeparators: [',',' ']
-                //});
-
             });
-
         });
 
         activate();
@@ -71,14 +62,16 @@
 
         $scope.update = function(company) {
 
-            // get the tags from the form
-            //company.tags = $("#tags").val();
-            var tags = [];
-            $('#tags :selected').each(function(i, selected){
-                tags[i] = $(selected).val();
-            });
+            //// get the tags from the form
+            ////company.tags = $("#tags").val();
+            //var tags = [];
+            //$('#tags :selected').each(function(i, selected){
+            //    tags[i] = $(selected).val();
+            //});
+            //
+            //company.tags = tags;
 
-            company.tags = tags;
+            console.log( company.tags );
 
             // send companies info to API via Service
             Companies.update(company).success(function(newCompanyData){
