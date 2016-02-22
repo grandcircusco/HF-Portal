@@ -8,17 +8,15 @@
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
             user_id: { type: DataTypes.INTEGER },
             name: { type:DataTypes.STRING, default: "" },
-            email: DataTypes.STRING,
             primary_contact: DataTypes.STRING,
+            location: DataTypes.STRING,
             company_size: DataTypes.INTEGER,
             industry: DataTypes.STRING,
             bio: DataTypes.TEXT,
-            founding_year: DataTypes.INTEGER,
-            founders: DataTypes.STRING,
+            description: DataTypes.STRING,
+            developer_type: DataTypes.STRING,
             website_url: DataTypes.STRING,
-            linked_in_url: DataTypes.STRING,
-            image_url: DataTypes.STRING,
-            location: DataTypes.STRING
+            image_url: DataTypes.STRING
 
         },{
 

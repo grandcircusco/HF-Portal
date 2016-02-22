@@ -171,15 +171,16 @@
     }
 
     .fellowName, .companyName{
-      padding: 1em 0 0 0;
       width:100%;
+      margin: 0;
+      padding: 0;
     }
 
     .fellowName, .companyName, .tagwrap, .quote {
+
       height: auto;
       max-height: 33%;
       overflow: hidden;
-
     }
 
 
@@ -245,7 +246,7 @@
       margin: 0;
     }
 
-    .quote {
+    .bio {
       width:100%;
       padding: .25em;
       overflow: hidden;

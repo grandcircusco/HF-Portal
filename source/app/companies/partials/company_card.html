@@ -11,11 +11,9 @@
 	<div class="companyInfo"><!-- div containing information -->
 
 
-		<div class="companyName ">
-			<figcaption> {{ company.name }} </figcaption>
-		</div>
+		<h3 class="companyName">{{ company.name }}</h3>
 
-		<div class="quote">{{ company.bio }}</div>
+		<div class="bio" ng-bind-html="helpers.paragraphize(company.bio) | sanitize"></div>
 
         <div class="tagwrap">
             <div class="tag company_tag" ng-repeat="tag in company.tags | limitTo:3">

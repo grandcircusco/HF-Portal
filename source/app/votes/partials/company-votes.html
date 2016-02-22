@@ -14,8 +14,9 @@
                     <a ng-href="/#/fellows/{{ vote.Votee.fellow.id }}/{{ helpers.slugify( vote.Votee.fellow.first_name + ' ' + fellow.last_name ) }}">
                         {{ vote.Votee.fellow.first_name }} {{ vote.Votee.fellow.last_name }}
                     </a>
-                    <a class="btn btn-default" ng-click="">Deselect Interest</a>
+                    <a class="btn btn-xs label-danger" ng-click="removeVote(vote)"><span class="glyphicon glyphicon-remove"></span> Remove</a>
                 </li>
+
             </ul>
 
         </div>

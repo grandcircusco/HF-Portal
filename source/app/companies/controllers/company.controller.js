@@ -21,6 +21,8 @@
         function activate() {
             //console.log('activated companies controller!');
         }
+
+        $scope.helpers = HFHelpers.helpers;
         
         $scope.votesFor = [];
         $scope.votesCast = [];

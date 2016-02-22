@@ -9,13 +9,9 @@
 
 	<div class="fellowInfo"><!-- div containing information -->
 	
-		<div class="fellowName "> <!-- fellow name section -->
-			<figcaption> {{fellow.first_name +" "+ fellow.last_name}} </figcaption>
-		</div>
+		<h3 class="fellowName ">{{fellow.first_name +" "+ fellow.last_name}}</h3>
 
-		<div class="quote">{{ fellow.bio }}
-
-		</div>
+		<div class="bio" ng-bind-html="helpers.paragraphize(fellow.bio) | sanitize"></div>
 
 	    <div class="tagwrap">
             <div class="tag fellow_tag " ng-repeat='tag in fellow.tags | limitTo:3'><!-- fellow tags section -->

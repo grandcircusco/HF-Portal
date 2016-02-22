@@ -38,22 +38,24 @@
 
             Tags.all().success(function(tags){
 
-                var data = [];
-                tags.forEach(function(tag){
+                $scope.tags = tags;
 
-                    var item = {
-
-                        id: tag.id,
-                        text: tag.name
-                    };
-                    data.push(item);
-                });
-
-                $("select#tags").select2({
-                    //tags: true,
-                    data: data,
-                    tokenSeparators: [',',' ']
-                });
+                //var data = [];
+                //tags.forEach(function(tag){
+                //
+                //    var item = {
+                //
+                //        id: tag.id,
+                //        text: tag.name
+                //    };
+                //    data.push(item);
+                //});
+                //
+                //$("select#tags").select2({
+                //    //tags: true,
+                //    data: data,
+                //    tokenSeparators: [',',' ']
+                //});
 
             });
 
@@ -154,7 +156,11 @@
                     // Update company model
                     $scope.company.image_url = url;
 
-                    console.log( $scope.company );
+                    // Angular is weird when updating images that started with an empty string
+                    // removing ng-hide to force update
+                    $("#preview").removeClass('ng-hide');
+                    $(".user-photo").find(".placeholder").hide();
+                    $("#profile-photo").find(".upload-status").show();
                 }
             };
 

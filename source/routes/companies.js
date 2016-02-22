@@ -56,17 +56,15 @@ app.post('/', function postCompany(req, res) {
 
         user_id: req.body.user_id,
         name: req.body.name,
-        email: req.body.email,
         primary_contact: req.body.primary_contact,
+        location: req.body.location,
         company_size: req.body.company_size,
         industry: req.body.industry,
+        bio: req.body.bio,
         description: req.body.description,
-        founding_year: req.body.founding_year,
-        founders: req.body.founders,
+        developer_type: req.body.developer_type,
         website_url: req.body.website_url,
-        linked_in_url: req.body.linked_in_url,
-        image_url: req.body.image_url,
-        location: req.body.location
+        image_url: req.body.image_url
 
     }).then(function( company) {
 
@@ -182,7 +180,11 @@ app.get('/user_id/:user_id', function getFellow(req, res){
             user_id: req.params.user_id
         },
         include: [{
+
             model: Tags
+
+        },{
+            model: Users
         }]
 
     }).then(function(company) {
@@ -208,22 +210,16 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
 
         company.user_id = req.body.user_id;
         company.name = req.body.name;
-        company.email = req.body.email;
         company.primary_contact = req.body.primary_contact;
+        company.location = req.body.location;
         company.company_size = req.body.company_size;
         company.industry = req.body.industry;
         company.bio = req.body.bio;
-        company.founding_year = req.body.founding_year;
-        company.founders = req.body.founders;
+        company.description = req.body.description;
+        company.developer_type = req.body.developer_type;
         company.website_url = req.body.website_url;
-        company.linked_in_url = req.body.linked_in_url;
 
         company.image_url = req.body.image_url;
-        //if( typeof req.file !== 'undefined' )
-        //{
-        //    company.image_url = req.file.path;
-        //}
-        company.location = req.body.location;
 
         company.save();
 
