@@ -2,7 +2,9 @@
 
 	<h1>Companies</h1>
 
-	<div class="list">
+	<p class="empty-message" ng-hide="companies.length">There are no companies just yet. We are working on adding the to the system. Please check back soon.</p>
+
+	<div class="list" ng-show="companies.length">
 
 		<company-card ng-repeat="company in companies" ng-if="company.name"/>
 

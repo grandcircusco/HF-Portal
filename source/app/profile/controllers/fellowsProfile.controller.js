@@ -48,6 +48,17 @@
 
             $scope.fellow = fellow;
 
+            $("[name='enabled']").bootstrapSwitch({
+
+                onText: "Visible",
+                offText: "Hidden",
+                state: fellow.enabled,
+                onSwitchChange: function(event, state){
+
+                    fellow.enabled = ( state ) ? 1 : 0;
+                }
+            });
+
             Tags.all().success(function(tags){
 
                 $scope.tags = tags;

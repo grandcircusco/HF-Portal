@@ -46,6 +46,18 @@
         Companies.getByUserId(currentUser.id).success(function(company){
 
             $scope.company = company;
+
+            $("[name='enabled']").bootstrapSwitch({
+
+                onText: "Visible",
+                offText: "Hidden",
+                state: company.enabled,
+                onSwitchChange: function(event, state){
+
+                    company.enabled = ( state ) ? 1 : 0;
+                }
+            });
+
             Tags.all().success(function(tags){
 
                 $scope.tags = tags;
@@ -61,15 +73,6 @@
         }
 
         $scope.update = function(company) {
-
-            //// get the tags from the form
-            ////company.tags = $("#tags").val();
-            //var tags = [];
-            //$('#tags :selected').each(function(i, selected){
-            //    tags[i] = $(selected).val();
-            //});
-            //
-            //company.tags = tags;
 
             console.log( company.tags );
 

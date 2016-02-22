@@ -5,11 +5,24 @@
         <h4 class="modal-title">Edit User: {{ fellow.first_name }} {{ fellow.last_name }}</h4>
     </div>
 
-    <div class="modal-body box-modal">
+    <div class="modal-body box-modal" ng-init="init()">
 
         <div class="alert alert-danger" role="alert" ng-show="errors.length">
 
             <p ng-repeat="error in errors">{{ error }}</p>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="control-label">Profile Status</label><br />
+            <input type="checkbox"
+                   name="enabled"
+                   id="enabled"
+                   value="1"
+                   ng-model="fellow.enabled"
+                   ng-true-value="1"
+                   ng-false-value="0" />
 
         </div>
 

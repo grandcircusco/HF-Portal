@@ -32,7 +32,8 @@ app.get('/', function getFellows(req, res) {
 
         where: {
 
-            first_name: {ne: null}
+            first_name: {ne: null},
+            enabled: 1
         },
         order: '"last_name" ASC',
         include: [{
@@ -151,7 +152,8 @@ app.post('/', function postFellow(req, res) {
         developer_type: req.body.developer_type,
         question: req.body.question,
         answer: req.body.answer,
-        image_url: req.body.image_url
+        image_url: req.body.image_url,
+        enabled: req.body.enabled
 
     }).then(function( fellow ) {
 
@@ -229,6 +231,7 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
         fellow.answer = req.body.answer;
 
         fellow.image_url = req.body.image_url;
+        fellow.enabled = req.body.enabled;
 
         fellow.save();
 

@@ -1,6 +1,6 @@
 <div class="row">
 
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-8 col-md-offset-2">
 
 		<div class="profile">
 
@@ -16,6 +16,7 @@
 							<th>Email</th>
 							<th class="stat">Voted For</th>
 							<th class="stat">Votes Cast</th>
+							<th class="stat">Enabled</th>
 							<th></th>
 						</thead>
 						<tbody>
@@ -24,6 +25,7 @@
 							<td>{{ fellow.user.email }}</td>
 							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesCast.length }}</a></td>
+							<td class="stat">{{ fellow.enabled ? "Yes" : "No" }}</td>
 							<td><a href ng-click="editFellow(fellow)"><i class="fa fa-pencil-square-o"></i></a></td>
 						</tr>
 
@@ -39,6 +41,7 @@
 							<th>Email</th>
 							<th class="stat">Voted For</th>
 							<th class="stat">Votes Cast</th>
+							<th class="stat">Enabled</th>
 							<th></th>
 						</tr>
 						</thead>
@@ -48,6 +51,7 @@
 							<td>{{ company.user.email }}</td>
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesCast.length }}</a></td>
+							<td class="stat">{{ company.enabled ? "Yes" : "No" }}</td>
 							<td><a href ng-click="editCompany(company)"><i class="fa fa-pencil-square-o"></i></a></td>
 						</tr>
 						</tbody>

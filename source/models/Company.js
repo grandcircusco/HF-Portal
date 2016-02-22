@@ -16,7 +16,12 @@
             description: DataTypes.STRING,
             developer_type: DataTypes.STRING,
             website_url: DataTypes.STRING,
-            image_url: DataTypes.STRING
+            image_url: DataTypes.STRING,
+            enabled: {
+
+                type: DataTypes.INTEGER,
+                defaultValue: 0
+            }
 
         },{
 

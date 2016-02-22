@@ -19,7 +19,12 @@
             developer_type: DataTypes.STRING,
             question: DataTypes.STRING,
             answer: DataTypes.STRING,
-            image_url: DataTypes.STRING
+            image_url: DataTypes.STRING,
+            enabled: {
+
+                type: DataTypes.INTEGER,
+                defaultValue: 0
+            }
 
         },{
 

@@ -33,7 +33,8 @@ app.get('/', function getCompanies(req, res) {
 
         where: {
 
-            name: {ne: null}
+            name: {ne: null},
+            enabled: 1
         },
         order: '"name" ASC',
         include: [{
@@ -64,7 +65,8 @@ app.post('/', function postCompany(req, res) {
         description: req.body.description,
         developer_type: req.body.developer_type,
         website_url: req.body.website_url,
-        image_url: req.body.image_url
+        image_url: req.body.image_url,
+        enabled: req.body.enabled
 
     }).then(function( company) {
 
@@ -220,6 +222,7 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
         company.website_url = req.body.website_url;
 
         company.image_url = req.body.image_url;
+        company.enabled = req.body.enabled;
 
         company.save();
 

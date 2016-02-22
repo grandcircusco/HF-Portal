@@ -53,7 +53,6 @@
                     console.log( companies );
 
                     $scope.companies = companies;
-
                 });
             }
         };
@@ -207,6 +206,20 @@
         $scope.user = fellow.user;
         $scope.fellow = fellow;
 
+        $scope.init = function(){
+
+            $("[name='enabled']").bootstrapSwitch({
+
+                onText: "Visible",
+                offText: "Hidden",
+                state: $scope.fellow.enabled,
+                onSwitchChange: function (event, state) {
+
+                    $scope.fellow.enabled = ( state ) ? 1 : 0;
+                }
+            });
+        };
+
         $scope.ok = function ok() {
 
             User.update($scope.user).then(function(newUser){
@@ -248,6 +261,20 @@
         $scope.user = company.user;
         $scope.company = company;
 
+        $scope.init = function(){
+
+            $("[name='enabled']").bootstrapSwitch({
+
+                onText: "Visible",
+                offText: "Hidden",
+                state: $scope.company.enabled,
+                onSwitchChange: function (event, state) {
+
+                    $scope.company.enabled = ( state ) ? 1 : 0;
+                }
+            });
+        };
+
         $scope.ok = function ok() {
 
             User.update($scope.user).then( function( newUser ){
@@ -285,6 +312,7 @@
     FellowVotesModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow' ];
     function FellowVotesModalInstanceController( $scope, $modalInstance, fellow ){
 
+        $scope.user = fellow.user;
         $scope.fellow = fellow;
 
         // Check fellow VotesFor to see if a company voted for a fellow

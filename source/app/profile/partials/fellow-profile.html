@@ -33,6 +33,20 @@
                             <input type="hidden" id="image_url" name="image_url" ng-model="fellow.image_url" value="" />
 
                             <div class="form-group">
+
+                                <label for="enabled" class="control-label">Profile Status</label>
+                                <input type="checkbox"
+                                       id="enabled"
+                                       name="enabled"
+                                       value="1"
+                                       ng-model="fellow.enabled"
+                                       ng-true-value="1"
+                                       ng-false-value="0"
+                                        />
+
+                            </div>
+
+                            <div class="form-group">
                                 <label for="first_name" class="control-label">First Name</label>
                                 <input type="text" class="form-control" id="first_name" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
                             </div>
