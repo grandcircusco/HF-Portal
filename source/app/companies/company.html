@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row single">
     <div class="col-md-8 col-md-offset-2">
 
         <ul class="breadcrumb">
@@ -10,13 +10,10 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <img class="user-photo" ng-src="{{ company.image_url }}" width="200" height="200">
-                    <br>
 
-                    <span class="label label-default" ng-repeat='tag in company.tags'>{{ tag.name }}</span>
-
-                    <i class="fa fa-github"></i>
-                    <i class="fa fa-envelope"></i>
+                    <div class="photo">
+                        <img class="img" ng-src={{company.image_url}} />
+                    </div>
 
                     <div class="row vote-container" ng-show="isFellow()">
 
@@ -36,25 +33,29 @@
                 </div>
 
                 <div class="col-md-9">
-                    <h1>{{ company.name }}</h1>
-                    <div class="user-facts">
-                        Since {{ company.founding_year }} <br>
-                        {{ company.location }} <br>
-                        {{ company.website_url }} <br>
-                    </div>
+
+                    <h1 class="name">{{ company.name }}</h1>
+                    <p class="tagline">{{ fellow.description }}</p>
+
+                    <div class="bio" ng-bind-html="helpers.paragraphize(company.bio) | sanitize"></div>
+
+                    <p class="stat industry"><span>Industry:</span> {{ company.industry }}</p>
+                    <p class="stat company-size"><span>Company Size:</span> {{ company.company_size }}</p>
+                    <p class="stat contact"><span>Primary Contact:</span> {{ company.primary_contact }} | {{ company.user.email }}</p>
+
+                    <p class="links"><a class="website" ng-href="company.website">Website</a></p>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="main-content">
-                    <h3>Biography</h3>
-                    <div class="interests" ng-bind-html="helpers.paragraphize(company.bio) | sanitize"></div>
-                </div>
+            <div class="row tags">
+                <h3>Desired Skills:</h3>
+                <span class="tag" ng-repeat='tag in company.tags'>{{ tag.name }}</span>
+
             </div>
 
         </div>
 
-        <p><a class="" href="/#/companies"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Companies</a></p>
+        <p class="pagination"><a class="" href="/#/companies"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Companies</a></p>
 
     </div>
 </div>

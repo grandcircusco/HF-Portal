@@ -5,7 +5,7 @@
 	<p class="empty-message" ng-hide="fellows.length">There are no fellows just yet. We are working on adding the to the system. Please check back soon.</p>
 
 	<div class="list" ng-show="fellows.length">
-		<fellow-card ng-repeat="fellow in fellows" ng-if="fellow.first_name && fellow.last_name" />
+		<fellow-card ng-repeat="fellow in fellows track by $index" ng-if="fellow.first_name && fellow.last_name" />
 	</div>
 
 </div>

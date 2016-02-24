@@ -1,0 +1,136 @@
+.photo{
+
+	width: 160px;
+	height: 160px;
+	border: 5px solid #696A67;
+	border-radius: 50%;
+	margin: 0 auto;
+
+	img{
+
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		margin: 0;
+		max-width: 100%;
+	}
+
+}
+
+.tag{
+
+	border: 2px solid #737571;
+	height: 30px;
+	line-height: 26px;
+	border-radius: 30px;
+	padding: 0 15px;
+	margin: 0 10px 5px;
+	text-align: center;
+
+	color: #737571;
+}
+
+.name{
+
+	color: #ffffff;
+}
+
+.tagline{
+
+	color: #6a6967;
+}
+
+.single{
+
+	.name{
+
+		text-align: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	.tagline{
+
+		text-align: left;
+		font-weight: 700;
+		font-size: 1.2em;
+		line-height: 1.3;
+		margin-bottom: 20px;
+	}
+
+	.bio{
+
+		margin-bottom: 1em;
+
+		p{
+
+			line-height: 1.4;
+		}
+	}
+
+	.interests{
+
+		margin-bottom: 1em;
+
+		p{
+
+			line-height: 1.4;
+		}
+	}
+
+	.question{
+
+		line-height: 1.5;
+	}
+	.answer{
+
+		line-height: 1.5;
+	}
+
+	.stat{
+
+		span{
+
+			display: inline-block;
+			margin-right: 8px;
+		}
+	}
+
+	.links{
+
+		margin-top: 10px;
+
+		a {
+
+			color: #cfcfcf;
+			font-size: 1.4em;
+			font-weight: bold;
+		}
+	}
+
+	.tags{
+
+		margin-top: 30px;
+		display: block;
+
+		h3{
+
+			color: #cfcfcf;
+			margin-bottom: 20px;
+		}
+
+		.tag{
+
+			display: inline-block;
+			margin-bottom: 10px;
+			color: #ffffff;
+			border-color: #ffffff;
+		}
+	}
+
+	.pagination{
+
+		margin: 25px 0;
+	}
+}

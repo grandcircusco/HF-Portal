@@ -1,33 +1,36 @@
 <div class="grid-box company">
 
-	<figure>
-
-		<div class="imgCrop">
-			<img ng-src="{{ company.image_url }}" />
-			<span class="placeholder" ng-if="!company.image_url"></span>
-		</div>
-	</figure>
-
-	<div class="companyInfo"><!-- div containing information -->
-
-
-		<h3 class="companyName">{{ company.name }}</h3>
-
-		<div class="bio" ng-bind-html="helpers.paragraphize(company.bio) | sanitize"></div>
-
-        <div class="tagwrap">
-            <div class="tag company_tag" ng-repeat="tag in company.tags | limitTo:3">
-                <p>{{ tag.name }}</p>
-            </div>
-        </div>
-
-		
+	<div class="photo">
+		<img class="img" ng-src={{company.image_url}} />
 	</div>
-		<!-- Button trigger modal -->
+
+	<div class="info">
+
+
+		<h3 class="name">{{ company.name }}</h3>
+		<p class="tagline">{{ fellow.description }}</p>
+
+		<div class="bio" ng-bind-html="helpers.paragraphize( company.bio.substr(0, 350) ) | sanitize"></div>
+
+	</div>
+	<div class="foot">
+
+		<div class="tagwrap">
+
+			<div class="tag company_tag " ng-repeat='tag in company.tags | limitTo:6'>
+				{{ tag.name }}
+			</div>
+
+		</div>
+
 		<div class="details-button">
-			<a type="button" class="detButton" ng-href="/#/companies/{{ company.id }}/{{ helpers.slugify( company.name ) }}">
+
+			<a ng-href="/#/companies/{{ company.id }}/{{ helpers.slugify( company.name ) }}">
 				<!-- View Details -->
-				<i class="fa fa-arrow-right fa-lg"></i>
+				<i class="fa fa-arrow-right fa-lg"></i>  full profile
 			</a>
 		</div>
+
+	</div>
+
 </div>

@@ -1,32 +1,36 @@
 <div class="grid-box fellow">
 
-	<figure> <!-- image section -->
-		<div class="imgCrop">
-			<img ng-src={{fellow.image_url}} />
-			<span class="placeholder" ng-if="!fellow.image_url"></span>
-		</div>
-	</figure>
+	<div class="photo">
+		<img class="img" ng-src={{fellow.image_url}} />
+	</div>
 
-	<div class="fellowInfo"><!-- div containing information -->
+	<div class="info">
 	
-		<h3 class="fellowName ">{{fellow.first_name +" "+ fellow.last_name}}</h3>
+		<h3 class="name">{{fellow.first_name +" "+ fellow.last_name}}</h3>
 
-		<div class="bio" ng-bind-html="helpers.paragraphize(fellow.bio) | sanitize"></div>
+		<p class="tagline">{{ fellow.description }}</p>
 
-	    <div class="tagwrap">
-            <div class="tag fellow_tag " ng-repeat='tag in fellow.tags | limitTo:3'><!-- fellow tags section -->
-                <p> {{ tag.name }} </p>
-            </div>
-        </div>
-
+		<div class="bio" ng-bind-html="helpers.paragraphize( fellow.bio.substr(0, 350) ) | sanitize"></div>
 
 	</div>
-	<div class="details-button">
-		<!-- Button trigger modal -->
-		<a type="button" class="detButton"  ng-href="/#/fellows/{{ fellow.id }}/{{ helpers.slugify( fellow.first_name + ' ' + fellow.last_name ) }}">
-			<!-- View Details -->
-			<i class="fa fa-arrow-right fa-lg"></i>
 
-		</a>
+	<div class="foot">
+
+		<div class="tagwrap">
+
+			<div class="tag fellow_tag " ng-repeat='tag in fellow.tags | limitTo:6'>
+				{{ tag.name }}
+			</div>
+
+		</div>
+
+		<div class="details-button">
+
+			<a type="button" class="detButton"  ng-href="/#/fellows/{{ fellow.id }}/{{ helpers.slugify( fellow.first_name + ' ' + fellow.last_name ) }}">
+				<i class="fa fa-plus fa-lg"></i> full profile
+			</a>
+		</div>
+
 	</div>
+
 </div>

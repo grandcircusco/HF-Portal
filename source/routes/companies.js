@@ -163,6 +163,8 @@ app.get('/:id', function getCompany(req, res) {
         },
         include: [{
             model: Tags
+        },{
+            model: Users
         }]
 
     }).then(function(company) {

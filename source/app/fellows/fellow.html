@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row single">
     <div class="col-md-8 col-md-offset-2">
 
         <ul class="breadcrumb">
@@ -6,16 +6,14 @@
             <li class="active">{{ fellow.first_name }} {{ fellow.last_name }}</li>
         </ul>
 
-        <div class=" profile fellow-container">
+        <div class="profile fellow-container">
 
             <div class="row">
                 <div class="col-md-3">
-                    <img class="user-photo" ng-src="{{ fellow.image_url }}" width="200" height="200">
-                    <br>
-                    <span class="label label-default" ng-repeat='tag in fellow.tags'>{{ tag.name }}</span>
 
-                    <i class="fa fa-github"></i>
-                    <i class="fa fa-envelope"></i>
+                    <div class="photo">
+                        <img class="img" ng-src={{fellow.image_url}} />
+                    </div>
 
                     <div class="row vote-container" ng-show="isCompany()">
 
@@ -33,30 +31,29 @@
                 </div>
 
                 <div class="col-md-9">
-                    <h1>{{ fellow.first_name +" "+ fellow.last_name }}</h1>
-                    <div class="user-facts">
-                        {{ fellow.university }} <br>
-                        {{ fellow.major }} <br>
-                        <!--<a href="{{ fellow.resume_file_path }}">Resume</a> <br>-->
-                        <!--<a href="{{ fellow.website_url }}">Website</a> <br>-->
-                    </div>
-                </div>
-            </div>
+                    <h1 class="name">{{ fellow.first_name +" "+ fellow.last_name }}</h1>
+                    <p class="tagline">{{ fellow.description }}</p>
 
-            <div class="row">
-                <div class="main-content">
-                    <h3 class="fd_subhdr">Biography</h3>
                     <div class="bio" ng-bind-html="helpers.paragraphize(fellow.bio) | sanitize"></div>
-                    <h3 class="fd_subhdr">Interests</h3>
+
                     <div class="interests" ng-bind-html="helpers.paragraphize(fellow.interests) | sanitize"></div>
+
+                    <p class="question">Q. {{ fellow.question }}</p>
+                    <p class="answer">A. {{ fellow.answer }}</p>
+
+                    <p class="links"><a class="github" ng-href="fellow.git_hub">GitHub</a> | <a class="portfolio" ng-href="fellow.portfolio">Portfolio</a></p>
                 </div>
             </div>
 
+            <div class="row tags">
 
+                <span class="tag" ng-repeat='tag in fellow.tags'>{{ tag.name }}</span>
+
+            </div>
         </div>
 
 
-        <p><a class="" href="/#/fellows"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Fellows</a></p>
+        <p class="pagination"><a class="" href="/#/fellows"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Fellows</a></p>
 
     </div>
 
