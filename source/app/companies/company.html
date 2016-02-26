@@ -43,7 +43,7 @@
                     <p class="stat company-size"><span>Company Size:</span> {{ company.company_size }}</p>
                     <p class="stat contact"><span>Primary Contact:</span> {{ company.primary_contact }} | {{ company.user.email }}</p>
 
-                    <p class="links"><a class="website" ng-href="company.website">Website</a></p>
+                    <p class="links"><a class="website" ng-href="{{ company.website_url }}" target="_blank">Website</a></p>
                 </div>
             </div>
 

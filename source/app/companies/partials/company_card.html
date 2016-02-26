@@ -8,7 +8,7 @@
 
 
 		<h3 class="name">{{ company.name }}</h3>
-		<p class="tagline">{{ fellow.description }}</p>
+		<p class="tagline">{{ company.description }}</p>
 
 		<div class="bio" ng-bind-html="helpers.paragraphize( company.bio.substr(0, 350) ) | sanitize"></div>
 
@@ -27,7 +27,7 @@
 
 			<a ng-href="/#/companies/{{ company.id }}/{{ helpers.slugify( company.name ) }}">
 				<!-- View Details -->
-				<i class="fa fa-arrow-right fa-lg"></i>  full profile
+				<i class="fa fa-plus fa-lg"></i>  full profile
 			</a>
 		</div>
 

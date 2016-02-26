@@ -76,19 +76,66 @@
 
         $scope.update = function(fellow, file) {
 
-            //console.log ( fellow.tags );
+            // TODO - there is a better way to do this error checking
+            var errors = [];
+            if( fellow.bio.length > 350 )
+            {
+                angular.element( "#bio" ).addClass( 'error' );
+                errors.push( "The bio field can only be 350 characters maximum");
+            }
+            else{
 
-            // send fellows info to API via Service
-            Fellows.update(fellow).success(function(newFellowData){
+                angular.element( "#bio" ).removeClass( 'error' );
+            }
 
-                // ** Trigger Success message here
-                fellow = newFellowData;
+            if( fellow.interests.length > 350 )
+            {
+                angular.element( "#interests" ).addClass( 'error' );
+                errors.push( "The interesting things you have coded field can only be 350 characters maximum");
+            }
+            else{
 
-                // hide update message
-                $("#profile-photo").find(".upload-status").hide();
+                angular.element( "#interests" ).removeClass( 'error' );
+            }
 
-                Alert.showAlert( 'Your profile has been updated', 'success' );
-            });
+            if( fellow.description.length > 25 )
+            {
+                angular.element( "#description" ).addClass( 'error' );
+                errors.push( "The phrase field can only be 25 characters maximum");
+            }
+            else{
+
+                angular.element( "#description" ).removeClass( 'error' );
+            }
+
+            if( fellow.answer.length > 250 )
+            {
+                angular.element( "#answer" ).addClass( 'error' );
+                errors.push( "The answer field can only be 250 characters maximum");
+            }
+            else{
+
+                angular.element( "#answer" ).removeClass( 'error' );
+            }
+
+            if( errors.length  === 0 )
+            {
+                // send fellows info to API via Service
+                Fellows.update(fellow).success(function (newFellowData) {
+
+                    // ** Trigger Success message here
+                    fellow = newFellowData;
+
+                    // hide update message
+                    $("#profile-photo").find(".upload-status").hide();
+
+                    Alert.showAlert('Your profile has been updated', 'success');
+                });
+            }
+            else{
+
+                Alert.showAlert( errors, 'error' );
+            }
         };
 
         /** S3 File uploading **/

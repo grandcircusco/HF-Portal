@@ -76,17 +76,35 @@
 
             console.log( company.tags );
 
-            // send companies info to API via Service
-            Companies.update(company).success(function(newCompanyData){
+            var errors = [];
+            if( company.bio.length > 350 )
+            {
+                angular.element( "#bio" ).addClass( 'error' );
+                errors.push( "The bio field can only be 350 characters maximum");
+            }
+            else{
 
-                // ** Trigger Success message here
-                company = newCompanyData;
+                angular.element( "#bio" ).removeClass( 'error' );
+            }
 
-                // hide update message
-                $("#profile-photo").find(".upload-status").hide();
+            if( errors.length  === 0 )
+            {
+                // send companies info to API via Service
+                Companies.update(company).success(function (newCompanyData) {
 
-                Alert.showAlert( 'Your profile has been updated', 'success' );
-            });
+                    // ** Trigger Success message here
+                    company = newCompanyData;
+
+                    // hide update message
+                    $("#profile-photo").find(".upload-status").hide();
+
+                    Alert.showAlert('Your profile has been updated', 'success');
+                });
+            }
+            else
+            {
+                Alert.showAlert( errors, 'error' );
+            }
         };
 
         /** S3 File uploading **/

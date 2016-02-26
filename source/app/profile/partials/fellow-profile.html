@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1">
 
             <div class="profile">
 
@@ -7,7 +7,7 @@
 
                 <div class="row">
 
-                    <div id="profile-photo" class="col-md-3">
+                    <div id="profile-photo" class="col-md-4">
 
                         <h4 class="title">Profile Image</h4>
 
@@ -26,7 +26,7 @@
                         <p class="upload-status">Click Update to Save</p>
                     </div>
 
-                    <div class="col-md-8 col-md-offset-1">
+                    <div class="col-md-7 col-md-offset-1">
 
                         <form>
 
@@ -62,17 +62,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="bio" class="control-label">Who are you? <span>Bio / Background Story / Your Mission</span></label>
-                                <textarea class="form-control" rows="7" id="bio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
+                                <label for="bio" class="control-label">Who are you? <span>Bio / Background Story / Your Mission (350 characters max)</span></label>
+                                <textarea class="form-control" rows="5" id="bio" ng-model="fellow.bio" value="{{fellow.bio}}"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="interests" class="control-label">What are some interesting things you have coded? <span>Non class related if you can</span></label>
-                                <textarea class="form-control" rows="7" id="interests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
+                                <label for="interests" class="control-label">What are some interesting things you have coded? <span>Non class related if you can (350 characters max)</span></label>
+                                <textarea class="form-control" rows="5" id="interests" ng-model="fellow.interests" value="{{fellow.interests}}"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="description" class="control-label">Enter a single phrase to describe yourself</label>
+                                <label for="description" class="control-label">Enter a single phrase to describe yourself (25 characters max)</label>
                                 <input type="text" class="form-control" id="description" ng-model="fellow.description" value="{{fellow.description}}"/>
                             </div>
 
@@ -86,8 +86,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="question" class="control-label">Answer the above question</label>
-                                <input type="text" class="form-control" id="answer" ng-model="fellow.answer" value="{{fellow.answer}}"/>
+                                <label for="answer" class="control-label">Answer the above question (250 characters max)</label>
+                                <textarea rows="4" class="form-control" id="answer" ng-model="fellow.answer">{{fellow.answer}}"</textarea>
                             </div>
 
 
@@ -112,7 +112,7 @@
 
                             <div class="form-group">
 
-                                <label class="control-label"> Desired Skills <span>Manually enter skills that are not in the list</span></label>
+                                <label class="control-label"> Technical Skills <span>Manually enter skills that are not in the list</span></label>
                                 <ui-select multiple
                                            tagging="tagTransform"
                                            tagging-label="(new)"
@@ -120,6 +120,7 @@
                                            theme="bootstrap"
                                            ng-disabled="disabled"
                                            style="width: 100%"
+                                           limit="5"
                                            title="Choose a skill">
                                     <ui-select-match placeholder="Select skill">{{ $item.name }}</ui-select-match>
                                     <ui-select-choices repeat="tag in tags | propsFilter: { name: $select.search }">

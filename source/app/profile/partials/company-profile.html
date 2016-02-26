@@ -1,6 +1,6 @@
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1">
 
         <div class="profile">
 
@@ -8,7 +8,7 @@
 
             <div class="row">
 
-                <div id="profile-photo" class="col-md-3">
+                <div id="profile-photo" class="col-md-4">
 
                     <h4 class="title">Profile Image</h4>
 
@@ -29,7 +29,7 @@
 
                 </div>
 
-                <div class="col-md-8 col-md-offset-1">
+                <div class="col-md-7 col-md-offset-1">
 
                     <form>
 
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="control-label">Location</label>
+                            <label for="email" class="control-label">City</label>
                             <input type="text" class="form-control" id="location" ng-model="company.location" value="{{company.location}}"/>
                         </div>
 
@@ -88,7 +88,7 @@
 
                         <div class="form-group">
                             <label for="bio" class="control-label">Company Bio</label>
-                            <textarea class="form-control" rows="7" id="bio" ng-model="company.bio" value="{{company.bio}}"></textarea>
+                            <textarea class="form-control" rows="5" id="bio" ng-model="company.bio" value="{{company.bio}}"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -98,6 +98,21 @@
 
                         <div class="form-group">
                             <label for="developer_type" class="control-label">How would you best classify the developer you are seeking?</label>
+                            <div class="radio">
+                                <label>Front End</label>
+                                <input type="checkbox" name="developer_type" value="Front End" />
+                            </div>
+
+                            <div class="radio">
+                                <label>Back End</label>
+                                <input type="checkbox" name="developer_type" value="Back End" />
+                            </div>
+
+                            <div class="radio">
+                                <label>Full Stack</label>
+                                <input type="checkbox" name="developer_type" value="Full Stack" />
+                            </div>
+
                             <select name="developer_type" class="form-control" id="developer_type" ng-model="company.developer_type">
                                 <option>Front End</option>
                                 <option>Back End</option>
@@ -107,7 +122,7 @@
 
                         <div class="form-group">
 
-                            <label class="control-label"> Desired Skills <span>Manually enter skills that are not in the list</span></label>
+                            <label class="control-label"> Desired Technical Skills / Technology <span>Manually enter skills that are not in the list</span></label>
                             <ui-select multiple
                                        tagging="tagTransform"
                                        tagging-label="(new)"
@@ -115,6 +130,7 @@
                                        theme="bootstrap"
                                        ng-disabled="disabled"
                                        style="width: 100%"
+                                       limit="5"
                                        title="Choose a skill">
                                 <ui-select-match placeholder="Select skill">{{ $item.name }}</ui-select-match>
                                 <ui-select-choices repeat="tag in tags | propsFilter: { name: $select.search }">

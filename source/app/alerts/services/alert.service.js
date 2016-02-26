@@ -27,7 +27,15 @@
             },
             showAlert: function(newMessage, newType) {
 
-                this.alert.message = newMessage;
+                if( Array.isArray( newMessage ) )
+                {
+                    this.alert.message = newMessage.join( '<br />' );
+                }
+                else {
+
+                    this.alert.message = newMessage;
+                }
+
                 this.alert.type = newType;
                 this.alert.show = true;
 
