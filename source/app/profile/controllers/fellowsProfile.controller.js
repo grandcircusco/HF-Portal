@@ -9,12 +9,12 @@
     .module('app.profile.controllers')
     .controller('FellowsProfileController', FellowsProfileController);
 
-    FellowsProfileController.$inject = ['$scope', '$location', '$timeout', 'Fellows', 'Tags', 'User', 'S3', 'Alert' ];
+    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User', 'S3', 'Alert' ];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope, $location, $timeout, Fellows, Tags, User, S3, Alert ) {
+    function FellowsProfileController($scope, $location, Fellows, Tags, User, S3, Alert ) {
 
         var vm = this;
 
@@ -44,27 +44,38 @@
         }
 
         $scope.tags = [];
-        Fellows.getByUserId(currentUser.id).success(function(fellow){
 
-            $scope.fellow = fellow;
+        function getFellow() {
 
-            $("[name='enabled']").bootstrapSwitch({
+            console.log( "Get Fellow" );
 
-                onText: "Visible",
-                offText: "Hidden",
-                state: fellow.enabled,
-                onSwitchChange: function(event, state){
+            var currentUser = User.getCurrentUser();
 
-                    fellow.enabled = ( state ) ? 1 : 0;
-                }
+            Fellows.getByUserId(currentUser.id).success(function (fellow) {
+
+                $scope.fellow = fellow;
+
+                $("[name='enabled']").bootstrapSwitch({
+
+                    onText: "Visible",
+                    offText: "Hidden",
+                    state: fellow.enabled,
+                    onSwitchChange: function (event, state) {
+
+                        fellow.enabled = ( state ) ? 1 : 0;
+                    }
+                });
+
+                Tags.all().success(function (tags) {
+
+                    $scope.tags = tags;
+                });
+
             });
+        }
+        getFellow();
 
-            Tags.all().success(function(tags){
-
-                $scope.tags = tags;
-            });
-
-        });
+        //$scope.$on( 'loginStatusChanged', getFellow);
 
         activate();
 
@@ -192,6 +203,8 @@
             xhr.open("PUT", signed_request);
             xhr.setRequestHeader('x-amz-acl', 'public-read');
 
+            $("#profile-photo").find(".uploading").show();
+
             xhr.onload = function() {
 
                 if (xhr.status === 200) {
@@ -207,6 +220,7 @@
                     $("#preview").removeClass('ng-hide');
                     $(".user-photo").find(".placeholder").hide();
                     $("#profile-photo").find(".upload-status").show();
+                    $("#profile-photo").find(".uploading").hide();
                 }
             };
 

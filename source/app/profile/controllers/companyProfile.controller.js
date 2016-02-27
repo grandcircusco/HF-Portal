@@ -43,26 +43,33 @@
         }
 
         $scope.tags = [];
-        Companies.getByUserId(currentUser.id).success(function(company){
+        function getCompany() {
 
-            $scope.company = company;
+            var currentUser = User.getCurrentUser();
 
-            $("[name='enabled']").bootstrapSwitch({
+            Companies.getByUserId(currentUser.id).success(function (company) {
 
-                onText: "Visible",
-                offText: "Hidden",
-                state: company.enabled,
-                onSwitchChange: function(event, state){
+                $scope.company = company;
 
-                    company.enabled = ( state ) ? 1 : 0;
-                }
+                $("[name='enabled']").bootstrapSwitch({
+
+                    onText: "Visible",
+                    offText: "Hidden",
+                    state: company.enabled,
+                    onSwitchChange: function (event, state) {
+
+                        company.enabled = ( state ) ? 1 : 0;
+                    }
+                });
+
+                Tags.all().success(function (tags) {
+
+                    $scope.tags = tags;
+                });
             });
-
-            Tags.all().success(function(tags){
-
-                $scope.tags = tags;
-            });
-        });
+        }
+        getCompany();
+        //$scope.$on( 'loginStatusChanged',  getCompany);
 
         activate();
 
@@ -74,7 +81,7 @@
 
         $scope.update = function(company) {
 
-            console.log( company.tags );
+            //console.log( company.tags );
 
             var errors = [];
             if( company.bio.length > 350 )
@@ -160,6 +167,8 @@
             xhr.open("PUT", signed_request);
             xhr.setRequestHeader('x-amz-acl', 'public-read');
 
+            $("#profile-photo").find(".uploading").show();
+
             xhr.onload = function() {
 
                 if (xhr.status === 200) {
@@ -175,6 +184,7 @@
                     $("#preview").removeClass('ng-hide');
                     $(".user-photo").find(".placeholder").hide();
                     $("#profile-photo").find(".upload-status").show();
+                    $("#profile-photo").find(".uploading").hide();
                 }
             };
 

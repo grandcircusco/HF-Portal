@@ -37,47 +37,83 @@
 
     .when('/tags', {
         controller: 'TagsController',
-        templateUrl: 'source/app/tags/tags.html'
+        templateUrl: 'source/app/tags/tags.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when('/profile', {
         controller: 'ProfileController',
-        templateUrl: 'source/app/profile/profile.html'
+        templateUrl: 'source/app/profile/profile.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when('/profile/admin', {
         controller: 'AdminProfileController',
-        templateUrl: 'source/app/profile/partials/admin-profile.html'
+        templateUrl: 'source/app/profile/partials/admin-profile.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when('/profile/fellow', {
         controller: 'FellowsProfileController',
-        templateUrl: 'source/app/profile/partials/fellow-profile.html'
+        templateUrl: 'source/app/profile/partials/fellow-profile.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when('/profile/company', {
         controller: 'CompanyProfileController',
-        templateUrl: 'source/app/profile/partials/company-profile.html'
+        templateUrl: 'source/app/profile/partials/company-profile.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when( '/votes', {
         controller: 'VotesController',
-        templateUrl: 'source/app/votes/partials/votes.html'
+        templateUrl: 'source/app/votes/partials/votes.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when( '/votes/fellow', {
         controller: 'FellowVotesController',
-        templateUrl: 'source/app/votes/partials/fellow-votes.html'
+        templateUrl: 'source/app/votes/partials/fellow-votes.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when( '/votes/company', {
         controller: 'CompanyVotesController',
-        templateUrl: 'source/app/votes/partials/company-votes.html'
+        templateUrl: 'source/app/votes/partials/company-votes.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .otherwise({ redirectTo: '/' });
 
 });
+
+var checkLoggedin = function($q, $timeout, $http, $location, $rootScope, CONFIG, User){
+
+    // Initialize a new promise
+    var deferred = $q.defer();
+
+    // keep user logged in after page refresh
+    // Check backend for existing user in session and update User Service
+    $http.get( CONFIG.SERVICE_URL + '/api/v1/users/confirm-login' )
+        .success(function (user) {
+
+            //console.log( user );
+
+            if (user && user.id) {
+
+                User.SetCredentials( user.id, user.email, user.userType );
+                deferred.resolve();
+            }
+            else{
+
+                deferred.reject();
+                $location.url('/');
+            }
+
+        });
+
+    return deferred.promise;
+};
 
 app.controller('RoutingController', RoutingController)
 .controller('LoginModalInstanceController', LoginModalInstanceController);
@@ -134,7 +170,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
 
 function LoginModalInstanceController ($scope, $modalInstance, User) {
 
-    // save this through a refesh
+    // save this through a refresh
     $scope.loginForm = {
 
         email: "",
@@ -177,17 +213,7 @@ function LoginModalInstanceController ($scope, $modalInstance, User) {
 run.$inject = ['$http', 'User', 'CONFIG'];
 function run($http, User, CONFIG ){
 
-    // keep user logged in after page refresh
-    // Check backend for existing user in session and update User Service
-    $http.get( CONFIG.SERVICE_URL + '/api/v1/users/confirm-login' )
-        .success(function (user) {
 
-            if (user && user.id) {
-
-                User.SetCredentials( user.id, user.email, user.userType );
-            }
-
-        });
 
 }
 
