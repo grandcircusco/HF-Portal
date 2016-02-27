@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var Middleware = require('./middleware');
+
 var models = require('../models');
 var Tags = models.tags;
 
@@ -22,7 +24,7 @@ app.get('/', function getTags(req, res) {
 });
 
 // POST /api/tags - create a tag
-app.post('/', function createTag( req, res ){
+app.post('/', Middleware.isLoggedIn, function createTag( req, res ){
 
     // find tags by case insensitive compare
     Tags.findOne({
@@ -59,7 +61,7 @@ app.post('/', function createTag( req, res ){
 });
 
 // PUT /api/tags/:id - update a tag
-app.put('/:id', function putTag(req, res) {
+app.put('/:id', Middleware.isAdmin, function putTag(req, res) {
 
     Tags.findOne({
 

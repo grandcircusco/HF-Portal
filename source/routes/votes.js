@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var Sequelize = require("sequelize");
 
+var Middleware = require('./middleware');
+
 var models = require('../models');
 var Companies = models.companies;
 var Fellows = models.fellows;
@@ -9,10 +11,10 @@ var Users = models.users;
 var Votes = models.votes;
 
 // GET /votes/ - Company votes for a fellow
-app.get('/:voter_id', function getVote(req, res) {
+app.get('/:voter_id', Middleware.isLoggedIn, function getVote(req, res) {
 
 
-    var votes = Votes.findAll({
+    Votes.findAll({
 
         where: {
 
@@ -78,8 +80,6 @@ function resolvePromisesAndPost( voter, votee, res ) {
                             {
                                 res.status( 500 ).send( "You have already shown interest in this fellow " );
                             }
-
-
                         }
 
                     });
@@ -99,7 +99,7 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
 
 // POST /votes/ - Company votes for a fellow
-app.post('/', function postVote(req, res) {
+app.post('/', Middleware.isLoggedIn, function postVote(req, res) {
 
     // TODO - This should enforce that the users are of different types
     // - ex: Fellows only vote for companies, not other fellows.
@@ -127,9 +127,7 @@ app.post('/', function postVote(req, res) {
 
 
 // DELETE /votes/ - Deletes a fellow's vote
-app.delete('/:vote_id', function (req, res) {
-
-    // TODO -- this should only run if the signed in user owns the vote
+app.delete('/:vote_id', Middleware.isLoggedIn, function (req, res) {
 
     var vote = Votes.findOne({
 
@@ -139,6 +137,18 @@ app.delete('/:vote_id', function (req, res) {
         }
 
     }).then( function( vote ){
+
+        // Make sure signed in user owns the vote (if not admin)
+        var currentUser = req.user;
+        if( currentUser.userType !== 'Admin' ) {
+
+            // user is not admin, so check if they match the vote owners
+            if( currentUser.id !== parseInt( vote.voter_id ) )
+            {
+                res.send( 'Unauthorized' );
+                return;
+            }
+        }
 
         // success callback
         vote.destroy();

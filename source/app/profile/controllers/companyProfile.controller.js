@@ -20,7 +20,7 @@
         // Probably can handle this in the routes or with middleware of some kind
         if( !User.isUserLoggedIn() ) {
 
-            $location.path("/");
+            //$location.path("/");
             return;
         }
 

@@ -59,7 +59,9 @@
           getCurrentUser: getCurrentUser,
           setCurrentUser: setCurrentUser,
           isUserLoggedIn: isUserLoggedIn,
-          isUserAdmin: isUserAdmin
+          isUserAdmin: isUserAdmin,
+          isUserFellow: isUserFellow,
+          isUserCompany: isUserCompany
       };
 
 
@@ -120,6 +122,24 @@
       function isUserAdmin(){
 
           if( currentUser.userType === 'Admin' )
+          {
+              return true;
+          }
+          else return false;
+      }
+
+      function isUserFellow(){
+
+          if( currentUser.userType === 'Fellow' )
+          {
+              return true;
+          }
+          else return false;
+      }
+
+      function isUserCompany(){
+
+          if( currentUser.userType === 'Company' )
           {
               return true;
           }

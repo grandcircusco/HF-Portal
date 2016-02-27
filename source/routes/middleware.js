@@ -4,6 +4,26 @@
 
     /** Define Middleware for routes **/
 
+    var isOwnerOrAdmin = function( req, res, next ) {
+
+        // User must be logged in and must either
+        // - be the user being edited
+        // - be an admin
+        var currentUser = req.user;
+
+        if( currentUser.userType === 'Admin' ) {
+            return next();
+        }
+        // user is not admin, so check if they match the user being posted
+        else if( currentUser.id !== parseInt( req.params.id ) )
+        {
+            console.log(currentUser.id + "!=" + req.params.id );
+            res.send( 'Unauthorized' );
+            return;
+        }
+
+    };
+
     var isLoggedIn = function (req, res, next) {
 
         if (req.isAuthenticated()) {
@@ -65,6 +85,7 @@
 
     module.exports = {
 
+        isOwnerOrAdmin: isOwnerOrAdmin,
         isLoggedIn: isLoggedIn,
         isAdmin: isAdmin,
         isFellow: isFellow,

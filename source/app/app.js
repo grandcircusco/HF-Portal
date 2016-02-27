@@ -100,6 +100,8 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
 
         $scope.isUserLoggedIn = User.isUserLoggedIn();
         $scope.isUserAdmin = User.isUserAdmin();
+        $scope.isUserFellow = User.isUserFellow();
+        $scope.isUserCompany = User.isUserCompany();
     }
 
     $scope.openModal = function() {
@@ -123,6 +125,8 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
 
         $scope.isUserLoggedIn = false;
         $scope.isUserAdmin = false;
+        $scope.isUserFellow = false;
+        $scope.isUserCompany = false;
 
         $window.location.reload();
     };

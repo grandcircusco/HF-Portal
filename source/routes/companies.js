@@ -2,6 +2,8 @@ var express = require('express');
 var multer  = require('multer');
 var app = express();
 
+var Middleware = require('./middleware');
+
 var models = require('../models');
 var Companies = models.companies;
 var Fellows = models.fellows;
@@ -49,7 +51,7 @@ app.get('/', function getCompanies(req, res) {
 });
 
 // POST /companies - create a new company record
-app.post('/', function postCompany(req, res) {
+app.post('/', Middleware.isAdmin, function postCompany(req, res) {
     //res.send('POST request - create a new company record');
 
     // Take POST data and build a Company Object (sequelize)
@@ -198,7 +200,7 @@ app.get('/user_id/:user_id', function getFellow(req, res){
 });
 
 // PUT /companies/:id - updates an existing company record
-app.put('/:id', upload.single('file'),function putCompany(req, res) {
+app.put('/:id', Middleware.isLoggedIn, upload.single('file'),function putCompany(req, res) {
 
     Companies.findOne({
 
@@ -211,6 +213,16 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
         }]
 
     }).then(function(company) {
+
+        var currentUser = req.user;
+        if( currentUser.userType !== 'Admin' ) {
+
+            if (company.user_id !== currentUser.id) {
+
+                res.send('Unauthorized');
+                return;
+            }
+        }
 
         company.user_id = req.body.user_id;
         company.name = req.body.name;
@@ -237,31 +249,34 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
 
                 req.body.tags.forEach(function (tag) {
 
-                    if( typeof tag.id !== "undefined" ) {
+                    if( typeof tag.name !== "undefined" ) {
 
                         Tags.findOne({
 
                             where: {
-                                id: parseInt(tag.id)
+                                name: {
+
+                                    ilike: tag.name
+                                }
                             }
 
                         }).then(function (tagObj) {
 
-                            console.log(tagObj);
+                            if( tabObj ){
 
-                            company.addTag(tagObj);
-                        });
-                    }
-                    else{
+                                company.addTag(tagObj);
+                            }
+                            else {
 
-                        Tags.create({
+                                Tags.create({
 
-                            name: tag.name
-                        }).then( function( tagObj ){
+                                    name: tag.name
 
-                            console.log(tagObj);
+                                }).then(function (tagObj) {
 
-                            company.addTag(tagObj);
+                                    company.addTag(tagObj);
+                                });
+                            }
                         });
                     }
                 });
@@ -275,7 +290,7 @@ app.put('/:id', upload.single('file'),function putCompany(req, res) {
 });
 
 // DELETE /companies/:id - deletes an existing company record
-app.delete('/:id', function deleteCompany(req, res) {
+app.delete('/:id', Middleware.isLoggedIn, function deleteCompany(req, res) {
 
     Companies.findOne({
 
@@ -284,6 +299,16 @@ app.delete('/:id', function deleteCompany(req, res) {
         }
 
     }).then(function(company) {
+
+        var currentUser = req.user;
+        if( currentUser.userType !== 'Admin' ) {
+
+            if (company.user_id !== currentUser.id) {
+
+                res.send('Unauthorized');
+                return;
+            }
+        }
 
         company.destroy();
 

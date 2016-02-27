@@ -2,6 +2,8 @@ var express = require('express');
 var multer  = require('multer');
 var app = express();
 
+var Middleware = require('./middleware');
+
 var models = require('../models');
 var Fellows = models.fellows;
 var Companies = models.companies;
@@ -135,7 +137,7 @@ app.get('/user_id/:user_id', function getFellow(req, res){
 
 // POST /fellows - create a new fellow record
 // ** Create a new fellow and fetch relations -- admin page expects certain data
-app.post('/', function postFellow(req, res) {
+app.post('/', Middleware.isAdmin, function postFellow(req, res) {
 
     Fellows.create({
 
@@ -201,7 +203,7 @@ app.post('/', function postFellow(req, res) {
 
 
 // PUT /fellows/:id - updates an existing fellow record
-app.put('/:id', upload.single('file'), function putFellow(req, res) {
+app.put('/:id', Middleware.isLoggedIn, function putFellow(req, res) {
 
     Fellows.findOne({
 
@@ -214,6 +216,16 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
         }]
 
     }).then(function(fellow) {
+
+        var currentUser = req.user;
+        if( currentUser.userType !== 'Admin' ) {
+
+            if (fellow.user_id !== currentUser.id) {
+
+                res.send('Unauthorized');
+                return;
+            }
+        }
 
         fellow.user_id = req.body.user_id;
         fellow.first_name = req.body.first_name;
@@ -245,29 +257,36 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
 
                 req.body.tags.forEach(function ( tag ) {
 
-                    if( typeof tag.id !== "undefined" ) {
+                    if( typeof tag.name !== "undefined" ) {
 
                         Tags.findOne({
 
                             where: {
-                                id: parseInt(tag.id)
+                                name: {
+
+                                    ilike: tag.name
+                                }
                             }
 
                         }).then(function (tagObj) {
 
-                            fellow.addTag(tagObj);
-                        });
-                    }
-                    else{
+                            // if tag found assign
+                            if( tagObj ){
 
-                        Tags.create({
+                                fellow.addTag(tagObj);
+                            }
+                            // else create and assign
+                            else{
 
-                            name: tag.name
-                        }).then( function( tagObj ){
+                                Tags.create({
 
-                            console.log(tagObj);
+                                    name: tag.name
 
-                            company.addTag(tagObj);
+                                }).then( function( tagObj ){
+
+                                    fellow.addTag(tagObj);
+                                });
+                            }
                         });
                     }
                 });
@@ -281,7 +300,7 @@ app.put('/:id', upload.single('file'), function putFellow(req, res) {
 });
 
 // DELETE /fellows/:id - deletes an existing fellow record
-app.delete('/:id', function deleteFellow(req, res) {
+app.delete('/:id', Middleware.isLoggedIn, function deleteFellow(req, res) {
 
     Fellows.findOne({
 
@@ -290,6 +309,16 @@ app.delete('/:id', function deleteFellow(req, res) {
         }
 
     }).then(function(fellow) {
+
+        var currentUser = req.user;
+        if( currentUser.userType !== 'Admin' ) {
+
+            if (fellow.user_id !== currentUser.id) {
+
+                res.send('Unauthorized');
+                return;
+            }
+        }
 
         fellow.destroy();
 

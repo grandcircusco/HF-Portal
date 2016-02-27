@@ -194,23 +194,7 @@ app.post('/create', Middleware.isAdmin, function createUser(req, res) {
 });
 
 // PUT /users/:id - updates an existing user record
-app.put('/:id', Middleware.isLoggedIn, function putUser(req, res) {
-
-	// User must be logged in and must either
-	// - be the user being edited
-	// - be an admin
-	var currentUser = req.user;
-	console.log( currentUser );
-	if( currentUser.userType !== 'Admin' )
-	{
-		// user is not admin, so check if they match the user being posted
-		if( currentUser.id !== parseInt( req.params.id ) )
-		{
-			console.log(currentUser.id + "!=" + req.params.id );
-			res.send( 'Unauthorized' );
-			return;
-		}
-	}
+app.put('/:id', Middleware.isOwnerOrAdmin, function putUser(req, res) {
 
 	Users.findOne({
 
