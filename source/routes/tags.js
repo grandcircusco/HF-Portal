@@ -87,4 +87,30 @@ app.put('/:id', Middleware.isAdmin, function putTag(req, res) {
 
 });
 
+
+// DELETE /votes/ - Deletes a fellow's vote
+app.delete('/:tag_id', Middleware.isAdmin, function (req, res) {
+
+    Tags.findOne({
+
+        where: {
+            id: req.params.tag_id
+        }
+
+    }).then(function(tag) {
+
+        if( tag !== null ){
+
+            tag.destroy();
+
+            res.send( '1' );
+        }
+        else{
+
+            res.status(400).send({ error: 'Tag not found' });
+        }
+
+    });
+});
+
 module.exports = app;

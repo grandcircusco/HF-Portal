@@ -87,6 +87,7 @@
 
 });
 
+// On paths that require login, make sure the login is confirmed before the route is loaded.
 var checkLoggedin = function($q, $timeout, $http, $location, $rootScope, CONFIG, User){
 
     // Initialize a new promise

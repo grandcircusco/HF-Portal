@@ -35,12 +35,14 @@
                     <tr>
                         <th>Name</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="tag in tags">
                         <td>{{ tag.name }}</td>
                         <td width="30"><a href ng-click="editTag(tag)"><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td width="30"><a href ng-click="removeTag(tag)"><i class="fa fa-times text-danger"></i></a></td>
                     </tr>
                 </tbody>
             </table>

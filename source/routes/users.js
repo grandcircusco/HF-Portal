@@ -226,4 +226,30 @@ app.put('/:id', Middleware.isOwnerOrAdmin, function putUser(req, res) {
 
 });
 
+// DELETE /users/ - Deletes a user
+app.delete('/:user_id', Middleware.isAdmin, function (req, res) {
+
+	Users.findOne({
+
+		where: {
+			id: req.params.user_id
+		}
+
+	}).then(function(user) {
+
+		if( user !== null ){
+
+			user.destroy();
+
+			res.send( '1' );
+		}
+		else{
+
+			res.status(400).send({ error: 'User not found' });
+		}
+
+	});
+});
+
+
 module.exports = app;

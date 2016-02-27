@@ -18,10 +18,10 @@
 
     var vm = this;
 
-    Fellows.all().success(function(fellows){
-
-      $scope.fellows = fellows;
-    });
+    //Fellows.all().success(function(fellows){
+    //
+    //  $scope.fellows = fellows;
+    //});
 
     activate();
 

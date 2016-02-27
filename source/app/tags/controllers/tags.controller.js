@@ -65,6 +65,23 @@
             return false;
         };
 
+        $scope.removeTag = function( tag ){
+
+            var c = confirm( "Are you sure you want to delete " + tag.name + "?");
+
+            if( c ){
+
+                Tags.destroy( tag.id).then( function(){
+
+                    // now update available tags
+                    Tags.all().success( function( tags ){
+
+                        $scope.tags = tags;
+                    });
+                });
+            }
+        };
+
     }
 
     angular

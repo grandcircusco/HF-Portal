@@ -300,7 +300,7 @@ app.put('/:id', Middleware.isLoggedIn, function putFellow(req, res) {
 });
 
 // DELETE /fellows/:id - deletes an existing fellow record
-app.delete('/:id', Middleware.isLoggedIn, function deleteFellow(req, res) {
+app.delete('/:id', Middleware.isAdmin, function deleteFellow(req, res) {
 
     Fellows.findOne({
 
@@ -309,16 +309,6 @@ app.delete('/:id', Middleware.isLoggedIn, function deleteFellow(req, res) {
         }
 
     }).then(function(fellow) {
-
-        var currentUser = req.user;
-        if( currentUser.userType !== 'Admin' ) {
-
-            if (fellow.user_id !== currentUser.id) {
-
-                res.send('Unauthorized');
-                return;
-            }
-        }
 
         fellow.destroy();
 

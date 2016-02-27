@@ -75,8 +75,6 @@
         }
         getFellow();
 
-        //$scope.$on( 'loginStatusChanged', getFellow);
-
         activate();
 
         function activate() {

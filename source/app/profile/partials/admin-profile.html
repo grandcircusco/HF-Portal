@@ -18,6 +18,7 @@
 							<th class="stat">Votes Cast</th>
 							<th class="stat">Enabled</th>
 							<th></th>
+							<th></th>
 						</thead>
 						<tbody>
 						<tr ng-repeat="fellow in fellows">
@@ -27,6 +28,7 @@
 							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesCast.length }}</a></td>
 							<td class="stat">{{ fellow.enabled ? "Yes" : "No" }}</td>
 							<td><a href ng-click="editFellow(fellow)"><i class="fa fa-pencil-square-o"></i></a></td>
+							<td width="30"><a href ng-click="removeFellow(fellow)"><i class="fa fa-times text-danger"></i></a></td>
 						</tr>
 
 						</tbody>
@@ -43,6 +45,7 @@
 							<th class="stat">Votes Cast</th>
 							<th class="stat">Enabled</th>
 							<th></th>
+							<th></th>
 						</tr>
 						</thead>
 						<tbody>
@@ -53,6 +56,7 @@
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesCast.length }}</a></td>
 							<td class="stat">{{ company.enabled ? "Yes" : "No" }}</td>
 							<td><a href ng-click="editCompany(company)"><i class="fa fa-pencil-square-o"></i></a></td>
+							<td width="30"><a href ng-click="removeCompany(company)"><i class="fa fa-times text-danger"></i></a></td>
 						</tr>
 						</tbody>
 					</table>

@@ -39,6 +39,18 @@
             <p ng-show="newUserForm.password.$invalid && !newUserForm.password.$pristine" class="text-danger">A password is required.</p>
         </div>
 
+        <div class="form-group">
+            <label for="password">Verify Password:</label>
+            <input type="password"
+                   class="form-control"
+                   id="verify_password"
+                   name="verify_password"
+                   ng-model="verify_password"
+                   ng-required="true"
+                   ng-class="{ 'has-error' : newUserForm.password.$invalid && !newUserForm.password.$pristine }">
+            <p ng-show="newUserForm.password.$invalid && !newUserForm.password.$pristine" class="text-danger">A password is required.</p>
+        </div>
+
         <div class="radio">
             <label>
                 <input type="radio"

@@ -262,7 +262,7 @@ app.put('/:id', Middleware.isLoggedIn, upload.single('file'),function putCompany
 
                         }).then(function (tagObj) {
 
-                            if( tabObj ){
+                            if( tagObj ){
 
                                 company.addTag(tagObj);
                             }
@@ -290,7 +290,7 @@ app.put('/:id', Middleware.isLoggedIn, upload.single('file'),function putCompany
 });
 
 // DELETE /companies/:id - deletes an existing company record
-app.delete('/:id', Middleware.isLoggedIn, function deleteCompany(req, res) {
+app.delete('/:id', Middleware.isAdmin, function deleteCompany(req, res) {
 
     Companies.findOne({
 
@@ -299,16 +299,6 @@ app.delete('/:id', Middleware.isLoggedIn, function deleteCompany(req, res) {
         }
 
     }).then(function(company) {
-
-        var currentUser = req.user;
-        if( currentUser.userType !== 'Admin' ) {
-
-            if (company.user_id !== currentUser.id) {
-
-                res.send('Unauthorized');
-                return;
-            }
-        }
 
         company.destroy();
 

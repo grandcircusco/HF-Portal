@@ -53,7 +53,7 @@
           create: create,
           login: login,
           update: update,
-          //destroy: destroy
+          destroy: destroy,
           SetCredentials: SetCredentials,
           ClearCredentials: ClearCredentials,
           getCurrentUser: getCurrentUser,
@@ -106,9 +106,9 @@
        * @name destroy
        * @desc destroy a user record
        */
-      //function destroy(id) {
-      //    return $http.delete(rootUrl + rootUrl + '/api/v1/users/' + id);
-      //}
+      function destroy(id) {
+          return $http.delete(rootUrl + rootUrl + '/api/v1/users/' + id);
+      }
 
       function isUserLoggedIn(){
 

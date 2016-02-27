@@ -9,12 +9,12 @@
     .module('app.profile.controllers')
     .controller('AdminProfileController', AdminProfileController);
 
-    AdminProfileController.$inject = ['$scope', '$location', '$modal', 'User', 'Fellows', 'Companies'];
+    AdminProfileController.$inject = ['$scope', '$location', '$modal', '$window', 'User', 'Fellows', 'Companies'];
 
     /**
      * @namespace AdminProfileController
      */
-     function AdminProfileController($scope, $location, $modal, User, Fellows, Companies) {
+     function AdminProfileController($scope, $location, $modal, $window, User, Fellows, Companies) {
 
         // TODO - Probably can handle this in routes or with middleware or some kind
         if( !User.isUserLoggedIn() ) {
@@ -39,8 +39,6 @@
 
                 Fellows.allWithUser().success(function (fellows) {
 
-                    console.log( fellows );
-
                     $scope.fellows = fellows;
 
                 });
@@ -49,8 +47,6 @@
             if( $scope.companies.length === 0 ) {
 
                 Companies.allWithUser().success(function (companies) {
-
-                    console.log( companies );
 
                     $scope.companies = companies;
                 });
@@ -184,6 +180,43 @@
             });
         };
 
+        $scope.removeFellow = function( fellow ){
+
+            var c = confirm( "Are you sure you want to delete " + fellow.first_name + " " + fellow.last_name + "?");
+
+            if( c ){
+
+                // remove fellow
+                Fellows.destroy( fellow.id ).then( function(){
+
+                    // now remove user
+                    User.destroy( fellow.user_id).then( function(){
+
+                        // reload users
+                        $window.location.reload();
+                    });
+                });
+            }
+        };
+
+        $scope.removeCompany = function( company ){
+
+            var c = confirm( "Are you sure you want to delete " + company.name + "?");
+
+            if( c ){
+
+                // remove company
+                Companies.destroy( company.id ).then( function(){
+
+                    // now remove user
+                    User.destroy( company.user_id).then( function(){
+
+                        // reload users
+                        $window.location.reload();
+                    });
+                });
+            }
+        };
     }
 
 
@@ -399,6 +432,8 @@
     CreateUserModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Fellows', 'Companies' ];
     function CreateUserModalInstanceController ($scope, $modalInstance, User, Fellows, Companies) {
 
+        $scope.verify_password = "";
+
         $scope.create = function (user){
 
             $scope.errors = [];
@@ -424,6 +459,11 @@
                 if( typeof user.userType === "undefined" ) {
 
                     $scope.errors.push( "Choose a user type" );
+                }
+
+                if( user.password !== $scope.verify_password ){
+
+                    $scope.errors.push( "Passwords do not match" );
                 }
             }
 
