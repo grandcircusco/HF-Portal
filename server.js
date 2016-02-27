@@ -5,6 +5,9 @@ var Sequelize = require('sequelize');
 var gzippo = require('gzippo');
 var aws = require('aws-sdk');
 
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+
 var models = require('./source/models');
 var fellows = require('./source/routes/fellows');
 var companies = require('./source/routes/companies');
@@ -12,23 +15,30 @@ var tags = require('./source/routes/tags');
 var votes = require('./source/routes/votes');
 var users = require('./source/routes/users');
 
+
 var app = express();
 
 console.log("Setting port: ");
 app.set('port', (process.env.PORT || 5000));
 console.log('Port set: ' + app.get('port'));
 
-/**
- *
- * This makes getting Posted Data from req.body work
- *
- */
+/** This makes getting Posted Data from req.body work */
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
 app.use(gzippo.staticGzip(__dirname));// + '/public'));
 app.use(gzippo.compress());
+
+// Authentication stuff
+app.use(cookieParser());
+
+// This must be done before passport is initialized
+app.use(require('express-session')({
+    secret: 'keyboard cat'
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use('/api/v1/fellows', fellows);

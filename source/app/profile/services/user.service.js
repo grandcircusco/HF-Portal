@@ -9,13 +9,13 @@
     .module('app.profile.services')
     .factory('User', User);
 
-  User.$inject = ['$rootScope', '$cookieStore', '$http', 'CONFIG'];
+  User.$inject = ['$rootScope', '$http', 'CONFIG'];
 
   /**
    * @namespace User
    * @returns {Service}
    */
-  function User($rootScope, $cookieStore, $http, CONFIG) {
+  function User($rootScope, $http, CONFIG) {
 
       var rootUrl = CONFIG.SERVICE_URL;
 
@@ -110,7 +110,6 @@
 
       function isUserLoggedIn(){
 
-          //console.log(currentUser);
           if( Object.keys(currentUser).length > 0 ){
 
               return true;
@@ -138,13 +137,23 @@
               authdata: authdata
           };
 
-          $cookieStore.put('globals', currentUser);
+          loginStatusChanged();
       }
 
       function ClearCredentials() {
 
-          $rootScope.globals = {};
-          $cookieStore.remove('globals');
+          $http.get( rootUrl + '/api/v1/users/logout' ).then( function(){
+
+              currentUser = {};
+          });
+
+          loginStatusChanged();
+      }
+
+
+      function loginStatusChanged() {
+
+          $rootScope.$broadcast('loginStatusChanged');
       }
 
   }

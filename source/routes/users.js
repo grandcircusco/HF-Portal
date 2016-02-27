@@ -1,11 +1,81 @@
 var express = require('express');
 var app = express();
 var bcrypt = require('bcrypt');
+var passport = require('passport');
+var PassportLocalStrategy = require('passport-local').Strategy;
 
 var models = require('../models');
 var Users = models.users;
+var Middleware = require('./middleware');
 
-app.get( '/:user_id/votes', function( req, res ){
+/** User Auth - Passport **/
+
+passport.use(new PassportLocalStrategy(
+	{
+		usernameField: 'email',
+		passwordField: 'password'
+	},
+	function(email, password, done) {
+
+		Users.findOne({
+
+			where: {
+				email: {
+
+					ilike: email
+				}
+			}
+
+		}).then(function (user) {
+
+			if (user === null) {
+
+				return done(null, false, { message: 'Incorrect credentials.' });
+			}
+
+			if ( bcrypt.compareSync( password, user.password) ) {
+
+				return done(null, user);
+			}
+
+			return done(null, false, { message: 'Incorrect credentials.' });
+		});
+	}
+));
+
+passport.serializeUser(function( user, done ) {
+
+	done(null, {
+
+		id: user.id,
+		email: user.email,
+		userType: user.userType
+	});
+});
+
+passport.deserializeUser(function( user, done ) {
+
+	models.users.findOne({
+
+		where: {
+			'id': user.id
+		}
+
+	}).then(function (user) {
+
+		if (user === null) {
+
+			done(new Error('Wrong user id.'));
+		}
+
+		done(null, user);
+	});
+});
+
+
+/** User Routes **/
+
+app.get( '/:user_id/votes', Middleware.isLoggedIn, function( req, res ){
 
 	Users.scope('public').findOne({
 
@@ -32,49 +102,56 @@ app.get( '/:user_id/votes', function( req, res ){
 });
 
 // POST /users/login - try to login a user
-app.post('/login', function loginUser(req, res) {
+app.post('/login',
 
-	// ilike does case in-sensitive compare of email
-	Users.findOne({
+	passport.authenticate('local', {
+		successRedirect: '/api/v1/users/login/success',
+		failureRedirect: '/api/v1/users/login/failure'
+	})
 
-		where: {
-			email: {
+);
 
-				ilike: req.body.email
-			}
-		}
-	}).then(function(user) {
+// Check to see if a user is currently logged in, if so return their info
+app.get('/confirm-login', function (req, res) {
 
-		if( user !== null ) {
+	var user = req.user;
 
-			bcrypt.compare(req.body.password, user.password, function (err, result) {
+	if( user !== undefined ) {
+		user.password = '';
+	}
 
-				if (result === true) {
-
-					// remove password from returned user object
-					// -- we can accomplish this using scopes,
-					//    but need to get the password to compare
-					user.password = '';
-					
-					//console.log('password is correct!');
-					res.send(user);
-
-				} else {
-
-					res.status(400).send({ error: 'Incorrect Password' });
-				}
-			});
-
-		}
-		else{
-
-			res.status(400).send({ error: 'No User Found' });
-		}
-	});
-
+	res.send( user );
 });
 
-app.post('/create', function createUser(req, res) {
+// success login redirect - return session user info
+app.get( '/login/success', function( req, res ){
+
+	res.json({
+
+		success: true,
+		user: req.session.passport.user
+	});
+});
+
+// login failure - return error message
+app.get( '/login/failure', function( req, res ){
+
+	res.json({
+		success: false,
+		message: 'Invalid username or password.'
+	});
+});
+
+// Log user out
+app.get( '/logout', function( req, res ){
+
+	req.logout();
+	res.end();
+});
+
+
+// Create a new user
+app.post('/create', Middleware.isAdmin, function createUser(req, res) {
 
 	// check if a user with the same email doesn't already exist
 	Users.findOne({
@@ -116,8 +193,24 @@ app.post('/create', function createUser(req, res) {
 
 });
 
-// PUT /users/:id - updates an existing fellow record
-app.put('/:id', function putUser(req, res) {
+// PUT /users/:id - updates an existing user record
+app.put('/:id', Middleware.isLoggedIn, function putUser(req, res) {
+
+	// User must be logged in and must either
+	// - be the user being edited
+	// - be an admin
+	var currentUser = req.user;
+	console.log( currentUser );
+	if( currentUser.userType !== 'Admin' )
+	{
+		// user is not admin, so check if they match the user being posted
+		if( currentUser.id !== parseInt( req.params.id ) )
+		{
+			console.log(currentUser.id + "!=" + req.params.id );
+			res.send( 'Unauthorized' );
+			return;
+		}
+	}
 
 	Users.findOne({
 

@@ -3,7 +3,7 @@
  * @desc    contains the routes for the app
  */
 
- var app = angular.module('app', ['ngRoute', 'ngCookies',  'ngFileUpload', 'ngSanitize', 'ui.bootstrap', 'ui.select',
+ var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngSanitize', 'ui.bootstrap', 'ui.select',
     'app.config', 'app.home', 'app.companies', 'app.fellows', 'app.tags', 'app.profile', 'app.votes', 'app.alert' ])
     .run(run);
 
@@ -83,7 +83,7 @@ app.controller('RoutingController', RoutingController)
 .controller('LoginModalInstanceController', LoginModalInstanceController);
 
 RoutingController.$inject = ['$scope', '$modal', '$window', 'User', '$location', '$anchorScroll'];
-LoginModalInstanceController.$inject = ['$scope', '$window', '$modalInstance', 'User'];
+LoginModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
 
 function RoutingController($scope, $modal, $window, User, $location, $anchorScroll) {
 
@@ -115,6 +115,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
         });
     };
 
+    $scope.$on('loginStatusChanged', updateLoginStatus);
 
     $scope.logoutUser = function(){
 
@@ -127,7 +128,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
     };
 }
 
-function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
+function LoginModalInstanceController ($scope, $modalInstance, User) {
 
     // save this through a refesh
     $scope.loginForm = {
@@ -141,19 +142,24 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
 
         $scope.loginForm.errors = [];
 
-        User.login(loginForm).success(function(user){
+        User.login(loginForm).success(function( data ){
 
-            console.log(user);
-            $modalInstance.close();
-            //User.currentUser = user
-            User.SetCredentials(user.id, user.email, user.userType);
+            if( data.success ){
 
-            //$window.location.reload();
+                var user = data.user;
+
+                $modalInstance.close();
+
+                User.SetCredentials( user.id, user.email, user.userType );
+            }
+            else{
+
+                $scope.loginForm.errors.push( "Invalid user credentials" );
+            }
 
         }).error( function(error){
 
-            $scope.loginForm.errors.push("Invalid user credentials");
-
+            $scope.loginForm.errors.push( "Invalid user credentials" );
         });
 
     };
@@ -164,26 +170,21 @@ function LoginModalInstanceController ($scope, $window, $modalInstance, User) {
 }
 
 
-run.$inject = ['$cookieStore', 'User'];
-function run($cookieStore, User){
+run.$inject = ['$http', 'User', 'CONFIG'];
+function run($http, User, CONFIG ){
 
     // keep user logged in after page refresh
-    var currentUser = $cookieStore.get('globals') || {};
-    User.setCurrentUser(currentUser);
+    // Check backend for existing user in session and update User Service
+    $http.get( CONFIG.SERVICE_URL + '/api/v1/users/confirm-login' )
+        .success(function (user) {
 
-    //console.log(currentUser);
-    //if ($rootScope.globals.currentUser) {
-    //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-    //}
+            if (user && user.id) {
 
-    //$rootScope.$on('$locationChangeStart', function (event, next, current) {
-    //    // redirect to login page if not logged in and trying to access a restricted page
-    //    var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
-    //    var loggedIn = $rootScope.globals.currentUser;
-    //    if (restrictedPage && !loggedIn) {
-    //        $location.path('/login');
-    //    }
-    //});
+                User.SetCredentials( user.id, user.email, user.userType );
+            }
+
+        });
+
 }
 
 
