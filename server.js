@@ -19,10 +19,10 @@ var users = require('./source/routes/users');
 var app = express();
 
 // set up a route to redirect http to https
-app.get('*',function(req,res){
-
-    res.redirect( 301, 'http://hackerfellows.com' );
-});
+//app.get('*',function(req,res){
+//
+//    res.redirect( 301, 'http://hackerfellows.com' );
+//});
 
 console.log("Setting port: ");
 app.set('port', (process.env.PORT || 5000));
