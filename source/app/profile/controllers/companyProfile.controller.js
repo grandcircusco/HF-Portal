@@ -84,14 +84,16 @@
             //console.log( company.tags );
 
             var errors = [];
-            if( company.bio.length > 350 )
+            if( typeof company.bio != 'undefined' )
             {
-                angular.element( "#bio" ).addClass( 'error' );
-                errors.push( "The bio field can only be 350 characters maximum");
-            }
-            else{
+                if (company.bio.length > 350) {
+                    angular.element("#bio").addClass('error');
+                    errors.push("The bio field can only be 350 characters maximum");
+                }
+                else {
 
-                angular.element( "#bio" ).removeClass( 'error' );
+                    angular.element("#bio").removeClass('error');
+                }
             }
 
             if( errors.length  === 0 )
