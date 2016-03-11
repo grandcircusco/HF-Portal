@@ -50,6 +50,7 @@
             Companies.getByUserId(currentUser.id).success(function (company) {
 
                 $scope.company = company;
+                console.log( $scope.company );
 
                 $("[name='enabled']").bootstrapSwitch({
 
