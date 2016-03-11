@@ -85,7 +85,7 @@
             //console.log( company.tags );
 
             var errors = [];
-            if( typeof company.bio != 'undefined' )
+            if( typeof company.bio != 'undefined' && company.bio !== null )
             {
                 if (company.bio.length > 350) {
                     angular.element("#bio").addClass('error');
