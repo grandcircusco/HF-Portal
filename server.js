@@ -15,6 +15,7 @@ var tags = require('./source/routes/tags');
 var votes = require('./source/routes/votes');
 var users = require('./source/routes/users');
 
+var bcrypt = require('bcrypt');
 
 var app = express();
 
@@ -100,6 +101,41 @@ try{
         var server = app.listen(app.get('port'), function createServer() {
             var host = server.address().address;
             var port = server.address().port;
+
+            // check for and create admin user if not present
+            models.users.findOne({
+
+                where: {
+                    email: {
+
+                        ilike: 'admin@hackerfellows.com'
+                    }
+                }
+
+            }).then( function( user ){
+
+                if( user === null ) {
+
+                    bcrypt.genSalt(10, function(err, salt) {
+
+                        bcrypt.hash( 'password', salt, function(err, hash) {
+
+                            models.users.create({
+
+                                email: 'admin@hackerfellows.com',
+                                password: hash,
+                                userType: 'admin'
+
+                            }).then(function(user) {
+
+                                console.log( "Default user admin@hackerfellows.com" );
+
+                            });
+                        });
+                    });
+
+                }
+            });
 
             console.log("HFPortal app listening at http://%s:%s", host, port);
         });
