@@ -124,7 +124,7 @@ try{
 
                                 email: 'admin@hackerfellows.com',
                                 password: hash,
-                                userType: 'admin'
+                                userType: 'Admin'
 
                             }).then(function(user) {
 

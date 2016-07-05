@@ -20,19 +20,23 @@
     })
     .when('/fellows', {
         controller: 'FellowsController',
-        templateUrl: 'source/app/fellows/fellows.html'
+        templateUrl: 'source/app/fellows/fellows.html',
+        resolve: { loggedIn: checkLoggedin }
     })
     .when('/fellows/:fellow_id/:fellow_name', {
         controller: 'FellowController',
-        templateUrl: 'source/app/fellows/fellow.html'
+        templateUrl: 'source/app/fellows/fellow.html',
+        resolve: { loggedIn: checkLoggedin }
     })
     .when('/companies', {
         controller: 'CompaniesController',
-        templateUrl: 'source/app/companies/companies.html'
+        templateUrl: 'source/app/companies/companies.html',
+        resolve: { loggedIn: checkLoggedin }
     })
     .when('/companies/:company_id/:company_name', {
         controller: 'CompanyController',
-        templateUrl: 'source/app/companies/company.html'
+        templateUrl: 'source/app/companies/company.html',
+        resolve: { loggedIn: checkLoggedin }
     })
 
     .when('/tags', {
