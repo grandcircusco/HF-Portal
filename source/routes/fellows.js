@@ -149,12 +149,22 @@ app.post('/', Middleware.isAdmin, function postFellow(req, res) {
         bio: req.body.bio,
         interests: req.body.interests,
         description: req.body.description,
-        git_hub: req.body.git_hub,
-        portfolio: req.body.portfolio,
         developer_type: req.body.developer_type,
         question: req.body.question,
         answer: req.body.answer,
         image_url: req.body.image_url,
+
+        linkName1: req.body.linkName1,
+        linkURL1: req.body.linkURL1,
+        linkName2: req.body.linkName2,
+        linkURL2: req.body.linkURL2,
+        linkName3: req.body.linkName3,
+        linkURL3: req.body.linkURL3,
+        linkName4: req.body.linkName4,
+        linkURL4: req.body.linkURL4,
+        linkName5: req.body.linkName5,
+        linkURL5: req.body.linkURL5,
+
         enabled: req.body.enabled
 
     }).then(function( fellow ) {
@@ -235,14 +245,22 @@ app.put('/:id', Middleware.isLoggedIn, function putFellow(req, res) {
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
         fellow.description = req.body.description;
-        fellow.git_hub = req.body.git_hub;
-        fellow.portfolio = req.body.portfolio;
         fellow.developer_type = req.body.developer_type;
 
         fellow.question = req.body.question;
         fellow.answer = req.body.answer;
 
         fellow.image_url = req.body.image_url;
+        linkName1: req.body.linkName1;
+        linkURL1: req.body.linkURL1;
+        linkName2: req.body.linkName2;
+        linkURL2: req.body.linkURL2;
+        linkName3: req.body.linkName3;
+        linkURL3: req.body.linkURL3;
+        linkName4: req.body.linkName4;
+        linkURL4: req.body.linkURL4;
+        linkName5: req.body.linkName5;
+        linkURL5: req.body.linkURL5;
         fellow.enabled = req.body.enabled;
 
         fellow.save();

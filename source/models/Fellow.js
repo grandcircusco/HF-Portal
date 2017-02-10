@@ -14,23 +14,27 @@
             bio: DataTypes.TEXT,
             interests: DataTypes.TEXT,
             description: DataTypes.STRING,
-            git_hub: DataTypes.STRING,
-            portfolio: DataTypes.STRING,
             developer_type: DataTypes.STRING,
             question: DataTypes.STRING,
             answer: DataTypes.STRING,
+            linkName1: DataTypes.STRING,
+            linkURL1: DataTypes.STRING,
+            linkName2: DataTypes.STRING,
+            linkURL2: DataTypes.STRING,
+            linkName3: DataTypes.STRING,
+            linkURL3: DataTypes.STRING,
+            linkName4: DataTypes.STRING,
+            linkURL4: DataTypes.STRING,
+            linkName5: DataTypes.STRING,
+            linkURL5: DataTypes.STRING,
             image_url: DataTypes.STRING,
             enabled: {
-
                 type: DataTypes.INTEGER,
                 defaultValue: 0
             }
-
         },{
-
             timestamps: false, // add updated_at and created_at
             paranoid: false // add deleted_at
-
         });
 
     };
