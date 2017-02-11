@@ -59,6 +59,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="year" class="control-label">Year Established</label>
+                            <input type="text" class="form-control" id="year" ng-model="company.year" value="{{company.year}}"/>
+                        </div>
+
+                        <div class="form-group">
                             <label for="primary_contact" class="control-label">Primary Contact Name</label>
                             <input type="text" class="form-control" id="primary_contact" ng-model="company.primary_contact" value="{{company.primary_contact}}"/>
                         </div>
@@ -92,6 +97,11 @@
                         <div class="form-group">
                             <label for="bio" class="control-label">Company Bio</label>
                             <textarea class="form-control" rows="5" id="bio" ng-model="company.bio" value="{{company.bio}}"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nearFuture" class="control-label">Technology-wise, what is your company wanting to accomplish in the next few months?</label>
+                            <textarea class="form-control" rows="5" id="nearFuture" ng-model="company.nearFuture" value="{{company.nearFuture}}"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -132,7 +142,7 @@
 
                         <div class="form-group">
 
-                            <label class="control-label"> Desired Technical Skills / Technology  (Top 5)<span>Manually enter skills that are not in the list</span></label>
+                            <label class="control-label"> Desired Technical Skills / Technology  (Top 7)<span>Manually enter skills that are not in the list</span></label>
                             <ui-select multiple
                                        tagging="tagTransform"
                                        tagging-label="(new)"
@@ -140,7 +150,7 @@
                                        theme="bootstrap"
                                        ng-disabled="disabled"
                                        style="width: 100%"
-                                       limit="5"
+                                       limit="7"
                                        title="Choose a skill">
                                 <ui-select-match placeholder="Select skill">{{ $item.name }}</ui-select-match>
                                 <ui-select-choices repeat="tag in tags | propsFilter: { name: $select.search }">
