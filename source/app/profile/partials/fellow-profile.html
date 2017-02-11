@@ -93,13 +93,29 @@
 
 
                             <div class="form-group">
-                                <label for="git_hub" class="control-label">GitHub Url</label>
-                                <input type="text" class="form-control" id="git_hub" ng-model="fellow.git_hub" value="{{ fellow.git_hub }}"/>
+                                <label  class="control-label">Link 1<span>Enter the name and URL to something showing off your skills(Github, etc) All optional.</span></label>
+                                <input type="text" class="form-control" id="linkName1" ng-model="fellow.linkName1" value="{{ fellow.linkName1 }}" placeholder="Name"/>
+                                <input type="text" class="form-control" id="linkURL1" ng-model="fellow.linkURL1" value="{{ fellow.linkURL1 }}" placeholder="URL"/>
                             </div>
-
                             <div class="form-group">
-                                <label for="portfolio" class="control-label">Portfolio Url <span>Other than GitHub</span></label>
-                                <input type="text" class="form-control" id="portfolio" ng-model="fellow.portfolio" value="{{fellow.portfolio}}"/>
+                                <label  class="control-label">Link 2</label>
+                                <input type="text" class="form-control" id="linkName2" ng-model="fellow.linkName2" value="{{ fellow.linkName2 }}" placeholder="Name"/>
+                                <input type="text" class="form-control" id="linkURL2" ng-model="fellow.linkURL2" value="{{ fellow.linkURL2 }}" placeholder="URL"/>
+                            </div>
+                            <div class="form-group">
+                                <label  class="control-label">Link 3</label>
+                                <input type="text" class="form-control" id="linkName3" ng-model="fellow.linkName3" value="{{ fellow.linkName3 }}" placeholder="Name"/>
+                                <input type="text" class="form-control" id="linkURL3" ng-model="fellow.linkURL3" value="{{ fellow.linkURL3 }}" placeholder="URL"/>
+                            </div>
+                            <div class="form-group">
+                                <label  class="control-label">Link 4</label>
+                                <input type="text" class="form-control" id="linkName4" ng-model="fellow.linkName4" value="{{ fellow.linkName4 }}" placeholder="Name"/>
+                                <input type="text" class="form-control" id="linkURL4" ng-model="fellow.linkURL4" value="{{ fellow.linkURL4 }}" placeholder="URL"/>
+                            </div>
+                            <div class="form-group">
+                                <label  class="control-label">Link 5</label>
+                                <input type="text" class="form-control" id="linkName5" ng-model="fellow.linkName5" value="{{ fellow.linkName5 }}" placeholder="Name"/>
+                                <input type="text" class="form-control" id="linkURL5" ng-model="fellow.linkURL5" value="{{ fellow.linkURL5 }}" placeholder="URL"/>
                             </div>
 
                             <div class="form-group">
@@ -108,12 +124,13 @@
                                     <option>Front End</option>
                                     <option>Back End</option>
                                     <option>Full Stack</option>
+                                    <option>Non Web</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
 
-                                <label class="control-label"> Technical Skills (Top 7)<span>Manually enter skills that are not in the list</span></label>
+                                <label class="control-label"> Technical Skills (Top 7)<span>Press enter after each tag</span></label>
                                 <ui-select multiple
                                            tagging="tagTransform"
                                            tagging-label="(new)"
