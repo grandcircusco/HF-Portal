@@ -64,6 +64,8 @@ app.post('/', Middleware.isAdmin, function postCompany(req, res) {
         company_size: req.body.company_size,
         industry: req.body.industry,
         bio: req.body.bio,
+        year: req.body.year,
+        nearFuture: req.body.nearFuture,
         description: req.body.description,
         developer_type: req.body.developer_type,
         website_url: req.body.website_url,
@@ -231,6 +233,8 @@ app.put('/:id', Middleware.isLoggedIn, upload.single('file'),function putCompany
         company.company_size = req.body.company_size;
         company.industry = req.body.industry;
         company.bio = req.body.bio;
+        year: req.body.year;
+        nearFuture: req.body.nearFuture;
         company.description = req.body.description;
         company.developer_type = req.body.developer_type;
         company.website_url = req.body.website_url;
