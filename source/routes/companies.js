@@ -233,8 +233,8 @@ app.put('/:id', Middleware.isLoggedIn, upload.single('file'),function putCompany
         company.company_size = req.body.company_size;
         company.industry = req.body.industry;
         company.bio = req.body.bio;
-        year: req.body.year;
-        nearFuture: req.body.nearFuture;
+        company.year = req.body.year;
+        company.nearFuture = req.body.nearFuture;
         company.description = req.body.description;
         company.developer_type = req.body.developer_type;
         company.website_url = req.body.website_url;

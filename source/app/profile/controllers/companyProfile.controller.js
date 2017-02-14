@@ -49,6 +49,13 @@
 
             Companies.getByUserId(currentUser.id).success(function (company) {
 
+
+                for (var key in company) {
+                    if (!company.hasOwnProperty(key)) continue;
+                    if (company[key] === null) {
+                        company[key] = "";
+                    }
+                }
                 $scope.company = company;
                 console.log( $scope.company );
 

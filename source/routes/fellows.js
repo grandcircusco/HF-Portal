@@ -107,7 +107,6 @@ app.get('/:id', function getFellow(req, res){
         }]
 
     }).then(function(fellow) {
-
         res.send(fellow);
     });
 });
@@ -251,18 +250,19 @@ app.put('/:id', Middleware.isLoggedIn, function putFellow(req, res) {
         fellow.answer = req.body.answer;
 
         fellow.image_url = req.body.image_url;
-        linkName1: req.body.linkName1;
-        linkURL1: req.body.linkURL1;
-        linkName2: req.body.linkName2;
-        linkURL2: req.body.linkURL2;
-        linkName3: req.body.linkName3;
-        linkURL3: req.body.linkURL3;
-        linkName4: req.body.linkName4;
-        linkURL4: req.body.linkURL4;
-        linkName5: req.body.linkName5;
-        linkURL5: req.body.linkURL5;
+        fellow.linkName1 = req.body.linkName1;
+        fellow.linkURL1 = req.body.linkURL1;
+        fellow.linkName2 = req.body.linkName2;
+        fellow.linkURL2 = req.body.linkURL2;
+        fellow.linkName3 = req.body.linkName3;
+        fellow.linkURL3 = req.body.linkURL3;
+        fellow.linkName4 = req.body.linkName4;
+        fellow.linkURL4 = req.body.linkURL4;
+        fellow.linkName5 = req.body.linkName5;
+        fellow.linkURL5 = req.body.linkURL5;
         fellow.enabled = req.body.enabled;
 
+        console.log(req.body);
         fellow.save();
 
         //console.log( req.body.tags );

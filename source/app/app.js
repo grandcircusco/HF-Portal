@@ -23,7 +23,7 @@ var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngSanitize', 'ui.bo
         templateUrl: 'source/app/fellows/fellows.html',
         resolve: { loggedIn: checkLoggedin }
     })
-    .when('/fellows/:fellow_id/:fellow_name', {
+    .when('/fellows/:fellow_id', {
         controller: 'FellowController',
         templateUrl: 'source/app/fellows/fellow.html',
         resolve: { loggedIn: checkLoggedin }
@@ -33,7 +33,7 @@ var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngSanitize', 'ui.bo
         templateUrl: 'source/app/companies/companies.html',
         resolve: { loggedIn: checkLoggedin }
     })
-    .when('/companies/:company_id/:company_name', {
+    .when('/companies/:company_id', {
         controller: 'CompanyController',
         templateUrl: 'source/app/companies/company.html',
         resolve: { loggedIn: checkLoggedin }
@@ -145,19 +145,12 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
         $scope.isUserCompany = User.isUserCompany();
     }
 
-    $scope.openModal = function() {
-        var modalInstance = $modal.open({
-            templateUrl: 'source/app/profile/partials/login-page.html',
-            controller: 'LoginModalInstanceController',
-            size: ''
-        });
-
-        modalInstance.result.then(function(){
-
-            updateLoginStatus();
-        });
-    };
-
+    //
+    //
+    // login stuff used to be here, we left the event listener here b/c it works here
+    //
+    //
+    
     $scope.$on('loginStatusChanged', updateLoginStatus);
 
     $scope.logoutUser = function(){
@@ -172,6 +165,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
         $window.location.reload();
     };
 }
+    //
 
 function LoginModalInstanceController ($scope, $modalInstance, User) {
 

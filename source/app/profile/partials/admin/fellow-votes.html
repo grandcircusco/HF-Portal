@@ -11,7 +11,8 @@
         <ul ng-show="fellow.user.VotesCast.length > 0">
             <li ng-repeat="user in fellow.user.VotesCast">
                 <a class="name {{ ( companyVotedForFellow(user.id) ) ? 'bold' : '' }}"
-                   ng-href="/#/companies/{{ user.company.id }}/{{ helpers.slugify( user.company.name ) }}">
+                   ng-click="ok()"
+                   ng-href="/#/companies/{{ user.company.id }}">
                     {{ user.company.name }}
                 </a>
             </li>
@@ -26,7 +27,8 @@
         <ul ng-show="fellow.user.VotesFor.length > 0">
             <li ng-repeat="user in fellow.user.VotesFor">
                 <a class="name {{ ( fellowVotedForCompany(user.id) ) ? 'bold' : '' }}"
-                   ng-href="/#/companies/{{ user.company.id }}/{{ helpers.slugify( user.company.name ) }}">
+                   ng-click="ok()"
+                   ng-href="/#/companies/{{ user.company.id }}">
                     {{ user.company.name }}
                 </a>
             </li>

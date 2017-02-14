@@ -41,6 +41,10 @@
                     <p class="question"><strong>Q.</strong> {{ fellow.question }}</p>
                     <p class="answer"><strong>A.</strong> {{ fellow.answer }}</p>
 
+                    <p class="links" ng-if="fellow.linkURL1"><a class="linkURL" ng-href="{{ fellow.linkURL1}}" target="_blank">{{fellow.linkName1}}</a> | <a class="portfolio" ng-href="{{ fellow.portfolio }}" target="_blank">Portfolio</a></p>
+                    <p class="links"><a class="github" ng-href="{{ fellow.git_hub }}" target="_blank">GitHub</a> | <a class="portfolio" ng-href="{{ fellow.portfolio }}" target="_blank">Portfolio</a></p>
+                    <p class="links"><a class="github" ng-href="{{ fellow.git_hub }}" target="_blank">GitHub</a> | <a class="portfolio" ng-href="{{ fellow.portfolio }}" target="_blank">Portfolio</a></p>
+                    <p class="links"><a class="github" ng-href="{{ fellow.git_hub }}" target="_blank">GitHub</a> | <a class="portfolio" ng-href="{{ fellow.portfolio }}" target="_blank">Portfolio</a></p>
                     <p class="links"><a class="github" ng-href="{{ fellow.git_hub }}" target="_blank">GitHub</a> | <a class="portfolio" ng-href="{{ fellow.portfolio }}" target="_blank">Portfolio</a></p>
                 </div>
             </div>

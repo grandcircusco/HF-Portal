@@ -53,6 +53,12 @@
 
             Fellows.getByUserId(currentUser.id).success(function (fellow) {
 
+                for (var key in fellow) {
+                    if (!fellow.hasOwnProperty(key)) continue;
+                    if (fellow[key] === null) {
+                        fellow[key] = "";
+                    }
+                }
                 $scope.fellow = fellow;
 
                 $("[name='enabled']").bootstrapSwitch({
@@ -87,7 +93,7 @@
 
             // TODO - there is a better way to do this error checking
             var errors = [];
-            if( fellow.bio.length > 350 )
+            if(fellow.bio.length > 350 )
             {
                 angular.element( "#bio" ).addClass( 'error' );
                 errors.push( "The bio field can only be 350 characters maximum");
