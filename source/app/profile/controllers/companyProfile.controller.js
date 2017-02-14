@@ -105,7 +105,10 @@
             }
 
             if( errors.length  === 0 )
-            {
+            { 
+                // make sure the url starts with 'http://'
+                company.website_url = User.httpify(company.website_url);
+
                 // send companies info to API via Service
                 Companies.update(company).success(function (newCompanyData) {
 

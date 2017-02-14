@@ -61,7 +61,8 @@
           isUserLoggedIn: isUserLoggedIn,
           isUserAdmin: isUserAdmin,
           isUserFellow: isUserFellow,
-          isUserCompany: isUserCompany
+          isUserCompany: isUserCompany,
+          httpify: httpify
       };
 
 
@@ -145,6 +146,14 @@
           }
           else return false;
       }
+
+     function httpify(url) {
+        var prefix = "http://";
+        if (url && url !== "" && url.substr(0,prefix.length) !== prefix) {
+            url = "http://" + url;
+        }
+        return url;
+     }
 
       function SetCredentials(id, username, userType) {
 

@@ -135,6 +135,11 @@
 
             if( errors.length  === 0 )
             {
+                // make sure each of the 5 links starts with 'http://'
+                for (var i=1; i<6; i++) {
+                    fellow['linkURL'+i] = User.httpify(fellow['linkURL'+i]);
+                }
+
                 // send fellows info to API via Service
                 Fellows.update(fellow).success(function (newFellowData) {
 

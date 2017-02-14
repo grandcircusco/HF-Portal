@@ -11,7 +11,7 @@
             <h3 ng-show="votes.length > 0">You have shown interest in:</h3>
             <ul ng-show="votes.length > 0">
                 <li ng-repeat="vote in votes">
-                    <a class="name" ng-href="/#/companies/{{ vote.Votee.company.id }}/{{ helpers.slugify( vote.Votee.company.name ) }}">
+                    <a class="name" ng-href="/#/companies/{{ vote.Votee.company.id }}">
                         {{ vote.Votee.company.name }}
                     </a>
                     <a class="btn btn-xs label-danger" ng-click="removeVote(vote)"><span class="glyphicon glyphicon-remove"></span> Remove</a>

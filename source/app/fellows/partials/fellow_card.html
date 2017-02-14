@@ -18,7 +18,7 @@
 
 		<div class="tagwrap">
 
-			<div class="tag fellow_tag " ng-repeat='tag in fellow.tags | limitTo:6'>
+			<div class="tag fellow_tag " ng-repeat='tag in fellow.tags | limitTo:7'>
 				{{ tag.name }}
 			</div>
 
@@ -26,7 +26,7 @@
 
 		<div class="details-button">
 
-			<a type="button" class="detButton"  ng-href="/#/fellows/{{ fellow.id }}/{{ helpers.slugify( fellow.first_name + ' ' + fellow.last_name ) }}">
+			<a type="button" class="detButton"  ng-href="/#/fellows/{{ fellow.id }}">
 				<i class="fa fa-plus fa-lg"></i> full profile
 			</a>
 		</div>
