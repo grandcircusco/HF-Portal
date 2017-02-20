@@ -8,7 +8,7 @@
 	
 		<h3 class="name">{{fellow.first_name +" "+ fellow.last_name}}</h3>
 
-		<p class="tagline">{{ fellow.description }} | {{ fellow.developer_type }}</p>
+		<p class="tagline">{{ fellow.description }}, {{ fellow.developer_type }}</p>
 
 		<div class="bio" ng-bind-html="helpers.paragraphize( fellow.bio.substr(0, 350) ) | sanitize"></div>
 
@@ -27,7 +27,7 @@
 		<div class="details-button">
 
 			<a type="button" class="detButton"  ng-href="/#/fellows/{{ fellow.id }}">
-				<i class="fa fa-plus fa-lg"></i> full profile
+				Full Profile
 			</a>
 		</div>
 

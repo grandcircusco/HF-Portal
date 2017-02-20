@@ -6,9 +6,6 @@
     var path      = require("path");
     var Sequelize = require("sequelize");
 
-    //var sequelize = new Sequelize( process.env.DATABASE_URL || "postgres://localhost:5432/hfportal");
-    //var env       = process.env.NODE_ENV || "development";
-
     var sequelize = null;
     if (process.env.DATABASE_URL) {
 

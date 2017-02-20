@@ -43,9 +43,8 @@
 	.grid-box {
 
 		width: 100%;
-		background: #383836;
+        background-color: #e6e6e6;
 
-		border-radius: 25px;
 		font-family: $head-font;
 
 		margin: 0 0 35px;
@@ -78,13 +77,16 @@
 
 		.name{
 
+            color:#000;
 			text-align: center;
 			margin: 0;
 			padding: 0 15px;
+            text-transform: uppercase;
 		}
 
 		.tagline{
 
+            color:#000;
 			text-align: center;
 			margin: 0 0 10px;
 			padding: 0 15px;
@@ -98,7 +100,7 @@
 			padding: 15px;
 
 			p {
-				color: #ffffff;
+				color: #000000;
 				line-height: 1.5;
 				font-size: 15px;
 			}
@@ -107,12 +109,11 @@
 		.foot{
 
 			width: 100%;
-			background-color: #C4C3BD;
-			border-bottom-right-radius: 25px;
-			border-bottom-left-radius: 25px;
+			background-color: #e6e6e6;
 			padding: 15px;
+            padding-top:0;
 			text-align: center;
-			margin-top: 15px;
+			margin-top: 0px;
 
 			display: -ms-flexbox;
 			display: -webkit-flex;
@@ -147,9 +148,8 @@
 
 				a{
 
-					border: 2px solid #737571;
+					//border: 2px solid #737571;
 					line-height: 26px;
-					border-radius: 30px;
 					padding: 5px 15px;
 					margin: 30px auto 10px auto;
 					display: inline-block;
@@ -157,7 +157,9 @@
 					font-size: 16px;
 
 					font-weight: bold;
-					color: #737571;
+					background-color: #ee5e5e;
+                    color: #e6e6e6;
+
 
 					&:hover{
 
@@ -234,7 +236,7 @@
 
 			.foot{
 
-				padding: 20px 10px 10px;
+				padding: 0px 10px 10px;
 
 				.tagwrap{
 
@@ -247,6 +249,7 @@
 				.details-button{
 
 					width: auto;
+                    margin:10px;
 				}
 			}
 

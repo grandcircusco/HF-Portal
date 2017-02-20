@@ -2,8 +2,6 @@
 
 	width: 160px;
 	height: 160px;
-	border: 5px solid #696A67;
-	border-radius: 50%;
 	margin: 0 auto;
 
 	img{
@@ -11,7 +9,6 @@
 		display: block;
 		width: 100%;
 		height: 100%;
-		border-radius: 50%;
 		margin: 0;
 		max-width: 100%;
 	}
@@ -20,31 +17,48 @@
 
 .tag{
 
-	border: 2px solid #737571;
-	height: 30px;
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+	border: 3px solid #ee5e5e;
+	height: 40px;
 	line-height: 26px;
-	border-radius: 30px;
-	padding: 0 15px;
+	padding: 5px 15px;
 	margin: 0 10px 5px;
 	text-align: center;
-
-	color: #737571;
+    text-transform:uppercase;
+	color: #ee5e5e;
+    margin:10px;
 }
 
 .name{
-
-	color: #ffffff;
+    font-size: 40px;
+    font-weight:200;
+    font-family: 'Dosis', sans-serif;
+	color: #000;
+    text-transform:uppercase;
 }
 
 .tagline{
 
-	color: #6a6967;
+    font-family: 'Dosis', sans-serif;
+	color: #000;
+}
+
+.bio {
+    font-family: 'Dosis', sans-serif;
+    margin-bottom:0;
+
+}
+
+.fellow-container {
+
+    background-color:#f0f0f0;
+    padding:30px;
 }
 
 .single{
 
 	.name{
-
 		text-align: left;
 		margin: 0;
 		padding: 0;
@@ -52,19 +66,21 @@
 
 	.tagline{
 
+        color: #000;
 		text-align: left;
 		font-weight: 700;
 		font-size: 1.2em;
 		line-height: 1.3;
-		margin-bottom: 20px;
+		margin-bottom: 15px;
 	}
 
 	.bio{
 
+        font-family: 'Dosis', sans-serif;
 		margin-bottom: 1em;
 
 		p{
-
+            color: #000;
 			line-height: 1.4;
 		}
 	}
@@ -75,17 +91,21 @@
 
 		p{
 
+            color: #000;
 			line-height: 1.4;
 		}
 	}
 
 	.question{
 
+        color: #000;
 		line-height: 1.5;
 	}
 	.answer{
 
+        color: #000;
 		line-height: 1.5;
+        margin-bottom:2em;
 	}
 
 	.stat{
@@ -103,15 +123,15 @@
 
 		a {
 
-			color: #cfcfcf;
-			font-size: 1.4em;
-			font-weight: bold;
+			color: #ee5e5e;
+            font-family: 'Dosis', sans-serif;
+			font-size: 1em;
+			font-weight: normal;
 		}
 	}
 
 	.tags{
 
-		margin-top: 30px;
 		display: block;
 
 		h3{
@@ -122,10 +142,12 @@
 
 		.tag{
 
+            font-family: 'Fira Sans', sans-serif;
 			display: inline-block;
 			margin-bottom: 10px;
-			color: #ffffff;
-			border-color: #ffffff;
+			color: #ee5e5e;
+			border-color: #ee5e5e;
+
 		}
 	}
 

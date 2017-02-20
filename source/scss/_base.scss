@@ -16,7 +16,7 @@ body {
 
   @include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
   margin: 0;
-  background-color: $odd-section;
+  background-color: #fff;
 }
 
 input[type=file] {
