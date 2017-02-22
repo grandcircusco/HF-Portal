@@ -141,8 +141,16 @@
 
 			}
 
-			.details-button{
+            .detButton {
 
+                position:absolute;
+                width:100px;
+                bottom:0px;
+                right:10px;
+            }
+
+			.details-button{
+                position:relative;
 				text-align: center;
 				width: 100%;
 
