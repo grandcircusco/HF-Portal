@@ -2,6 +2,7 @@
 
   h3{
 
+    color:black;
     margin-top: 0;
   }
 
@@ -24,13 +25,15 @@
 
       a{
 
-        color: #cfcfcf;
+        color: #696969;
         text-decoration: underline;
       }
 
       a.btn{
 
+        color: white;
         text-decoration: none;
+        border-radius:0;
 
         &:hover{
 
