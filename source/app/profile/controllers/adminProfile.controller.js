@@ -180,6 +180,24 @@
             });
         };
 
+        /* Update admin password */
+        $scope.updateAdminPassword = function() {
+            $scope.new_password = {};
+            $scope.confirm_password = {};
+            var modalInstance = $modal.open({
+                templateUrl: 'source/app/profile/partials/admin/update-password-form.html',
+                controller: 'UpdatePasswordModalInstanceController',
+                size: 'md',
+                resolve: {
+                    
+                }
+            });
+            modalInstance.result.then( function( response ) {
+              $scope.new_password = {};
+              $scope.confirm_password = {};
+            });
+        };
+
         $scope.removeFellow = function( fellow ){
 
             var c = confirm( "Are you sure you want to delete " + fellow.first_name + " " + fellow.last_name + "?");
@@ -231,7 +249,8 @@
         .controller('EditCompanyModalInstanceController', EditCompanyModalInstanceController)
         .controller('CreateUserModalInstanceController', CreateUserModalInstanceController)
         .controller('CompanyVotesModalInstanceController', CompanyVotesModalInstanceController)
-        .controller('FellowVotesModalInstanceController', FellowVotesModalInstanceController);
+        .controller('FellowVotesModalInstanceController', FellowVotesModalInstanceController)
+        .controller('UpdatePasswordModalInstanceController', UpdatePasswordModalInstanceController);
 
     EditFellowModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow', 'User', 'Fellows' ];
     function EditFellowModalInstanceController ($scope, $modalInstance, fellow, User, Fellows) {
@@ -476,7 +495,6 @@
                     // create user success callback
                     //console.log(response);
 
-                    console.log( user );
 
                     var user_id = response.data.id;
 
@@ -491,7 +509,6 @@
                         Fellows.create(fellow_post).then( function( fellow ){
 
                             // create fellow success callback
-                            console.log( fellow );
                             $modalInstance.close( fellow );
 
                         }, function( response ){
@@ -537,6 +554,44 @@
         };
 
 
+    }
+
+    UpdatePasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
+    function UpdatePasswordModalInstanceController($scope, $modalInstance, User) {
+
+
+        $scope.ok = function ok() {
+
+            $scope.errors = [];
+
+            // Form is being validated by angular, but leaving this just in case
+            if( typeof $scope.new_password === "undefined" ) {
+                $scope.errors.push( "Enter a password" );
+            } else if( typeof $scope.confirm_password === "undefined" ) {
+                $scope.errors.push( "Confirm your new password" );
+            } else if( $scope.new_password !== $scope.confirm_password ){
+                $scope.errors.push( "Passwords do not match" );
+            }
+
+            if( $scope.errors.length === 0 ){
+
+                var admin = User.getCurrentUser();
+                admin.email = admin.username;
+                admin.password = $scope.new_password;
+                User.update(admin).then( function( newUser ){
+                    console.log("updated");
+                }, function(){
+                    console.log("failed");
+                    $scope.errors = [ "There was a problem updating the password" ];
+                });
+                $modalInstance.close();
+
+            }
+        };
+
+        $scope.cancel = function cancel() {
+            $modalInstance.dismiss('cancel');
+        };
     }
 
 })();

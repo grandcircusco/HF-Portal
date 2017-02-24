@@ -148,11 +148,11 @@
       }
 
      function httpify(url) {
-        var prefix = "http://";
-        if (url && url !== "" && url.substr(0,prefix.length) !== prefix) {
-            url = "http://" + url;
-        }
-        return url;
+       if (url && url !== "" && !/^https?:\/\//i.test(url)) {
+         console.log(url);
+         url = 'http://' + url;
+       }
+       return url;
      }
 
       function SetCredentials(id, username, userType) {
