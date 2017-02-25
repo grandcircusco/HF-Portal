@@ -24,6 +24,7 @@ var app = express();
 //
 //    res.redirect( 301, 'http://hackerfellows.com' );
 //});
+//
 
 console.log("Setting port: ");
 app.set('port', (process.env.PORT || 5000));
@@ -58,6 +59,11 @@ app.use('/api/v1/users', users);
 //application -------------------------------------------------------------
 app.get('/', function(req, res) {
   res.sendfile('./index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
+
+// SSL Certbot Acme-challenge
+app.get('/.well-known/acme-challenge/CwkV65SyKxsG7pNJm5PqGNJcMc4jz345znM_hGRC7Ec', function(req, res) {
+    res.send('rmE6rFXlwjSQJpAivrx5ZW1xl-twZ-adk7VPxir_YKI.D05WGXmxZv20NpqTnfc6pyPUXLBjuuas7m85bi9EcGM');
 });
 
 
