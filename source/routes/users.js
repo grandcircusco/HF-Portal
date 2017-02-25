@@ -43,9 +43,7 @@ passport.use(new PassportLocalStrategy(
 	}
 ));
 
-passport.serializeUser(function( user, done ) {
-
-	done(null, {
+passport.serializeUser(function( user, done ) { done(null, {
 
 		id: user.id,
 		email: user.email,
@@ -252,12 +250,6 @@ app.delete('/:user_id', Middleware.isAdmin, function (req, res) {
   
   
 });
-
-// SSL Certbot Acme-challenge
-app.get('/.well-known/acme-challenge/rmE6rFXlwjSQJpAivrx5ZW1xl-twZ-adk7VPxir_YKI', function(req, res) {
-    res.send('rmE6rFXlwjSQJpAivrx5ZW1xl-twZ-adk7VPxir_YKI.D05WGXmxZv20NpqTnfc6pyPUXLBjuuas7m85bi9EcGM');
-});
-
 
 
 module.exports = app;

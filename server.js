@@ -24,6 +24,11 @@ var app = express();
 //
 //    res.redirect( 301, 'http://hackerfellows.com' );
 //});
+//
+// SSL Certbot Acme-challenge
+app.get('/.well-known/acme-challenge/rmE6rFXlwjSQJpAivrx5ZW1xl-twZ-adk7VPxir_YKI', function(req, res) {
+    res.send('rmE6rFXlwjSQJpAivrx5ZW1xl-twZ-adk7VPxir_YKI.D05WGXmxZv20NpqTnfc6pyPUXLBjuuas7m85bi9EcGM');
+});
 
 console.log("Setting port: ");
 app.set('port', (process.env.PORT || 5000));
