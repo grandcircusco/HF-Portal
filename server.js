@@ -4,7 +4,6 @@ var pg = require('pg');
 var Sequelize = require('sequelize');
 var gzippo = require('gzippo');
 var aws = require('aws-sdk');
-var forceSSL = require('express-force-ssl');
 
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
@@ -26,6 +25,15 @@ app.set('forceSSLOptions', {
     trustXFPHeader: false,
     httpsPort: 443,
     sslRequiredMessage: 'SSL Required.'
+});
+
+app.use(function(req, res, next) {
+	if (req.headers['x-forwarded-proto'] != 'https') {
+    console.log("was http, will be https");
+		res.redirect(301, 'https://' + req.hostname + req.originalUrl);
+	} else {
+		next();
+	}
 });
 
 
