@@ -20,11 +20,10 @@ var bcrypt = require('bcrypt');
 var app = express();
 
 // set up a route to redirect http to https
-//app.get('*',function(req,res){
-//
-//    res.redirect( 301, 'http://hackerfellows.com' );
-//});
-//
+app.get('*',function(req,res){
+    res.redirect( 301, 'https://portal.hackerfellows.com' );
+});
+
 
 console.log("Setting port: ");
 app.set('port', (process.env.PORT || 5000));
@@ -60,12 +59,6 @@ app.use('/api/v1/users', users);
 app.get('/', function(req, res) {
   res.sendfile('./index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
-
-// SSL Certbot Acme-challenge
-app.get('/.well-known/acme-challenge/LPhvT9k_Uwrkc3ziU861r_vtxLU2IMha9apU0Oim51Q', function(req, res) {
-    res.send('LPhvT9k_Uwrkc3ziU861r_vtxLU2IMha9apU0Oim51Q.D05WGXmxZv20NpqTnfc6pyPUXLBjuuas7m85bi9EcGM');
-});
-
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
