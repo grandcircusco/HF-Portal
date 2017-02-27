@@ -62,8 +62,8 @@ app.get('/', function(req, res) {
 });
 
 // SSL Certbot Acme-challenge
-app.get('/.well-known/acme-challenge/a05phKTBiRn-M_DGRSgt4dun9hdBAfR0YFR5hbfnwIo', function(req, res) {
-    res.send('a05phKTBiRn-M_DGRSgt4dun9hdBAfR0YFR5hbfnwIo.D05WGXmxZv20NpqTnfc6pyPUXLBjuuas7m85bi9EcGM');
+app.get('/.well-known/acme-challenge/LPhvT9k_Uwrkc3ziU861r_vtxLU2IMha9apU0Oim51Q', function(req, res) {
+    res.send('LPhvT9k_Uwrkc3ziU861r_vtxLU2IMha9apU0Oim51Q.D05WGXmxZv20NpqTnfc6pyPUXLBjuuas7m85bi9EcGM');
 });
 
 
