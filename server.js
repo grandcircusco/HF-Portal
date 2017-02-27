@@ -4,6 +4,7 @@ var pg = require('pg');
 var Sequelize = require('sequelize');
 var gzippo = require('gzippo');
 var aws = require('aws-sdk');
+var forceSSL = require('express-force-ssl');
 
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
@@ -20,8 +21,11 @@ var bcrypt = require('bcrypt');
 var app = express();
 
 // set up a route to redirect http to https
-app.get('*',function(req,res){
-    res.redirect( 301, 'https://portal.hackerfellows.com' );
+app.set('forceSSLOptions', {
+    enable301Redirects: true,
+    trustXFPHeader: false,
+    httpsPort: 443,
+    sslRequiredMessage: 'SSL Required.'
 });
 
 
