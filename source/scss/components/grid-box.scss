@@ -115,16 +115,6 @@
 			text-align: center;
 			margin-top: 0px;
 
-			display: -ms-flexbox;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-flex-direction: row;
-			-ms-flex-direction: row;
-			flex-direction: row;
-			-webkit-flex-wrap: wrap;
-			-ms-flex-wrap: wrap;
-			flex-wrap: wrap;
-
 			.tagwrap{
 
 				display: -ms-flexbox;
@@ -137,17 +127,9 @@
 				-ms-flex-wrap: wrap;
 				flex-wrap: wrap;
 
-				justify-content: center;
 
 			}
 
-            .detButton {
-
-                position:absolute;
-                width:100px;
-                bottom:0px;
-                right:10px;
-            }
 
 			.details-button{
                 position:relative;
@@ -184,6 +166,7 @@
 					}
 				}
 			}
+
 		}
 	}
 
