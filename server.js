@@ -19,16 +19,8 @@ var bcrypt = require('bcrypt');
 
 var app = express();
 
-// set up a route to redirect http to https
-app.set('forceSSLOptions', {
-    enable301Redirects: true,
-    trustXFPHeader: false,
-    httpsPort: 443,
-    sslRequiredMessage: 'SSL Required.'
-});
-
 app.use(function(req, res, next) {
-	if (req.headers['x-forwarded-proto'] != 'https') {
+	if (process.env.PROD && req.headers['x-forwarded-proto'] != 'https') {
     console.log("was http, will be https");
 		res.redirect(301, 'https://' + req.hostname + req.originalUrl);
 	} else {

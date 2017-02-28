@@ -186,7 +186,7 @@
             $scope.confirm_password = {};
             var modalInstance = $modal.open({
                 templateUrl: 'source/app/profile/partials/admin/update-password-form.html',
-                controller: 'UpdatePasswordModalInstanceController',
+                controller: 'UpdateAdminPasswordModalInstanceController',
                 size: 'md',
                 resolve: {
                     
@@ -250,7 +250,7 @@
         .controller('CreateUserModalInstanceController', CreateUserModalInstanceController)
         .controller('CompanyVotesModalInstanceController', CompanyVotesModalInstanceController)
         .controller('FellowVotesModalInstanceController', FellowVotesModalInstanceController)
-        .controller('UpdatePasswordModalInstanceController', UpdatePasswordModalInstanceController);
+        .controller('UpdateAdminPasswordModalInstanceController', UpdateAdminPasswordModalInstanceController);
 
     EditFellowModalInstanceController.$inject = ['$scope', '$modalInstance', 'fellow', 'User', 'Fellows' ];
     function EditFellowModalInstanceController ($scope, $modalInstance, fellow, User, Fellows) {
@@ -556,8 +556,8 @@
 
     }
 
-    UpdatePasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
-    function UpdatePasswordModalInstanceController($scope, $modalInstance, User) {
+    UpdateAdminPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
+    function UpdateAdminPasswordModalInstanceController($scope, $modalInstance, User) {
 
 
         $scope.ok = function ok() {

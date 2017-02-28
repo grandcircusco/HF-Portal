@@ -193,6 +193,7 @@ app.post('/create', Middleware.isAdmin, function createUser(req, res) {
 
 // PUT /users/:id - updates an existing user record
 app.put('/:id', Middleware.isOwnerOrAdmin, function putUser(req, res) {
+  console.log("API update user");
 
 	Users.findOne({
 
@@ -212,6 +213,7 @@ app.put('/:id', Middleware.isOwnerOrAdmin, function putUser(req, res) {
 
 					user.password = hash;
 					user.save();
+          res.send(user);
 				});
 			});
 		}

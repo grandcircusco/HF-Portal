@@ -7,14 +7,15 @@
 
     angular
     .module('app.profile.controllers')
-    .controller('CompanyProfileController', CompanyProfileController);
+    .controller('CompanyProfileController', CompanyProfileController)
+    .controller('UpdateCompanyPasswordModalInstanceController', UpdateCompanyPasswordModalInstanceController);
 
-    CompanyProfileController.$inject = ['$scope', '$location', 'Companies', 'User', 'Tags', 'Alert'];
+    CompanyProfileController.$inject = ['$scope', '$location', 'Companies', 'User', 'Tags', 'Alert', '$modal'];
 
     /**
     * @namespace CompanyProfileController
     */
-    function CompanyProfileController($scope, $location, Companies, User, Tags, Alert) {
+    function CompanyProfileController($scope, $location, Companies, User, Tags, Alert, $modal) {
         var vm = this;
 
         // Probably can handle this in the routes or with middleware of some kind
@@ -86,6 +87,24 @@
             //console.log('activated profile controller!');
             //Profile.all();
         }
+
+        /* Update password */
+        $scope.updateCompanyPassword = function() {
+            $scope.new_password = {};
+            $scope.confirm_password = {};
+            var modalInstance = $modal.open({
+                templateUrl: 'source/app/profile/partials/admin/update-password-form.html',
+                controller: 'UpdateCompanyPasswordModalInstanceController',
+                size: 'md',
+                resolve: {
+                    
+                }
+            });
+            modalInstance.result.then( function( response ) {
+              $scope.new_password = {};
+              $scope.confirm_password = {};
+            });
+        };
 
         $scope.update = function(company) {
 
@@ -209,6 +228,44 @@
             xhr.send(file);
         }
 
+    }
+
+    UpdateCompanyPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
+    function UpdateCompanyPasswordModalInstanceController($scope, $modalInstance, User) {
+
+
+        $scope.ok = function ok() {
+
+            $scope.errors = [];
+
+            // Form is being validated by angular, but leaving this just in case
+            if( typeof $scope.new_password === "undefined" ) {
+                $scope.errors.push( "Enter a password" );
+            } else if( typeof $scope.confirm_password === "undefined" ) {
+                $scope.errors.push( "Confirm your new password" );
+            } else if( $scope.new_password !== $scope.confirm_password ){
+                $scope.errors.push( "Passwords do not match" );
+            }
+
+            if( $scope.errors.length === 0 ){
+
+                var admin = User.getCurrentUser();
+                admin.email = admin.username;
+                admin.password = $scope.new_password;
+                User.update(admin).then( function( newUser ){
+                    console.log("updated");
+                    $modalInstance.close();
+                }, function(){
+                    console.log("failed");
+                    $scope.errors = [ "There was a problem updating the password" ];
+                });
+
+            }
+        };
+
+        $scope.cancel = function cancel() {
+            $modalInstance.dismiss('cancel');
+        };
     }
 
 })();

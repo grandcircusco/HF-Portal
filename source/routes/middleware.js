@@ -20,6 +20,9 @@
             console.log(currentUser.id + "!=" + req.params.id );
             res.send( 'Unauthorized' );
             return;
+        } else {
+          console.log("is owner");
+          return next();
         }
 
     };

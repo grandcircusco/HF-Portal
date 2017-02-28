@@ -7,14 +7,15 @@
 
     angular
     .module('app.profile.controllers')
-    .controller('FellowsProfileController', FellowsProfileController);
+    .controller('FellowsProfileController', FellowsProfileController)
+    .controller('UpdateFellowPasswordModalInstanceController', UpdateFellowPasswordModalInstanceController);
 
-    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User', 'S3', 'Alert' ];
+    FellowsProfileController.$inject = ['$scope', '$location', 'Fellows', 'Tags', 'User', 'S3', 'Alert', '$modal'];
 
     /**
     * @namespace FellowsProfileController
     */
-    function FellowsProfileController($scope, $location, Fellows, Tags, User, S3, Alert ) {
+    function FellowsProfileController($scope, $location, Fellows, Tags, User, S3, Alert, $modal ) {
 
         var vm = this;
 
@@ -87,6 +88,24 @@
             //console.log('activated profile controller!');
             //Profile.all();
         }
+
+        /* Update fellow password */
+        $scope.updateFellowPassword = function() {
+            $scope.new_password = {};
+            $scope.confirm_password = {};
+            var modalInstance = $modal.open({
+                templateUrl: 'source/app/profile/partials/admin/update-password-form.html',
+                controller: 'UpdateFellowPasswordModalInstanceController',
+                size: 'md',
+                resolve: {
+                    
+                }
+            });
+            modalInstance.result.then( function( response ) {
+              $scope.new_password = {};
+              $scope.confirm_password = {};
+            });
+        };
 
 
         $scope.update = function(fellow, file) {
@@ -241,5 +260,47 @@
             xhr.send(file);
         }
     }
+
+
+    UpdateFellowPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
+    function UpdateFellowPasswordModalInstanceController($scope, $modalInstance, User) {
+
+
+        $scope.ok = function ok() {
+
+            $scope.errors = [];
+
+            // Form is being validated by angular, but leaving this just in case
+            if( typeof $scope.new_password === "undefined" ) {
+                $scope.errors.push( "Enter a password" );
+            } else if( typeof $scope.confirm_password === "undefined" ) {
+                $scope.errors.push( "Confirm your new password" );
+            } else if( $scope.new_password !== $scope.confirm_password ){
+                $scope.errors.push( "Passwords do not match" );
+            }
+
+            if( $scope.errors.length === 0 ){
+
+                var fellow = User.getCurrentUser();
+                fellow.password = $scope.new_password;
+                fellow.email = fellow.username;
+                console.log(fellow);
+                console.log(User);
+                User.update(fellow).then( function( newUser ){
+                    console.log("updated");
+                    $modalInstance.close();
+                }, function(){
+                    console.log("failed");
+                    $scope.errors = [ "There was a problem updating the password" ];
+                });
+
+            }
+        };
+
+        $scope.cancel = function cancel() {
+            $modalInstance.dismiss('cancel');
+        };
+    }
+
 
 })();
