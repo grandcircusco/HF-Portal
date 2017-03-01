@@ -230,8 +230,8 @@
 
     }
 
-    UpdateCompanyPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
-    function UpdateCompanyPasswordModalInstanceController($scope, $modalInstance, User) {
+    UpdateCompanyPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Alert'];
+    function UpdateCompanyPasswordModalInstanceController($scope, $modalInstance, User, Alert) {
 
 
         $scope.ok = function ok() {
@@ -255,9 +255,11 @@
                 User.update(admin).then( function( newUser ){
                     console.log("updated");
                     $modalInstance.close();
+                    Alert.showAlert('Your password has been updated', 'success');
                 }, function(){
                     console.log("failed");
                     $scope.errors = [ "There was a problem updating the password" ];
+                    Alert.showAlert('There was a problem updating the password', 'danger');
                 });
 
             }

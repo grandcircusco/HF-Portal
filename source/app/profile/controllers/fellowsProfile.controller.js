@@ -98,10 +98,10 @@
                 controller: 'UpdateFellowPasswordModalInstanceController',
                 size: 'md',
                 resolve: {
-                    
                 }
             });
             modalInstance.result.then( function( response ) {
+
               $scope.new_password = {};
               $scope.confirm_password = {};
             });
@@ -154,7 +154,7 @@
 
             if( errors.length  === 0 )
             {
-                // make sure each of the 5 links starts with 'http://'
+                // make sure each of the links starts with http:// or https://
                 for (var i=1; i<6; i++) {
                     fellow['linkURL'+i] = User.httpify(fellow['linkURL'+i]);
                 }
@@ -262,8 +262,8 @@
     }
 
 
-    UpdateFellowPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User'];
-    function UpdateFellowPasswordModalInstanceController($scope, $modalInstance, User) {
+    UpdateFellowPasswordModalInstanceController.$inject = ['$scope', '$modalInstance', 'User', 'Alert'];
+    function UpdateFellowPasswordModalInstanceController($scope, $modalInstance, User, Alert) {
 
 
         $scope.ok = function ok() {
@@ -289,9 +289,11 @@
                 User.update(fellow).then( function( newUser ){
                     console.log("updated");
                     $modalInstance.close();
+                    Alert.showAlert('Your password has been updated', 'success');
                 }, function(){
                     console.log("failed");
                     $scope.errors = [ "There was a problem updating the password" ];
+                    Alert.showAlert('There was a problem updating the password', 'danger');
                 });
 
             }
