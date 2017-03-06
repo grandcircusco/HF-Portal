@@ -2,7 +2,7 @@
 
 # Requirements
 - Node / NPM
-- Postgres 
+- Postgres or Docker
 - Gulp
 
 # Setup for Development
@@ -17,18 +17,29 @@ $ git clone git@github.com:grandcircusco/HF-Portal.git
 $ npm install
 ```
 
-- Create local db
-```
-$ psql -c 'CREATE DATABASE hfportal;'
-```
-
 - Compile source code
 ```
 $ gulp
 ```
 
+### Using local Postgres install
+- Create local db
+```
+$ psql -c 'CREATE DATABASE hfportal;'
+```
 - Run the app.  An admin user will automatically be created with user name
 'admin@hackerfellows.com' and password 'password'
 ```
 $ node server.js
+```
+
+### Using Docker
+- Run local db
+```
+$ ./localdb
+```
+- Run the app.  An admin user will automatically be created with user name
+'admin@hackerfellows.com' and password 'password'
+```
+$ ./run
 ```
