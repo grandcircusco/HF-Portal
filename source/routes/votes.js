@@ -52,15 +52,18 @@ function resolvePromisesAndPost( voter, votee, res ) {
             voter.getVotesCast().then( function ( data ) {
 
 
+                var prefix = 'You are limited to showing interest in 7 ';
+                var suffix = '. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
+                
                 if ( data.length >= 7 ) {
 
                     if( voter.userType === 'Fellow' )
                     {
-                        res.status( 500 ).send( 'You are limited to showing interest in 7 companies. You have reached the limit already.' );
+                        res.status( 500 ).send( prefix + 'companies' + suffix);
                     }
                     else if( voter.userType === 'Company' )
                     {
-                        res.status( 500 ).send( 'You are limited to showing interest in 7 fellows. You have reached the limit already.' );
+                        res.status( 500 ).send( prefix + 'fellows' + suffix);
                     }
 
 

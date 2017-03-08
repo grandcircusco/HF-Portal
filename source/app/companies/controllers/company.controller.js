@@ -66,18 +66,19 @@
 
                         console.log( vote );
                         console.log("success");
+                        $scope.done = true;
                         return vote;
                     })
                     .catch(function (err) {
 
                         console.log("Error: "+error);
                         Alert.showAlert( err.data, "info" );
+                        $scope.done = false;
                     })
                     .finally(function () {
 
                       $timeout(function() {
                         $scope.loading = false;
-                        $scope.done = true;
 
                       }, 1500);
                       
