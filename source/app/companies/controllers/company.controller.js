@@ -64,20 +64,23 @@
                 return Votes.create($scope.currentUser.id, company.user_id)
                     .success(function (vote) {
 
-                        $timeout(function () {
-
-                            $scope.loading = false;
-                            $scope.done = true;
-
-                        }, 1500);
-
+                        console.log( vote );
+                        console.log("success");
                         return vote;
                     })
                     .catch(function (err) {
 
+                        console.log("Error: "+error);
                         Alert.showAlert( err.data, "info" );
+                    })
+                    .finally(function () {
 
+                      $timeout(function() {
                         $scope.loading = false;
+                        $scope.done = true;
+
+                      }, 1500);
+                      
                     });
             }
         };

@@ -9,12 +9,12 @@
         .module('app.fellows.controllers')
         .controller('FellowController', FellowController);
 
-    FellowController.$inject = ['$routeParams', '$scope', '$timeout', 'Fellows', 'User', 'Votes'];
+    FellowController.$inject = ['$routeParams', '$scope', '$timeout', 'Fellows', 'User', 'Votes', 'Alert'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowController($routeParams, $scope, $timeout, Fellows, User, Votes) {
+    function FellowController($routeParams, $scope, $timeout, Fellows, User, Votes, Alert) {
 
         activate();
 
@@ -71,6 +71,7 @@
                     .catch(function (err) {
 
                         console.log("Error: "+err);
+                        Alert.showAlert( err.data, "info" );
                     })
                     .finally(function () {
 

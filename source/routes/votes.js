@@ -52,7 +52,7 @@ function resolvePromisesAndPost( voter, votee, res ) {
             voter.getVotesCast().then( function ( data ) {
 
 
-                if ( data.length >= 8 ) {
+                if ( data.length >= 7 ) {
 
                     if( voter.userType === 'Fellow' )
                     {
