@@ -1,8 +1,8 @@
 <div class="grid-container fellow-container">
 
-	<h1>Fellows</h1>
+	<h1>Candidates</h1>
 
-	<p class="empty-message" ng-hide="fellows.length">There are no fellows just yet. We are working on adding the to the system. Please check back soon.</p>
+	<p class="empty-message" ng-hide="fellows.length">There are no candidates just yet. Please check back soon.</p>
 
 	<div class="list" ng-show="fellows.length">
 		<fellow-card ng-repeat="fellow in fellows track by $index" ng-if="fellow.first_name && fellow.last_name" />
