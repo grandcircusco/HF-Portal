@@ -10,6 +10,8 @@ var Fellows = models.fellows;
 var Users = models.users;
 var Votes = models.votes;
 
+let MAX_VOTES = 5;
+
 // GET /votes/ - Company votes for a fellow
 app.get('/:voter_id', Middleware.isLoggedIn, function getVote(req, res) {
 
@@ -51,24 +53,24 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
             voter.getVotesCast().then( function ( data ) {
 
+                if ( data.length >= MAX_VOTES) {
 
-                var prefix = 'You are limited to showing interest in 7 ';
-                var suffix = '. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
-                
-                if ( data.length >= 7 ) {
+                    var prefix = 'You are limited to showing interest in ' + MAX_VOTES + ' ';
+                    var suffix = '. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
 
                     if( voter.userType === 'Fellow' )
                     {
                         res.status( 500 ).send( prefix + 'companies' + suffix);
+
                     }
                     else if( voter.userType === 'Company' )
                     {
-                        res.status( 500 ).send( prefix + 'fellows' + suffix);
+                        res.status( 500 ).send( prefix + 'candidates' + suffix);
                     }
 
-
                 }
-                else {
+                else
+                {
 
                     // Make sure vote does not already exist
                     data.forEach( function( element, index, array ){
