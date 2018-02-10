@@ -58,6 +58,47 @@
 
                         <div class="form-group">
 
+                          <label for="fellow_type" class="control-label">Show Profile To:</label>
+                          <div class="radio">
+                            <label>
+                              <input type="radio"
+                                     name="fellow_type"
+                                     value="Fellow"
+                                     ng-model="company.fellow_type"
+                                     ng-required="true"
+                                     require >
+                                  Fellows
+                            </label>
+                          </div>
+
+                          <div class="radio">
+                            <label>
+                              <input type="radio"
+                                     name="fellow_type"
+                                     value="Intern"
+                                     ng-model="company.fellow_type"
+                                     ng-required="true"
+                                     require >
+                                  Interns
+                            </label>
+                          </div>
+
+                          <div class="radio">
+                            <label>
+                              <input type="radio"
+                                     name="fellow_type"
+                                     value="Any"
+                                     ng-model="company.fellow_type"
+                                     ng-required="true"
+                                     require >
+                                  Any
+                            </label>
+                          </div>
+
+                        </div>
+
+                        <div class="form-group">
+
                             <label for="name" class="control-label">Company Name</label>
                             <input type="text" class="form-control" id="name" ng-model="company.name" value="{{company.name}}"/>
                         </div>

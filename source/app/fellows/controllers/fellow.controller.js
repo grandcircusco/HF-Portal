@@ -9,17 +9,25 @@
         .module('app.fellows.controllers')
         .controller('FellowController', FellowController);
 
-    FellowController.$inject = ['$routeParams', '$scope', '$timeout', 'Fellows', 'User', 'Votes', 'Alert'];
+    FellowController.$inject = ['$routeParams', '$scope', '$location', '$timeout', 'Fellows', 'User', 'Votes', 'Alert'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowController($routeParams, $scope, $timeout, Fellows, User, Votes, Alert) {
+    function FellowController($routeParams, $scope, $location, $timeout, Fellows, User, Votes, Alert) {
 
         activate();
 
+
         function activate() {
             //console.log('activated fellows controller!');
+            $scope.isFellows = $location.path().includes('fellows');
+            $scope.isInterns = $location.path().includes('interns');
+            if ($scope.isInterns) {
+              $scope.fellow_type = "interns";
+            } else if ($scope.isFellows) {
+              $scope.fellow_type = "fellows";
+            }
         }
 
         $scope.helpers = HFHelpers.helpers;

@@ -1,5 +1,4 @@
-/**
-* AdminProfileController
+/*
 * @namespace app.profile.controllers
 */
 (function () {
@@ -32,14 +31,28 @@
         }
 
         $scope.fellows = [];
+        $scope.interns= [];
         $scope.companies = [];
         $scope.userListLoad = function() {
 
-            if( $scope.fellows.length === 0 ) {
+            if( $scope.fellows.length === 0 || $scope.interns.length === 0) {
+
+              // reset both lists since we are reloading them
+              $scope.fellows = [];
+              $scope.interns = [];
 
                 Fellows.allWithUser().success(function (fellows) {
 
-                    $scope.fellows = fellows;
+                    for (let f of fellows) {
+                      console.log('checking fellow');
+                      console.dir(f);
+                      console.log(f);
+                      if (f.user.userType === 'Fellow') {
+                        $scope.fellows.push(f);
+                      } else if (f.user.userType === 'Intern') {
+                        $scope.interns.push(f);
+                      }
+                    }
 
                 });
             }
@@ -48,6 +61,7 @@
 
                 Companies.allWithUser().success(function (companies) {
 
+                  // TODO make 2-3 lists of companies
                     $scope.companies = companies;
                 });
             }
@@ -171,6 +185,10 @@
                 if( newItem.user.userType === 'Fellow' )
                 {
                     $scope.fellows.unshift( newItem );
+                }
+                if( newItem.user.userType === 'Intern' )
+                {
+                    $scope.interns.unshift( newItem );
                 }
                 else if( newItem.user.userType === 'Company' )
                 {
@@ -489,6 +507,16 @@
 
             if( $scope.errors.length === 0 ){
 
+                
+                let companyTarget;
+                if (user.userType.includes("Company")) {
+                  let split = user.userType.split("-");
+                  user.userType = split[0];
+                  companyTarget = split[1];
+                  console.log('creating user');
+                  console.log(user);
+                }
+
                 // send user to API via Service
                 User.create(user).then( function(response) {
 
@@ -498,15 +526,23 @@
 
                     var user_id = response.data.id;
 
-                    if( user.userType === "Fellow" ){
+                    if( user.userType === "Fellow" || user.userType === "Intern" ){
 
                         var fellow_post = {
 
-                            first_name: "",
-                            last_name: "",
-                            user_id: user_id
+                            first_name: "Example",
+                            last_name: "User",
+                            user_id: user_id,
+                            major: "pain",
+                            fellow_type: user.userType
                         };
+                        console.log('creating ' + user.userType);
+                        console.dir(fellow_post);
+
                         Fellows.create(fellow_post).then( function( fellow ){
+
+                            console.log('created:');
+                            console.dir(fellow);
 
                             // create fellow success callback
                             $modalInstance.close( fellow );
@@ -518,14 +554,22 @@
                             $scope.errors.push( response.data.error );
                         });
                     }
-                    else if( user.userType === "Company" ){
+                    else if( user.userType.includes("Company") ){
 
                         var company_post = {
 
                             name: "",
-                            user_id: user_id
+                            user_id: user_id,
+                            fellow_type: companyTarget
                         };
+
+                        console.log('creating ' + user.userType);
+                        console.dir(company_post);
+
                         Companies.create(company_post).then( function( company ){
+
+                            console.log('created');
+                            console.dir(company);
 
                             // create company success callback
                             $modalInstance.close( company );

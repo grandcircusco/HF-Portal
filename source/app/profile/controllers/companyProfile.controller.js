@@ -36,9 +36,7 @@
         };
 
         // Make sure current user is a Company
-        var currentUser = User.getCurrentUser();
-        if( currentUser.userType !== "Company" ){
-
+        if(!User.isUserCompany()){
             $location.path("/profile");
             return;
         }

@@ -40,6 +40,9 @@
 
                 if (User.isUserFellow()) {
                     $location.url("/profile/fellow");
+                }
+                if (User.isUserIntern()) {
+                    $location.url("/profile/intern");
                 } else if (User.isUserCompany()) {
                     $location.url("/profile/company");
                 } else if (User.isUserAdmin()) {

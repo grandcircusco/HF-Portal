@@ -143,6 +143,7 @@ app.post('/', Middleware.isAdmin, function postFellow(req, res) {
         user_id: req.body.user_id,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
+        fellow_type: req.body.fellow_type,
         //university: req.body.university,
         //major: req.body.major,
         bio: req.body.bio,
@@ -239,6 +240,7 @@ app.put('/:id', Middleware.isLoggedIn, function putFellow(req, res) {
         fellow.user_id = req.body.user_id;
         fellow.first_name = req.body.first_name;
         fellow.last_name = req.body.last_name;
+        fellow.fellow_type = req.body.fellow_type;
         //fellow.university = req.body.university;
         //fellow.major = req.body.major;
         fellow.bio = req.body.bio;

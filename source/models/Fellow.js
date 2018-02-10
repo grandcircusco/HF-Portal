@@ -9,6 +9,7 @@
             user_id: { type: DataTypes.INTEGER },
             first_name: { type:DataTypes.STRING, default: "" },
             last_name: { type:DataTypes.STRING, default: "" },
+            fellow_type: { type:DataTypes.STRING },
             university: DataTypes.STRING,
             major: DataTypes.STRING,
             bio: DataTypes.TEXT,

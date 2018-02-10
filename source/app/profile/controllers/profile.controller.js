@@ -19,19 +19,17 @@
 
       if( User.isUserLoggedIn() ) {
 
-          var currentUser = User.getCurrentUser();
-
           // redirect the user based on their type
-          if (currentUser.userType === 'Admin') {
-              //console.log("Like a boss");
+          if (User.isUserAdmin()) {
               $location.path("/profile/admin");
           }
-          else if (currentUser.userType === 'Fellow') {
-              //console.log("Like a fella");
+          else if (User.isUserFellow()) {
               $location.path("/profile/fellow");
           }
-          else if (currentUser.userType === 'Company') {
-              //console.log("Like a company");
+          else if (User.isUserIntern()) {
+              $location.path("/profile/intern");
+          }
+          else if (User.isUserCompany()) {
               $location.path("/profile/company");
           }
       }

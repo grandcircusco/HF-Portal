@@ -4,10 +4,10 @@
     module.exports = function(sequelize, DataTypes) {
 
         return sequelize.define("companies", {
-
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
             user_id: { type: DataTypes.INTEGER },
             name: { type:DataTypes.STRING, default: "" },
+            fellow_type: { type:DataTypes.STRING },
             primary_contact: DataTypes.STRING,
             location: DataTypes.STRING,
             year: DataTypes.STRING,

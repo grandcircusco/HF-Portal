@@ -15,7 +15,7 @@
                         <img class="img" ng-src={{company.image_url}} />
                     </div>
 
-                    <div class="row vote-container" ng-show="isFellow()">
+                    <div class="row vote-container" ng-show="isFellowOrIntern()">
 
                         <span class="btn btn-default btn-lg vote-button" ng-show="done || currentUserVoted(company)">
                             Interested

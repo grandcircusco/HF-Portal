@@ -37,11 +37,13 @@
         };
 
         // Make sure current user is a Fellow
-        var currentUser = User.getCurrentUser();
-        if( currentUser.userType !== "Fellow" ){
+        if( !User.isUserFellowOrIntern() ){
 
+            console.log('redirecting');
             $location.path("/profile");
             return;
+        } else {
+          console.log('is a fellow or intern');
         }
 
         $scope.tags = [];

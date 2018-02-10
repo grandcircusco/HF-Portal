@@ -61,6 +61,8 @@
           isUserLoggedIn: isUserLoggedIn,
           isUserAdmin: isUserAdmin,
           isUserFellow: isUserFellow,
+          isUserIntern: isUserIntern,
+          isUserFellowOrIntern: isUserFellowOrIntern,
           isUserCompany: isUserCompany,
           httpify: httpify
       };
@@ -99,7 +101,6 @@
        * @desc updatea a user record
        */
       function update(user) {
-
           return $http.put(rootUrl + '/api/v1/users/' + user.id, user);
       }
 
@@ -112,39 +113,31 @@
       }
 
       function isUserLoggedIn(){
-
-          if( Object.keys(currentUser).length > 0 ){
-
-              return true;
-          }
-          else return false;
+          return Object.keys(currentUser).length > 0;
       }
 
       function isUserAdmin(){
-
-          if( currentUser.userType === 'Admin' )
-          {
-              return true;
-          }
-          else return false;
+          return currentUser.userType === 'Admin';
       }
 
       function isUserFellow(){
+          return currentUser.userType === 'Fellow';
+      }
 
-          if( currentUser.userType === 'Fellow' )
-          {
-              return true;
-          }
-          else return false;
+      function isUserIntern(){
+          return currentUser.userType === 'Intern';
+      }
+
+      function isUserFellowOrIntern(){
+          return currentUser.userType === 'Intern' ||
+            currentUser.userType == 'Fellow';
       }
 
       function isUserCompany(){
-
-          if( currentUser.userType === 'Company' )
-          {
-              return true;
+          if (typeof currentUser.userType === 'string') {
+            return currentUser.userType.includes('Company');
           }
-          else return false;
+          return false;
       }
 
      function httpify(url) {

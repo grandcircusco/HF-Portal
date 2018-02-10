@@ -59,6 +59,7 @@ app.post('/', Middleware.isAdmin, function postCompany(req, res) {
 
         user_id: req.body.user_id,
         name: req.body.name,
+        fellow_type: req.body.fellow_type,
         primary_contact: req.body.primary_contact,
         location: req.body.location,
         company_size: req.body.company_size,
@@ -228,6 +229,7 @@ app.put('/:id', Middleware.isLoggedIn, upload.single('file'),function putCompany
 
         company.user_id = req.body.user_id;
         company.name = req.body.name;
+        company.fellow_type = req.body.fellow_type;
         company.primary_contact = req.body.primary_contact;
         company.location = req.body.location;
         company.company_size = req.body.company_size;

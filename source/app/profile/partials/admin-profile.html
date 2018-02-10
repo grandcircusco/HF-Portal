@@ -35,6 +35,32 @@
 						</tbody>
 					</table>
 
+					<h2>Interns</h2>
+					<table class="table table-striped">
+						<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th class="stat">Voted For</th>
+							<th class="stat">Votes Cast</th>
+							<th class="stat">Enabled</th>
+							<th></th>
+							<th></th>
+						</thead>
+						<tbody>
+						<tr ng-repeat="intern in interns">
+							<td>{{  intern.first_name + " " + intern.last_name }}</td>
+							<td>{{ intern.user.email }}</td>
+							<td class="stat"><a href ng-click="fellowVotes(intern)">{{ intern.user.VotesFor.length }}</a></td>
+							<td class="stat"><a href ng-click="fellowVotes(intern)">{{ intern.user.VotesCast.length }}</a></td>
+							<td class="stat">{{ intern.enabled ? "Yes" : "No" }}</td>
+							<td><a href ng-click="editFellow(intern)"><i class="fa fa-pencil-square-o"></i></a></td>
+							<td width="30"><a href ng-click="removeFellow(intern)"><i class="fa fa-times text-danger"></i></a></td>
+						</tr>
+
+						</tbody>
+					</table>
+
 
 					<h2>Companies</h2>
 					<table class="table table-striped">
@@ -45,6 +71,7 @@
 							<th class="stat">Voted For</th>
 							<th class="stat">Votes Cast</th>
 							<th class="stat">Enabled</th>
+							<th class="stat">Display</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -56,6 +83,7 @@
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesCast.length }}</a></td>
 							<td class="stat">{{ company.enabled ? "Yes" : "No" }}</td>
+							<td class="stat">{{ company.fellow_type }}</td>
 							<td><a href ng-click="editCompany(company)"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td width="30"><a href ng-click="removeCompany(company)"><i class="fa fa-times text-danger"></i></a></td>
 						</tr>

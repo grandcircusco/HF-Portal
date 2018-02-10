@@ -37,6 +37,45 @@
         </div>
 
         <div class="form-group">
+
+          <label>Show profile to:</label>
+          <div class="radio">
+              <label>
+                  <input type="radio"
+                         name="fellow_type"
+                         value="Any"
+                         ng-model="company.fellow_type"
+                         ng-required="true"
+                         required >
+                  Any               
+              </label>
+          </div>
+          <div class="radio">
+              <label>
+                  <input type="radio"
+                         name="fellow_type"
+                         value="Fellow"
+                         ng-model="company.fellow_type"
+                         ng-required="true"
+                         required >
+                  Fellows
+              </label>
+          </div>
+          <div class="radio">
+              <label>
+                  <input type="radio"
+                         name="fellow_type"
+                         value="Intern"
+                         ng-model="company.fellow_type"
+                         ng-required="true"
+                         required >
+                  Interns
+              </label>
+          </div>
+
+        </div>
+
+        <div class="form-group">
             <label>Change Password</label>
             <input type="password" ng-model="user.password" name="email" class="form-control" />
             <p class="text-muted">Enter a new password to change - otherwise leave blank</p>

@@ -69,14 +69,40 @@
         return res.send( 'Unauthorized' );
     };
 
-    // verify the logged in user is an admin
+    var isIntern = function (req, res, next) {
+
+        if (req.isAuthenticated()) {
+
+            var user = req.user;
+
+            if( user.userType === 'Intern' ){
+
+                return next();
+            }
+        }
+
+        return res.send( 'Unauthorized' );
+    };
+
+    var isFellowOrIntern = function (req, res, next) {
+
+      if (req.isAuthenticated()) {
+        var user = req.user;
+        if (user.userType === 'Fellow' || user.userType === 'Intern') {
+          return next();
+        }
+      }
+
+    };
+
+    // verify the logged in user is company
     var isCompany = function (req, res, next) {
 
         if (req.isAuthenticated()) {
 
             var user = req.user;
 
-            if( user.userType === 'Company' ){
+            if( user.userType && user.userType.includes('Company') ){
 
                 return next();
             }

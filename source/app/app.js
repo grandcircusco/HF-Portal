@@ -23,7 +23,17 @@ var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngSanitize', 'ui.bo
         templateUrl: 'source/app/fellows/fellows.html',
         resolve: { loggedIn: checkLoggedin }
     })
+    .when('/interns', {
+        controller: 'FellowsController',
+        templateUrl: 'source/app/fellows/fellows.html',
+        resolve: { loggedIn: checkLoggedin }
+    })
     .when('/fellows/:fellow_id', {
+        controller: 'FellowController',
+        templateUrl: 'source/app/fellows/fellow.html',
+        resolve: { loggedIn: checkLoggedin }
+    })
+    .when('/interns/:fellow_id', {
         controller: 'FellowController',
         templateUrl: 'source/app/fellows/fellow.html',
         resolve: { loggedIn: checkLoggedin }
@@ -58,6 +68,12 @@ var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngSanitize', 'ui.bo
     })
 
     .when('/profile/fellow', {
+        controller: 'FellowsProfileController',
+        templateUrl: 'source/app/profile/partials/fellow-profile.html',
+        resolve: { loggedIn: checkLoggedin }
+    })
+
+    .when('/profile/intern', {
         controller: 'FellowsProfileController',
         templateUrl: 'source/app/profile/partials/fellow-profile.html',
         resolve: { loggedIn: checkLoggedin }
@@ -142,6 +158,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
         $scope.isUserLoggedIn = User.isUserLoggedIn();
         $scope.isUserAdmin = User.isUserAdmin();
         $scope.isUserFellow = User.isUserFellow();
+        $scope.isUserIntern = User.isUserIntern();
         $scope.isUserCompany = User.isUserCompany();
     }
 
@@ -160,6 +177,7 @@ function RoutingController($scope, $modal, $window, User, $location, $anchorScro
         $scope.isUserLoggedIn = false;
         $scope.isUserAdmin = false;
         $scope.isUserFellow = false;
+        $scope.isUserIntern = false;
         $scope.isUserCompany = false;
 
         $window.location.reload();

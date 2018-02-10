@@ -66,11 +66,44 @@
             <label>
                 <input type="radio"
                        name="userType"
-                       value="Company"
+                       value="Intern"
                        ng-model="user.userType"
                        ng-required="true"
                        required >
-                Company
+                Intern               
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio"
+                       name="userType"
+                       value="Company-Any"
+                       ng-model="user.userType"
+                       ng-required="true"
+                       required >
+                Company - Any               
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio"
+                       name="userType"
+                       value="Company-Fellow"
+                       ng-model="user.userType"
+                       ng-required="true"
+                       required >
+                Company - Fellows
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio"
+                       name="userType"
+                       value="Company-Intern"
+                       ng-model="user.userType"
+                       ng-required="true"
+                       required >
+                Company - Interns
             </label>
         </div>
         <p ng-show="newUserForm.userType.$invalid && !newUserForm.userType.$pristine" class="text-danger">A user type is required.</p>

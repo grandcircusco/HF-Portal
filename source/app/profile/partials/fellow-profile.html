@@ -53,6 +53,33 @@
 
                             </div>
 
+                        <div class="form-group">
+
+                          <label for="fellow_type" class="control-label">Show Profile To:</label>
+                          <div class="radio">
+                            <label>
+                              <input type="radio"
+                                     name="fellow_type"
+                                     value="Fellow"
+                                     ng-model="company.fellow_type"
+                                     ng-required="true"
+                                     require >
+                                  Fellows
+                            </label>
+                          </div>
+
+                          <div class="radio">
+                            <label>
+                              <input type="radio"
+                                     name="fellow_type"
+                                     value="Intern"
+                                     ng-model="company.fellow_type"
+                                     ng-required="true"
+                                     require >
+                                  Interns
+                            </label>
+                          </div>
+
 
                             <div class="form-group">
                                 <label for="first_name" class="control-label">First Name</label>

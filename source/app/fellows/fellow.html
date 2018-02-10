@@ -2,7 +2,8 @@
     <div class="col-md-8 col-md-offset-2">
 
         <ul class="breadcrumb">
-            <li><a href="/#/fellows">Candidates</a></li>
+            <li ng-show="isFellows"><a href="/#/fellows">2018 Fellows</a></li>
+            <li ng-show="isInterns"><a href="/#/interns">2018 Interns</a></li>
             <li class="active">{{ fellow.first_name }} {{ fellow.last_name }}</li>
         </ul>
 
@@ -60,7 +61,8 @@
         </div>
 
 
-        <p class="pagination"><a class="" href="/#/fellows"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Candidates</a></p>
+        <p class="pagination" ng-show="isFellows"><a class="" href="/#/fellows"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Fellows</a></p>
+        <p class="pagination" ng-show="isInterns"><a class="" href="/#/interns"><span class="glyphicon glyphicon-chevron-left"></span> Back to All Interns</a></p>
 
     </div>
 

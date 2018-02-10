@@ -9,24 +9,41 @@
         .module('app.fellows.controllers')
         .controller('FellowsController', FellowsController);
 
-    FellowsController.$inject = ['$scope', '$modal', 'Fellows'];
+    FellowsController.$inject = ['$scope', '$modal', '$location', 'Fellows'];
 
     /**
      * @namespace FellowsController
      */
-    function FellowsController($scope, $modal, Fellows) {
+    function FellowsController($scope, $modal, $location, Fellows) {
 
         activate();
 
         function activate() {
-            //console.log('activated fellows controller!');
+            $scope.isFellows = $location.path().includes('fellows');
+            $scope.isInterns = $location.path().includes('interns');
+            if ($scope.isInterns) {
+              $scope.fellow_type = "interns";
+            } else if ($scope.isFellows) {
+              $scope.fellow_type = "fellows";
+            }
         }
 
         $scope.helpers = HFHelpers.helpers;
+        $scope.fellows = [];
 
         Fellows.all().success(function (fellows) {
+            // filter by fellows or interns
+            for (let f of fellows) {
+              console.dir(f);
+              if (f.fellow_type === 'Intern' && $scope.isInterns || 
+                  f.fellow_type === 'Fellow' && $scope.isFellows) {
+                  console.log('adding');
+                  $scope.fellows.push(f);
+              } else {
+                console.log('not adding');
+              }
+            }
 
-            $scope.fellows = fellows;
         });
 
         $scope.openModal = function (fellow) {
