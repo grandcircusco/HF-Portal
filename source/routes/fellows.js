@@ -146,6 +146,8 @@ app.post('/', Middleware.isAdmin, function postFellow(req, res) {
         fellow_type: req.body.fellow_type,
         //university: req.body.university,
         //major: req.body.major,
+        contact_email: req.body.contact_email,
+        phone: req.body.phone,
         bio: req.body.bio,
         interests: req.body.interests,
         description: req.body.description,
@@ -243,6 +245,8 @@ app.put('/:id', Middleware.isLoggedIn, function putFellow(req, res) {
         fellow.fellow_type = req.body.fellow_type;
         //fellow.university = req.body.university;
         //fellow.major = req.body.major;
+        fellow.contact_email = req.body.contact_email;
+        fellow.phone = req.body.phone;
         fellow.bio = req.body.bio;
         fellow.interests = req.body.interests;
         fellow.description = req.body.description;

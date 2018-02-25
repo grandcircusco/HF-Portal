@@ -38,6 +38,7 @@
               if (f.fellow_type === 'Intern' && $scope.isInterns || 
                   f.fellow_type === 'Fellow' && $scope.isFellows) {
                   console.log('adding');
+                  console.dir(f);
                   $scope.fellows.push(f);
               } else {
                 console.log('not adding');

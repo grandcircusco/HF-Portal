@@ -45,6 +45,23 @@
 	color: #000;
 }
 
+.contact{
+
+    font-family: 'Dosis', sans-serif;
+	color: #000;
+}
+
+.links{
+
+    a {
+
+        color: #ee5e5e;
+        font-family: 'Dosis', sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+    }
+}
+
 .bio {
     font-family: 'Dosis', sans-serif;
     margin-bottom:0;
@@ -72,8 +89,16 @@
 		font-weight: 700;
 		font-size: 1.2em;
 		line-height: 1.3;
-		margin-bottom: 15px;
 	}
+
+    .contact{
+        color: #000;
+		text-align: left;
+		font-size: 1.0em;
+		line-height: 1.3;
+		margin-bottom: 15px;
+        margin-top: 5px;
+    }
 
 	.bio{
 

@@ -530,10 +530,9 @@
 
                         var fellow_post = {
 
-                            first_name: "Example",
-                            last_name: "User",
+                            first_name: "",
+                            last_name: "",
                             user_id: user_id,
-                            major: "pain",
                             fellow_type: user.userType
                         };
                         console.log('creating ' + user.userType);

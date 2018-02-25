@@ -53,34 +53,6 @@
 
                             </div>
 
-                        <div class="form-group">
-
-                          <label for="fellow_type" class="control-label">Show Profile To:</label>
-                          <div class="radio">
-                            <label>
-                              <input type="radio"
-                                     name="fellow_type"
-                                     value="Fellow"
-                                     ng-model="company.fellow_type"
-                                     ng-required="true"
-                                     require >
-                                  Fellows
-                            </label>
-                          </div>
-
-                          <div class="radio">
-                            <label>
-                              <input type="radio"
-                                     name="fellow_type"
-                                     value="Intern"
-                                     ng-model="company.fellow_type"
-                                     ng-required="true"
-                                     require >
-                                  Interns
-                            </label>
-                          </div>
-
-
                             <div class="form-group">
                                 <label for="first_name" class="control-label">First Name</label>
                                 <input type="text" class="form-control" id="first_name" ng-model="fellow.first_name" value="{{fellow.first_name}}"/>
@@ -94,6 +66,16 @@
                             <div class="form-group">
                                 <label for="email" class="control-label">Email</label>
                                 <input type="text" class="form-control" id="email" ng-model="fellow.user.email" value="{{fellow.user.email}}" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact_email" class="control-label">Contact Email</label>
+                                <input type="text" class="form-control" id="contact_email" ng-model="fellow.contact_email" value="{{fellow.contact_email}}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="control-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" ng-model="fellow.phone" value="{{fellow.phone}}" />
                             </div>
 
                             <div class="form-group">

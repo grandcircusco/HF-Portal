@@ -34,6 +34,7 @@
                 <div class="col-md-9">
                     <h1 class="name">{{ fellow.first_name +" "+ fellow.last_name }}</h1>
                     <p class="tagline">{{ fellow.description }}</p>
+                    <p class="contact"><strong>Contact: </strong><span class="links"><a href="mailto:{{fellow.contact_email}}" target="_blank">{{ fellow.contact_email }}</a></span> | {{fellow.phone}}</p>
 
                     <div class="bio" ng-bind-html="helpers.paragraphize(fellow.bio) | sanitize"></div>
 
