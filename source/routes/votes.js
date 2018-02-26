@@ -10,7 +10,8 @@ var Fellows = models.fellows;
 var Users = models.users;
 var Votes = models.votes;
 
-let MAX_VOTES = 5;
+let MAX_COMPANY_VOTES = 12;
+let MAX_CANDIDATE_VOTES = 7;
 
 // GET /votes/ - Company votes for a fellow
 app.get('/:voter_id', Middleware.isLoggedIn, function getVote(req, res) {
@@ -53,21 +54,19 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
             voter.getVotesCast().then( function ( data ) {
 
-                if ( data.length >= MAX_VOTES) {
+                if ( voter.userType === 'Fellow' && data.length >= MAX_CANDIDATE_VOTES) {
 
-                    var prefix = 'You are limited to showing interest in ' + MAX_VOTES + ' ';
-                    var suffix = '. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
+                    var msg = 'You are limited to showing interest in ' + MAX_CANDIDATE_VOTES + 
+                    ' companies. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
 
-                    if( voter.userType === 'Fellow' )
-                    {
-                        res.status( 500 ).send( prefix + 'companies' + suffix);
+                    res.status( 500 ).send(msg);
 
-                    }
-                    else if( voter.userType === 'Company' )
-                    {
-                        res.status( 500 ).send( prefix + 'candidates' + suffix);
-                    }
+                } else if ( voter.userType === 'Company' && data.length >= MAX_COMPANY_VOTES) {
 
+                    var msg = 'You are limited to showing interest in ' + MAX_COMPANY_VOTES + 
+                    ' candidates. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
+
+                    res.status( 500 ).send(msg);
                 }
                 else
                 {
@@ -83,7 +82,7 @@ function resolvePromisesAndPost( voter, votee, res ) {
                             }
                             else if( voter.userType === 'Company' )
                             {
-                                res.status( 500 ).send( "You have already shown interest in this fellow " );
+                                res.status( 500 ).send( "You have already shown interest in this candidate " );
                             }
                         }
 

@@ -9,7 +9,6 @@
 		<h3 class="name">{{fellow.first_name +" "+ fellow.last_name}}</h3>
 
 		<p class="tagline">{{ fellow.description }}, {{ fellow.developer_type }}</p>
-    <p class="contact"><span class="links"><a href="mailto:{{fellow.contact_email}}" target="_blank">{{ fellow.contact_email }}</a></span> | {{ fellow.phone }}</p>
 
 		<div class="bio" ng-bind-html="helpers.paragraphize( fellow.bio.substr(0, 350) ) | sanitize"></div>
 
