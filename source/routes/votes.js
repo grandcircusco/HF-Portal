@@ -56,14 +56,14 @@ function resolvePromisesAndPost( voter, votee, res ) {
 
                 if ( voter.userType === 'Fellow' && data.length >= MAX_CANDIDATE_VOTES) {
 
-                    var msg = 'You are limited to showing interest in ' + MAX_CANDIDATE_VOTES + 
+                    let msg = 'You are limited to showing interest in ' + MAX_CANDIDATE_VOTES + 
                     ' companies. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
 
                     res.status( 500 ).send(msg);
 
                 } else if ( voter.userType === 'Company' && data.length >= MAX_COMPANY_VOTES) {
 
-                    var msg = 'You are limited to showing interest in ' + MAX_COMPANY_VOTES + 
+                    let msg = 'You are limited to showing interest in ' + MAX_COMPANY_VOTES + 
                     ' candidates. You have reached the limit already. Visit the votes tab to review and remove previous votes.';
 
                     res.status( 500 ).send(msg);

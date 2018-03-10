@@ -51,7 +51,8 @@
 
         $scope.isFellowOrIntern = function(){
 
-            return ( $scope.currentUser.userType === "Fellow");
+            return ( $scope.currentUser.userType === "Fellow" ||
+                     $scope.currentUser.userType === "Intern");
         };
 
         $scope.vote = function vote(company) {
