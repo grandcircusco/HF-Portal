@@ -25,7 +25,8 @@
             if (currentUser.userType === 'Admin') {
                 $location.path("/votes/admin");
             }
-            else if (currentUser.userType === 'Fellow') {
+            else if (currentUser.userType === 'Fellow' ||
+                currentUser.userType === 'Intern') {
                 $location.path("/votes/fellow");
             }
             else if (currentUser.userType === 'Company') {
