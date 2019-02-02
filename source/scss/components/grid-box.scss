@@ -14,7 +14,7 @@
 
 	h1 {
 
-		color: #766e65;
+		color: $main-dark-color;
 	}
 
 	.list {
@@ -43,7 +43,7 @@
 	.grid-box {
 
 		width: 100%;
-        background-color: #e6e6e6;
+        background-color: $main-bg-color;
 
 		font-family: $head-font;
 
@@ -110,7 +110,7 @@
 		.foot{
 
 			width: 100%;
-			background-color: #e6e6e6;
+			background-color: $main-bg-color;
 			padding: 15px;
             padding-top:0;
 			text-align: center;
@@ -139,7 +139,6 @@
 
 				a{
 
-					//border: 2px solid #737571;
                     float:right;
 					line-height: 26px;
 					padding: 5px 15px;
@@ -149,15 +148,15 @@
 					font-size: 16px;
 
 					font-weight: bold;
-					background-color: #fcaf17;
-                    color: #e6e6e6;
+					background-color: $main-bright-color;
+                    color: white;
 
 
 					&:hover{
 
 						background-color: #737571;
 						text-decoration: none;
-						color: #ffffff;
+						color: white;
 					}
 
 					.fa{

@@ -45,7 +45,7 @@
 .borderFrame {
 	//background-image: url("/public/assets/images/grit-img.png");
     background-size: cover;
-    background-color: #efefef;
+    background-color: $main-bg-color;
 	// background-size:300px;
 	// background-position: center center;
 	background-repeat: no-repeat;
@@ -56,14 +56,14 @@
 
 }
 .btn {
-    background-color:#fcaf17;
+    background-color:$main-bright-color;
 	color:white;
     border:none;
     //border-radius:0;
     z-index:10;
 }
 .btn:hover {
-    background-color:lighten(#fcaf17, 50%);
+    background-color:lighten($main-bright-color, 50%);
 }
 
 .logo {
@@ -340,14 +340,14 @@ img {
 
 	.form-link {
 
-		color: #f63;
-		border-color: #f63;
+		color: $main-bright-color;
+		border-color: $main-bright-color;
 		margin-top: 50px;
 		margin-bottom: 30px;
 
 		&:hover {
 
-			background-color: #f63;
+			background-color: $main-bright-color;
 			color: #fff;
 		}
 	}

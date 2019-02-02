@@ -12,11 +12,15 @@ html {
   position: relative;
 }
 
+a {
+    color: $main-bright-color;
+}
+
 body {
 
   @include text($family: $main-font, $size: 16px, $l-height: 1.5, $weight: 300);
   margin: 0;
-  background-color:#F0F0F0;
+  background-color:$main-bg-color;
 }
 
 input[type=file] {
@@ -40,7 +44,6 @@ h1 {
   text-align: center;
   padding-bottom: 50px;
   margin: 0px;
-  /*color: #dededd;*/
   @media #{$phone} {
     padding-bottom: 15px;
   }
@@ -48,7 +51,7 @@ h1 {
 
 h3{
 
-  color: #fcaf17;
+  color: $main-bright-color;
   padding-left:20px;
 }
 
@@ -107,7 +110,6 @@ p {
   background-color: transparent;
 
   a{
-
     text-decoration: underline;
   }
 

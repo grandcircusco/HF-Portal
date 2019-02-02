@@ -20,14 +20,14 @@
 
     font-weight: 500;
     font-family: $head-font, sans-serif;
-	border: 3px solid fcaf17;
+	border: 3px solid $main-bright-color;
 	height: 40px;
 	line-height: 26px;
 	padding: 5px 15px;
 	margin: 0 10px 5px;
 	text-align: center;
     text-transform:uppercase;
-	color: fcaf17;
+	color: $main-bright-color;
     margin:10px;
 }
 
@@ -35,14 +35,14 @@
     font-size: 40px;
     font-weight:200;
     font-family: $head-font, sans-serif;
-	color: #000;
+	color: $main-dark-color;
     text-transform:uppercase;
 }
 
 .tagline{
 
     font-family: $main-font, sans-serif;
-	color: #000;
+	color: #766e65;
 }
 
 .contact{
@@ -55,7 +55,6 @@
 
     a {
 
-        color: fcaf17;
         font-family: $main-font, sans-serif;
         font-size: 1em;
         font-weight: normal;
@@ -70,7 +69,7 @@
 
 .fellow-container {
 
-    background-color:#f0f0f0;
+    background-color:$main-bg-color;
     padding:30px;
 }
 
@@ -149,7 +148,6 @@
 
 		a {
 
-			color: fcaf17;
             font-family: $main-font, sans-serif;
 			font-size: 1em;
 			font-weight: normal;
@@ -171,8 +169,8 @@
             font-family: $head-font, sans-serif;
 			display: inline-block;
 			margin-bottom: 10px;
-			color: fcaf17;
-			border-color: fcaf17;
+			color: $main-bright-color;
+			border-color: $main-bright-color;
 
 		}
 	}

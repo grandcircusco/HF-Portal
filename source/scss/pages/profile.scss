@@ -1,7 +1,7 @@
 .profile {
 
   color: #766e65;
-  background-color:#F0F0F0;
+  background-color:$main-bg-color;
   margin: 20px auto 50px;
 
   #profile-photo {
@@ -133,7 +133,7 @@
 	span.vote-button:active {
 
 	  color: #333;
-	  background-color: #fff;
+	  background-color: #ccc;
 	  border-color: #ccc;
 	  cursor: default;
 	  box-shadow: none;
@@ -142,7 +142,7 @@
 
   .table {
 
-	background-color: #ffffff;
+	background-color: $main-bg-color;
 	color: #1f1f1f;
 
 	th.stat,

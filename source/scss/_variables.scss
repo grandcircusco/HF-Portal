@@ -13,6 +13,10 @@ $RED001:#ff6633;
 $RED002:#f8aa7f;
 $RED003:#fabe9b;
 
+$main-bright-color: #fcaf17;
+$main-dark-color: #766e65;
+$main-bg-color: white;
+
 $main-font: 'Arial', 'Helvetica', sans-serif;
 //$main-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $head-font: 'Arial', sans-serif;
@@ -20,8 +24,8 @@ $odd-section: #000; /*d4d4d4*/
 $even-section: #fff; /*dededf*/
 $heading-text-color: #dededd; /*2f2f2f*/
 $button-color:#2f2f2f;
-$body-text-color: #766e65;
-$nav-bar-color-main: #fcaf17;
+$body-text-color: $main-dark-color;
+$nav-bar-color-main: $main-bright-color;
 $nav-bar-color-secondary: #dededf;
 $logo-height: 100%;
 $bar-color: #fff;
