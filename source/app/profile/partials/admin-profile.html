@@ -51,7 +51,7 @@
 						<tbody>
 						<tr ng-repeat="intern in interns">
               <td ng-if="intern.enabled"><a ng-href="/#/interns/{{ intern.id }}">{{  intern.first_name + " " + intern.last_name }}</a></td>
-              <td ng-if="!intern.enabled">{{ fellow.first_name + " " + fellow.last_name }}</td>
+              <td ng-if="!intern.enabled">{{ intern.first_name + " " + intern.last_name }}</td>
               <td><a ng-href="mailto:{{ intern.user.email }}">{{ intern.user.email }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(intern)">{{ intern.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(intern)">{{ intern.user.VotesCast.length }}</a></td>
