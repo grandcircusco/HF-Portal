@@ -37,8 +37,8 @@
 
         &:hover{
 
-          color: #ffffff;
-          background: darken(#d9534f, 9%);
+          color: white;
+          background-color: $main-bg-color;
         }
       }
 
@@ -54,7 +54,5 @@
 .vote-modal{
 
   .name{
-
-    color: #2f2f2f;
   }
 }
