@@ -41,9 +41,8 @@
 
                     <div class="bio" ng-bind-html="helpers.paragraphize(company.nearFuture) | sanitize"></div>
 
-                    <p class="stat industry "><strong>Industry:</strong> {{ company.industry }}</p>
                     <p class="stat company-size"><strong>Engineering Team Size:</strong> {{ company.company_size }}</p>
-                    <p class="stat year"><strong>Founded:</strong> {{ company.year}}</p>
+                    <p ng-if="company.year" class="stat year"><strong>Founded:</strong> {{ company.year}}</p>
                     <p class="stat location"><strong>Engineering Team Location:</strong> {{ company.location }}</p>
                     <p class="stat contact"><strong>Primary Contact:</strong> {{ company.primary_contact }} | <span class="links"><a  href="mailto:{{company.user.email}}" target="_blank">{{ company.user.email }}</a></span></p>
 
