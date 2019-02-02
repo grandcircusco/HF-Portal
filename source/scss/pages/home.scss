@@ -63,7 +63,9 @@
     z-index:10;
 }
 .btn:hover {
-    background-color:lighten($main-bright-color, 50%);
+    background-color: #737571;
+    text-decoration: none;
+    color: white;
 }
 
 .logo {
