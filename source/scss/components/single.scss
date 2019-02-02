@@ -19,35 +19,35 @@
 .tag{
 
     font-weight: 500;
-    font-family: 'Fira Sans', sans-serif;
-	border: 3px solid #ee5e5e;
+    font-family: $head-font, sans-serif;
+	border: 3px solid fcaf17;
 	height: 40px;
 	line-height: 26px;
 	padding: 5px 15px;
 	margin: 0 10px 5px;
 	text-align: center;
     text-transform:uppercase;
-	color: #ee5e5e;
+	color: fcaf17;
     margin:10px;
 }
 
 .name{
     font-size: 40px;
     font-weight:200;
-    font-family: 'Dosis', sans-serif;
+    font-family: $head-font, sans-serif;
 	color: #000;
     text-transform:uppercase;
 }
 
 .tagline{
 
-    font-family: 'Dosis', sans-serif;
+    font-family: $main-font, sans-serif;
 	color: #000;
 }
 
 .contact{
 
-    font-family: 'Dosis', sans-serif;
+    font-family: $main-font, sans-serif;
 	color: #000;
 }
 
@@ -55,15 +55,15 @@
 
     a {
 
-        color: #ee5e5e;
-        font-family: 'Dosis', sans-serif;
+        color: fcaf17;
+        font-family: $main-font, sans-serif;
         font-size: 1em;
         font-weight: normal;
     }
 }
 
 .bio {
-    font-family: 'Dosis', sans-serif;
+    font-family: $main-font, sans-serif;
     margin-bottom:0;
 
 }
@@ -102,7 +102,7 @@
 
 	.bio{
 
-        font-family: 'Dosis', sans-serif;
+        font-family: $main-font, sans-serif;
 		margin-bottom: 1em;
 
 		p{
@@ -149,8 +149,8 @@
 
 		a {
 
-			color: #ee5e5e;
-            font-family: 'Dosis', sans-serif;
+			color: fcaf17;
+            font-family: $main-font, sans-serif;
 			font-size: 1em;
 			font-weight: normal;
 		}
@@ -168,11 +168,11 @@
 
 		.tag{
 
-            font-family: 'Fira Sans', sans-serif;
+            font-family: $head-font, sans-serif;
 			display: inline-block;
 			margin-bottom: 10px;
-			color: #ee5e5e;
-			border-color: #ee5e5e;
+			color: fcaf17;
+			border-color: fcaf17;
 
 		}
 	}

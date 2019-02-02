@@ -56,14 +56,14 @@
 
 }
 .btn {
-    background-color:#E96F70;
-    border-color:white;
+    background-color:#fcaf17;
 	color:white;
+    border:none;
+    //border-radius:0;
+    z-index:10;
 }
 .btn:hover {
-    background-color:lighten(#E96F70, 50%);
-    color:#E96F70;
-    border-color:#E96F70;
+    background-color:lighten(#fcaf17, 50%);
 }
 
 .logo {

@@ -1,6 +1,6 @@
 .profile {
 
-  color: #cfcfcf;
+  color: #766e65;
   background-color:#F0F0F0;
   margin: 20px auto 50px;
 
@@ -19,6 +19,7 @@
 	  img {
 		width: 100%;
 		height: auto;
+        border-radius: 10px;
 	  }
 
 	  .placeholder{
@@ -28,8 +29,9 @@
 		height: 150px;
 		margin: 0 auto;
 		background: #3f3f3f;
+        border-radius: 10px;
 
-		color: #cfcfcf;
+		color: #766e65;
 		text-align: center;
 		line-height: 150px;
 	  }
@@ -51,7 +53,6 @@
 	  line-height: 1.3;
 	  font-size: 14px;
 	  text-align: center;
-	  color: #cccccc;
 	}
 
 	.uploading{
@@ -99,6 +100,7 @@
 
 	margin-top: 5px;
 	background: #efefef;
+    margin-bottom:10px;
 
 	  &.error{
 
@@ -112,10 +114,11 @@
 	margin-top: 20px;
   }
 
-  p {
-
-	color: #cfcfcf;
+  #password-btn {
+      position: relative;
+      top: -45px;
   }
+
 
   .vote-container {
 
