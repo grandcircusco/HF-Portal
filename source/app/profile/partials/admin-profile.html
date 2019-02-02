@@ -24,9 +24,8 @@
 						<tbody>
 						<tr ng-repeat="fellow in fellows">
 							<td></td>
-              <td ng-if="fellow.enabled"><a ng-href="/#/fellows/{{ fellow.user.id }}">{{ fellow.first_name + " " + fellow.last_name }}</a></td>j
-              <td ng-if="!fellow.enabled" >{{ fellow.name }}</td>
-              <td><a ng-href="mailto:{{ fellow.user.email }}">{{ fellow.user.email }}</a></td>j
+              <td><a ng-href="/#/fellows/{{ fellow.user.id }}">{{ fellow.first_name + " " + fellow.last_name }}</a></td>
+              <td><a ng-href="mailto:{{ fellow.user.email }}">{{ fellow.user.email }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(fellow)">{{ fellow.user.VotesCast.length }}</a></td>
 							<td class="stat">{{ fellow.enabled ? "Yes" : "No" }}</td>
@@ -51,9 +50,8 @@
 						</thead>
 						<tbody>
 						<tr ng-repeat="intern in interns">
-              <td ng-if="intern.enabled"><a ng-href="/#/interns/{{ intern.user.id }}">{{  intern.first_name + " " + intern.last_name }}</a></td>
-              <td ng-if="!intern.enabled" >{{ intern.name }}</td>
-              <td><a ng-href="mailto:{{ intern.user.email }}">{{ intern.user.email }}</a></td>j
+              <td><a ng-href="/#/interns/{{ intern.user.id }}">{{  intern.first_name + " " + intern.last_name }}</a></td>
+              <td><a ng-href="mailto:{{ intern.user.email }}">{{ intern.user.email }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(intern)">{{ intern.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="fellowVotes(intern)">{{ intern.user.VotesCast.length }}</a></td>
 							<td class="stat">{{ intern.enabled ? "Yes" : "No" }}</td>
@@ -81,9 +79,8 @@
 						</thead>
 						<tbody>
 						<tr ng-repeat="company in companies">
-              <td ng-if="company.enabled"><a ng-href="/#/companies/{{ company.user.id }}">{{ company.name }}</a></td>
-              <td ng-if="!company.enabled" >{{ company.name }}</td>
-              <td><a ng-href="mailto:{{ company.user.email }}">{{ company.user.email }}</a></td>j
+              <td><a ng-href="/#/companies/{{ company.user.id }}">{{ company.name }}</a></td>
+              <td><a ng-href="mailto:{{ company.user.email }}">{{ company.user.email }}</a></td>
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesFor.length }}</a></td>
 							<td class="stat"><a href ng-click="companyVotes(company)">{{ company.user.VotesCast.length }}</a></td>
 							<td class="stat">{{ company.enabled ? "Yes" : "No" }}</td>
