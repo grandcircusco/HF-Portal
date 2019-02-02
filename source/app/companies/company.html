@@ -35,16 +35,16 @@
                 <div class="col-md-9">
 
                     <h1 class="name">{{ company.name }}</h1>
-                    <p class="tagline">{{ company.description }}</p>
+                    <p class="tagline">Developer Need: {{ company.developer_type }}</p>
 
                     <div class="bio" ng-bind-html="helpers.paragraphize(company.bio) | sanitize"></div>
 
                     <div class="bio" ng-bind-html="helpers.paragraphize(company.nearFuture) | sanitize"></div>
 
                     <p class="stat industry "><strong>Industry:</strong> {{ company.industry }}</p>
-                    <p class="stat company-size"><strong>Company Size:</strong> {{ company.company_size }}</p>
+                    <p class="stat company-size"><strong>Engineering Team Size:</strong> {{ company.company_size }}</p>
                     <p class="stat year"><strong>Founded:</strong> {{ company.year}}</p>
-                    <p class="stat location"><strong>Location:</strong> {{ company.location }}</p>
+                    <p class="stat location"><strong>Engineering Team Location:</strong> {{ company.location }}</p>
                     <p class="stat contact"><strong>Primary Contact:</strong> {{ company.primary_contact }} | <span class="links"><a  href="mailto:{{company.user.email}}" target="_blank">{{ company.user.email }}</a></span></p>
 
                     <p class="links"><a class="website" ng-href="{{ company.website_url }}" target="_blank">Website</a></p>

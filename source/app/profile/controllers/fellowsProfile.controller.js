@@ -144,7 +144,7 @@
                 angular.element( "#description" ).removeClass( 'error' );
             }
 
-            if( fellow.answer.length > 250 )
+            if( fellow.answer.length > 350 )
             {
                 angular.element( "#answer" ).addClass( 'error' );
                 errors.push( "The answer field can only be 250 characters maximum");

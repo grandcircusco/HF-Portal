@@ -33,7 +33,7 @@
 
                 <div class="col-md-9">
                     <h1 class="name">{{ fellow.first_name +" "+ fellow.last_name }}</h1>
-                    <p class="tagline">{{ fellow.description }}</p>
+                    <p class="tagline">Developer Type: {{ fellow.developer_type }}</p>
                     <p class="contact"><strong>Contact: </strong><span class="links"><a href="mailto:{{fellow.contact_email}}" target="_blank">{{ fellow.contact_email }}</a></span> | {{fellow.phone}}</p>
 
                     <div class="bio" ng-bind-html="helpers.paragraphize(fellow.bio) | sanitize"></div>
@@ -44,11 +44,11 @@
                     <p class="answer"><strong>A.</strong> {{ fellow.answer }}</p>
 
                     <p>
-                    <span class="links" ng-if="fellow.linkURL1"><a class="linkURL" ng-href="{{ fellow.linkURL1}}" target="_blank">{{fellow.linkName1}}</a> | </span>
-                    <span class="links" ng-if="fellow.linkURL2"><a class="linkURL" ng-href="{{ fellow.linkURL2}}" target="_blank">{{fellow.linkName2}}</a> | </span>
-                    <span class="links" ng-if="fellow.linkURL3"><a class="linkURL" ng-href="{{ fellow.linkURL3}}" target="_blank">{{fellow.linkName3}}</a> | </span>
-                    <span class="links" ng-if="fellow.linkURL4"><a class="linkURL" ng-href="{{ fellow.linkURL4}}" target="_blank">{{fellow.linkName4}}</a> | </span>
-                    <span class="links" ng-if="fellow.linkURL5"><a class="linkURL" ng-href="{{ fellow.linkURL5}}" target="_blank">{{fellow.linkName5}}</a></span>
+                    <span class="links" ng-if="fellow.linkURL1"><a class="linkURL" ng-href="{{ fellow.linkURL1}}" target="_blank">{{fellow.linkName1}}</a></span>
+                    <span class="links" ng-if="fellow.linkURL2"><a class="linkURL" ng-href="{{ fellow.linkURL2}}" target="_blank"> | {{fellow.linkName2}}</a></span>
+                    <span class="links" ng-if="fellow.linkURL3"><a class="linkURL" ng-href="{{ fellow.linkURL3}}" target="_blank"> | {{fellow.linkName3}}</a></span>
+                    <span class="links" ng-if="fellow.linkURL4"><a class="linkURL" ng-href="{{ fellow.linkURL4}}" target="_blank"> | {{fellow.linkName4}}</a></span>
+                    <span class="links" ng-if="fellow.linkURL5"><a class="linkURL" ng-href="{{ fellow.linkURL5}}" target="_blank"> | {{fellow.linkName5}}</a></span>
 
                     </p>
                     <div class="row tags">

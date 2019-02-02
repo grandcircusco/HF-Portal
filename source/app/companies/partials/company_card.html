@@ -8,7 +8,7 @@
 
 
 		<h3 class="name">{{ company.name }}</h3>
-		<p class="tagline">{{ company.description }}</p>
+		<p class="tagline">Developer Need: {{ company.developer_type }}</p>
 
 		<div class="bio" ng-bind-html="helpers.paragraphize( company.bio.substr(0, 350) ) | sanitize"></div>
 
